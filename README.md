@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * angular-cli 6
 
 ## Run server
-
+* open with stackblitz [Open Online]((https://stackblitz.com/github/kapit4n/ng-school-events)
 * clone the repo
 * go to main folder
 * `npm install`
