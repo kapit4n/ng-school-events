@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ConfigurationService {
+
   constructor(private http: Http) {
     var obj;
     this.getConfig().subscribe(data => (obj = data), error => console.log(error));
