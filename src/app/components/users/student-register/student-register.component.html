@@ -10,13 +10,13 @@
   <div class="form-group">
     <label for="gender">Gender</label>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+      <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked [(ngModel)]="student.gender">
       <label class="form-check-label" for="male">
         Male
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+      <input class="form-check-input" type="radio" name="gender" id="female" value="female" [(ngModel)]="student.gender">
       <label class="form-check-label" for="female">
         Female
       </label>

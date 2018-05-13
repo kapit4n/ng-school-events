@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { StudentsService } from "../../../services/students.service";
 
 @Component({
   selector: 'app-student-register',
@@ -10,7 +11,7 @@ export class StudentRegisterComponent implements OnInit {
 
   student: any;
 
-  constructor() {
+  constructor(private studentsSvc: StudentsService) {
     this.student = {};
   }
 
@@ -20,6 +21,7 @@ export class StudentRegisterComponent implements OnInit {
   onSave() {
     let studentInfo = this.student;
     console.log(studentInfo);
+    this.studentsSvc.registerStudent(studentInfo).map(res => res.json()).subscribe(res => console.log(res) );
   }
 
 }
