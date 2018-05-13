@@ -1,0 +1,16 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{student.firstName}}</td>
+      <td>{{student.lastName}}</td>
+      <td>{{student.gender}}</td>
+    </tr>
+  </tbody>
+</table>
