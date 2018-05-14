@@ -1,3 +1,17 @@
-<p>
-  teacher-list works!
-</p>
+<a href="/teacher-register">Register Teacher</a>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let teacher of teachers">
+      <td>{{teacher.firstName}}</td>
+      <td>{{teacher.lastName}}</td>
+      <td>{{teacher.gender}}</td>
+    </tr>
+  </tbody>
+</table>

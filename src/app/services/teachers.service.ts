@@ -19,7 +19,9 @@ export class TeachersService {
 
   public getTeachers(): Observable<any> {
     return this.http
-      .get(this.configSvc.backendUrl + "/users")
+      .get(
+        this.configSvc.backendUrl + "/users?filter[where][userType]=teacher"
+      )
       .map(res => res.json());
   }
 }
