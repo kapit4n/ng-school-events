@@ -1,27 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { StudentsService } from "../../../services/students.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-student-register',
-  templateUrl: './student-register.component.html',
-  styleUrls: ['./student-register.component.css']
+  selector: "app-student-register",
+  templateUrl: "./student-register.component.html",
+  styleUrls: ["./student-register.component.css"]
 })
 export class StudentRegisterComponent implements OnInit {
-
   student: any;
 
-  constructor(private studentsSvc: StudentsService) {
+  constructor(private router: Router, private studentsSvc: StudentsService) {
     this.student = {};
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSave() {
     let studentInfo = this.student;
     console.log(studentInfo);
-    this.studentsSvc.registerStudent(studentInfo).map(res => res.json()).subscribe(res => console.log(res) );
+    this.studentsSvc
+      .registerStudent(studentInfo)
+      .subscribe(res => {
+        this.router.navigate(["/student-list"]);
+      });
   }
-
 }
