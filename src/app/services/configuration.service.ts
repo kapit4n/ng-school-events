@@ -6,12 +6,17 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class ConfigurationService {
 
+  config: any;
+  backendUrl = "http://localhost:3000/api";
   constructor(private http: Http) {
-    var obj;
-    this.getConfig().subscribe(data => (obj = data), error => console.log(error));
+    
+    this.getConfig().subscribe(data => {
+      this.config = data;
+      console.log("This is the config on ConfigurationService " + this.config);
+    }, error => console.log(error));
   }
 
   public getConfig(): Observable<any> {
-    return this.http.get("assets/config.json");
+    return this.http.get("assets/config.json").map(res => res.json());
   }
 }

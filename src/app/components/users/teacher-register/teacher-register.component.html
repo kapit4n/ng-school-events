@@ -1,0 +1,6 @@
+<form #registerForm="ngForm" (ngSubmit)="onSave()">
+  <app-user-info [userInfo]="teacher"></app-user-info>
+  <app-login-info [loginInfo]="teacher"></app-login-info>  
+  <button type="submit" class="btn btn-primary">Save</button>
+  <a href="/home" id="cancel" name="cancel" class="btn btn-primary">Cancel</a>
+</form>
