@@ -8,15 +8,14 @@ import { AuthService } from "./services/auth.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'app';
-  isAuthenticated: boolean; 
-  constructor(private authSvc: AuthService) {
+
+  constructor(public authSvc: AuthService) {
     setTheme('bs4');
-    this.isAuthenticated = authSvc.isAuthenticated;
   }
   
   logout() {
-    this.isAuthenticated = false;
     this.authSvc.isAuthenticated = false;
   }
 }
