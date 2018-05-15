@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { setTheme } from "ngx-bootstrap/utils";
+import { AuthService } from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,14 @@ import { setTheme } from "ngx-bootstrap/utils";
 })
 export class AppComponent {
   title = 'app';
-  
-  constructor() {
+  isAuthenticated: boolean; 
+  constructor(private authSvc: AuthService) {
     setTheme('bs4');
+    this.isAuthenticated = authSvc.isAuthenticated;
+  }
+  
+  logout() {
+    this.isAuthenticated = false;
+    this.authSvc.isAuthenticated = false;
   }
 }

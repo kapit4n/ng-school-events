@@ -7,6 +7,8 @@ import { ConfigurationService } from './services/configuration.service';
 import { GestionService } from './services/gestion.service';
 import { StudentsService } from './services/students.service';
 import { TeachersService } from './services/teachers.service';
+import { AuthService } from './services/auth.service';
+import { LoginService } from './services/login.service';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from "@angular/router";
@@ -23,6 +25,7 @@ import { TeacherRegisterComponent } from './components/users/teacher-register/te
 import { TeacherListComponent } from './components/users/teacher-list/teacher-list.component';
 import { UserInfoComponent } from './components/users/user-info/user-info.component';
 import { LoginInfoComponent } from './components/users/login-info/login-info.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +37,7 @@ const appRoutes: Routes = [
   { path: 'student-list', component: StudentListComponent },
   { path: 'teacher-register', component: TeacherRegisterComponent },
   { path: 'teacher-list', component: TeacherListComponent },
+  { path: 'login', component: LoginComponent },
   {
     path: '',
     redirectTo: '/home',
@@ -57,7 +61,8 @@ const appRoutes: Routes = [
     TeacherRegisterComponent,
     TeacherListComponent,
     UserInfoComponent,
-    LoginInfoComponent
+    LoginInfoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,13 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ConfigurationService, GestionService, StudentsService, TeachersService],
+  providers: [
+    ConfigurationService,
+    GestionService,
+    StudentsService, 
+    TeachersService,
+    AuthService,
+    LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

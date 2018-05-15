@@ -8,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LoginInfoComponent implements OnInit {
 
   @Input() loginInfo: any;
-  constructor() { }
+  constructor() {
+    
+  }
 
   ngOnInit() {
   }
