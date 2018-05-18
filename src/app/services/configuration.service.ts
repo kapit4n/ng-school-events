@@ -12,7 +12,6 @@ export class ConfigurationService {
     
     this.getConfig().subscribe(data => {
       this.config = data;
-      console.log("This is the config on ConfigurationService " + this.config);
     }, error => console.log(error));
   }
 

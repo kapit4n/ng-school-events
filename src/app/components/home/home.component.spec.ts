@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { ConfigurationService } from '../../services/configuration.service';
+import { HttpModule } from "@angular/http";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,9 +10,10 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
-    })
-    .compileComponents();
+      declarations: [HomeComponent],
+      providers: [ConfigurationService],
+      imports: [HttpModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
