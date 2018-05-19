@@ -11,7 +11,7 @@ export class TeacherRegisterComponent implements OnInit {
   teacher: any;
 
   constructor(private router: Router, private teachersSvc: TeachersService) {
-    this.teacher = { userType: "teacher" };
+    this.teacher = { userType: "teacher", password: "password" };
   }
 
   ngOnInit() {}

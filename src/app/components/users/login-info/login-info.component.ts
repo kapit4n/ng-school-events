@@ -9,7 +9,6 @@ export class LoginInfoComponent implements OnInit {
 
   @Input() loginInfo: any;
   constructor() {
-    
   }
 
   ngOnInit() {
