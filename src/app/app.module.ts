@@ -27,6 +27,9 @@ import { UserInfoComponent } from './components/users/user-info/user-info.compon
 import { LoginInfoComponent } from './components/users/login-info/login-info.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { JwtModule } from "@auth0/angular-jwt";
+import { HttpClientModule } from "@angular/common/http";
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'todays', component: TodaysComponent },
@@ -45,6 +48,11 @@ const appRoutes: Routes = [
   },
   { path: '**', component: AppComponent }
 ];
+
+export function tokenGetter() {
+  console.log("This is the tokenGetter");
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -72,7 +80,15 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:3000'],
+        blacklistedRoutes: ['localhost:3000/login/']
+      }
+    })
   ],
   providers: [
     ConfigurationService,

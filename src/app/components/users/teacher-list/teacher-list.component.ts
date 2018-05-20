@@ -15,7 +15,6 @@ export class TeacherListComponent implements OnInit {
   ngOnInit() {
     this.teachersSvc.getTeachers().subscribe( teachers => {
       this.teachers = teachers;
-      console.log(teachers);
     });
   }
 

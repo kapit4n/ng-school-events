@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
       console.log(userData);
       this.authSvc.isAuthenticated = true;
       this.authSvc.secToken = userData.id;
+      localStorage.setItem("token", userData.id);
       this.router.navigate(["/home"]);
     });
   }

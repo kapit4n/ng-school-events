@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ConfigurationService } from "./configuration.service";
-import { Http } from "@angular/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs/Rx';
 import "rxjs/add/operator/map";
 
@@ -9,19 +9,18 @@ import "rxjs/add/operator/map";
 })
 export class TeachersService {
 
-  constructor(private configSvc: ConfigurationService, private http: Http) {
+  constructor(private configSvc: ConfigurationService, private http: HttpClient) {
     
   }
 
   public registerTeacher(user: any): Observable<any> {
-    return this.http.post(this.configSvc.backendUrl + "/users", user).map(res => res.json());
+    return this.http.post(this.configSvc.backendUrl + "/users", user);
   }
 
   public getTeachers(): Observable<any> {
     return this.http
       .get(
         this.configSvc.backendUrl + "/users?filter[where][userType]=teacher"
-      )
-      .map(res => res.json());
+      );
   }
 }
