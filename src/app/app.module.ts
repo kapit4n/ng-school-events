@@ -27,8 +27,6 @@ import { UserInfoComponent } from './components/users/user-info/user-info.compon
 import { LoginInfoComponent } from './components/users/login-info/login-info.component';
 import { LoginComponent } from './components/login/login.component';
 
-import { JwtModule } from "@auth0/angular-jwt";
-import { HttpClientModule } from "@angular/common/http";
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -48,11 +46,6 @@ const appRoutes: Routes = [
   },
   { path: '**', component: AppComponent }
 ];
-
-export function tokenGetter() {
-  console.log("This is the tokenGetter");
-  return localStorage.getItem('token');
-}
 
 @NgModule({
   declarations: [
@@ -80,23 +73,16 @@ export function tokenGetter() {
       { enableTracing: true } // <-- debugging purposes only
     ),
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:3000'],
-        blacklistedRoutes: ['localhost:3000/login/']
-      }
-    })
+    ReactiveFormsModule
   ],
   providers: [
     ConfigurationService,
     GestionService,
-    StudentsService, 
+    StudentsService,
     TeachersService,
     AuthService,
-    LoginService],
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -16,6 +16,6 @@ export class AppComponent {
   }
   
   logout() {
-    this.authSvc.isAuthenticated = false;
+    this.authSvc.logout();
   }
 }

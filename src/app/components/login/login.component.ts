@@ -19,10 +19,7 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.loginSvc.login(this.loginInfo).subscribe( userData => {
-      console.log(userData);
-      this.authSvc.isAuthenticated = true;
-      this.authSvc.secToken = userData.id;
-      localStorage.setItem("token", userData.id);
+      this.authSvc.setToken(userData.id);
       this.router.navigate(["/home"]);
     });
   }
