@@ -10,12 +10,11 @@ export class HttpClientService {
 
   get(url) {
     let headers = new Headers();
-    //this.createAuthorizationHeader(headers);
     var urlAux = url;
     if( url.indexOf('?') >= 0){
-      urlAux = url + "&access_token=" + localStorage.getItem("token")
+      urlAux = url + "&access_token=" + localStorage.getItem("access_token")
     } else {
-      urlAux = url + "?access_token=" + localStorage.getItem("token")
+      urlAux = url + "?access_token=" + localStorage.getItem("access_token")
     }
 
     return this.http.get(urlAux, {
@@ -25,12 +24,11 @@ export class HttpClientService {
 
   post(url, data) {
     let headers = new Headers();
-    //this.createAuthorizationHeader(headers);
     var urlAux = url;
     if( url.indexOf('?') >= 0){
-      urlAux = url + "&access_token=" + localStorage.getItem("token")
+      urlAux = url + "&access_token=" + localStorage.getItem("access_token")
     } else {
-      urlAux = url + "?access_token=" + localStorage.getItem("token")
+      urlAux = url + "?access_token=" + localStorage.getItem("access_token")
     }
     return this.http.post(urlAux, data, {
       headers: headers

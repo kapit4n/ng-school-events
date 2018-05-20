@@ -9,6 +9,7 @@ import { StudentsService } from './services/students.service';
 import { TeachersService } from './services/teachers.service';
 import { AuthService } from './services/auth.service';
 import { LoginService } from './services/login.service';
+import { UsersService } from './services/users.service';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from "@angular/router";
@@ -26,7 +27,9 @@ import { TeacherListComponent } from './components/users/teacher-list/teacher-li
 import { UserInfoComponent } from './components/users/user-info/user-info.component';
 import { LoginInfoComponent } from './components/users/login-info/login-info.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { TeacherInfoComponent } from './components/users/teacher-info/teacher-info.component';
+import { TeacherProfileComponent } from './components/users/teacher-profile/teacher-profile.component';
+import { UserInfoEditComponent } from './components/users/user-info-edit/user-info-edit.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -63,7 +66,10 @@ const appRoutes: Routes = [
     TeacherListComponent,
     UserInfoComponent,
     LoginInfoComponent,
-    LoginComponent
+    LoginComponent,
+    TeacherInfoComponent,
+    TeacherProfileComponent,
+    UserInfoEditComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +87,8 @@ const appRoutes: Routes = [
     StudentsService,
     TeachersService,
     AuthService,
-    LoginService
+    LoginService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

@@ -19,8 +19,9 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.loginSvc.login(this.loginInfo).subscribe( userData => {
-      this.authSvc.setToken(userData.id);
+      this.authSvc.saveSessionInfo(userData);
       this.router.navigate(["/home"]);
     });
   }
+
 }
