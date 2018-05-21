@@ -16,6 +16,10 @@ export class UsersService {
       .map(res => res.json());
   }
 
+  public getCurrentUserId(): string {
+    return this.authSvc.getCurrentUserId();
+  }
+
   public getUserById(id: string): Observable<any> {
     return this.http
       .get(this.configSvc.backendUrl + "/users/" + id)

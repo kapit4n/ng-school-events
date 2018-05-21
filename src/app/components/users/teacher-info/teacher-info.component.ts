@@ -10,7 +10,7 @@ export class TeacherInfoComponent implements OnInit {
   @Input() teacher: any;
   editInfoFlag: boolean;
   editLabel: string;
-  constructor(private teacherSvc: TeachersService) {
+  constructor(private teachersSvc: TeachersService) {
     this.editInfoFlag = true;
     this.editLabel = "Edit";
     this.teacher = {};
@@ -18,7 +18,11 @@ export class TeacherInfoComponent implements OnInit {
 
   editInfo() {
     if (!this.editInfoFlag) {
-      console.log("Save info to teachers api");
+      if (this.teacher.id) {
+        this.teachersSvc.updateTeacherInfo(this.teacher).subscribe( res => this.teacher = res);
+      } else {
+        this.teachersSvc.registerTeacherInfo(this.teacher).subscribe( res => this.teacher = res);
+      }
     }
 
     this.editInfoFlag = !this.editInfoFlag;
@@ -30,6 +34,5 @@ export class TeacherInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.teacher);
   }
 }
