@@ -33,4 +33,17 @@ export class HttpClientService {
       headers: headers
     });
   }
+
+  put(url, data) {
+    let headers = new Headers();
+    var urlAux = url;
+    if (url.indexOf("?") >= 0) {
+      urlAux = url + "&access_token=" + localStorage.getItem("access_token");
+    } else {
+      urlAux = url + "?access_token=" + localStorage.getItem("access_token");
+    }
+    return this.http.put(urlAux, data, {
+      headers: headers
+    });
+  }
 }

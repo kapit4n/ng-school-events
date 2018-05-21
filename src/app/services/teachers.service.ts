@@ -19,9 +19,27 @@ export class TeachersService {
       .map(res => res.json());
   }
 
+  public registerTeacherInfo(teacherInfo: any): Observable<any> {
+    return this.http
+      .post(this.configSvc.backendUrl + "/teachers", teacherInfo)
+      .map(res => res.json());
+  }
+
+  public updateTeacherInfo(teacherInfo: any): Observable<any> {
+    return this.http
+      .put(this.configSvc.backendUrl + "/teachers/" + teacherInfo.id, teacherInfo)
+      .map(res => res.json());
+  }
+
   public getTeachers(): Observable<any> {
     return this.http
       .get(this.configSvc.backendUrl + "/users?filter[where][userType]=teacher")
+      .map(res => res.json());
+  }
+
+  public getTeacherByUserId(id: string): Observable<any> {
+    return this.http
+      .get(this.configSvc.backendUrl + "/teachers?filter[where][userId]=" + id)
       .map(res => res.json());
   }
 }
