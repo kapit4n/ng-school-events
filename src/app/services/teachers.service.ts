@@ -33,7 +33,7 @@ export class TeachersService {
 
   public getTeachers(): Observable<any> {
     return this.http
-      .get(this.configSvc.backendUrl + "/users?filter[where][userType]=teacher")
+      .get(this.configSvc.backendUrl + "/teachers")
       .map(res => res.json());
   }
 
