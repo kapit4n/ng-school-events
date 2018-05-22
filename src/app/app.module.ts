@@ -41,6 +41,7 @@ const appRoutes: Routes = [
   { path: 'student-list', component: StudentListComponent },
   { path: 'teacher-register', component: TeacherRegisterComponent },
   { path: 'teacher-list', component: TeacherListComponent },
+  { path: 'teacher-profile', component: TeacherProfileComponent },
   { path: 'login', component: LoginComponent },
   {
     path: '',

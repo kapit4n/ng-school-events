@@ -19,10 +19,9 @@ export class StudentRegisterComponent implements OnInit {
 
   onSave() {
     let studentInfo = this.student;
-    console.log(studentInfo);
     this.studentsSvc
       .registerStudent(studentInfo)
-      .subscribe(res => {
+      .subscribe(student => {
         this.router.navigate(["/student-list"]);
       });
   }

@@ -10,12 +10,14 @@ import { TeachersService } from "../../../services/teachers.service";
 export class TeacherProfileComponent implements OnInit {
   currentUser: any;
   teacherInfo: any;
+  type: any;
   constructor(
     private usersSvc: UsersService,
     private teachersSvc: TeachersService
   ) {
     this.currentUser = {};
     this.teacherInfo = {};
+    this.type = "teacher";
   }
 
   ngOnInit() {

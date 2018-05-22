@@ -1,4 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">SCHOOL EVENTS</a>
@@ -23,13 +24,12 @@
           <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
         </li>
         <li class="nav-item" *ngIf="authSvc.isAuthenticated()">
-          <a class="nav-link" routerLink="/login" (click)="logout()" routerLinkActive="active">Logout</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search Events" aria-label="Search"> +
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Events</button>
-      </form>
+      <div class="avatarContainer">
+        <img style="" src="https://pbs.twimg.com/profile_images/936609529932013568/2DoABAma_400x400.jpg" alt="Snow">
+        <button style="border-radius: 50%;" type="button" class="btn btn-info" data-toggle="popover" title="Teacher settings" data-content='<a class="nav-link" href="/teacher-profile" routerLinkActive="active">Account Seetings</a> <br> <a class="nav-link" href="/logout" routerLinkActive="active">Logout</a>'>User</button>
+      </div>
     </div>
   </nav>
   <router-outlet></router-outlet>
