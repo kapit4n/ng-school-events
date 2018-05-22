@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { StudentsService } from "../../../services/students.service";
 import { Router } from "@angular/router";
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-student-register",
@@ -11,7 +12,7 @@ import { Router } from "@angular/router";
 export class StudentRegisterComponent implements OnInit {
   student: any;
 
-  constructor(private router: Router, private studentsSvc: StudentsService) {
+  constructor(private router: Router, private studentsSvc: StudentsService, private location: Location) {
     this.student = {};
   }
 
@@ -22,7 +23,7 @@ export class StudentRegisterComponent implements OnInit {
     this.studentsSvc
       .registerStudent(studentInfo)
       .subscribe(student => {
-        this.router.navigate(["/student-list"]);
+        this.location.back();
       });
   }
 }
