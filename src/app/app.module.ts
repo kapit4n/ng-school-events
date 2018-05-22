@@ -30,6 +30,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TeacherInfoComponent } from './components/users/teacher-info/teacher-info.component';
 import { TeacherProfileComponent } from './components/users/teacher-profile/teacher-profile.component';
 import { UserInfoEditComponent } from './components/users/user-info-edit/user-info-edit.component';
+import { CourseHomeComponent } from './components/courses/course-home/course-home.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
     LoginComponent,
     TeacherInfoComponent,
     TeacherProfileComponent,
-    UserInfoEditComponent
+    UserInfoEditComponent,
+    CourseHomeComponent
   ],
   imports: [
     BrowserModule,
