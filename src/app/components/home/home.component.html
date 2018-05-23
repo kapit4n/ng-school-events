@@ -1,13 +1,14 @@
 
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link active" href="course/1">Course 1</a>
+        <button class="nav-link {{courseId == 1 ? 'active': ''}}" href="#" (click)="loadCouse(1)">Course 1</button>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="course/1">Course 2</a>
+        <button class="nav-link {{courseId == 2 ? 'active': ''}}" href="#" (click)="loadCouse(2)">Course 2</button>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="course/1">Course 3</a>
+        <button class="nav-link {{courseId == 3 ? 'active': ''}}" href="#" (click)="loadCouse(3)">Course 3</button>
     </li>
 </ul>
-<app-course-home></app-course-home>
+
+<app-course-home [courseInfo]="course" ></app-course-home>

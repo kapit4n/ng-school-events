@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 import { StudentsService } from "../../../services/students.service";
 
 @Component({
@@ -9,13 +9,12 @@ import { StudentsService } from "../../../services/students.service";
 export class CourseHomeComponent implements OnInit {
 
   students: any[];
+  @Input() courseInfo: any;
 
   constructor(private studentsSvc: StudentsService) { }
-
   ngOnInit() {
     this.studentsSvc.getStudents().subscribe( students => {
       this.students = students;
     });
   }
-
 }
