@@ -15,6 +15,11 @@ export class UsersService {
       .get(this.configSvc.backendUrl + "/users/" + this.authSvc.getCurrentUserId())
       .map(res => res.json());
   }
+  public registerAdmin(user: any): Observable<any> {
+    return this.http
+      .post(this.configSvc.backendUrl + "/users", user)
+      .map(res => res.json());
+  }
 
   public getCurrentUserId(): string {
     return this.authSvc.getCurrentUserId();

@@ -1,5 +1,7 @@
 
-<ul class="nav nav-tabs">
+div
+
+<ul class="nav nav-tabs"  *ngIf="authSvc.isAuthenticated()">
     <li class="nav-item">
         <button class="nav-link {{courseId == 1 ? 'active': ''}}" href="#" (click)="loadCourse(1)">Course 1</button>
     </li>

@@ -20,7 +20,6 @@ export class TeacherRegisterComponent implements OnInit {
   onSave() {
     this.teacher.user = {id: this.authSvc.getCurrentUserId()}
     let teacherInfo = this.teacher;
-    console.log(teacherInfo);
     this.teachersSvc.registerTeacher(teacherInfo).subscribe(res => {
       this.router.navigate(["/teacher-list"]);
     });

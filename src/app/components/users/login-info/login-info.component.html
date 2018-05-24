@@ -2,3 +2,7 @@
   <label for="email">Email</label>
   <input type="text" class="form-control" id="email" placeholder="email@gmail.com" required [(ngModel)]="loginInfo.email" [ngModelOptions]="{standalone: true}">
 </div>
+<div class="form-group">
+  <label for="password">Password</label>
+  <input type="password" class="form-control" id="password" required [(ngModel)]="loginInfo.password" [ngModelOptions]="{standalone: true}">
+</div>

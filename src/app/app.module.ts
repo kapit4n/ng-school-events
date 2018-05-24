@@ -32,6 +32,8 @@ import { TeacherProfileComponent } from './components/users/teacher-profile/teac
 import { UserInfoEditComponent } from './components/users/user-info-edit/user-info-edit.component';
 import { CourseHomeComponent } from './components/courses/course-home/course-home.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
+import { AdminRegisterComponent } from './components/users/admin-register/admin-register.component';
+import { UserInviteComponent } from './components/users/user-invite/user-invite.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -46,6 +48,7 @@ const appRoutes: Routes = [
   { path: 'teacher-profile', component: TeacherProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'admin-register', component: AdminRegisterComponent },
   {
     path: '',
     redirectTo: '/home',
@@ -75,7 +78,9 @@ const appRoutes: Routes = [
     TeacherProfileComponent,
     UserInfoEditComponent,
     CourseHomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    AdminRegisterComponent,
+    UserInviteComponent
   ],
   imports: [
     BrowserModule,
