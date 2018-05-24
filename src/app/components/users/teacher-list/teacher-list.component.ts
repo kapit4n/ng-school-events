@@ -13,7 +13,7 @@ export class TeacherListComponent implements OnInit {
   constructor(private teachersSvc: TeachersService) { }
 
   ngOnInit() {
-    this.teachersSvc.getTeachers().subscribe( teachers => {
+    this.teachersSvc.getTeachers().subscribe(teachers => {
       this.teachers = teachers;
     });
   }

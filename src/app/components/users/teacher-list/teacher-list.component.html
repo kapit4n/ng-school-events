@@ -2,6 +2,7 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
+      <th scope="col">Email</th>
       <th scope="col">Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Gender</th>
@@ -9,9 +10,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let teacher of teachers">
-      <td>{{teacher.firstName}}</td>
-      <td>{{teacher.lastName}}</td>
-      <td>{{teacher.gender}}</td>
+      <td>{{teacher.email}}</td>
+      <td>{{teacher.teachers.firstName}}</td>
+      <td>{{teacher.teachers.lastName}}</td>
+      <td>{{teacher.teachers.gender}}</td>
     </tr>
   </tbody>
 </table>
