@@ -21,7 +21,7 @@
         <li class="nav-item" *ngIf="false">
           <a class="nav-link" routerLink="/gestion-current" routerLinkActive="active">Current Gestion</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="rolesSvc.isAdmin()">
           <a class="nav-link" routerLink="/user-management" routerLinkActive="active">Users</a>
         </li>
       </ul>

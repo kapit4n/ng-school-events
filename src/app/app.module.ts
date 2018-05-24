@@ -10,6 +10,7 @@ import { TeachersService } from './services/teachers.service';
 import { AuthService } from './services/auth.service';
 import { LoginService } from './services/login.service';
 import { UsersService } from './services/users.service';
+import { RolesService } from './services/roles.service';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from "@angular/router";
@@ -99,7 +100,8 @@ const appRoutes: Routes = [
     TeachersService,
     AuthService,
     LoginService,
-    UsersService
+    UsersService,
+    RolesService
   ],
   bootstrap: [AppComponent]
 })

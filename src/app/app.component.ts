@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { setTheme } from "ngx-bootstrap/utils";
 import { AuthService } from "./services/auth.service";
+import { RolesService } from "./services/roles.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
 
   title = 'app';
 
-  constructor(public authSvc: AuthService) {
+  constructor(public authSvc: AuthService, public rolesSvc: RolesService) {
     setTheme('bs4');
   }
   
