@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.configSvc.getConfig().subscribe(res => console.log(res));
   }
 
-  loadCouse(courseId: number) {
+  loadCourse(courseId: number) {
     this.courseId = courseId;
   }
 
