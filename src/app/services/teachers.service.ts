@@ -16,7 +16,7 @@ export class TeachersService {
   public registerTeacher(user: any): Observable<any> {
     return this.http
       .post(this.configSvc.backendUrl + "/users", user)
-      .map(res => res.json());
+      .map(res => res);
   }
 
   public registerTeacherInfo(teacherInfo: any): Observable<any> {

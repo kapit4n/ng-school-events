@@ -16,6 +16,7 @@ export class RolesService {
   }
 
   reloadUser() {
+    this.userInfo = {};
     this.usersSvc.getCurrentUser().subscribe(res => this.userInfo = res);
   }
   
