@@ -10,7 +10,9 @@ export class TeacherListComponent implements OnInit {
 
   teachers: any[];
 
-  constructor(private teachersSvc: TeachersService) { }
+  constructor(private teachersSvc: TeachersService) {
+    this.teachers = [];
+  }
 
   ngOnInit() {
     this.teachersSvc.getTeachers().subscribe(teachers => {

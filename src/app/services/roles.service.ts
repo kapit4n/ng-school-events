@@ -10,14 +10,18 @@ export class RolesService {
 
   isTeacher() {
     if (this.userInfo) {
-      return this.userInfo.userType = "teacher";
+      return this.userInfo.userType == "teacher";
     }
     return false;
+  }
+
+  reloadUser() {
+    this.usersSvc.getCurrentUser().subscribe(res => this.userInfo = res);
   }
   
   isAdmin() {
     if (this.userInfo) {
-      return this.userInfo.userType = "admin";
+      return this.userInfo.userType == "admin";
     }
     return false;
   }

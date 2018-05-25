@@ -11,12 +11,8 @@ import { RolesService } from "./services/roles.service";
 export class AppComponent {
 
   title = 'app';
-
+  
   constructor(public authSvc: AuthService, public rolesSvc: RolesService) {
     setTheme('bs4');
-  }
-  
-  logout() {
-    this.authSvc.logout();
   }
 }

@@ -11,9 +11,9 @@
   <tbody>
     <tr *ngFor="let teacher of teachers">
       <td>{{teacher.email}}</td>
-      <td>{{teacher.teachers.firstName}}</td>
-      <td>{{teacher.teachers.lastName}}</td>
-      <td>{{teacher.teachers.gender}}</td>
+      <td *ngIf="teacher.teachers">{{teacher.teachers.firstName}}</td>
+      <td *ngIf="teacher.teachers">{{teacher.teachers.lastName}}</td>
+      <td *ngIf="teacher.teachers">{{teacher.teachers.gender}}</td>
     </tr>
   </tbody>
 </table>

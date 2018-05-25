@@ -9,7 +9,9 @@ export class AuthService {
   }
 
   private accessTokenLabel = "access_token";
+
   private userIdLabel = "user_id";
+
   public isAuthenticated(): boolean {
     if (localStorage.getItem(this.accessTokenLabel)) {
       return localStorage.getItem(this.accessTokenLabel).length > 10;
