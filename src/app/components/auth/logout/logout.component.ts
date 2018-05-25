@@ -14,6 +14,6 @@ export class LogoutComponent implements OnInit {
   ngOnInit() {
     this.authSvc.logout();
     this.rolesSvc.reloadUser();
-    this.router.navigate(["/"]);
+    window.location.href = ""; // reload the entire page to reload services
   }
 }

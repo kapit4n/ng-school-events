@@ -35,6 +35,8 @@ import { CourseHomeComponent } from './components/courses/course-home/course-hom
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { AdminRegisterComponent } from './components/users/admin-register/admin-register.component';
 import { UserInviteComponent } from './components/users/user-invite/user-invite.component';
+import { CourseListComponent } from './components/courses/course-list/course-list.component';
+import { StudentFollowUpComponent } from './components/students/student-follow-up/student-follow-up.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -46,10 +48,13 @@ const appRoutes: Routes = [
   { path: 'student-list', component: StudentListComponent },
   { path: 'teacher-register', component: TeacherRegisterComponent },
   { path: 'teacher-list', component: TeacherListComponent },
+  { path: 'course-home', component: CourseHomeComponent },
+  { path: 'course-list', component: CourseListComponent },
   { path: 'teacher-profile', component: TeacherProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'admin-register', component: AdminRegisterComponent },
+  { path: 'student-follow-up', component: StudentFollowUpComponent },
   {
     path: '',
     redirectTo: '/home',
@@ -81,7 +86,9 @@ const appRoutes: Routes = [
     CourseHomeComponent,
     LogoutComponent,
     AdminRegisterComponent,
-    UserInviteComponent
+    UserInviteComponent,
+    CourseListComponent,
+    StudentFollowUpComponent
   ],
   imports: [
     BrowserModule,

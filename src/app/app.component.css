@@ -1,11 +1,11 @@
   /* avatarContainer needed to position the button. Adjust the width as needed */
 .avatarContainer {
   position: relative;
-  width: 50px;
+  width: 65px;
 }
 
 .avatarContainer img {
-  width: 50px;
+  width: 65px;
   height: auto;
 }
 

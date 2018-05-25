@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.loginSvc.login(this.loginInfo).subscribe( userData => {
       this.authSvc.saveSessionInfo(userData);
       this.rolesSvc.reloadUser();
-        window.location.href = ""; // reload the entire page to reload services
+      window.location.href = ""; // reload the entire page to reload services
     });
   }
 
