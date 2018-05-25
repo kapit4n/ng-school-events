@@ -6,14 +6,16 @@
       <th scope="col">Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Gender</th>
+      <th scope="col">Verified</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let teacher of teachers">
       <td>{{teacher.email}}</td>
-      <td *ngIf="teacher.teachers">{{teacher.teachers.firstName}}</td>
-      <td *ngIf="teacher.teachers">{{teacher.teachers.lastName}}</td>
-      <td *ngIf="teacher.teachers">{{teacher.teachers.gender}}</td>
+      <td>{{teacher.teachers ? teacher.teachers.firstName : ''}}</td>
+      <td>{{teacher.teachers ? teacher.teachers.lastName : ''}}</td>
+      <td>{{teacher.teachers ? teacher.teachers.gender : ''}}</td>
+      <td>{{teacher.emailVerified ? 'Yes' : 'No'}}</td>
     </tr>
   </tbody>
 </table>
