@@ -1,5 +1,5 @@
 <div *ngIf="rolesSvc.isTeacher()">
-    <ul class="nav nav-tabs" *ngIf="authSvc.isAuthenticated()">
+    <ul class="nav nav-tabs">
         <li class="nav-item">
             <button class="nav-link {{courseId == 1 ? 'active': ''}}" href="#" (click)="loadCourse(1)">Course 1</button>
         </li>
@@ -11,4 +11,27 @@
         </li>
     </ul>
     <app-course-home [courseInfo]="course"></app-course-home>
+</div>
+<div *ngIf="!authSvc.isAuthenticated()" class="row">
+    <div class="col-md-6">
+        <img src="http://lh6.ggpht.com/Kdq7QRPSa7tDUflSxlKDUme6Rum1swGsIce7BcjRxLTuicJdN-v2ispI9AXe2usNEU1YxJT4lqoVvlxCfg=s517" alt="">
+    </div>
+    <div class="col-md-6">
+        <p style="padding-top: 10px;">
+             Host a community event to share information about the positive action your school is taking in relation to bullying and
+            to build support for the National Day of Action. Place the National Day of Action postcard (PDF, 2.3MB) in local businesses
+            and libraries to promote the event. Write to people in your local community using the NDA 2018 letterhead (DOC, 1.9MB) to
+            invite them to participate in your school event. Options include support agencies, elders, universities, local council and
+            businesses, high profile individuals and local media representatives. Invite students, teachers and parents to each contribute
+            one idea that your school could do to address bullying. Collate all the answers and create a document to be presented to
+            the school on the National Day of Action. Run a whole-school review of your school's anti-bullying policy. Highlight snippets
+            and information from your school's behaviour policy in the school newsletter. Highlight your anti-bullying policy on your
+            school's website. Invite parents and community members to a school breakfast or barbeque and showcase your school's anti-bullying
+            work and programs to promote student wellbeing. Make a school mural of positive messages about students' contributions to
+            making your school safe and supportive. Use an online platform to invite students to complete the sentence 'At [our school]
+            we are taking a stand against bullying and violence by...' Invite parents of young children (3 to 8 years of age) to an information
+            session and discuss the important role of both parents and educators in supporting young children's social and emotional
+            development. Use the information and handouts in Starting in early childhood.
+        </p>
+    </div>
 </div>
