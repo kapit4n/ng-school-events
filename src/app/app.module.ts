@@ -37,6 +37,9 @@ import { AdminRegisterComponent } from './components/users/admin-register/admin-
 import { UserInviteComponent } from './components/users/user-invite/user-invite.component';
 import { CourseListComponent } from './components/courses/course-list/course-list.component';
 import { StudentFollowUpComponent } from './components/students/student-follow-up/student-follow-up.component';
+import { ParentListComponent } from './components/users/parent-list/parent-list.component';
+import { ParentRegisterComponent } from './components/users/parent-register/parent-register.component';
+import { ParentInfoComponent } from './components/users/parent-info/parent-info.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -88,7 +91,10 @@ const appRoutes: Routes = [
     AdminRegisterComponent,
     UserInviteComponent,
     CourseListComponent,
-    StudentFollowUpComponent
+    StudentFollowUpComponent,
+    ParentListComponent,
+    ParentRegisterComponent,
+    ParentInfoComponent
   ],
   imports: [
     BrowserModule,
