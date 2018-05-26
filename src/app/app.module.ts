@@ -42,28 +42,30 @@ import { ParentRegisterComponent } from './components/users/parent-register/pare
 import { ParentInfoComponent } from './components/users/parent-info/parent-info.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'todays', component: TodaysComponent },
-  { path: 'incoming', component: IncomingComponent },
-  { path: 'gestion-current', component: GestionCurrentComponent },
-  { path: 'user-management', component: UserManagementComponent },
-  { path: 'student-register', component: StudentRegisterComponent },
-  { path: 'student-list', component: StudentListComponent },
-  { path: 'teacher-register', component: TeacherRegisterComponent },
-  { path: 'teacher-list', component: TeacherListComponent },
-  { path: 'course-home', component: CourseHomeComponent },
-  { path: 'course-list', component: CourseListComponent },
-  { path: 'teacher-profile', component: TeacherProfileComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: 'admin-register', component: AdminRegisterComponent },
-  { path: 'student-follow-up', component: StudentFollowUpComponent },
+  { path: "home", component: HomeComponent },
+  { path: "todays", component: TodaysComponent },
+  { path: "incoming", component: IncomingComponent },
+  { path: "gestion-current", component: GestionCurrentComponent },
+  { path: "user-management", component: UserManagementComponent },
+  { path: "student-register", component: StudentRegisterComponent },
+  { path: "student-list", component: StudentListComponent },
+  { path: "teacher-register", component: TeacherRegisterComponent },
+  { path: "teacher-list", component: TeacherListComponent },
+  { path: "teacher-profile", component: TeacherProfileComponent },
+  { path: "parent-register", component: ParentRegisterComponent },
+  { path: "parent-list", component: ParentListComponent },
+  { path: "course-home", component: CourseHomeComponent },
+  { path: "course-list", component: CourseListComponent },
+  { path: "login", component: LoginComponent },
+  { path: "logout", component: LogoutComponent },
+  { path: "admin-register", component: AdminRegisterComponent },
+  { path: "student-follow-up", component: StudentFollowUpComponent },
   {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "/home",
+    pathMatch: "full"
   },
-  { path: '**', component: AppComponent }
+  { path: "**", component: AppComponent }
 ];
 
 @NgModule({
