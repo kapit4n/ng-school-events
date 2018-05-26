@@ -1,5 +1,7 @@
 <form #registerForm="ngForm">
-  <app-user-info *ngIf="editInfoFlag" [userInfo]="teacher"></app-user-info>
-  <app-user-info-edit *ngIf="!editInfoFlag" [userInfo]="teacher"></app-user-info-edit>
+  <app-user-info *ngIf="!editInfoFlag" [userInfo]="teacher"></app-user-info>
+  <app-user-info-edit *ngIf="editInfoFlag" [userInfo]="teacher"></app-user-info-edit>
+  <app-teacher-info-show *ngIf="!editInfoFlag" [teacher]="teacher"></app-teacher-info-show>
+  <app-teacher-info-edit *ngIf="editInfoFlag" [teacher]="teacher"></app-teacher-info-edit>
   <button (click)="editInfo()" class="btn btn-primary">{{editLabel}}</button>
 </form>
