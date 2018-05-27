@@ -10,7 +10,6 @@ import { RolesService } from "../../services/roles.service";
 })
 export class HomeComponent implements OnInit {
 
-
   constructor(private configSvc: ConfigurationService, public authSvc: AuthService, public rolesSvc: RolesService) {
 
   }

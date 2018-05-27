@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentRegisterComponent implements OnInit {
 
-  constructor() { }
+  parentInfo: any;
+  constructor() {
+    this.parentInfo = { userType: "parent", password: "password" };
+  }
 
   ngOnInit() {
+
+  }
+
+  onSave() {
+    console.log("Save parent invite info");
   }
 
 }
