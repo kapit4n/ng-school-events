@@ -1,3 +1,21 @@
-<p>
-  parent-list works!
-</p>
+<a href="/parent-register">Register Parent</a>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Verified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let parentUser of parentUsers">
+      <td>{{parentUser.email}}</td>
+      <td>{{parentUser.parents ? parentUser.parents.firstName : ''}}</td>
+      <td>{{parentUser.parents ? parentUser.parents.lastName : ''}}</td>
+      <td>{{parentUser.parents ? parentUser.parents.gender : ''}}</td>
+      <td>{{teacher.emailVerified ? 'Yes' : 'No'}}</td>
+    </tr>
+  </tbody>
+</table>

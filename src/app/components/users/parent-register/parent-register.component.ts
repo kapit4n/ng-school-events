@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ParentsService } from "../../../services/parents.service";
+import { AuthService } from "../../../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-parent-register',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class ParentRegisterComponent implements OnInit {
 
   parentInfo: any;
-  constructor() {
+  constructor(private router: Router, private parentsSvc: ParentsService, private authSvc: AuthService) {
     this.parentInfo = { userType: "parent", password: "password" };
   }
 
@@ -17,7 +20,9 @@ export class ParentRegisterComponent implements OnInit {
   }
 
   onSave() {
-    console.log("Save parent invite info");
+    this.parentsSvc.registerParent(this.parentInfo).subscribe(res => {
+      this.router.navigate(["/parent-list"]);
+    });
   }
 
 }
