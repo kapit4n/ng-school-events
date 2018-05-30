@@ -5,6 +5,7 @@ import { AuthService } from "./auth.service";
 import { Observable } from 'rxjs/Rx';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/timeout";
+import 'rxjs/add/observable/empty' 
 
 
 @Injectable()
@@ -13,10 +14,16 @@ export class UsersService {
   }
 
   public getCurrentUser(): Observable<any> {
-    return this.http
+    if (this.authSvc.getCurrentUserId()) 
+    {
+      return this.http
       .get(this.configSvc.backendUrl + "/users/" + this.authSvc.getCurrentUserId())
       .timeout(500)
       .map(res => res.json());
+    } else {
+      return Observable.empty();;
+    }
+      
   }
 
   public registerAdmin(user: any): Observable<any> {
