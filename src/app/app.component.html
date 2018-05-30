@@ -10,11 +10,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/user-management" routerLinkActive="active">Users</a>
       </li>
-
       <li class="nav-item">
         <a class="nav-link" routerLink="/gestion-current" routerLinkActive="active">Gestion</a>
       </li>
-
       <li class="nav-item">
         <a class="nav-link" routerLink="/course-list" routerLinkActive="active">Courses</a>
       </li>
@@ -24,7 +22,6 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/student-follow-up" routerLinkActive="active">Follow up</a>
       </li>
-
     </ul>
 
     <ul class="navbar-nav mr-auto" *ngIf="rolesSvc.isTeacher()">
@@ -42,6 +39,17 @@
       </li>
     </ul>
 
+    <ul class="navbar-nav mr-auto" *ngIf="rolesSvc.isParent()">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/course-list" routerLinkActive="active">Courses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user-management" routerLinkActive="active">Sons</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/todays" routerLinkActive="active">Events</a>
+      </li>
+    </ul>
 
     <div class="form-inline my-2 my-lg-0" *ngIf="!authSvc.isAuthenticated()">
       <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
@@ -51,8 +59,12 @@
         alt="Snow">
       <button *ngIf="rolesSvc.isTeacher()" style="border-radius: 50%;color: black;" type="button" data-placement="bottom" class="btn btn-info"
         data-toggle="popover" title="Teacher settings" data-content='<a class="nav-link" href="/teacher-profile" routerLinkActive="active">Account Seetings</a> <br> <a href="/logout" class="btn btn-link">Logout</button>'>Teacher</button>
-      <button *ngIf="rolesSvc.isAdmin()" style="border-radius: 50%;color: black;" type="button" data-placement="bottom" class="btn btn-info"
-        data-toggle="popover" title="Teacher settings" data-content='<a href="/logout" class="btn btn-link">Logout</button>'>Admin</button>
+      
+      <button *ngIf="rolesSvc.isParent()" style="border-radius: 50%;color: black;" type="button" data-placement="bottom" class="btn btn-info"
+        data-toggle="popover" title="Parent settings" data-content='<a class="nav-link" href="/teacher-profile" routerLinkActive="active">Account Seetings</a> <br> <a href="/logout" class="btn btn-link">Logout</button>'>Teacher</button>
+      
+          <button *ngIf="rolesSvc.isAdmin()" style="border-radius: 50%;color: black;" type="button" data-placement="bottom" class="btn btn-info"
+        data-toggle="popover" title="Admin settings" data-content='<a href="/logout" class="btn btn-link">Logout</button>'>Admin</button>
     </div>
   </div>
 </nav>

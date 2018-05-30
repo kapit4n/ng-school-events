@@ -15,6 +15,13 @@ export class RolesService {
     return false;
   }
 
+  isParent() {
+    if (this.userInfo) {
+      return this.userInfo.userType == "parent";
+    }
+    return false;
+  }
+
   reloadUser() {
     this.userInfo = {};
     this.usersSvc.getCurrentUser().subscribe(res => this.userInfo = res);

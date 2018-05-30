@@ -4,6 +4,8 @@ import { ConfigurationService } from "./configuration.service";
 import { AuthService } from "./auth.service";
 import { Observable } from 'rxjs/Rx';
 import "rxjs/add/operator/map";
+import "rxjs/add/operator/timeout";
+
 
 @Injectable()
 export class UsersService {
@@ -13,6 +15,7 @@ export class UsersService {
   public getCurrentUser(): Observable<any> {
     return this.http
       .get(this.configSvc.backendUrl + "/users/" + this.authSvc.getCurrentUserId())
+      .timeout(500)
       .map(res => res.json());
   }
 
