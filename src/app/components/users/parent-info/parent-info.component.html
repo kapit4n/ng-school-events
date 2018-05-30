@@ -1,3 +1,7 @@
-<p>
-  parent-info works!
-</p>
+<form #registerForm="ngForm">
+  <app-user-info *ngIf="!editInfoFlag" [userInfo]="parent"></app-user-info>
+  <app-user-info-edit *ngIf="editInfoFlag" [userInfo]="parent"></app-user-info-edit>
+  <app-teacher-info-show *ngIf="!editInfoFlag" [teacher]="parent"></app-teacher-info-show>
+  <app-teacher-info-edit *ngIf="editInfoFlag" [teacher]="parent"></app-teacher-info-edit>
+  <button (click)="editInfo()" class="btn btn-primary">{{editLabel}}</button>
+</form>

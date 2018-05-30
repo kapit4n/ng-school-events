@@ -43,6 +43,7 @@ import { ParentRegisterComponent } from './components/users/parent-register/pare
 import { ParentInfoComponent } from './components/users/parent-info/parent-info.component';
 import { TeacherInfoShowComponent } from './users/teacher-info-show/teacher-info-show.component';
 import { TeacherInfoEditComponent } from './users/teacher-info-edit/teacher-info-edit.component';
+import { ParentProfileComponent } from './components/users/parent-profile/parent-profile.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
   { path: "teacher-profile", component: TeacherProfileComponent },
   { path: "parent-register", component: ParentRegisterComponent },
   { path: "parent-list", component: ParentListComponent },
+  { path: "parent-profile", component: ParentProfileComponent },
   { path: "course-home", component: CourseHomeComponent },
   { path: "course-list", component: CourseListComponent },
   { path: "login", component: LoginComponent },
@@ -101,7 +103,8 @@ const appRoutes: Routes = [
     ParentRegisterComponent,
     ParentInfoComponent,
     TeacherInfoShowComponent,
-    TeacherInfoEditComponent
+    TeacherInfoEditComponent,
+    ParentProfileComponent
   ],
   imports: [
     BrowserModule,
