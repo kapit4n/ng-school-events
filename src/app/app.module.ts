@@ -41,8 +41,8 @@ import { StudentFollowUpComponent } from './components/students/student-follow-u
 import { ParentListComponent } from './components/users/parent-list/parent-list.component';
 import { ParentRegisterComponent } from './components/users/parent-register/parent-register.component';
 import { ParentInfoComponent } from './components/users/parent-info/parent-info.component';
-import { TeacherInfoShowComponent } from './users/teacher-info-show/teacher-info-show.component';
-import { TeacherInfoEditComponent } from './users/teacher-info-edit/teacher-info-edit.component';
+import { UserInfoShowExtComponent } from "./components/users/user-info-show-ext/user-info-show-ext.component";
+import { UserInfoEditExtComponent } from './components/users/user-info-edit-ext/user-info-edit-ext.component';
 import { ParentProfileComponent } from './components/users/parent-profile/parent-profile.component';
 
 const appRoutes: Routes = [
@@ -102,8 +102,8 @@ const appRoutes: Routes = [
     ParentListComponent,
     ParentRegisterComponent,
     ParentInfoComponent,
-    TeacherInfoShowComponent,
-    TeacherInfoEditComponent,
+    UserInfoShowExtComponent,
+    UserInfoEditExtComponent,
     ParentProfileComponent
   ],
   imports: [
