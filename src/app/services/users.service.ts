@@ -17,7 +17,7 @@ export class UsersService {
     if (this.authSvc.getCurrentUserId()) 
     {
       return this.http
-      .get(this.configSvc.backendUrl + "/users/" + this.authSvc.getCurrentUserId())
+        .get(this.configSvc.backendUrl + "/users/" + this.authSvc.getCurrentUserId() + "?filter[include]=teachers&filter[include]=parents")
       .timeout(500)
       .map(res => res.json());
     } else {

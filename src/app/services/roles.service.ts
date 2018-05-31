@@ -33,4 +33,21 @@ export class RolesService {
     }
     return false;
   }
+
+  getUserType() {
+    if (this.userInfo) {
+      return this.userInfo.userType;
+    }
+    return "";
+  }
+
+  getUserName() {
+    if (this.userInfo) {
+      if (this.userInfo.teachers) return this.userInfo.teachers.firstName;
+      else if (this.userInfo.parents) return this.userInfo.parents.firstName;
+    }
+    return "";
+  }
+
+  
 }
