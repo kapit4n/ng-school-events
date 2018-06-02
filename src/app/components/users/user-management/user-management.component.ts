@@ -13,16 +13,28 @@ export class UserManagementComponent implements OnInit {
   closeResult: string;
   teachers: any[];
   parents: any[];
+  teacherInfo: any;
+  parentInfo: any;
   constructor(private modalService: NgbModal, private teachersSvc: TeachersService,
               private parentsSvc: ParentsService) {
     this.teachers = [];
     this.parents = [];
+    this.teacherInfo = { userType: "teacher", password: "password" };
+    this.parentInfo = { userType: "parent", password: "password" };
   }
 
   ngOnInit() {
+    this.loadTeachers();
+    this.loadParents();
+  }
+  
+  loadTeachers() {
     this.teachersSvc.getTeachers().subscribe(teachers => {
       this.teachers = teachers;
     });
+  }
+  
+  loadParents() {
     this.parentsSvc.getParents().subscribe(parents => {
       this.parents = parents;
     });
@@ -37,6 +49,23 @@ export class UserManagementComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       }
     );
+  }
+
+  inviteParent() {
+    let parentInfo = this.parentInfo;
+    this.parentsSvc.registerParent(parentInfo).subscribe(res => {
+      this.parentInfo = { userType: "parent", password: "password" };
+      this.loadParents();
+    });
+  }
+  
+  inviteTeacher() {
+    let teacherInfo = this.teacherInfo;
+    this.teachersSvc.registerTeacher(teacherInfo).subscribe(res => {
+      this.teacherInfo = { userType: "teacher", password: "password" };
+      this.loadTeachers();
+    });
+    
   }
 
   private getDismissReason(reason: any): string {

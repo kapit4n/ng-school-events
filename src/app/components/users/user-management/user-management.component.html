@@ -1,6 +1,6 @@
 <ng-template #content1 let-c="close" let-d="dismiss">
     <div class="modal-header">
-        <h4 class="modal-title">Teacher Invite</h4>
+        <h4 class="modal-title">Parent Invite</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -9,9 +9,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <input type="email" placeholder="teacher@gmail.com">
+                    <input type="email" placeholder="example@gmail.com"  [(ngModel)]="parentInfo.email">
+                    <button type="submit" class="btn btn-primary" (click)="inviteParent()">Invite</button>
                 </div>
-                <app-user-invite-list [users]="teachers"></app-user-invite-list>
+                <app-user-invite-list [users]="parents"></app-user-invite-list>
             </div>
         </div>
     </div>
@@ -20,7 +21,7 @@
     </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content1)">Invite Teachers</button><br>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content1)">Invite Parent</button><br>
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
@@ -33,9 +34,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <input type="email" placeholder="parent@gmail.com">
+                    <input type="email" placeholder="parent@gmail.com"  [(ngModel)]="teacherInfo.email">
+                    <button type="submit" class="btn btn-primary" (click)="inviteTeacher()">Invite</button>
                 </div>
-                <app-user-invite-list [users]="parents"></app-user-invite-list>
+                <app-user-invite-list [users]="teachers"></app-user-invite-list>
             </div>
         </div>
     </div>
@@ -44,7 +46,7 @@
     </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Invite Parents</button><br>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Invite Teacher</button><br>
 
 <a href="/student-register">Register Student</a><br>
 <a href="/student-list">Student List</a>
