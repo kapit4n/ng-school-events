@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
+import { ParentsService } from "../../../services/parents.service";
+import { TeachersService } from "../../../services/teachers.service";
 
 @Component({
   selector: "app-user-management",
@@ -8,11 +9,24 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ["./user-management.component.css"]
 })
 export class UserManagementComponent implements OnInit {
-  closeResult: string;
-  
-  constructor(private modalService: NgbModal) {}
 
-  ngOnInit() {}
+  closeResult: string;
+  teachers: any[];
+  parents: any[];
+  constructor(private modalService: NgbModal, private teachersSvc: TeachersService,
+              private parentsSvc: ParentsService) {
+    this.teachers = [];
+    this.parents = [];
+  }
+
+  ngOnInit() {
+    this.teachersSvc.getTeachers().subscribe(teachers => {
+      this.teachers = teachers;
+    });
+    this.parentsSvc.getParents().subscribe(parents => {
+      this.parents = parents;
+    });
+  }
 
   open(content) {
     this.modalService.open(content).result.then(

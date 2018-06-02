@@ -45,6 +45,7 @@ import { ParentInfoComponent } from './components/users/parent-info/parent-info.
 import { UserInfoShowExtComponent } from "./components/users/user-info-show-ext/user-info-show-ext.component";
 import { UserInfoEditExtComponent } from './components/users/user-info-edit-ext/user-info-edit-ext.component';
 import { ParentProfileComponent } from './components/users/parent-profile/parent-profile.component';
+import { UserInviteListComponent } from './components/users/user-invite-list/user-invite-list.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
@@ -105,7 +106,8 @@ const appRoutes: Routes = [
     ParentInfoComponent,
     UserInfoShowExtComponent,
     UserInfoEditExtComponent,
-    ParentProfileComponent
+    ParentProfileComponent,
+    UserInviteListComponent
   ],
   imports: [
     BrowserModule,

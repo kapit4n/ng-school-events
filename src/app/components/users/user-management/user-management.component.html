@@ -9,15 +9,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <input type="email" placeholder="example@gmail.com">
+                    <input type="email" placeholder="teacher@gmail.com">
                 </div>
-                <div class="col-md-12">
-                    <ul>
-                        <li>
-                            Teacher 1
-                        </li>
-                    </ul>
-                </div>
+                <app-user-invite-list [users]="teachers"></app-user-invite-list>
             </div>
         </div>
     </div>
@@ -39,15 +33,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <input type="email" placeholder="example@gmail.com">
+                    <input type="email" placeholder="parent@gmail.com">
                 </div>
-                <div class="col-md-12">
-                    <ul>
-                        <li>
-                            Parent 1
-                        </li>
-                    </ul>
-                </div>
+                <app-user-invite-list [users]="parents"></app-user-invite-list>
             </div>
         </div>
     </div>
