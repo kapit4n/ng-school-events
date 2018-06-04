@@ -65,7 +65,6 @@ export class UserManagementComponent implements OnInit {
       this.teacherInfo = { userType: "teacher", password: "password" };
       this.loadTeachers();
     });
-    
   }
 
   private getDismissReason(reason: any): string {

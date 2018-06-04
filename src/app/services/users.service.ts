@@ -32,6 +32,17 @@ export class UsersService {
       .map(res => res.json());
   }
 
+  public changePassword(user: any, token: string): Observable<any> {
+    return this.http
+      .post(
+        this.configSvc.backendUrl +
+          "/users/change-password?access_token=" +
+          token,
+        user
+      )
+      .map(res => res);
+  }
+
   public getCurrentUserId(): string {
     return this.authSvc.getCurrentUserId();
   }

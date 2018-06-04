@@ -46,6 +46,7 @@ import { UserInfoShowExtComponent } from "./components/users/user-info-show-ext/
 import { UserInfoEditExtComponent } from './components/users/user-info-edit-ext/user-info-edit-ext.component';
 import { ParentProfileComponent } from './components/users/parent-profile/parent-profile.component';
 import { UserInviteListComponent } from './components/users/user-invite-list/user-invite-list.component';
+import { UserFirstTimeComponent } from './components/users/user-first-time/user-first-time.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
   { path: "incoming", component: IncomingComponent },
   { path: "gestion-current", component: GestionCurrentComponent },
   { path: "user-management", component: UserManagementComponent },
+  { path: "user-first-time/:email", component: UserFirstTimeComponent },
   { path: "student-register", component: StudentRegisterComponent },
   { path: "student-list", component: StudentListComponent },
   { path: "teacher-register", component: TeacherRegisterComponent },
@@ -107,7 +109,8 @@ const appRoutes: Routes = [
     UserInfoShowExtComponent,
     UserInfoEditExtComponent,
     ParentProfileComponent,
-    UserInviteListComponent
+    UserInviteListComponent,
+    UserFirstTimeComponent
   ],
   imports: [
     BrowserModule,

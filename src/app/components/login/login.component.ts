@@ -13,7 +13,8 @@ import { Location } from '@angular/common';
 export class LoginComponent implements OnInit {
   
   loginInfo: any;
-  constructor(private router: Router, private location: Location, private authSvc: AuthService, private loginSvc: LoginService, private rolesSvc: RolesService) {
+  constructor(private router: Router, private location: Location, private authSvc: AuthService,
+              private loginSvc: LoginService, private rolesSvc: RolesService) {
     this.loginInfo = {};
   }
 
