@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ConfigurationService } from "../../../services/configuration.service";
 import { AuthService } from "../../../services/auth.service";
 import { RolesService } from "../../../services/roles.service";
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: "app-course-list",
@@ -25,4 +26,5 @@ export class CourseListComponent implements OnInit {
   loadCourse(courseId: number) {
     this.courseId = courseId;
   }
+
 }

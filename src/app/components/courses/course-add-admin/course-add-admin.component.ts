@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-course-add-admin',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseAddAdminComponent implements OnInit {
 
-  constructor() { }
+  @Input() courseInfo;
+  constructor() {
+    this.courseInfo = {};
+  }
 
   ngOnInit() {
   }
