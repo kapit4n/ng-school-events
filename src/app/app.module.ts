@@ -49,6 +49,9 @@ import { UserInviteListComponent } from './components/users/user-invite-list/use
 import { UserFirstTimeComponent } from './components/users/user-first-time/user-first-time.component';
 import { CourseListAdminComponent } from './components/courses/course-list-admin/course-list-admin.component';
 import { CourseAddAdminComponent } from './components/courses/course-add-admin/course-add-admin.component';
+import { GestionAddAdminComponent } from './components/gestions/gestion-add-admin/gestion-add-admin.component';
+import { YearAddAdminComponent } from './components/years/year-add-admin/year-add-admin.component';
+import { YearListAdminComponent } from './components/years/year-list-admin/year-list-admin.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
@@ -68,6 +71,9 @@ const appRoutes: Routes = [
   { path: "course-home", component: CourseHomeComponent },
   { path: "course-list", component: CourseListComponent },
   { path: "course-list-admin", component: CourseListAdminComponent },
+  { path: "course-add-admin", component: CourseAddAdminComponent },
+  { path: "year-list-admin", component: YearListAdminComponent },
+  { path: "year-add-admin", component: YearAddAdminComponent },
   { path: "login", component: LoginComponent },
   { path: "logout", component: LogoutComponent },
   { path: "admin-register", component: AdminRegisterComponent },
@@ -115,7 +121,10 @@ const appRoutes: Routes = [
     UserInviteListComponent,
     UserFirstTimeComponent,
     CourseListAdminComponent,
-    CourseAddAdminComponent
+    CourseAddAdminComponent,
+    GestionAddAdminComponent,
+    YearAddAdminComponent,
+    YearListAdminComponent
   ],
   imports: [
     BrowserModule,
