@@ -23,9 +23,13 @@
 
 <table class="table">
   <tr>
-    <th>Course Name</th>
+    <th scope="col">Course Name</th>
+    <th scope="col">Is Archived</th>
+    <th scope="col">Details</th>
   </tr>
   <tr *ngFor="let course of courseList">
-    <th>{{course.name}}</th>
+    <td>{{course.name}}</td>
+    <td>{{course.isArchived}}</td>
+    <td>{{course.details}}</td>
   </tr>
 </table>
