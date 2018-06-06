@@ -14,6 +14,7 @@ import { UsersService } from './services/users.service';
 import { RolesService } from './services/roles.service';
 import { ParentsService } from './services/parents.service';
 import { CoursesService } from './services/courses.service';
+import { SchoolYearsService } from './services/school-years.service';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from "@angular/router";
@@ -148,7 +149,8 @@ const appRoutes: Routes = [
     UsersService,
     RolesService,
     ParentsService,
-    CoursesService
+    CoursesService,
+    SchoolYearsService
   ],
   bootstrap: [AppComponent]
 })
