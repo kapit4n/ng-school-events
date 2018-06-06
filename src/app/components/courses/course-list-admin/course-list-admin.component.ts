@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from "@angular/core";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { CoursesService } from "../../../services/courses.service";
 
 @Component({
   selector: "app-course-list-admin",
@@ -9,14 +10,30 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class CourseListAdminComponent implements OnInit {
   closeResult: string;
   newCourse: any;
-  constructor(private modalService: NgbModal) {
+  courseList: any;
+  constructor(
+    private modalService: NgbModal,
+    private coursesSvc: CoursesService
+  ) {
     this.newCourse = {};
+    this.courseList = [];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadCourses();
+  }
+
+  loadCourses() {
+    this.coursesSvc
+      .getCourses()
+      .subscribe(courses => (this.courseList = courses));
+  }
 
   saveCourse() {
-    console.log("Saving course");
+    let newCourse = this.newCourse;
+    this.coursesSvc.registerCourse(newCourse).subscribe(course => {
+      this.loadCourses();
+    });
   }
 
   open(content) {

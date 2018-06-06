@@ -15,20 +15,17 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary" (click)="saveCourse()">Save</button>
+    <button type="submit" class="btn btn-primary" (click)="saveCourse(); c('Close click');">Save</button>
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
   </div>
 </ng-template>
 <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
 
-
 <table class="table">
   <tr>
-    <th>Course Id</th>
     <th>Course Name</th>
   </tr>
-  <tr>
-    <th>1</th>
-    <th>1 B</th>
+  <tr *ngFor="let course of courseList">
+    <th>{{course.name}}</th>
   </tr>
 </table>
