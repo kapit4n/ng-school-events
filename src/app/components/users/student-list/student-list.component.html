@@ -2,16 +2,20 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Gender</th>
+      <th scope="col" colspan="2">Full Name</th>
+      <th scope="col" colspan="2">Gender</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let student of students">
-      <td>{{student.firstName}}</td>
-      <td>{{student.lastName}}</td>
-      <td>{{student.gender}}</td>
+      <td colspan="2">{{student.firstName}} {{student.lastName}}</td>
+      <td colspan="2">{{student.gender}}</td>
+      <td>
+        <button type="button" class="btn">
+          <span class="fa fa-trash" aria-hidden="true"></span>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
