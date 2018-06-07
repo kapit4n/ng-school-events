@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="8e4288f562b1fc2decfac618e7d1221eec34bed8" datatype="html">
+        <source>Teacher settings</source>
+        <target>Opciones de Cuenta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e3b017e6597e8a3d4769aa4e7b5f9c44961f22b0" datatype="html">
+        <source>Parent settings</source>
+        <target>Opciones de Cuenta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="930d21e1ab924041c061db01a04b48f9f77d4e50" datatype="html">
+        <source>Admin settings</source>
+        <target>Opciones de Cuenta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4d13a9cd5ed3dcee0eab22cb25198d43886942be" datatype="html">
+        <source>Users</source>
+        <target>Usuarios</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="003c94fc143882ac8af6251a1595fe62978fe3e6" datatype="html">
+        <source>Years</source>
+        <target>Gestión Escolar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7eec194fdb5177fb2a2b67ddfd1a5c71a943eb9d" datatype="html">
+        <source>Courses</source>
+        <target>Cursos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="af88c1e95a1d16d3cdbb7210981e0bfb6dc1d137" datatype="html">
+        <source>Events</source>
+        <target>Anuncios</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7d91503661c1d9ee9a3d5391b4e9479a245aa8c9" datatype="html">
+        <source>Follow up</source>
+        <target>Seguimiento Académico</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="69f2c202c62cee82a032906b5c0c36ef1fb07540" datatype="html">
+        <source>Students</source>
+        <target>Estudiantes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6ac548892efd926ad1969b2997b19a699c1a1941" datatype="html">
+        <source>Son 1</source>
+        <target>Hijo "A"</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="215487047b18c32b7a03462400a3d586b75103ee" datatype="html">
+        <source>Son 2</source>
+        <target>Hijo "B"</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2250d8a987a69e78a1cd0204e8813bbb89e9bdea" datatype="html">
+        <source>Course 1</source>
+        <target>1ro "A" Primaria</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/courses/course-list/course-list.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="11b0cb5f487bf4fcf94dd7bd0b2d68a5de94b89f" datatype="html">
+        <source>Course 2</source>
+        <target>1ro "B" Primaria</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/courses/course-list/course-list.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2b9e20892b14e0e60fd0d54aae0303b8907f7c4e" datatype="html">
+        <source>Course 3</source>
+        <target>1ro "C" Primaria</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/courses/course-list/course-list.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
