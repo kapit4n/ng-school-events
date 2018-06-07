@@ -33,6 +33,12 @@
             "scripts": []
           },
           "configurations": {
+            "es": {
+              "aot": true,
+              "i18nFile": "src/locale/messages.es.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "es"
+            },
             "production": {
               "optimization": true,
               "outputHashing": "all",
@@ -60,6 +66,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ng-school-events:build:production"
+            },
+            "es": {
+              "browserTarget": "ng-school-events:build:es"
             }
           }
         },

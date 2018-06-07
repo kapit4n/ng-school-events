@@ -1,19 +1,19 @@
 
 <div class="form-group">
-  <label for="yearName">Name</label>
-  <input type="text" class="form-control" id="name" placeholder="School Year Name" value="Data" required [(ngModel)]="schoolYearInfo.year"
+  <label for="yearName" i18n>Name</label>
+  <input type="text" class="form-control" id="yearName" i18n-placeholder placeholder="School Year Name" value="Data" required [(ngModel)]="schoolYearInfo.year"
     [ngModelOptions]="{standalone: true}">
 </div>
 
 <div class="form-group">
-  <label for="startDate">startDate</label>
-  <input type="date" class="form-control" id="startDate" placeholder="startDate" value="Data" required [(ngModel)]="schoolYearInfo.startDate"
+  <label for="startDate" i18n>startDate</label>
+  <input type="date" class="form-control" id="startDate" i18n-placeholder placeholder="startDate" value="Data" required [(ngModel)]="schoolYearInfo.startDate"
     [ngModelOptions]="{standalone: true}">
 </div>
 
 <div class="form-group">
-  <label for="endDate">endDate</label>
-  <input type="date" class="form-control" id="endDate" placeholder="endDate" value="Data" required [(ngModel)]="schoolYearInfo.endDate"
+  <label for="endDate" i18n>endDate</label>
+  <input type="date" class="form-control" id="endDate" i18n-placeholder placeholder="endDate" value="Data" required [(ngModel)]="schoolYearInfo.endDate"
     [ngModelOptions]="{standalone: true}">
 </div>
 

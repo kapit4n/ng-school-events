@@ -1,6 +1,6 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Add Course</h4>
+    <h4 i18n class="modal-title">Add Course</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -19,13 +19,13 @@
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
   </div>
 </ng-template>
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
+<button i18n class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
 
 <table class="table">
   <tr class="thead-dark">
-    <th scope="col">Course Name</th>
-    <th scope="col">Is Archived</th>
-    <th scope="col">Details</th>
+    <th scope="col" i18n>Course Name</th>
+    <th scope="col" i18n>Is Archived</th>
+    <th scope="col" i18n>Details</th>
     <th scope="col"></th>
   </tr>
   <tr *ngFor="let course of courseList">
