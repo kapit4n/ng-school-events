@@ -31,11 +31,11 @@ export class TeachersService {
       .map(res => res.json());
   }
 
-  public getTeachers(): Observable<any> {
+  public getTeachers(limit, skip): Observable<any> {
     return this.http
       .get(
         this.configSvc.backendUrl +
-          "/users?filter[include]=teachers&filter[where][userType]=teacher"
+          "/users?filter[include]=teachers&filter[limit]=" + limit + "&filter[skip]=" + skip + "&filter[where][userType]=teacher"
       )
       .map(res => res.json());
   }

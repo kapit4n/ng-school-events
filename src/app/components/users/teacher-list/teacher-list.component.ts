@@ -9,13 +9,15 @@ import { TeachersService } from "../../../services/teachers.service";
 export class TeacherListComponent implements OnInit {
 
   teachers: any[];
+  limit = 10;
+  skip = 0;
 
   constructor(private teachersSvc: TeachersService) {
     this.teachers = [];
   }
 
   ngOnInit() {
-    this.teachersSvc.getTeachers().subscribe(teachers => {
+    this.teachersSvc.getTeachers(this.limit, this.skip).subscribe(teachers => {
       this.teachers = teachers;
     });
   }

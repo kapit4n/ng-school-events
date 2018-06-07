@@ -29,7 +29,7 @@ export class UserManagementComponent implements OnInit {
   }
   
   loadTeachers() {
-    this.teachersSvc.getTeachers().subscribe(teachers => {
+    this.teachersSvc.getTeachers(2, 0).subscribe(teachers => {
       this.teachers = teachers;
     });
   }
