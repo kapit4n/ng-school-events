@@ -21,7 +21,6 @@
     </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content1)">Invite Parent</button><br>
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
@@ -46,7 +45,10 @@
     </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Invite Teacher</button><br>
+<button class="btn btn-primary" (click)="open(content)">Invite Teacher</button>
+<app-teacher-list></app-teacher-list>
+<button class="btn btn-primary" (click)="open(content1)">Invite Parent</button>
+<app-parent-list></app-parent-list>
 
 <a href="/student-register">Register Student</a><br>
-<a href="/student-list">Student List</a>
+
