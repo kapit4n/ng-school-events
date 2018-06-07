@@ -1,6 +1,6 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Add School Year</h4>
+    <h4 i18n class="modal-title">Add School Year</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -15,17 +15,17 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary" (click)="saveSchoolYear(); c('Close click');">Save</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    <button i18n type="submit" class="btn btn-primary" (click)="saveSchoolYear(); c('Close click');">Save</button>
+    <button i18n type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
   </div>
 </ng-template>
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
+<button i18n class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
 
 <table class="table">
   <tr class="thead-dark">
-    <th scope="col">Name</th>
-    <th scope="col">Start Date</th>
-    <th scope="col">End Date</th>
+    <th scope="col" i18n>Name</th>
+    <th scope="col" i18n>Start Date</th>
+    <th scope="col" i18n>End Date</th>
     <th scope="col"></th>
   </tr>
   <tr *ngFor="let schoolYear of schoolYearList">
