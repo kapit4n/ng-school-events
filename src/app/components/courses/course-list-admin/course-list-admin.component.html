@@ -26,10 +26,16 @@
     <th scope="col">Course Name</th>
     <th scope="col">Is Archived</th>
     <th scope="col">Details</th>
+    <th scope="col"></th>
   </tr>
   <tr *ngFor="let course of courseList">
     <td>{{course.name}}</td>
     <td>{{course.isArchived}}</td>
     <td>{{course.details}}</td>
+    <td>
+      <button type="button" class="btn">
+        <span class="fa fa-trash" aria-hidden="true"></span>
+      </button>
+    </td>
   </tr>
 </table>

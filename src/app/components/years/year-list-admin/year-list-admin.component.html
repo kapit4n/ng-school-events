@@ -23,13 +23,19 @@
 
 <table class="table">
   <tr>
-    <th>Name</th>
-    <th>Start Date</th>
-    <th>End Date</th>
+    <th scope="col">Name</th>
+    <th scope="col">Start Date</th>
+    <th scope="col">End Date</th>
+    <th scope="col"></th>
   </tr>
   <tr *ngFor="let schoolYear of schoolYearList">
     <td>{{schoolYear.year}}</td>
     <td>{{schoolYear.startDate}}</td>
     <td>{{schoolYear.endDate}}</td>
+    <td>
+      <button type="button" class="btn">
+        <span class="fa fa-trash" aria-hidden="true"></span>
+      </button>
+    </td>
   </tr>
 </table>
