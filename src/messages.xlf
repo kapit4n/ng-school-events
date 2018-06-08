@@ -464,7 +464,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/courses/course-list-admin/course-list-admin.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/courses/course-add-admin/course-add-admin.component.ts</context>
@@ -529,11 +529,29 @@
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="111c9dbde57c8c9069838fd2428a27279868d991" datatype="html">
+        <source>Search by course name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/courses/course-list-admin/course-list-admin.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
+        <source>Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/courses/course-list-admin/course-list-admin.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="0c2d0e97890355f5113f8101d505cf8374a577ad" datatype="html">
         <source>Course Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/courses/course-list-admin/course-list-admin.component.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">30</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/courses/course-add-admin/course-add-admin.component.ts</context>
@@ -544,7 +562,7 @@
         <source>Is Archived</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/courses/course-list-admin/course-list-admin.component.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
@@ -559,7 +577,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="67812e3d00295936c248d1262d826035df1d96a2" datatype="html">
@@ -598,18 +616,25 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="71529c37b0d4a48dbf5cc30a42b7542297f59f2f" datatype="html">
+        <source>Search By School Year</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3e6acd589d8b82cafd8546409da0a36469d297a0" datatype="html">
         <source>Start Date</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0f551576faafbd2806d4af653469655f1b35afe1" datatype="html">
         <source>End Date</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
     </body>
