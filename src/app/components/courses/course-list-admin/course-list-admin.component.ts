@@ -11,12 +11,14 @@ export class CourseListAdminComponent implements OnInit {
   closeResult: string;
   newCourse: any;
   courseList: any;
+  searchText: string;
   constructor(
     private modalService: NgbModal,
     private coursesSvc: CoursesService
   ) {
     this.newCourse = {};
     this.courseList = [];
+    this.searchText = "";
   }
 
   ngOnInit() {
@@ -25,7 +27,7 @@ export class CourseListAdminComponent implements OnInit {
 
   loadCourses() {
     this.coursesSvc
-      .getCourses()
+      .getCourses(this.searchText)
       .subscribe(courses => (this.courseList = courses));
   }
 
@@ -45,6 +47,10 @@ export class CourseListAdminComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       }
     );
+  }
+  
+  searchCourses() {
+    this.loadCourses();
   }
 
   private getDismissReason(reason: any): string {

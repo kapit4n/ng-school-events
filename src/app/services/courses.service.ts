@@ -6,16 +6,30 @@ import "rxjs/add/operator/map";
 
 @Injectable()
 export class CoursesService {
-
-  constructor(private configSvc: ConfigurationService, private http: HttpClientService) { }
-
+  constructor(
+    private configSvc: ConfigurationService,
+    private http: HttpClientService
+  ) {}
 
   public registerCourse(course: any): Observable<any> {
-    return this.http.post(this.configSvc.backendUrl + "/courses", course).map(res => res.json());
+    return this.http
+      .post(this.configSvc.backendUrl + "/courses", course)
+      .map(res => res.json());
   }
 
-  public getCourses(): Observable<any> {
-    return this.http
-      .get(this.configSvc.backendUrl + "/courses").map(res=> res.json());
+  public getCourses(filter = ""): Observable<any> {
+    if (filter) {
+      return this.http
+        .get(
+          this.configSvc.backendUrl +
+            "/courses?filter[where][name][regexp]=/" +
+            filter + "/i"
+        )
+        .map(res => res.json());
+    } else {
+      return this.http
+        .get(this.configSvc.backendUrl + "/courses")
+        .map(res => res.json());
+    }
   }
 }
