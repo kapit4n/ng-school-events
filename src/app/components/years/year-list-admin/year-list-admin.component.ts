@@ -11,6 +11,7 @@ export class YearListAdminComponent implements OnInit {
   closeResult: string;
   newSchoolYear: any;
   schoolYearList: any;
+  searchText = "";
   constructor(
     private modalService: NgbModal,
     private schoolYearsSvc: SchoolYearsService
@@ -25,7 +26,7 @@ export class YearListAdminComponent implements OnInit {
 
   loadSchoolYears() {
     this.schoolYearsSvc
-      .getSchoolYears()
+      .getSchoolYears(this.searchText)
       .subscribe(courses => (this.schoolYearList = courses));
   }
 
@@ -46,6 +47,10 @@ export class YearListAdminComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       }
     );
+  }
+
+  search() {
+    this.loadSchoolYears();
   }
 
   private getDismissReason(reason: any): string {

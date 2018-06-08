@@ -49,7 +49,7 @@ export class CourseListAdminComponent implements OnInit {
     );
   }
   
-  searchCourses() {
+  search() {
     this.loadCourses();
   }
 

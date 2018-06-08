@@ -21,8 +21,8 @@
 </ng-template>
 <button i18n class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
 <div class="form-group">
-  <label for="search" i18n>Search</label>
-  <input type="text" (keyup.enter)="searchCourses()" class="form-control" id="search" i18n-placeholder placeholder="Search" value="Data" required [(ngModel)]="searchText"
+  <label for="search" i18n>Search by course name</label>
+  <input type="text" (keyup.enter)="search()" class="form-control" id="search" i18n-placeholder placeholder="Search" value="Data" required [(ngModel)]="searchText"
     [ngModelOptions]="{standalone: true}">
 </div>
 <table class="table">
