@@ -79,7 +79,7 @@ const appRoutes: Routes = [
   { path: "course-list", component: CourseListComponent },
   { path: "course-list-admin", component: CourseListAdminComponent },
   { path: "course-add-admin", component: CourseAddAdminComponent },
-  { path: "year-list-admin", component: YearListAdminComponent },
+  { path: "years", component: YearListAdminComponent },
   { path: "year-add-admin", component: YearAddAdminComponent },
   { path: "years/:id", component: YearHomeComponent },
   { path: "login", component: LoginComponent },

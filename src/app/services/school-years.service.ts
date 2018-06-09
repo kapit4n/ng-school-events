@@ -33,4 +33,8 @@ export class SchoolYearsService {
 
     }
   }
+
+  public getSchoolYear(yearId): Observable<any> {
+    return this.http .get(this.configSvc.backendUrl + "/school-years/" + yearId + "?filter[include]=courses").map(res => res.json());
+  }
 }
