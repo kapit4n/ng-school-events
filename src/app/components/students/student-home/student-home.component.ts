@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoursesService } from "../../../services/courses.service";
 
 @Component({
   selector: 'app-student-home',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentHomeComponent implements OnInit {
 
-  constructor() { }
+  assignedCourses = [];
+  availableCourses = [];
+  constructor(private coursesSvc: CoursesService) { }
 
   ngOnInit() {
+    this.coursesSvc.getCourses().subscribe( courses => {
+      this.availableCourses = courses;
+    });
+  }
+
+  addCourse(course) {
+    console.log("add course");
+    this.assignedCourses.push(course);
+  }
+
+  removeCourse(courseId) {
+    console.log("add course");
   }
 
 }

@@ -1,3 +1,14 @@
-<p>
-  student-home works!
-</p>
+<div class="row">
+  <div class="col-md-6">
+    Available Courses
+    <ul class="list-group" style="height:300px;overflow: scroll;">
+      <li class="list-group-item" *ngFor="let course of availableCourses">{{course.name}} <button (click)="addCourse(course)">Assign</button></li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    Assigned Courses
+    <ul class="list-group" style="height:300px;overflow: scroll;">
+      <li class="list-group-item" *ngFor="let course of assignedCourses">{{course.name}} <button>Remove</button></li>
+    </ul>
+  </div>
+</div>
