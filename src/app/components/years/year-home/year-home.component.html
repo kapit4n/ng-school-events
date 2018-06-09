@@ -10,8 +10,8 @@
   <div class="col-md-6">
     Assigned Courses
     <ul class="list-group" style="height:300px;overflow: scroll;">
-      <li class="list-group-item" *ngFor="let course of assignedCourses">{{course.name}}
-        <button (click)="removeCourse(course)">Remove</button>
+      <li class="list-group-item" *ngFor="let assigCourse of assignedCourses">{{assigCourse.course.name}}
+        <button (click)="removeCourse(assigCourse)">Remove</button>
       </li>
     </ul>
   </div>

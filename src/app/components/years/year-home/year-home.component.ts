@@ -21,19 +21,27 @@ export class YearHomeComponent implements OnInit {
     this.yearId = this.route.snapshot.paramMap.get("id");
     this.schoolYearsSvc
       .getSchoolYear(this.yearId)
-      .subscribe(schoolYear => (this.schoolYear = schoolYear));
+      .subscribe(schoolYear => {
+        this.schoolYear = schoolYear;
+      });
 
     this.coursesSvc.getCourses().subscribe(courses => {
       this.availableCourses = courses;
     });
+    this.loadCourses();
+  }
+  
+  loadCourses() {
+    this.schoolYearsSvc.getCourses().subscribe(assigned => this.assignedCourses = assigned );
   }
 
   addCourse(course) {
-    this.schoolYear.courses.push(course);
-    this.assignedCourses = this.schoolYear.courses;
+    let courseYear = {courseId: course.id, schoolYearId: this.yearId};
+    this.schoolYearsSvc.addCourseToYear(courseYear).subscribe( updatedCourse => {
+      this.loadCourses();
+     });
   }
 
   removeCourse(courseId) {
-    console.log("add course");
   }
 }
