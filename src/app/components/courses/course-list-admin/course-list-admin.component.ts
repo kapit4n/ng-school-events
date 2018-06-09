@@ -9,16 +9,14 @@ import { CoursesService } from "../../../services/courses.service";
 })
 export class CourseListAdminComponent implements OnInit {
   closeResult: string;
-  newCourse: any;
-  courseList: any;
-  searchText: string;
+  newCourse = {};
+  courseList = [];
+  searchText = "";
+  currentPage = 0;
   constructor(
     private modalService: NgbModal,
     private coursesSvc: CoursesService
   ) {
-    this.newCourse = {};
-    this.courseList = [];
-    this.searchText = "";
   }
 
   ngOnInit() {
@@ -27,7 +25,7 @@ export class CourseListAdminComponent implements OnInit {
 
   loadCourses() {
     this.coursesSvc
-      .getCourses(this.searchText)
+      .getCourses(this.searchText, this.currentPage)
       .subscribe(courses => (this.courseList = courses));
   }
 

@@ -54,6 +54,7 @@ import { CourseAddAdminComponent } from './components/courses/course-add-admin/c
 import { GestionAddAdminComponent } from './components/gestions/gestion-add-admin/gestion-add-admin.component';
 import { YearAddAdminComponent } from './components/years/year-add-admin/year-add-admin.component';
 import { YearListAdminComponent } from './components/years/year-list-admin/year-list-admin.component';
+import { StudentHomeComponent } from './components/students/student-home/student-home.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
@@ -126,7 +127,8 @@ const appRoutes: Routes = [
     CourseAddAdminComponent,
     GestionAddAdminComponent,
     YearAddAdminComponent,
-    YearListAdminComponent
+    YearListAdminComponent,
+    StudentHomeComponent
   ],
   imports: [
     BrowserModule,

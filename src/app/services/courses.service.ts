@@ -17,7 +17,7 @@ export class CoursesService {
       .map(res => res.json());
   }
 
-  public getCourses(filter = ""): Observable<any> {
+  public getCourses(filter = "", page = 0): Observable<any> {
     if (filter) {
       return this.http
         .get(
