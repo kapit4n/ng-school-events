@@ -22,8 +22,8 @@
 <button i18n class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
 <div class="form-group">
   <label for="search" i18n>Search by course name</label>
-  <input type="text" (keyup.enter)="search()" class="form-control" id="search" i18n-placeholder placeholder="Search" value="Data" required [(ngModel)]="searchText"
-    [ngModelOptions]="{standalone: true}">
+  <input type="text" (keyup.enter)="search()" class="form-control" id="search" i18n-placeholder placeholder="Search" value="Data"
+    required [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
 </div>
 <table class="table">
   <tr class="thead-dark">
@@ -40,6 +40,9 @@
       <button type="button" class="btn">
         <span class="fa fa-trash" aria-hidden="true"></span>
       </button>
+      <a class="btn btn-info" href="course-list-admin/{{course.id}}">
+        <span class="fa fa-info" aria-hidden="true"></span>
+      </a>
     </td>
   </tr>
 </table>

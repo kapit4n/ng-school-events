@@ -1,22 +1,74 @@
-<div class="row">
-  <div class="col-md-6">
-    Available Courses
-    <ul class="list-group" style="height:300px;overflow: scroll;">
-      <li style="height: 70px;" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let course of availableCourses">{{course.name}}
-        <button type="button" class="btn btn-primary" (click)="addCourse(course)">
-          <span class="fa fa-angle-right" aria-hidden="true"></span>
-        </button>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-6">
-    Assigned Courses
-    <ul class="list-group" style="height:300px;overflow: scroll;">
-      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let assigCourse of assignedCourses">{{assigCourse.course.name}}
-        <button type="button" class="btn btn-primary" (click)="removeCourse(assigCourse.id)">
+
+<dl>
+  <dt>School Year</dt>
+  <dd>schoolYear.name</dd>
+  <dt>Start Date</dt>
+  <dd>schoolYear.startDate</dd>
+  <dt>End Date</dt>
+  <dd>schoolYear.endDate</dd>
+</dl>
+
+<button i18n class="btn btn-primary" (click)="open(content)">Assign Courses</button>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" i18n>Name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of assignedCourses">
+      <td>{{course.course.name}}</td>
+      <td>
+        <button type="button" class="btn" (click)="removeCourse(course.id)">
           <span class="fa fa-trash" aria-hidden="true"></span>
         </button>
-      </li>
-    </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #content let-c="close" let-d="dismiss" style="width: 700px;">
+  <div class="modal-header">
+    <h4 i18n class="modal-title">Assign Courses</h4>
+    <button type="button" class="close" i18n-aria-label aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="row">
+          <div class="col-md-6">
+            Available Courses
+            <button type="button" class="btn btn-primary" (click)="addAllCourses()">
+              <span class="fa fa-angle-right" aria-hidden="true"></span>
+              <span class="fa fa-angle-right" aria-hidden="true"></span>
+            </button>
+            <ul class="list-group" style="height:300px;overflow: scroll;">
+              <li style="height: 70px;" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let course of availableCourses">{{course.name}}
+                <button type="button" class="btn btn-primary" (click)="addCourse(course)">
+                  <span class="fa fa-angle-right" aria-hidden="true"></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            Assigned Courses
+            <ul class="list-group" style="height:300px;overflow: scroll;">
+              <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let assigCourse of assignedCourses">{{assigCourse.course.name}}
+                <button type="button" class="btn btn-primary" (click)="removeCourse(assigCourse.id)">
+                  <span class="fa fa-trash" aria-hidden="true"></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

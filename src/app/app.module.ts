@@ -75,7 +75,7 @@ const appRoutes: Routes = [
   { path: "parent-register", component: ParentRegisterComponent },
   { path: "parent-list", component: ParentListComponent },
   { path: "parent-profile", component: ParentProfileComponent },
-  { path: "courses/:id", component: CourseHomeComponent },
+  { path: "course-list-admin/:id", component: CourseHomeComponent },
   { path: "course-list", component: CourseListComponent },
   { path: "course-list-admin", component: CourseListAdminComponent },
   { path: "course-add-admin", component: CourseAddAdminComponent },
