@@ -23,6 +23,19 @@ export class HttpClientService {
     });
   }
 
+  delete(url) {
+    var urlAux = url;
+    if (localStorage.getItem("access_token")) {
+      if (url.indexOf("?") >= 0) {
+        urlAux = url + "&access_token=" + localStorage.getItem("access_token");
+      } else {
+        urlAux = url + "?access_token=" + localStorage.getItem("access_token");
+      }
+    }
+
+    return this.http.delete(urlAux);
+  }
+
   post(url, data) {
     let headers = new Headers();
     var urlAux = url;

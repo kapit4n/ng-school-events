@@ -2,16 +2,20 @@
   <div class="col-md-6">
     Available Courses
     <ul class="list-group" style="height:300px;overflow: scroll;">
-      <li class="list-group-item" *ngFor="let course of availableCourses">{{course.name}}
-        <button (click)="addCourse(course)">Assign</button>
+      <li style="height: 70px;" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let course of availableCourses">{{course.name}}
+        <button type="button" class="btn btn-primary" (click)="addCourse(course)">
+          <span class="fa fa-angle-right" aria-hidden="true"></span>
+        </button>
       </li>
     </ul>
   </div>
   <div class="col-md-6">
     Assigned Courses
     <ul class="list-group" style="height:300px;overflow: scroll;">
-      <li class="list-group-item" *ngFor="let assigCourse of assignedCourses">{{assigCourse.course.name}}
-        <button (click)="removeCourse(assigCourse)">Remove</button>
+      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let assigCourse of assignedCourses">{{assigCourse.course.name}}
+        <button type="button" class="btn btn-primary" (click)="removeCourse(assigCourse.id)">
+          <span class="fa fa-trash" aria-hidden="true"></span>
+        </button>
       </li>
     </ul>
   </div>

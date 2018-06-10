@@ -13,7 +13,9 @@ export class YearHomeComponent implements OnInit {
   availableCourses = [];
   yearId = "";
   schoolYear: any;
-  constructor(private route: ActivatedRoute, private coursesSvc: CoursesService, private schoolYearsSvc: SchoolYearsService) {
+  confMessage = "";
+  constructor (private route: ActivatedRoute, private coursesSvc: CoursesService,
+    private schoolYearsSvc: SchoolYearsService) {
     this.schoolYear = {};
   }
   
@@ -43,5 +45,10 @@ export class YearHomeComponent implements OnInit {
   }
 
   removeCourse(courseId) {
+    this.schoolYearsSvc.removeCourseFromYear(courseId).subscribe(res => {
+      this.confMessage = "Course ";
+      console.log("Removed user");
+      this.loadCourses();
+    });
   }
 }

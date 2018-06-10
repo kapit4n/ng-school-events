@@ -55,4 +55,8 @@ export class SchoolYearsService {
   public getSchoolYear(yearId): Observable<any> {
     return this.http .get(this.configSvc.backendUrl + "/school-years/" + yearId + "").map(res => res.json());
   }
+
+  public removeCourseFromYear(courseId): Observable<any> {
+    return this.http.delete(this.configSvc.backendUrl + "/course-years/" + courseId).map(res => res.json());
+  }
 }
