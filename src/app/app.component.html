@@ -1,13 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">SCHOOL EVENTS</a>
+  <a i18n class="navbar-brand" href="#">SCHOOL EVENTS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div style="position: relative; right: 10px;" class="form-inline my-2 my-lg-0" *ngIf="!authSvc.isAuthenticated()">
-      <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+      <a i18n class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
     </div>
     <div style="position: relative; left: 86%; width: 200px;" class="avatarContainer form-inline my-2 my-lg-0" *ngIf="authSvc.isAuthenticated()">
 
