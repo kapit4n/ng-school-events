@@ -227,6 +227,10 @@
           <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
           <context context-type="linenumber">19</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="3d243a75c1a16642d9d887827bdaa8e97a8e6e5c" datatype="html">
         <source>Invite</source>
@@ -663,6 +667,10 @@
           <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
           <context context-type="linenumber">30</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="67812e3d00295936c248d1262d826035df1d96a2" datatype="html">
         <source>School Year Name</source>
@@ -726,6 +734,18 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
           <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="984acd9e746dae5899870bb770f868dde2e6868d" datatype="html">
+        <source>Assign Courses</source>
+        <target>Asignar Cursos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
     </body>
