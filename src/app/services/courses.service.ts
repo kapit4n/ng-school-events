@@ -17,6 +17,19 @@ export class CoursesService {
       .map(res => res.json());
   }
 
+  public getStudents(courseId = ""): Observable<any> {
+    return this.http
+      .get(
+        this.configSvc.backendUrl +
+          "/course-student?filter[include]=course&filter[include]=student"
+      )
+      .map(res => res.json());
+  }
+
+  public getCourse(courseId): Observable<any> {
+    return this.http.get(this.configSvc.backendUrl + "/courses/" + courseId + "").map(res => res.json());
+  }
+
   public getCourses(filter = "", page = 0): Observable<any> {
     if (filter) {
       return this.http
@@ -31,5 +44,15 @@ export class CoursesService {
         .get(this.configSvc.backendUrl + "/courses")
         .map(res => res.json());
     }
+  }
+
+  public removeStudentFromCourse(studentId): Observable<any> {
+    return this.http.delete(this.configSvc.backendUrl + "/course-student/" + studentId).map(res => res.json());
+  }
+
+  public addStudentToCourse(courseStudent): Observable<any> {
+    return this.http
+      .post(this.configSvc.backendUrl + "/course-studen", courseStudent)
+      .map(res => res.json());
   }
 }

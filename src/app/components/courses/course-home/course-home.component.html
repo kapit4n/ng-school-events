@@ -1,10 +1,48 @@
 <div>
-  <div class="studentAvatar" *ngFor="let student of students">
+  <button i18n class="btn btn-primary" (click)="open(content)">Assign Student</button>
+
+  <div class="studentAvatar" *ngFor="let student of assignedStudents">
     <img src="http://html.codedthemes.com/mash-able/dark/assets/images/avatar-5.png" alt="Snow">
-    {{student.firstName}}
-  </div>
-  <div class="studentAvatar">
-    <img src="http://mwrsupply.com/wp-content/uploads/2017/12/person-placeholder.jpg" alt="Snow">
-    <a style="font-size: 38px; color: black;" class="btn btn-info" href="/student-register">+</a>
+    {{student.student.firstName}}
   </div>
 </div>
+
+  <ng-template #content let-c="close" let-d="dismiss" style="width: 700px;">
+    <div class="modal-header">
+      <h4 i18n class="modal-title">Assign Student</h4>
+      <button type="button" class="close" i18n-aria-label aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-6">
+              Available Students
+              <ul class="list-group" style="height:300px;overflow: scroll;">
+                <li style="height: 70px;" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let student of availableStudents">{{student.firstName}}
+                  <button type="button" class="btn btn-primary" (click)="addStudent(student)">
+                    <span class="fa fa-angle-right" aria-hidden="true"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              Assigned Students
+              <ul class="list-group" style="height:300px;overflow: scroll;">
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let students of assignedStudents">{{students.student.firstName}}
+                  <button type="button" class="btn btn-primary" (click)="removeStudent(students.id)">
+                    <span class="fa fa-trash" aria-hidden="true"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    </div>
+  </ng-template>
