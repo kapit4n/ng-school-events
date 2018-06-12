@@ -1,11 +1,11 @@
 
 <dl>
   <dt>School Year</dt>
-  <dd>schoolYear.name</dd>
+  <dd>{{schoolYear.name}}</dd>
   <dt>Start Date</dt>
-  <dd>schoolYear.startDate</dd>
+  <dd>{{schoolYear.startDate | date:'fullDate'}}</dd>
   <dt>End Date</dt>
-  <dd>schoolYear.endDate</dd>
+  <dd>{{schoolYear.endDate | date:'fullDate'}}</dd>
 </dl>
 
 <button i18n class="btn btn-primary" (click)="open(content)">Assign Courses</button>

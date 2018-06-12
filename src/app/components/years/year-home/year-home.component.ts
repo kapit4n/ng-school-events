@@ -17,34 +17,38 @@ export class YearHomeComponent implements OnInit {
   confMessage = "";
   closeResult: string;
 
-  constructor (private modalService: NgbModal, private route: ActivatedRoute, private coursesSvc: CoursesService,
-    private schoolYearsSvc: SchoolYearsService) {
+  constructor(
+    private modalService: NgbModal,
+    private route: ActivatedRoute,
+    private coursesSvc: CoursesService,
+    private schoolYearsSvc: SchoolYearsService
+  ) {
     this.schoolYear = {};
   }
-  
+
   ngOnInit() {
     this.yearId = this.route.snapshot.paramMap.get("id");
-    this.schoolYearsSvc
-      .getSchoolYear(this.yearId)
-      .subscribe(schoolYear => {
-        this.schoolYear = schoolYear;
-      });
+    this.schoolYearsSvc.getSchoolYear(this.yearId).subscribe(schoolYear => {
+      this.schoolYear = schoolYear;
+    });
 
     this.coursesSvc.getCourses().subscribe(courses => {
       this.availableCourses = courses;
     });
     this.loadCourses();
   }
-  
+
   loadCourses() {
-    this.schoolYearsSvc.getCourses().subscribe(assigned => this.assignedCourses = assigned );
+    this.schoolYearsSvc
+      .getCourses()
+      .subscribe(assigned => (this.assignedCourses = assigned));
   }
 
   addCourse(course) {
-    let courseYear = {courseId: course.id, schoolYearId: this.yearId};
-    this.schoolYearsSvc.addCourseToYear(courseYear).subscribe( updatedCourse => {
+    let courseYear = { courseId: course.id, schoolYearId: this.yearId };
+    this.schoolYearsSvc.addCourseToYear(courseYear).subscribe(updatedCourse => {
       this.loadCourses();
-     });
+    });
   }
 
   removeCourse(courseId) {
