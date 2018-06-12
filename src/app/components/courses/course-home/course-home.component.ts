@@ -12,26 +12,31 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 export class CourseHomeComponent implements OnInit {
   assignedStudents = [];
   availableStudents = [];
-  yearId = "";
-  schoolYear: any;
+  courseId = "";
+  course: any;
   confMessage = "";
   closeResult: string;
 
   @Input() courseInfo: any;
 
   constructor(private coursesSvc: CoursesService, private studentsSvc: StudentsService, private modalService: NgbModal,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute) {
+      this.courseId = this.route.snapshot.paramMap.get("id");
+
+    }
 
   ngOnInit() {
-    
+    this.coursesSvc.getCourse(this.courseId).subscribe(course => {
+      this.course = course;
+    });
     this.studentsSvc.getStudents().subscribe(students => {
       this.availableStudents = students;
     });
     this.loadStudents();
   }
 
-  addCourse(student) {
-    let studentCourse = { studentId: student.id, coursekYearId: this.yearId };
+  addStudent(student) {
+    let studentCourse = { studentId: student.id, courseId: this.courseId };
     this.coursesSvc
       .addStudentToCourse(studentCourse)
       .subscribe(updatedCourse => {
@@ -45,10 +50,9 @@ export class CourseHomeComponent implements OnInit {
       .subscribe(assigned => (this.assignedStudents = assigned));
   }
 
-  removeCourse(studentId) {
+  removeStudent(studentId) {
     this.coursesSvc.removeStudentFromCourse(studentId).subscribe(res => {
       this.confMessage = "Student removed ";
-      console.log("Removed student");
       this.loadStudents();
     });
   }

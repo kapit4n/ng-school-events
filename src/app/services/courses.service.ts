@@ -21,7 +21,7 @@ export class CoursesService {
     return this.http
       .get(
         this.configSvc.backendUrl +
-          "/course-student?filter[include]=course&filter[include]=student"
+          "/course-students?filter[include]=course&filter[include]=student"
       )
       .map(res => res.json());
   }
@@ -47,12 +47,12 @@ export class CoursesService {
   }
 
   public removeStudentFromCourse(studentId): Observable<any> {
-    return this.http.delete(this.configSvc.backendUrl + "/course-student/" + studentId).map(res => res.json());
+    return this.http.delete(this.configSvc.backendUrl + "/course-students/" + studentId).map(res => res.json());
   }
 
   public addStudentToCourse(courseStudent): Observable<any> {
     return this.http
-      .post(this.configSvc.backendUrl + "/course-studen", courseStudent)
+      .post(this.configSvc.backendUrl + "/course-students", courseStudent)
       .map(res => res.json());
   }
 }
