@@ -2,6 +2,22 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="c87f5f8a1f0523b1e55d7c78823af6189da1c08e" datatype="html">
+        <source>SCHOOL EVENTS</source>
+        <target>VOCERO VIRTUAL ESCOLAR</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">
+        <source>Login</source>
+        <target>Iniciar sesión</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="8e4288f562b1fc2decfac618e7d1221eec34bed8" datatype="html">
         <source>Teacher settings</source>
         <target>Opciones de Cuenta</target>
@@ -211,6 +227,10 @@
           <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
           <context context-type="linenumber">19</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="3d243a75c1a16642d9d887827bdaa8e97a8e6e5c" datatype="html">
         <source>Invite</source>
@@ -254,7 +274,7 @@
       </trans-unit>
       <trans-unit id="d929568dedb35102359e419d65955a803c2921f0" datatype="html">
         <source>Register Student</source>
-        <target>Registrat Estudiante</target>
+        <target>Registrar Estudiante</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
           <context context-type="linenumber">1</context>
@@ -438,7 +458,7 @@
       </trans-unit>
       <trans-unit id="ba4f24bf9bf3dc4db3d6bc1b8b63339295f0b806" datatype="html">
         <source>Sign In</source>
-        <target>Autenticarse</target>
+        <target>Iniciar Sesión</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/login/login.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -647,6 +667,10 @@
           <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
           <context context-type="linenumber">30</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="67812e3d00295936c248d1262d826035df1d96a2" datatype="html">
         <source>School Year Name</source>
@@ -710,6 +734,18 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/years/year-list-admin/year-list-admin.component.ts</context>
           <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="984acd9e746dae5899870bb770f868dde2e6868d" datatype="html">
+        <source>Assign Courses</source>
+        <target>Asignar Cursos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/years/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
     </body>
