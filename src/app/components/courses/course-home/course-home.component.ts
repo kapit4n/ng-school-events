@@ -52,7 +52,7 @@ export class CourseHomeComponent implements OnInit {
 
   removeStudent(studentId) {
     this.coursesSvc.removeStudentFromCourse(studentId).subscribe(res => {
-      this.confMessage = "Student removed ";
+      this.confMessage = "Student removed";
       this.loadStudents();
     });
   }
