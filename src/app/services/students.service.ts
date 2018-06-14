@@ -6,21 +6,27 @@ import "rxjs/add/operator/map";
 
 @Injectable()
 export class StudentsService {
-  constructor(private configSvc: ConfigurationService, private http: HttpClientService) {
-    
-  }
+  constructor(
+    private configSvc: ConfigurationService,
+    private http: HttpClientService
+  ) {}
 
   public registerStudent(user: any): Observable<any> {
-    return this.http.post(this.configSvc.backendUrl + "/students", user).map(res => res.json());
+    return this.http
+      .post(this.configSvc.backendUrl + "/students", user)
+      .map(res => res.json());
   }
 
   public getStudents(): Observable<any> {
     return this.http
-      .get(this.configSvc.backendUrl + "/students").map(res=> res.json());
+      .get(this.configSvc.backendUrl + "/students")
+      .map(res => res.json());
   }
 
   public getStudent(studentId): Observable<any> {
-    return this.http.get(this.configSvc.backendUrl + "/students/" + studentId + "").map(res => res.json());
+    return this.http
+      .get(this.configSvc.backendUrl + "/students/" + studentId + "")
+      .map(res => res.json());
   }
 
   public getCourses(studentId = ""): Observable<any> {
@@ -41,15 +47,15 @@ export class StudentsService {
       .map(res => res.json());
   }
 
-
-  public removeParentFromStudent(relId): Observable<any> {
-    return this.http.delete(this.configSvc.backendUrl + "/student-parents/" + relId).map(res => res.json());
+  public removeParentStudentRel(relId): Observable<any> {
+    return this.http
+      .delete(this.configSvc.backendUrl + "/student-parents/" + relId)
+      .map(res => res.json());
   }
 
-  public removeParentStudentRel(relRecord): Observable<any> {
+  public saveParentStudentRel(relRecord): Observable<any> {
     return this.http
       .post(this.configSvc.backendUrl + "/student-parents", relRecord)
       .map(res => res.json());
   }
-
 }

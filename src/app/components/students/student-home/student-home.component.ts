@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { CoursesService } from "../../../services/courses.service";
 import { StudentsService } from "../../../services/students.service";
+import { ParentsService } from "../../../services/parents.service";
 
 @Component({
   selector: 'app-student-home',
@@ -21,9 +22,8 @@ export class StudentHomeComponent implements OnInit {
   student = {};
   constructor(
     private modalService: NgbModal,
-    private route: ActivatedRoute, private coursesSvc: CoursesService, private studentsSvc: StudentsService) {
-
-  }
+    private route: ActivatedRoute, private parentsSvc: ParentsService, private coursesSvc: CoursesService,
+    private studentsSvc: StudentsService) { }
 
   ngOnInit() {
     this.studentId = this.route.snapshot.paramMap.get("id");
@@ -36,7 +36,11 @@ export class StudentHomeComponent implements OnInit {
       this.availableCourses = courses;
     });
 
-    this.loadStudents();
+    this.parentsSvc.getParents().subscribe( parents => {
+      this.availableParents = parents;
+    });
+
+    this.loadCourses();
     this.loadParents();
   }
 
@@ -70,11 +74,12 @@ export class StudentHomeComponent implements OnInit {
   }
 
 
-  addParent(parent) {
-    let parentYear = { parentId: parent.id, studentId: this.studentId };
+  addParent(userParent) {
+    console.log(userParent);
+    let parentStudent = { parentId: userParent.parents.id, studentId: this.studentId };
     this.studentsSvc
-      .saveParentStudentRel(parentYear)
-      .subscribe(updatedCourse => {
+      .saveParentStudentRel(parentStudent)
+      .subscribe( _ => {
         this.loadParents();
       });
   }
