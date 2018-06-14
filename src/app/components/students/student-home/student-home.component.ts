@@ -11,6 +11,7 @@ import { StudentsService } from "../../../services/students.service";
 })
 export class StudentHomeComponent implements OnInit {
 
+  closeResult: string;
   assignedCourses = [];
   availableCourses = [];
   studentId = "";
