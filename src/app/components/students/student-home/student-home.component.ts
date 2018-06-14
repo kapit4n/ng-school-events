@@ -19,7 +19,7 @@ export class StudentHomeComponent implements OnInit {
   availableParents = [];
   studentId = "";
   confMessage = "";
-  student = {};
+  student: any;
   constructor(
     private modalService: NgbModal,
     private route: ActivatedRoute, private parentsSvc: ParentsService, private coursesSvc: CoursesService,
@@ -29,7 +29,7 @@ export class StudentHomeComponent implements OnInit {
     this.studentId = this.route.snapshot.paramMap.get("id");
 
     this.studentsSvc.getStudent(this.studentId).subscribe(student => {
-      this.student = student
+      this.student = {};
     });
 
     this.coursesSvc.getCourses().subscribe( courses => {
@@ -89,6 +89,10 @@ export class StudentHomeComponent implements OnInit {
       this.confMessage = "Parent Removed";
       this.loadParents();
     });
+  }
+
+  addAllCourses() {
+
   }
 
     open(content) {
