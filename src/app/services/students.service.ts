@@ -31,4 +31,25 @@ export class StudentsService {
       )
       .map(res => res.json());
   }
+
+  public getParents(studentId = ""): Observable<any> {
+    return this.http
+      .get(
+        this.configSvc.backendUrl +
+          "/student-parents?filter[include]=parent&filter[include]=student"
+      )
+      .map(res => res.json());
+  }
+
+
+  public removeParentFromStudent(relId): Observable<any> {
+    return this.http.delete(this.configSvc.backendUrl + "/student-parents/" + relId).map(res => res.json());
+  }
+
+  public removeParentStudentRel(relRecord): Observable<any> {
+    return this.http
+      .post(this.configSvc.backendUrl + "/student-parents", relRecord)
+      .map(res => res.json());
+  }
+
 }

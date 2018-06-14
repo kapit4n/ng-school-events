@@ -14,6 +14,8 @@ export class StudentHomeComponent implements OnInit {
   closeResult: string;
   assignedCourses = [];
   availableCourses = [];
+  aParents = [];
+  availableParents = [];
   studentId = "";
   confMessage = "";
   student = {};
@@ -35,12 +37,19 @@ export class StudentHomeComponent implements OnInit {
     });
 
     this.loadStudents();
+    this.loadParents();
   }
 
-  loadStudents() {
+  loadCourses() {
     this.studentsSvc
       .getCourses()
       .subscribe(assigned => (this.assignedCourses = assigned));
+  }
+
+  loadParents() {
+    this.studentsSvc
+      .getParents()
+      .subscribe(assigned => (this.aParents = assigned));
   }
 
 
@@ -49,14 +58,31 @@ export class StudentHomeComponent implements OnInit {
     this.coursesSvc
       .addStudentToCourse(courseYear)
       .subscribe(updatedCourse => {
-        this.loadStudents();
+        this.loadCourses();
       });
   }
 
   removeCourse(courseId) {
     this.coursesSvc.removeStudentFromCourse(courseId).subscribe(res => {
       this.confMessage = "Course Removed";
-      this.loadStudents();
+      this.loadCourses();
+    });
+  }
+
+
+  addParent(parent) {
+    let parentYear = { parentId: parent.id, studentId: this.studentId };
+    this.studentsSvc
+      .saveParentStudentRel(parentYear)
+      .subscribe(updatedCourse => {
+        this.loadParents();
+      });
+  }
+
+  removeParent(relId) {
+    this.studentsSvc.removeParentStudentRel(relId).subscribe(res => {
+      this.confMessage = "Parent Removed";
+      this.loadParents();
     });
   }
 
