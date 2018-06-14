@@ -59,6 +59,10 @@ export class YearHomeComponent implements OnInit {
     });
   }
 
+  addAllCourses() {
+
+  }
+
   open(content) {
     this.modalService.open(content).result.then(
       result => {

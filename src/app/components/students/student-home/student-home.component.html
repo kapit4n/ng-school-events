@@ -1,7 +1,7 @@
 <dl>
-  <dt>First Name</dt>
-  <dd>{{student.firstName}}</dd>
-  <dt>Last Name</dt>
+  <dt i18n>First Name</dt>
+  <dd>{{student.student.firstName}}</dd>
+  <dt i18n>Last Name</dt>
   <dd>{{student.lastName}}</dd>
 </dl>
 
@@ -58,7 +58,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              Available Courses
+              <span i18n>Available Courses</span>
               <button type="button" class="btn btn-primary" (click)="addAllCourses()">
                 <span class="fa fa-angle-right" aria-hidden="true"></span>
                 <span class="fa fa-angle-right" aria-hidden="true"></span>
@@ -73,7 +73,7 @@
               </ul>
             </div>
             <div class="col-md-6">
-              Assigned Courses
+              <span i18n>Assigned Courses</span>
               <ul class="list-group" style="height:300px;overflow: scroll;">
                 <li class="list-group-item d-flex justify-content-between align-items-center"
                  *ngFor="let assigCourse of assignedCourses">{{assigCourse.course.name}}
@@ -103,7 +103,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              Available Parents
+              <span i18n>Available Parents</span>
               <button type="button" class="btn btn-primary" (click)="addAllCourses()">
                 <span class="fa fa-angle-right" aria-hidden="true"></span>
                 <span class="fa fa-angle-right" aria-hidden="true"></span>
@@ -118,7 +118,7 @@
               </ul>
             </div>
             <div class="col-md-6">
-              Assigned Parents
+              <span i18n>Assigned Parents</span>
               <ul class="list-group" style="height:300px;overflow: scroll;">
                 <li class="list-group-item d-flex justify-content-between align-items-center"
                  *ngFor="let aParent of aParents">{{aParent.parent.firstName}}
@@ -132,7 +132,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal">Close</button>
+        <button i18n type="button" class="close" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
