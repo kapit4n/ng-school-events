@@ -31,7 +31,7 @@ export class TeachersService {
       .map(res => res.json());
   }
 
-  public getTeachers(limit, skip): Observable<any> {
+  public getTeachers(limit = 10, skip = 0): Observable<any> {
     return this.http
       .get(
         this.configSvc.backendUrl +

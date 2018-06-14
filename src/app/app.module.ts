@@ -59,13 +59,18 @@ import { StudentCourseComponent } from './components/students/student-course/stu
 import { YearCourseComponent } from './components/years/year-course/year-course.component';
 import { YearHomeComponent } from './components/years/year-home/year-home.component';
 import { StudentParentsComponent } from './components/students/student-parents/student-parents.component';
+import { TeacherManagementComponent } from './components/users/teacher-management/teacher-management.component';
+import { StudentManagementComponent } from './components/users/student-management/student-management.component';
+import { ParentManagementComponent } from './components/users/parent-management/parent-management.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "todays", component: TodaysComponent },
   { path: "incoming", component: IncomingComponent },
   { path: "gestion-current", component: GestionCurrentComponent },
-  { path: "user-management", component: UserManagementComponent },
+  { path: "teacher-management", component: TeacherManagementComponent },
+  { path: "parent-management", component: ParentManagementComponent },
+  { path: "student-management", component: StudentManagementComponent },
   { path: "user-first-time/:email", component: UserFirstTimeComponent },
   { path: "student-register", component: StudentRegisterComponent },
   { path: "student-list", component: StudentListComponent },
@@ -86,7 +91,7 @@ const appRoutes: Routes = [
   { path: "logout", component: LogoutComponent },
   { path: "admin-register", component: AdminRegisterComponent },
   { path: "student-follow-up", component: StudentFollowUpComponent },
-  { path: "user-management/students/:id", component: StudentHomeComponent },
+  { path: "student-management/:id", component: StudentHomeComponent },
   {
     path: "",
     redirectTo: "/home",
@@ -138,7 +143,10 @@ const appRoutes: Routes = [
     StudentCourseComponent,
     YearCourseComponent,
     YearHomeComponent,
-    StudentParentsComponent
+    StudentParentsComponent,
+    TeacherManagementComponent,
+    StudentManagementComponent,
+    ParentManagementComponent
   ],
   imports: [
     BrowserModule,
