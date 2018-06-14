@@ -62,6 +62,8 @@ import { StudentParentsComponent } from './components/students/student-parents/s
 import { TeacherManagementComponent } from './components/users/teacher-management/teacher-management.component';
 import { StudentManagementComponent } from './components/users/student-management/student-management.component';
 import { ParentManagementComponent } from './components/users/parent-management/parent-management.component';
+import { TeacherHomeComponent } from './components/admin/teacher-home/teacher-home.component';
+import { ParentHomeComponent } from './components/admin/parent-home/parent-home.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
@@ -146,7 +148,9 @@ const appRoutes: Routes = [
     StudentParentsComponent,
     TeacherManagementComponent,
     StudentManagementComponent,
-    ParentManagementComponent
+    ParentManagementComponent,
+    TeacherHomeComponent,
+    ParentHomeComponent
   ],
   imports: [
     BrowserModule,
