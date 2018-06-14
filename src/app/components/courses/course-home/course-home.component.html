@@ -1,3 +1,9 @@
+<dl>
+  <dt>Course</dt>
+  <dd>{{course.name}}</dd>
+  <dt>Details</dt>
+  <dd>{{course.details}}</dd>
+</dl>
 <div>
   <button i18n class="btn btn-primary" data-toggle="modal" data-target="#studentsModal">Assign Student</button>
   <div class="studentAvatar" *ngFor="let student of assignedStudents">
@@ -11,6 +17,7 @@
     </button>
   </div>
 </div>
+
 <div class="modal" id="studentsModal">
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">

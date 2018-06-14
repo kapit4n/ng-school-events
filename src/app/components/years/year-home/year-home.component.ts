@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { CoursesService } from "../../../services/courses.service";
 import { SchoolYearsService } from "../../../services/school-years.service";
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-year-home",
