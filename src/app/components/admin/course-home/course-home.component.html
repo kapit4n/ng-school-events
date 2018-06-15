@@ -1,3 +1,59 @@
-<p>
-  course-home works!
-</p>
+<dl>
+  <dt i18n>Course</dt>
+  <dd>{{course.name}}</dd>
+  <dt i18n>Details</dt>
+  <dd>{{course.details}}</dd>
+</dl>
+<div>
+  <button i18n class="btn btn-primary" data-toggle="modal" data-target="#studentsModal">Assign Student</button>
+  <div class="studentAvatar" *ngFor="let student of assignedStudents">
+    <img src="http://html.codedthemes.com/mash-able/dark/assets/images/avatar-5.png" alt="Snow">
+    {{student.student.firstName}}
+    <button type="button" style="background-color: #647ea8; padding: 1px 10px; top: 87%; left: 6%;" class="btn btn-primary btn-sm" (click)="removeStudent(student.id)"
+     data-toggle="confirmation" data-btn-ok-label="Continue" data-btn-ok-class="btn-success" data-btn-ok-icon-class="material-icons"
+    data-btn-ok-icon-content="check" data-btn-cancel-label="Stoooop!" data-btn-cancel-class="btn-danger" data-btn-cancel-icon-class="material-icons"
+    data-btn-cancel-icon-content="close" data-title="Is it ok?" data-content="This might be dangerous">
+      <span class="fa fa-trash fa-xs" style="font-size: 15px;" aria-hidden="true"></span>
+    </button>
+  </div>
+</div>
+
+<div class="modal" id="studentsModal">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 i18n class="modal-title">Assign Student</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <span i18n>Available Students</span>
+              <ul class="list-group" style="height:300px;overflow: scroll;">
+                <li style="height: 70px;" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let student of availableStudents">{{student.firstName}}
+                  <button type="button" class="btn btn-primary" (click)="addStudent(student)">
+                    <span class="fa fa-angle-right" aria-hidden="true"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <span i18n>Assigned Students</span>
+              <ul class="list-group" style="height:300px;overflow: scroll;">
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let student of assignedStudents">{{student.student.firstName}}
+                  <button type="button" class="btn btn-primary" (click)="removeStudent(student.id)">
+                    <span class="fa fa-trash" aria-hidden="true"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button i18n type="button" class="close" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
