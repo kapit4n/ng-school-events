@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
+import { TeachersService } from "../../../services/teachers.service";
+import { ActivatedRoute } from "@angular/router";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-teacher-home',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherHomeComponent implements OnInit {
 
-  constructor() { }
+  assignedCourses = [];
+  teacherId = "";
+  teacher: any;
+  confMessage = "";
+  closeResult: string;
+
+  constructor(private teachersSvc: TeachersService, private modalService: NgbModal,
+    private route: ActivatedRoute) {
+      this.teacher = {};
+    }
 
   ngOnInit() {
+    this.teacherId = this.route.snapshot.paramMap.get("id");
+    this.teachersSvc.getTeacher(this.teacherId).subscribe(teacher => {
+      this.teacher = teacher;
+    });
+    
+    this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
+      this.assignedCourses = teacher;
+    });
+
+
   }
 
 }

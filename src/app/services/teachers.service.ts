@@ -45,4 +45,20 @@ export class TeachersService {
       .get(this.configSvc.backendUrl + "/teachers?filter[where][userId]=" + id)
       .map(res => res.json());
   }
+
+  public getCourses(studentId = ""): Observable<any> {
+    return this.http
+      .get(
+        this.configSvc.backendUrl +
+          "/course-teachers?filter[include]=course"
+      )
+      .map(res => res.json());
+  }
+
+  public getTeacher(teacherId): Observable<any> {
+    return this.http
+      .get(this.configSvc.backendUrl + "/teachers/" + teacherId + "")
+      .map(res => res.json());
+  }
+
 }
