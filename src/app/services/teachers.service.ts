@@ -59,7 +59,12 @@ export class TeachersService {
     
     var where = "filter[where][id]eq]=" + courseTeachers[0]['course-year'].id;
     if (courseTeachers.length > 1)
-    courseTeachers.map(courseTeacher => "filter[where][id][inq]=" + courseTeacher['course-year'].id).join("&");
+      where = courseTeachers
+      .map(
+        courseTeacher =>
+          "filter[where][id][inq]=" + courseTeacher["course-year"].id
+      )
+      .join("&");
     return this.http
       .get(
         this.configSvc.backendUrl +

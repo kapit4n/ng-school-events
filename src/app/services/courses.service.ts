@@ -46,6 +46,15 @@ export class CoursesService {
     }
   }
 
+  public getCourseTeacherRel(courseId, teacherId): Observable<any> {
+    return this.http
+        .get(
+          this.configSvc.backendUrl +
+            "/course-teachers?filter[where][course-yearId]=" + courseId + "&filter[where][teacherId]=" + teacherId
+        )
+        .map(res => res.json());
+  }
+
   public getYearCourses(filter = "", page = 0): Observable<any> {
     if (filter) {
       return this.http

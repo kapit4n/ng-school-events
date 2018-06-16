@@ -36,16 +36,19 @@ export class TeacherHomeComponent implements OnInit {
       this.availableCourses = courses;
     });
 
-    this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
-      this.teachersSvc.getCourseYear(teacher).subscribe(courses => {
-        this.assignedCourses = courses;
-      });
-    });
+    this.loadCourses();
   }
   
   loadCourses() {
+    this.assignedCourses = [];
     this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
-      this.assignedCourses = teacher;
+      if (teacher.length > 0) {
+        this.teachersSvc
+            .getCourseYear(teacher)
+            .subscribe(courses => {
+              this.assignedCourses = courses;
+            });
+      }
     });
   }
 
@@ -59,9 +62,13 @@ export class TeacherHomeComponent implements OnInit {
   }
 
   removeCourse(courseId) {
-    this.coursesSvc.removeStudentFromCourse(courseId).subscribe(res => {
-      this.confMessage = "Course Removed";
-      this.loadCourses();
+    this.coursesSvc.getCourseTeacherRel(courseId, this.teacherId).subscribe( rel => {
+      this.coursesSvc
+        .removeTeacherFromCourse(rel[0].id)
+        .subscribe(res => {
+          this.confMessage = "Course Removed";
+          this.loadCourses();
+        });
     });
   }
 }
