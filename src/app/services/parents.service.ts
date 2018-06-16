@@ -40,7 +40,22 @@ export class ParentsService {
 
   public getParentByUserId(id: string): Observable<any> {
     return this.http
-      .get(this.configSvc.backendUrl + "/parents?filter[where][userId]=" + id)
+      .get(this.configSvc.backendUrl + "/parents?filterfilter[where][userId]=" + id)
+      .map(res => res.json());
+  }
+
+    public getParent(parentId): Observable<any> {
+    return this.http
+      .get(this.configSvc.backendUrl + "/parents/" + parentId + "")
+      .map(res => res.json());
+  }
+
+  public getStudents(parentId = ""): Observable<any> {
+    return this.http
+      .get(
+        this.configSvc.backendUrl +
+          "/student-parents?filter[include]=student"
+      )
       .map(res => res.json());
   }
 }

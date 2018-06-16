@@ -1,3 +1,66 @@
-<p>
-  parent-home works!
-</p>
+<dl>
+  <dt i18n>Parent</dt>
+  <dd>{{parent.firstName}}</dd>
+  <dt i18n>Details</dt>
+  <dd>{{parent.details}}</dd>
+</dl>
+<button i18n class="btn btn-primary" data-toggle="modal" data-target="#studentsModal">Assign Students</button>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" i18n>Name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of assignedStudents">
+      <td>{{student.student.firstName}}</td>
+      <td>
+        <button type="button" class="btn" (click)="removeStudent(student.id)">
+          <span class="fa fa-trash" aria-hidden="true"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!--Modal to display students to assign, move this to common component with student home modals-->
+<div class="modal" id="studentsModal">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 i18n class="modal-title">Assign Students</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <span i18n>Available Students</span>
+              <ul class="list-group" style="height:300px;overflow: scroll;">
+                <li style="height: 70px;" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let student of availableStudents">{{student.firstName}}
+                  <button type="button" class="btn btn-primary" (click)="addStudent(student)">
+                    <span class="fa fa-angle-right" aria-hidden="true"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <span i18n>Assigned Students</span>
+              <ul class="list-group" style="height:300px;overflow: scroll;">
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let assigStudent of assignedStudents">{{assigStudent.student.firstName}}
+                  <button type="button" class="btn btn-primary" (click)="removeStudent(assigStudent.id)">
+                    <span class="fa fa-trash" aria-hidden="true"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
