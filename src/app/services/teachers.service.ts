@@ -50,7 +50,21 @@ export class TeachersService {
     return this.http
       .get(
         this.configSvc.backendUrl +
-          "/course-teachers?filter[include]=course"
+          "/course-teachers?filter[include]=course-year"
+      )
+      .map(res => res.json());
+  }
+
+  public getCourseYear(courseTeachers): Observable<any> {
+    
+    var where = "filter[where][id]eq]=" + courseTeachers[0]['course-year'].id;
+    if (courseTeachers.length > 1)
+    courseTeachers.map(courseTeacher => "filter[where][id][inq]=" + courseTeacher['course-year'].id).join("&");
+    return this.http
+      .get(
+        this.configSvc.backendUrl +
+          "/course-years?filter[include]=course&" +
+          where
       )
       .map(res => res.json());
   }

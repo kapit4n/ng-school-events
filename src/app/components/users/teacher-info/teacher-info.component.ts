@@ -17,7 +17,7 @@ export class TeacherInfoComponent implements OnInit {
   }
 
   editInfo() {
-    if (!this.editInfoFlag) {
+    if (this.editInfoFlag) {
       if (this.teacher.id) {
         this.teachersSvc.updateTeacherInfo(this.teacher).subscribe( res => this.teacher = res);
       } else {

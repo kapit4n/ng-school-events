@@ -46,13 +46,41 @@ export class CoursesService {
     }
   }
 
-  public removeStudentFromCourse(studentId): Observable<any> {
-    return this.http.delete(this.configSvc.backendUrl + "/course-students/" + studentId).map(res => res.json());
+  public getYearCourses(filter = "", page = 0): Observable<any> {
+    if (filter) {
+      return this.http
+        .get(
+          this.configSvc.backendUrl +
+            "/course-years?filter[include]=course"
+        )
+        .map(res => res.json());
+    } else {
+      return this.http
+        .get(
+          this.configSvc.backendUrl +
+            "/course-years?filter[include]=course"
+        )
+        .map(res => res.json());
+    }
+  }
+
+  public removeStudentFromCourse(relId): Observable<any> {
+    return this.http.delete(this.configSvc.backendUrl + "/course-students/" + relId).map(res => res.json());
+  }
+
+  public removeTeacherFromCourse(relId): Observable<any> {
+    return this.http.delete(this.configSvc.backendUrl + "/course-teachers/" + relId).map(res => res.json());
   }
 
   public addStudentToCourse(courseStudent): Observable<any> {
     return this.http
       .post(this.configSvc.backendUrl + "/course-students", courseStudent)
+      .map(res => res.json());
+  }
+
+  public addTeacherToCourse(courseTeacher): Observable<any> {
+    return this.http
+      .post(this.configSvc.backendUrl + "/course-teachers", courseTeacher)
       .map(res => res.json());
   }
 }
