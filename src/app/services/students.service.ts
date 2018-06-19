@@ -33,7 +33,7 @@ export class StudentsService {
     return this.http
       .get(
         this.configSvc.backendUrl +
-          "/course-students?filter[include]=course&filter[include]=student&filter[where][studentId]=" + studentId
+          "/course-students?filter[include]=course-year&filter[include]=student&filter[where][studentId]=" + studentId
       )
       .map(res => res.json());
   }
