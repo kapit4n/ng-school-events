@@ -23,7 +23,9 @@ export class StudentHomeComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private route: ActivatedRoute, private parentsSvc: ParentsService, private coursesSvc: CoursesService,
-    private studentsSvc: StudentsService) { }
+    private studentsSvc: StudentsService) {
+      this.student = {};
+    }
 
   ngOnInit() {
     this.studentId = this.route.snapshot.paramMap.get("id");
@@ -46,13 +48,13 @@ export class StudentHomeComponent implements OnInit {
 
   loadCourses() {
     this.studentsSvc
-      .getCourses()
+      .getCourses(this.studentId)
       .subscribe(assigned => (this.assignedCourses = assigned));
   }
 
   loadParents() {
     this.studentsSvc
-      .getParents()
+      .getParents(this.studentId)
       .subscribe(assigned => (this.aParents = assigned));
   }
 

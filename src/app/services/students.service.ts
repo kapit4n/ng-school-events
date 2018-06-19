@@ -33,7 +33,7 @@ export class StudentsService {
     return this.http
       .get(
         this.configSvc.backendUrl +
-          "/course-students?filter[include]=course&filter[include]=student"
+          "/course-students?filter[include]=course&filter[include]=student&filter[where][studentId]=" + studentId
       )
       .map(res => res.json());
   }
@@ -42,7 +42,7 @@ export class StudentsService {
     return this.http
       .get(
         this.configSvc.backendUrl +
-          "/student-parents?filter[include]=parent&filter[include]=student"
+          "/student-parents?filter[include]=parent&filter[include]=student&filter[where][studentId]=" + studentId
       )
       .map(res => res.json());
   }
