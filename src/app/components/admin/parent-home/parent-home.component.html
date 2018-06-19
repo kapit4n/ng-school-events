@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let student of assignedStudents">
-      <td>{{student.student.firstName}}</td>
+      <td>{{student.student?.firstName}}</td>
       <td>
         <button type="button" class="btn" (click)="removeStudent(student.id)">
           <span class="fa fa-trash" aria-hidden="true"></span>
@@ -48,7 +48,7 @@
             <div class="col-md-6">
               <span i18n>Assigned Students</span>
               <ul class="list-group" style="height:300px;overflow: scroll;">
-                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let assigStudent of assignedStudents">{{assigStudent.student.firstName}}
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let assigStudent of assignedStudents">{{assigStudent.student?.firstName}}
                   <button type="button" class="btn btn-primary" (click)="removeStudent(assigStudent.id)">
                     <span class="fa fa-trash" aria-hidden="true"></span>
                   </button>

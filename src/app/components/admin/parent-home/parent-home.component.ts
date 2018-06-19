@@ -48,7 +48,7 @@ export class ParentHomeComponent implements OnInit {
 
   addStudent(student) {
     let studentParent = {
-      "student-yearId": student.id,
+      "studentId": student.id,
       parentId: this.parentId
     };
     this.studentsSvc
