@@ -21,11 +21,10 @@ export class CourseHomeComponent implements OnInit {
 
   constructor(private coursesSvc: CoursesService, private studentsSvc: StudentsService, private modalService: NgbModal,
     private route: ActivatedRoute) {
-      this.courseId = this.route.snapshot.paramMap.get("id");
-
     }
-
-  ngOnInit() {
+    
+    ngOnInit() {
+    this.courseId = this.route.snapshot.paramMap.get("courseYearId");
     this.coursesSvc.getCourse(this.courseId).subscribe(course => {
       this.course = course;
     });

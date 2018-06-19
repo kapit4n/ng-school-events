@@ -55,6 +55,15 @@ export class CoursesService {
         .map(res => res.json());
   }
 
+  public getCourseYears(courseId): Observable<any> {
+    return this.http
+        .get(
+          this.configSvc.backendUrl +
+            "/course-years?filter[include]=school-year&filter[where][courseId]=" + courseId
+        )
+        .map(res => res.json());
+  }
+
   public getYearCourses(filter = "", page = 0): Observable<any> {
     if (filter) {
       return this.http

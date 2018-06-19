@@ -64,6 +64,7 @@ import { StudentManagementComponent } from './components/users/student-managemen
 import { ParentManagementComponent } from './components/users/parent-management/parent-management.component';
 import { TeacherHomeComponent } from './components/admin/teacher-home/teacher-home.component';
 import { ParentHomeComponent } from './components/admin/parent-home/parent-home.component';
+import { CourseYearComponent } from './components/admin/course-year/course-year.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
@@ -84,7 +85,8 @@ const appRoutes: Routes = [
   { path: "parent-register", component: ParentRegisterComponent },
   { path: "parent-list", component: ParentListComponent },
   { path: "parent-profile", component: ParentProfileComponent },
-  { path: "course-list-admin/:id", component: CourseHomeComponent },
+  { path: "course-list-admin/:courseId", component: CourseYearComponent },
+  { path: "course-list-admin/:courseId/:courseYearId", component: CourseHomeComponent },
   { path: "course-list", component: CourseListComponent },
   { path: "course-list-admin", component: CourseListAdminComponent },
   { path: "course-add-admin", component: CourseAddAdminComponent },
@@ -152,7 +154,8 @@ const appRoutes: Routes = [
     StudentManagementComponent,
     ParentManagementComponent,
     TeacherHomeComponent,
-    ParentHomeComponent
+    ParentHomeComponent,
+    CourseYearComponent
   ],
   imports: [
     BrowserModule,

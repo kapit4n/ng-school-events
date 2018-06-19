@@ -1,0 +1,21 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" i18n>Year</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let courseYear of courseYears">
+      <td>{{courseYear.schoolYear.year}}</td>
+      <td>
+        <a class="btn btn-info" href="course-list-admin/{{courseId}}/{{courseYear.id}}">
+          <span class="fa fa-info" aria-hidden="true"></span>
+        </a>
+        <button type="button" class="btn" (click)="removeYear(courseYear.id)">
+          <span class="fa fa-trash" aria-hidden="true"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
