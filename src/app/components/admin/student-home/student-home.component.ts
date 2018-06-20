@@ -34,7 +34,7 @@ export class StudentHomeComponent implements OnInit {
       this.student = {};
     });
 
-    this.coursesSvc.getCourses().subscribe( courses => {
+    this.coursesSvc.getCoursesByYear().subscribe( courses => {
       this.availableCourses = courses;
     });
 
@@ -49,7 +49,9 @@ export class StudentHomeComponent implements OnInit {
   loadCourses() {
     this.studentsSvc
       .getCourses(this.studentId)
-      .subscribe(assigned => (this.assignedCourses = assigned));
+      .subscribe(courseStudents => {
+        this.studentsSvc.getCourseYears(courseStudents).subscribe(courseYears => this.assignedCourses = courseYears);
+      });
   }
 
   loadParents() {
@@ -58,9 +60,8 @@ export class StudentHomeComponent implements OnInit {
       .subscribe(assigned => (this.aParents = assigned));
   }
 
-
   addCourse(course) {
-    let courseYear = { courseId: course.id, studentId: this.studentId };
+    let courseYear = { "course-yearId": course.id, studentId: this.studentId };
     this.coursesSvc
       .addStudentToCourse(courseYear)
       .subscribe(updatedCourse => {
@@ -74,7 +75,6 @@ export class StudentHomeComponent implements OnInit {
       this.loadCourses();
     });
   }
-
 
   addParent(userParent) {
     console.log(userParent);
@@ -97,7 +97,7 @@ export class StudentHomeComponent implements OnInit {
 
   }
 
-    open(content) {
+  open(content) {
     this.modalService.open(content).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;

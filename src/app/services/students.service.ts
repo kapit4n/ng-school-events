@@ -38,6 +38,27 @@ export class StudentsService {
       .map(res => res.json());
   }
 
+
+  public getCourseYears(courseSudents): Observable<any> {
+
+    var where = "filter[where][id]eq]=" + courseSudents[0]['course-year'].id;
+    if (courseSudents.length > 1)
+      where = courseSudents
+        .map(
+          courseTeacher =>
+            "filter[where][id][inq]=" + courseTeacher["course-year"].id
+        )
+        .join("&");
+    return this.http
+      .get(
+        this.configSvc.backendUrl +
+        "/course-years?filter[include]=course&" +
+        where
+      )
+      .map(res => res.json());
+  }
+
+
   public getParents(studentId = ""): Observable<any> {
     return this.http
       .get(
