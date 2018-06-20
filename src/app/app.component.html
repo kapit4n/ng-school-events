@@ -78,11 +78,8 @@
   </ul>
 
   <ul class="nav nav-tabs" *ngIf="rolesSvc.isParent()">
-    <li class="nav-item">
-      <a i18n class="nav-link" routerLink="/course-list" routerLinkActive="active">Son 1</a>
-    </li>
-    <li class="nav-item">
-      <a i18n class="nav-link" routerLink="/user-management" routerLinkActive="active">Son 2</a>
+    <li class="nav-item" *ngFor="let son of sons">
+      <a i18n class="nav-link" [routerLink]="son.routeLink" routerLinkActive="active">Son 1</a>
     </li>
   </ul>
 

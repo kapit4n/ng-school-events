@@ -38,6 +38,15 @@ export class ParentsService {
       .map(res => res.json());
   }
 
+  public getSons(): Observable<any> {
+    return this.http
+      .get(
+        this.configSvc.backendUrl +
+          "/student-parents?filter[include]=parent&filter[include]=student"
+      )
+      .map(res => res.json());
+  }
+
   public getParentByUserId(id: string): Observable<any> {
     return this.http
       .get(this.configSvc.backendUrl + "/parents?filter[where][userId]=" + id)
