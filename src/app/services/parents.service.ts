@@ -67,4 +67,15 @@ export class ParentsService {
       )
       .map(res => res.json());
   }
+
+  public getStudent(studentId = ""): Observable<any> {
+    return this.http
+      .get(
+        this.configSvc.backendUrl +
+          "/student-parents?filter[include]=student&filter[where][id]=" + studentId
+      )
+      .map(res => res.json());
+  }
+
+
 }

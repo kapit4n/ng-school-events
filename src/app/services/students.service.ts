@@ -38,7 +38,6 @@ export class StudentsService {
       .map(res => res.json());
   }
 
-
   public getCourseYears(courseSudents): Observable<any> {
 
     var where = "filter[where][id]eq]=" + courseSudents[0]['course-year'].id;
