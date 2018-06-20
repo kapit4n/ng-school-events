@@ -79,7 +79,7 @@
 
   <ul class="nav nav-tabs" *ngIf="rolesSvc.isParent()">
     <li class="nav-item" *ngFor="let son of sons">
-      <a i18n class="nav-link" [routerLink]="son.routeLink" routerLinkActive="active">Son 1</a>
+      <a i18n class="nav-link" [routerLink]="son.routeLink" routerLinkActive="active">{{son.student.firstName}}</a>
     </li>
   </ul>
 

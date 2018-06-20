@@ -40,7 +40,7 @@ export class AppComponent {
     setTimeout(() => {
       if (rolesSvc.isParent()) {
         parentsSvc.getSons().subscribe(sons => (this.sons = sons.map(son => {
-          return {id: son.id, routeLink: "parent/son/" + son.id};
+          return {id: son.id, routeLink: "parent/son/" + son.id, student: son.student};
         })));
       }
     }, 500);
