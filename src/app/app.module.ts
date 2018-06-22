@@ -103,6 +103,7 @@ const appRoutes: Routes = [
   // Pages for teacher role
   { path: "teacher-profile", component: TeacherProfileComponent },
   { path: "teacher-course-list", component: CourseListComponent },
+  { path: "teacher-course-home/:courseId", component: CourseListComponent },
   { path: "student-follow-up", component: StudentFollowUpComponent },
   
   // Pages for parent role

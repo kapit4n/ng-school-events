@@ -46,7 +46,7 @@ export class TeachersService {
       .map(res => res.json());
   }
 
-  public getCourses(studentId = ""): Observable<any> {
+  public getCourses(teacherId = ""): Observable<any> {
     return this.http
       .get(
         this.configSvc.backendUrl +
@@ -54,6 +54,7 @@ export class TeachersService {
       )
       .map(res => res.json());
   }
+  
 
   public getCourseYear(courseTeachers): Observable<any> {
     

@@ -1,14 +1,8 @@
 <div>
   <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <button i18n class="nav-link {{courseId == 1 ? 'active': ''}}" href="#" (click)="loadCourse(1)">Course 1</button>
-    </li>
-    <li class="nav-item">
-      <button i18n class="nav-link {{courseId == 2 ? 'active': ''}}" href="#" (click)="loadCourse(2)">Course 2</button>
-    </li>
-    <li class="nav-item">
-      <button i18n class="nav-link {{courseId == 3 ? 'active': ''}}" href="#" (click)="loadCourse(3)">Course 3</button>
+    <li class="nav-item" *ngFor="let course of courses">
+      <a i18n class="nav-link"  [routerLink]="course.routeLink"  routerLinkActive="active">{{course.course.name}}</a>
     </li>
   </ul>
-  <app-course-home [courseInfo]="course"></app-course-home>
+  
 </div>
