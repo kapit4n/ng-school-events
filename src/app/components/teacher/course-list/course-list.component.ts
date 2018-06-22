@@ -4,6 +4,7 @@ import { AuthService } from "../../../services/auth.service";
 import { RolesService } from "../../../services/roles.service";
 import { TeachersService } from "../../../services/teachers.service";
 import { CoursesService } from "../../../services/courses.service";
+import { CoursesService } from "../../../services/courses.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -14,7 +15,7 @@ import { ActivatedRoute } from "@angular/router";
 export class CourseListComponent implements OnInit {
   courseId: string;
   courses: any;
-  course: any;
+  courseYear: any;
   teacherId: any;
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +26,7 @@ export class CourseListComponent implements OnInit {
     public coursesSvc: CoursesService
   ) {
     this.courses = [];
-    this.course = {};
+    this.courseYear = {};
   }
 
   ngOnInit() {
@@ -40,13 +41,13 @@ export class CourseListComponent implements OnInit {
     this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
       if (teacher.length > 0) {
         this.teachersSvc.getCourseYear(teacher).subscribe(courses => {
-          this.courses = courses.map(c => { return { course: c.course, id: c.course.id, routeLink: "/teacher-course-home/" + c.course.id}; });
+          this.courses = courses.map(c => { return { course: c.course, id: c.id, routeLink: "/teacher-course-home/" + c.id}; });
         });
       }
     });
 
-    this.coursesSvc.getCourse(this.courseId).subscribe(course => {
-      this.course = course;
+    this.coursesSvc.getCourseYearById(this.courseId).subscribe(course => {
+      this.courseYear = course[0];
     });
   }
 }
