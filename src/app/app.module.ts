@@ -69,7 +69,12 @@ import { SonHomeComponent } from './components/parent/son-home/son-home.componen
 import { TeacherCourseHomeComponent } from './components/teacher/teacher-course-home/teacher-course-home.component';
 
 const appRoutes: Routes = [
+  // Common pages
   { path: "home", component: HomeComponent },
+  { path: "logout", component: LogoutComponent },
+  { path: "login", component: LoginComponent },
+  
+  // Pages for admin
   { path: "todays", component: TodaysComponent },
   { path: "incoming", component: IncomingComponent },
   { path: "gestion-current", component: GestionCurrentComponent },
@@ -85,24 +90,23 @@ const appRoutes: Routes = [
   { path: "teacher-list", component: TeacherListComponent },
   { path: "parent-register", component: ParentRegisterComponent },
   { path: "parent-list", component: ParentListComponent },
-  { path: "parent-profile", component: ParentProfileComponent },
   { path: "course-list-admin/:courseId", component: CourseYearComponent },
   { path: "course-list-admin/:courseId/:courseYearId", component: CourseHomeComponent },
-
-  { path: "teacher-profile", component: TeacherProfileComponent },
-  { path: "teacher-course-list", component: CourseListComponent },
-
   { path: "course-list-admin", component: CourseListAdminComponent },
   { path: "course-add-admin", component: CourseAddAdminComponent },
   { path: "years", component: YearListAdminComponent },
   { path: "year-add-admin", component: YearAddAdminComponent },
   { path: "years/:id", component: YearHomeComponent },
-  { path: "login", component: LoginComponent },
-  { path: "logout", component: LogoutComponent },
   { path: "admin-register", component: AdminRegisterComponent },
-  { path: "student-follow-up", component: StudentFollowUpComponent },
   { path: "student-management/:id", component: StudentHomeComponent },
-
+  
+  // Pages for teacher role
+  { path: "teacher-profile", component: TeacherProfileComponent },
+  { path: "teacher-course-list", component: CourseListComponent },
+  { path: "student-follow-up", component: StudentFollowUpComponent },
+  
+  // Pages for parent role
+  { path: "parent-profile", component: ParentProfileComponent },
   { path: "parent/son/:id", component: SonHomeComponent },
 
   {
