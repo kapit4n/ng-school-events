@@ -39,7 +39,7 @@ import { CourseHomeComponent } from './components/admin/course-home/course-home.
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { AdminRegisterComponent } from './components/users/admin-register/admin-register.component';
 import { UserInviteComponent } from './components/users/user-invite/user-invite.component';
-import { CourseListComponent } from './components/admin/course-list/course-list.component';
+import { CourseListComponent } from './components/teacher/course-list/course-list.component';
 import { StudentFollowUpComponent } from './components/students/student-follow-up/student-follow-up.component';
 import { ParentListComponent } from './components/users/parent-list/parent-list.component';
 import { ParentRegisterComponent } from './components/users/parent-register/parent-register.component';
@@ -66,7 +66,7 @@ import { TeacherHomeComponent } from './components/admin/teacher-home/teacher-ho
 import { ParentHomeComponent } from './components/admin/parent-home/parent-home.component';
 import { CourseYearComponent } from './components/admin/course-year/course-year.component';
 import { SonHomeComponent } from './components/parent/son-home/son-home.component';
-import { TeacherCourseHomeComponent } from './teacher/teacher-course-home/teacher-course-home.component';
+import { TeacherCourseHomeComponent } from './components/teacher/teacher-course-home/teacher-course-home.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
@@ -83,13 +83,15 @@ const appRoutes: Routes = [
   { path: "student-list", component: StudentListComponent },
   { path: "teacher-register", component: TeacherRegisterComponent },
   { path: "teacher-list", component: TeacherListComponent },
-  { path: "teacher-profile", component: TeacherProfileComponent },
   { path: "parent-register", component: ParentRegisterComponent },
   { path: "parent-list", component: ParentListComponent },
   { path: "parent-profile", component: ParentProfileComponent },
   { path: "course-list-admin/:courseId", component: CourseYearComponent },
   { path: "course-list-admin/:courseId/:courseYearId", component: CourseHomeComponent },
-  { path: "course-list", component: CourseListComponent },
+
+  { path: "teacher-profile", component: TeacherProfileComponent },
+  { path: "teacher-course-list", component: CourseListComponent },
+
   { path: "course-list-admin", component: CourseListAdminComponent },
   { path: "course-add-admin", component: CourseAddAdminComponent },
   { path: "years", component: YearListAdminComponent },
