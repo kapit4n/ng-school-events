@@ -25,6 +25,7 @@ export class CourseListComponent implements OnInit {
     public coursesSvc: CoursesService
   ) {
     this.courses = [];
+    this.course = {};
   }
 
   ngOnInit() {

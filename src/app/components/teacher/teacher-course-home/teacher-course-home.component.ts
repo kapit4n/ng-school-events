@@ -8,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TeacherCourseHomeComponent implements OnInit {
 
   @Input() course: any;
-  constructor() { }
+  constructor() {
+    this.course = {};
+  }
 
   ngOnInit() {
   }
