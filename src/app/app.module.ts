@@ -66,6 +66,7 @@ import { TeacherHomeComponent } from './components/admin/teacher-home/teacher-ho
 import { ParentHomeComponent } from './components/admin/parent-home/parent-home.component';
 import { CourseYearComponent } from './components/admin/course-year/course-year.component';
 import { SonHomeComponent } from './components/parent/son-home/son-home.component';
+import { TeacherCourseHomeComponent } from './teacher/teacher-course-home/teacher-course-home.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
@@ -160,7 +161,8 @@ const appRoutes: Routes = [
     TeacherHomeComponent,
     ParentHomeComponent,
     CourseYearComponent,
-    SonHomeComponent
+    SonHomeComponent,
+    TeacherCourseHomeComponent
   ],
   imports: [
     BrowserModule,
