@@ -50,7 +50,13 @@ export class AnnListAdminComponent implements OnInit {
     this.annsSvc.registerAnn(this.newAnn).subscribe(registered => {
       this.loadAnns();
     });
-    this.newAnn = {}
+    this.newAnn = {};
+  }
+
+  deleteAnn(annId) {
+    this.annsSvc.deleteAnn(annId).subscribe(ann => {
+      this.loadAnns();
+    });
   }
 
   private getDismissReason(reason: any): string {

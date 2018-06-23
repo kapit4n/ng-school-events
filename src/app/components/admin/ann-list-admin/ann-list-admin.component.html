@@ -19,7 +19,7 @@
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
   </div>
 </ng-template>
-<button i18n class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
+<button i18n class="btn btn-outline-primary" (click)="open(content)">Add</button>
 <div class="form-group">
   <label for="search" i18n>Search by Title</label>
   <input type="text" (keyup.enter)="search()" class="form-control" id="search" i18n-placeholder placeholder="Search" value="Data"
@@ -35,7 +35,7 @@
     <td>{{ann.title}}</td>
     <td>{{ann.details}}</td>
     <td>
-      <button type="button" class="btn">
+      <button type="button" class="btn" (click)="deleteAnn(ann.id)">
         <span class="fa fa-trash" aria-hidden="true"></span>
       </button>
       <a class="btn btn-info" href="ann-list-admin/{{ann.id}}">

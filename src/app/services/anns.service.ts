@@ -38,6 +38,9 @@ export class AnnsService {
         .map(res => res.json());
     }
   }
-
+  
+  public deleteAnn(annId): Observable<any> {
+    return this.http.delete(this.configSvc.backendUrl + "/announcements/" + annId).map(res => res.json());
+  }
 
 }
