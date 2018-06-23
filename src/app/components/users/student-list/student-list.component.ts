@@ -9,14 +9,23 @@ import { StudentsService } from "../../../services/students.service";
 export class StudentListComponent implements OnInit {
 
   students: any[];
-
-  constructor(private studentsSvc: StudentsService) { }
-
-  ngOnInit() {
-    this.studentsSvc.getStudents().subscribe( students => {
-      this.students = students;
-      console.log(students);
-    });
+  searchText = "";
+  currentPage = 0;
+  constructor(private studentsSvc: StudentsService) {
+    
   }
 
+  ngOnInit() {
+    this.loadStudents();
+  }
+
+  loadStudents() {
+    this.studentsSvc.getStudents(this.searchText, this.currentPage).subscribe( students => {
+      this.students = students;
+    });
+  }
+  
+  search() {
+    this.loadStudents();
+  }
 }

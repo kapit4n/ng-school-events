@@ -17,10 +17,20 @@ export class StudentsService {
       .map(res => res.json());
   }
 
-  public getStudents(): Observable<any> {
-    return this.http
-      .get(this.configSvc.backendUrl + "/students")
-      .map(res => res.json());
+    public getStudents(filter = "", page = 0): Observable<any> {
+    if (filter) {
+      return this.http
+        .get(
+          this.configSvc.backendUrl +
+            "/students?filter[where][firstName][regexp]=/" +
+            filter + "/i"
+        )
+        .map(res => res.json());
+    } else {
+      return this.http
+        .get(this.configSvc.backendUrl + "/students")
+        .map(res => res.json());
+    }
   }
 
   public getStudent(studentId): Observable<any> {

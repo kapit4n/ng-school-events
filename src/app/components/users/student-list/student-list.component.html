@@ -1,4 +1,11 @@
 <a class="btn btn-outline-primary" i18n href="/student-register">Add</a>
+
+<div class="form-group">
+  <label for="search" i18n>Search by Name</label>
+  <input type="text" (keyup.enter)="search()" class="form-control" id="search" i18n-placeholder placeholder="Search" value="Data"
+    required [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+</div>
+
 <table class="table">
   <thead class="thead-dark">
     <tr>
