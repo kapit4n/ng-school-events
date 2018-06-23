@@ -42,6 +42,14 @@ export class AnnListAdminComponent implements OnInit {
     this.loadAnns();
   }
 
+  saveAnn() {
+    this.newAnn["year-schoolId"] = 1;
+    this.annsSvc.registerAnn(this.newAnn).subscribe(registered => {
+      console.log("Ann was registered" + registered);
+    });
+    this.newAnn = {}
+  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return "by pressing ESC";
