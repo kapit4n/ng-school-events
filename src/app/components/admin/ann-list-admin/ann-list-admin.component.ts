@@ -25,7 +25,9 @@ export class AnnListAdminComponent implements OnInit {
       .subscribe(anns => (this.annList = anns));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadAnns();
+  }
 
   open(content) {
     this.modalService.open(content).result.then(
@@ -44,8 +46,9 @@ export class AnnListAdminComponent implements OnInit {
 
   saveAnn() {
     this.newAnn["year-schoolId"] = 1;
+    this.newAnn["annType"] = "General";
     this.annsSvc.registerAnn(this.newAnn).subscribe(registered => {
-      console.log("Ann was registered" + registered);
+      this.loadAnns();
     });
     this.newAnn = {}
   }

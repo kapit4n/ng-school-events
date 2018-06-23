@@ -8,3 +8,13 @@
   <input type="text" class="form-control" id="details" i18n-placeholder placeholder="Details" value="Data" required [(ngModel)]="annInfo.details"
     [ngModelOptions]="{standalone: true}">
 </div>
+<div class="form-group">
+  <label for="publishedDate" i18n>Publication Date</label>
+  <input type="date" class="form-control" id="publishedDate" placeholder="Birth Date" required [(ngModel)]="annInfo.publishedDate"
+    [ngModelOptions]="{standalone: true}">
+</div>
+<div class="form-group">
+  <label for="duration" i18n>Duration in days</label>
+  <input type="number" class="form-control" id="duration" placeholder="days" required [(ngModel)]="annInfo.duration"
+    [ngModelOptions]="{standalone: true}">
+</div>
