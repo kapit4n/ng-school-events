@@ -1,0 +1,46 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 i18n class="modal-title">Add Announcement</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <app-ann-add-admin [annInfo]="newAnn"></app-ann-add-admin>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" (click)="saveAnn(); c('Close click');">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+<button i18n class="btn btn-lg btn-outline-primary" (click)="open(content)">Add</button>
+<div class="form-group">
+  <label for="search" i18n>Search by Title</label>
+  <input type="text" (keyup.enter)="search()" class="form-control" id="search" i18n-placeholder placeholder="Search" value="Data"
+    required [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+</div>
+<table class="table">
+  <tr class="thead-dark">
+    <th scope="col" i18n>Title</th>
+    <th scope="col" i18n>Details</th>
+    <th scope="col"></th>
+  </tr>
+  <tr *ngFor="let ann of annList">
+    <td>{{ann.title}}</td>
+    <td>{{ann.details}}</td>
+    <td>
+      <button type="button" class="btn">
+        <span class="fa fa-trash" aria-hidden="true"></span>
+      </button>
+      <a class="btn btn-info" href="ann-list-admin/{{ann.id}}">
+        <span class="fa fa-info" aria-hidden="true"></span>
+      </a>
+    </td>
+  </tr>
+</table>

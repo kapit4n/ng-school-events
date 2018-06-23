@@ -1,0 +1,10 @@
+<div class="form-group">
+  <label for="title" i18n>Title</label>
+  <input type="text" class="form-control" id="title" i18n-placeholder placeholder="Title" value="Data" required
+    [(ngModel)]="annInfo.name" [ngModelOptions]="{standalone: true}">
+</div>
+<div class="form-group">
+  <label for="details" i18n>Details</label>
+  <input type="text" class="form-control" id="details" i18n-placeholder placeholder="Details" value="Data" required [(ngModel)]="annInfo.details"
+    [ngModelOptions]="{standalone: true}">
+</div>

@@ -67,6 +67,8 @@ import { ParentHomeComponent } from './components/admin/parent-home/parent-home.
 import { CourseYearComponent } from './components/admin/course-year/course-year.component';
 import { SonHomeComponent } from './components/parent/son-home/son-home.component';
 import { TeacherCourseHomeComponent } from './components/teacher/teacher-course-home/teacher-course-home.component';
+import { AnnListAdminComponent } from './components/admin/ann-list-admin/ann-list-admin.component';
+import { AnnAddAdminComponent } from './components/admin/ann-add-admin/ann-add-admin.component';
 
 const appRoutes: Routes = [
   // Common pages
@@ -99,6 +101,7 @@ const appRoutes: Routes = [
   { path: "years/:id", component: YearHomeComponent },
   { path: "admin-register", component: AdminRegisterComponent },
   { path: "student-management/:id", component: StudentHomeComponent },
+  { path: "ann-list-admin", component: AnnListAdminComponent },
   
   // Pages for teacher role
   { path: "teacher-profile", component: TeacherProfileComponent },
@@ -169,7 +172,9 @@ const appRoutes: Routes = [
     ParentHomeComponent,
     CourseYearComponent,
     SonHomeComponent,
-    TeacherCourseHomeComponent
+    TeacherCourseHomeComponent,
+    AnnListAdminComponent,
+    AnnAddAdminComponent
   ],
   imports: [
     BrowserModule,
