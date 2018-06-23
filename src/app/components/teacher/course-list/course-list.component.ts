@@ -4,7 +4,6 @@ import { AuthService } from "../../../services/auth.service";
 import { RolesService } from "../../../services/roles.service";
 import { TeachersService } from "../../../services/teachers.service";
 import { CoursesService } from "../../../services/courses.service";
-import { CoursesService } from "../../../services/courses.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -17,6 +16,7 @@ export class CourseListComponent implements OnInit {
   courses: any;
   courseYear: any;
   teacherId: any;
+  students: any;
   constructor(
     private route: ActivatedRoute,
     private configSvc: ConfigurationService,
@@ -27,6 +27,7 @@ export class CourseListComponent implements OnInit {
   ) {
     this.courses = [];
     this.courseYear = {};
+    this.students = [];
   }
 
   ngOnInit() {
@@ -48,6 +49,10 @@ export class CourseListComponent implements OnInit {
 
     this.coursesSvc.getCourseYearById(this.courseId).subscribe(course => {
       this.courseYear = course[0];
+    });
+
+    this.coursesSvc.getStudents(this.courseId).subscribe(students => {
+      this.students = students;
     });
   }
 }
