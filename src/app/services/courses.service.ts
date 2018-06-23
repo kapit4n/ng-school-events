@@ -6,6 +6,11 @@ import "rxjs/add/operator/map";
 
 @Injectable()
 export class CoursesService {
+  courseUrl = "courses";
+  cYearUrl = "course-years";
+  cStudentUrl = "course-students";
+  cTeacherUrl = "course-teachers";
+
   constructor(
     private configSvc: ConfigurationService,
     private http: HttpClientService
@@ -13,35 +18,40 @@ export class CoursesService {
 
   public registerCourse(course: any): Observable<any> {
     return this.http
-      .post(this.configSvc.backendUrl + "/courses", course)
+      .post(`${this.configSvc.backendUrl}/${this.courseUrl}`, course)
       .map(res => res.json());
   }
 
   public getStudents(courseId = ""): Observable<any> {
     return this.http
-      .get(
-        this.configSvc.backendUrl +
-          "/course-students?filter[include]=student&filter[where][course-yearId]=" + courseId
-      )
+      .get( `${this.configSvc.backendUrl}/${this.cStudentUrl}?filter[include]=student&filter[where][course-yearId]=${courseId}`)
       .map(res => res.json());
   }
 
   public getCourse(courseId): Observable<any> {
-    return this.http.get(this.configSvc.backendUrl + "/courses/" + courseId + "").map(res => res.json());
+    return this.http.get(`${this.configSvc.backendUrl}/${this.courseUrl}/${courseId}`).map(res => res.json());
   }
 
   public getCourses(filter = "", page = 0): Observable<any> {
     if (filter) {
       return this.http
-        .get(
-          this.configSvc.backendUrl +
-            "/courses?filter[where][name][regexp]=/" +
-            filter + "/i"
-        )
+        .get( `${this.configSvc.backendUrl}/${this.courseUrl}?filter[where][name][regexp]=/${filter}/i` )
         .map(res => res.json());
     } else {
       return this.http
-        .get(this.configSvc.backendUrl + "/courses")
+        .get(`${this.configSvc.backendUrl}/${this.courseUrl}`)
+        .map(res => res.json());
+    }
+  }
+
+  public getCoursesCount(filter = "", page = 0): Observable<any> {
+    if (filter) {
+      return this.http
+        .get( `${this.configSvc.backendUrl}/${this.courseUrl}?where[name][regexp]=/${filter}/i` )
+        .map(res => res.json());
+    } else {
+      return this.http
+        .get(`${this.configSvc.backendUrl}${this.courseUrl}/count`)
         .map(res => res.json());
     }
   }
@@ -49,24 +59,18 @@ export class CoursesService {
   public getCoursesByYear(filter = "", page = 0): Observable<any> {
     if (filter) {
       return this.http
-        .get(
-          this.configSvc.backendUrl +
-            "/course-years?filter[include]=course"
-        )
+        .get( `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course` )
         .map(res => res.json());
     } else {
       return this.http
-        .get(this.configSvc.backendUrl +
-          "/course-years?filter[include]=course")
-        .map(res => res.json());
+        .get(`${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course`) .map(res => res.json());
     }
   }
 
   public getCourseTeacherRel(courseId, teacherId): Observable<any> {
     return this.http
         .get(
-          this.configSvc.backendUrl +
-            "/course-teachers?filter[where][course-yearId]=" + courseId + "&filter[where][teacherId]=" + teacherId
+          `${this.configSvc.backendUrl}/${this.cTeacherUrl}?filter[where][course-yearId]=${courseId}&filter[where][teacherId]=${teacherId}`
         )
         .map(res => res.json());
   }
@@ -74,8 +78,7 @@ export class CoursesService {
   public getCourseYears(courseId): Observable<any> {
     return this.http
         .get(
-          this.configSvc.backendUrl +
-            "/course-years?filter[include]=school-year&filter[where][courseId]=" + courseId
+          `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=school-year&filter[where][courseId]=${courseId}`
         )
         .map(res => res.json());
   }
@@ -83,8 +86,7 @@ export class CoursesService {
   public getCourseYearById(courseYearId): Observable<any> {
     return this.http
         .get(
-          this.configSvc.backendUrl +
-            "/course-years?filter[include]=school-year&filter[include]=course&filter[where][id]=" + courseYearId
+          `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=school-year&filter[include]=course&filter[where][id]=${courseYearId}`
         )
         .map(res => res.json());
   }
@@ -92,38 +94,32 @@ export class CoursesService {
   public getYearCourses(filter = "", page = 0): Observable<any> {
     if (filter) {
       return this.http
-        .get(
-          this.configSvc.backendUrl +
-            "/course-years?filter[include]=course"
-        )
+        .get( `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course`)
         .map(res => res.json());
     } else {
       return this.http
-        .get(
-          this.configSvc.backendUrl +
-            "/course-years?filter[include]=course"
-        )
+        .get( `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course` )
         .map(res => res.json());
     }
   }
 
   public removeStudentFromCourse(relId): Observable<any> {
-    return this.http.delete(this.configSvc.backendUrl + "/course-students/" + relId).map(res => res.json());
+    return this.http.delete(`${this.configSvc.backendUrl}/${this.cStudentUrl}/${relId}`).map(res => res.json());
   }
 
   public removeTeacherFromCourse(relId): Observable<any> {
-    return this.http.delete(this.configSvc.backendUrl + "/course-teachers/" + relId).map(res => res.json());
+    return this.http.delete(`${this.configSvc.backendUrl}/${this.cTeacherUrl}/${relId}`).map(res => res.json());
   }
 
   public addStudentToCourse(courseStudent): Observable<any> {
     return this.http
-      .post(this.configSvc.backendUrl + "/course-students", courseStudent)
+      .post(`${this.configSvc.backendUrl}/${this.cStudentUrl}`, courseStudent)
       .map(res => res.json());
   }
 
   public addTeacherToCourse(courseTeacher): Observable<any> {
     return this.http
-      .post(this.configSvc.backendUrl + "/course-teachers", courseTeacher)
+      .post(`${this.configSvc.backendUrl}/${this.cTeacherUrl}`, courseTeacher)
       .map(res => res.json());
   }
 }
