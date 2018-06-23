@@ -31,7 +31,7 @@ export class StudentHomeComponent implements OnInit {
     this.studentId = this.route.snapshot.paramMap.get("id");
 
     this.studentsSvc.getStudent(this.studentId).subscribe(student => {
-      this.student = {};
+      this.student = student;
     });
 
     this.coursesSvc.getCoursesByYear().subscribe( courses => {
