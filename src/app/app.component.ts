@@ -5,6 +5,7 @@ import { RolesService } from "./services/roles.service";
 import { ParentsService } from "./services/parents.service";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -17,7 +18,7 @@ export class AppComponent {
   teacherToggle = "";
   userType: "";
   userName: "";
-
+  breadcrumbs: any;
   sons = [];
 
   constructor(
@@ -25,25 +26,27 @@ export class AppComponent {
     public rolesSvc: RolesService,
     public parentsSvc: ParentsService,
     private location: Location,
-    private router: Router
+    private router: ActivatedRoute
   ) {
     setTheme("bs4");
     this.userType = this.rolesSvc.getUserType();
     this.userName = this.rolesSvc.getUserName();
 
-    console.log(this.location.path());  
-    console.log(this.location.path());  
-    console.log(this.location.path());  
-    console.log(this.location.path());  
-    console.log(this.location.path());  
-
     setTimeout(() => {
       if (rolesSvc.isParent()) {
-        parentsSvc.getSons().subscribe(sons => (this.sons = sons.map(son => {
-          return {id: son.id, routeLink: "parent/son/" + son.id, student: son.student};
-        })));
+        parentsSvc.getSons().subscribe(
+          sons =>
+            (this.sons = sons.map(son => {
+              return {
+                id: son.id,
+                routeLink: "parent/son/" + son.id,
+                student: son.student
+              };
+            }))
+        );
       }
     }, 500);
+
   }
 
 }

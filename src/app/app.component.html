@@ -38,6 +38,7 @@
   </div>
 </nav>
 <div class="container">
+
   <ul class="nav nav-tabs" *ngIf="rolesSvc.isAdmin()">
     <li class="nav-item">
       <a i18n class="nav-link" routerLink="/parent-management" routerLinkActive="active">Parents</a>
@@ -80,6 +81,6 @@
     </li>
   </ul>
 
-
+  <breadcrumb [allowBootstrap]="true"></breadcrumb>
   <router-outlet></router-outlet>
 </div>

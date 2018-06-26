@@ -9,7 +9,7 @@
     <tr *ngFor="let courseYear of courseYears">
       <td>{{courseYear.schoolYear.year}}</td>
       <td>
-        <a class="btn btn-info" href="course-list-admin/{{courseId}}/{{courseYear.id}}">
+        <a class="btn btn-info" href="course-list-admin/rel/{{courseYear.id}}">
           <span class="fa fa-info" aria-hidden="true"></span>
         </a>
         <button type="button" class="btn" (click)="removeYear(courseYear.id)">

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BreadcrumbsModule } from "ng6-breadcrumbs";
 
 import { ConfigurationService } from './services/configuration.service';
 import { GestionService } from './services/gestion.service';
@@ -70,47 +71,198 @@ import { TeacherCourseHomeComponent } from './components/teacher/teacher-course-
 import { AnnListAdminComponent } from './components/admin/ann-list-admin/ann-list-admin.component';
 import { AnnAddAdminComponent } from './components/admin/ann-add-admin/ann-add-admin.component';
 import { AnnHomeComponent } from './components/admin/ann-home/ann-home.component';
+import { ParentsContainerComponent } from './components/admin/parents-container/parents-container.component';
+import { TeachersContainerComponent } from './components/admin/teachers-container/teachers-container.component';
+import { StudentsContainerComponent } from './components/admin/students-container/students-container.component';
+import { CoursesContainerComponent } from './components/admin/courses-container/courses-container.component';
+import { YearsContainerComponent } from './components/admin/years-container/years-container.component';
+import { AnnsContainerComponent } from './components/admin/anns-container/anns-container.component';
 
 const appRoutes: Routes = [
   // Common pages
-  { path: "home", component: HomeComponent },
-  { path: "logout", component: LogoutComponent },
-  { path: "login", component: LoginComponent },
-  
+  { path: "home", component: HomeComponent, data: { breadcrumb: "Home" } },
+  {
+    path: "logout",
+    component: LogoutComponent,
+    data: { breadcrumb: "Logout" }
+  },
+  { path: "login", component: LoginComponent, data: { breadcrumb: "Login" } },
+
   // Pages for admin
-  { path: "todays", component: TodaysComponent },
-  { path: "incoming", component: IncomingComponent },
-  { path: "gestion-current", component: GestionCurrentComponent },
-  { path: "teacher-management", component: TeacherManagementComponent },
-  { path: "teacher-management/:id", component: TeacherHomeComponent },
-  { path: "parent-management", component: ParentManagementComponent },
-  { path: "parent-management/:id", component: ParentHomeComponent },
-  { path: "student-management", component: StudentManagementComponent },
-  { path: "user-first-time/:email", component: UserFirstTimeComponent },
-  { path: "student-register", component: StudentRegisterComponent },
-  { path: "student-list", component: StudentListComponent },
-  { path: "teacher-register", component: TeacherRegisterComponent },
-  { path: "teacher-list", component: TeacherListComponent },
-  { path: "parent-register", component: ParentRegisterComponent },
-  { path: "parent-list", component: ParentListComponent },
-  { path: "course-list-admin/:courseId", component: CourseYearComponent },
-  { path: "course-list-admin/:courseId/:courseYearId", component: CourseHomeComponent },
-  { path: "course-list-admin", component: CourseListAdminComponent },
-  { path: "course-add-admin", component: CourseAddAdminComponent },
-  { path: "years", component: YearListAdminComponent },
-  { path: "year-add-admin", component: YearAddAdminComponent },
-  { path: "years/:id", component: YearHomeComponent },
-  { path: "admin-register", component: AdminRegisterComponent },
-  { path: "student-management/:id", component: StudentHomeComponent },
-  { path: "ann-list-admin", component: AnnListAdminComponent },
-  { path: "ann-list-admin/:id", component: AnnHomeComponent },
-  
+  {
+    path: "gestion-current",
+    component: GestionCurrentComponent,
+    data: { breadcrumb: "Current" }
+  },
+  {
+    path: "user-first-time/:email",
+    component: UserFirstTimeComponent,
+    data: { breadcrumb: "Firsttime" }
+  },
+  {
+    path: "admin-register",
+    component: AdminRegisterComponent,
+    data: { breadcrumb: "Admin Register" }
+  },
+
+  {
+    path: "teacher-management",
+    component: TeachersContainerComponent,
+    data: { breadcrumb: "Teachers" },
+    children: [
+      {
+        path: "",
+        component: TeacherManagementComponent,
+        data: { breadcrumb: "List" }
+      },
+      {
+        path: ":id",
+        component: TeacherHomeComponent,
+        data: { breadcrumb: "Show" }
+      }
+    ]
+  },
+  {
+    path: "teacher-register",
+    component: TeacherRegisterComponent,
+    data: { breadcrumb: "Teacher Register" }
+  },
+  {
+    path: "teacher-list",
+    component: TeacherListComponent,
+    data: { breadcrumb: "Teacher Liost" }
+  },
+
+  {
+    path: "parent-management",
+    component: ParentsContainerComponent,
+    data: { breadcrumb: "Parents" },
+    children: [
+      {
+        path: "",
+        component: ParentManagementComponent,
+        data: { breadcrumb: "List" }
+      },
+      {
+        path: ":id",
+        component: ParentHomeComponent,
+        data: { breadcrumb: "Show" }
+      }
+    ]
+  },
+  {
+    path: "parent-register",
+    component: ParentRegisterComponent,
+    data: { breadcrumb: "Parent Register" }
+  },
+  {
+    path: "parent-list",
+    component: ParentListComponent,
+    data: { breadcrumb: "Parent list" }
+  },
+
+  {
+    path: "student-management",
+    component: StudentsContainerComponent,
+    data: { breadcrumb: "Students" },
+    children: [
+      {
+        path: "",
+        component: StudentManagementComponent,
+        data: { breadcrumb: "Students" }
+      },
+      {
+        path: ":id",
+        component: StudentHomeComponent,
+        data: { breadcrumb: "Students" }
+      }
+    ]
+  },
+  {
+    path: "student-register",
+    component: StudentRegisterComponent,
+    data: { breadcrumb: "Register Student" }
+  },
+  {
+    path: "student-list",
+    component: StudentListComponent,
+    data: { breadcrumb: "Student list" }
+  },
+  {
+    path: "course-list-admin",
+    component: CoursesContainerComponent,
+    data: { breadcrumb: "Courses" },
+    children: [
+      {
+        path: "",
+        component: CourseListAdminComponent,
+        data: { breadcrumb: "List" }
+      },
+      {
+        path: ":courseId",
+        component: CourseYearComponent,
+        data: { breadcrumb: "Show" }
+      },
+      {
+        path: "rel/:courseYearId",
+        component: CourseHomeComponent,
+        data: { breadcrumb: "Course Year" }
+      }
+    ]
+  },
+  {
+    path: "course-add-admin",
+    component: CourseAddAdminComponent,
+    data: { breadcrumb: "Course Add" }
+  },
+
+  {
+    path: "years",
+    component: ParentsContainerComponent,
+    data: { breadcrumb: "School Years" },
+    children: [
+      {
+        path: "",
+        component: YearListAdminComponent,
+        data: { breadcrumb: "List" }
+      },
+      {
+        path: ":id",
+        component: YearHomeComponent,
+        data: { breadcrumb: "Show" }
+      }
+    ]
+  },
+  {
+    path: "ann-list-admin",
+    component: AnnsContainerComponent,
+    data: { breadcrumb: "Announcements" },
+    children: [
+      {
+        path: "",
+        component: AnnListAdminComponent,
+        data: { breadcrumb: "List" }
+      },
+      {
+        path: ":id",
+        component: AnnHomeComponent,
+        data: { breadcrumb: "Show" }
+      }
+    ]
+  },
+  {
+        path: "year-add-admin",
+        component: YearAddAdminComponent,
+        data: { breadcrumb: "Add" }
+      }
+  ,
+
   // Pages for teacher role
   { path: "teacher-profile", component: TeacherProfileComponent },
   { path: "teacher-course-list", component: CourseListComponent },
   { path: "teacher-course-home/:courseId", component: CourseListComponent },
   { path: "student-follow-up", component: StudentFollowUpComponent },
-  
+
   // Pages for parent role
   { path: "parent-profile", component: ParentProfileComponent },
   { path: "parent/son/:id", component: SonHomeComponent },
@@ -177,7 +329,13 @@ const appRoutes: Routes = [
     TeacherCourseHomeComponent,
     AnnListAdminComponent,
     AnnAddAdminComponent,
-    AnnHomeComponent
+    AnnHomeComponent,
+    ParentsContainerComponent,
+    TeachersContainerComponent,
+    StudentsContainerComponent,
+    CoursesContainerComponent,
+    YearsContainerComponent,
+    AnnsContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -188,7 +346,8 @@ const appRoutes: Routes = [
     ),
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    BreadcrumbsModule
   ],
   providers: [
     ConfigurationService,
