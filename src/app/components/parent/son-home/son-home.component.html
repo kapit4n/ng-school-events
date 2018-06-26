@@ -1,18 +1,12 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col" i18n>Name</th>
-      <th scope="col"></th>
+      <th scope="col" i18n>Course Name</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let course of assignedCourses">
       <td>{{course.course.name}}</td>
-      <td>
-        <button type="button" class="btn" (click)="removeCourse(course.id)">
-          <span class="fa fa-trash" aria-hidden="true"></span>
-        </button>
-      </td>
     </tr>
   </tbody>
 </table>
