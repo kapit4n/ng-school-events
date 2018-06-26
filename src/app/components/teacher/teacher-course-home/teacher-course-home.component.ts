@@ -37,6 +37,10 @@ export class TeacherCourseHomeComponent implements OnInit {
     
     this.coursesSvc.getCourseYearById(this.courseId).subscribe(course => {
       this.courseYear = course[0];
+      console.log("this.courseYear");
+      console.log("this.courseYear");
+      console.log("this.courseYear");
+      console.log(this.courseYear);
     });
 
     this.coursesSvc.getStudents(this.courseId).subscribe(students => {
