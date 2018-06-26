@@ -46,7 +46,10 @@ export class AppComponent {
         );
       }
     }, 500);
+  }
 
+  reloadUrl(sonUrl) {
+    location.href = "" + sonUrl;
   }
 
 }

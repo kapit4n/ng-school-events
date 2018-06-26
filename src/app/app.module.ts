@@ -78,6 +78,8 @@ import { CoursesContainerComponent } from "./components/admin/courses-container/
 import { YearsContainerComponent } from "./components/admin/years-container/years-container.component";
 import { AnnsContainerComponent } from "./components/admin/anns-container/anns-container.component";
 import { TeacherCoursesContainerComponent } from "./components/teacher/teacher-courses-container/teacher-courses-container.component";
+import { SonsContainerComponent } from './components/parent/sons-container/sons-container.component';
+import { SonListComponent } from './components/parent/son-list/son-list.component';
 
 const appRoutes: Routes = [
   // Common pages
@@ -280,8 +282,15 @@ const appRoutes: Routes = [
 
   // Pages for parent role
   { path: "parent-profile", component: ParentProfileComponent },
-  { path: "parent/son/:id", component: SonHomeComponent },
-
+  {
+    path: "children",
+    component: SonsContainerComponent,
+    data: { breadcrumb: "Children" },
+    children: [
+      { path: "", component: SonListComponent, data: { breadcrumb: "List" }},
+      { path: ":id", component: SonHomeComponent, data: { breadcrumb: "Show" } }
+    ]
+  },
   {
     path: "",
     redirectTo: "/home",
@@ -351,7 +360,9 @@ const appRoutes: Routes = [
     CoursesContainerComponent,
     YearsContainerComponent,
     AnnsContainerComponent,
-    TeacherCoursesContainerComponent
+    TeacherCoursesContainerComponent,
+    SonsContainerComponent,
+    SonListComponent
   ],
   imports: [
     BrowserModule,
