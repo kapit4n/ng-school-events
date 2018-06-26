@@ -4,26 +4,5 @@
       <a i18n class="nav-link"  [routerLink]="course.routeLink"  routerLinkActive="active">{{course.course.name}}</a>
     </li>
   </ul>
-  <app-teacher-course-home [course]="courseYear"></app-teacher-course-home>
-
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col" i18n>Student Name</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let student of students">
-        <td>{{student.student ? student.student.firstName : ''}} {{student.student ? student.student.lastName : ''}}</td>
-        <td>
-          <a class="btn btn-info" href="teacher-student-home/{{student.student?.id}}">
-            <span class="fa fa-info" aria-hidden="true"></span>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-
+  <router-outlet></router-outlet>
 </div>

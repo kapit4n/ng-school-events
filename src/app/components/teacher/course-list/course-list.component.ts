@@ -14,9 +14,7 @@ import { ActivatedRoute } from "@angular/router";
 export class CourseListComponent implements OnInit {
   courseId: string;
   courses: any;
-  courseYear: any;
   teacherId: any;
-  students: any;
   constructor(
     private route: ActivatedRoute,
     private configSvc: ConfigurationService,
@@ -26,8 +24,6 @@ export class CourseListComponent implements OnInit {
     public coursesSvc: CoursesService
   ) {
     this.courses = [];
-    this.courseYear = {};
-    this.students = [];
   }
 
   ngOnInit() {
@@ -42,17 +38,10 @@ export class CourseListComponent implements OnInit {
     this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
       if (teacher.length > 0) {
         this.teachersSvc.getCourseYear(teacher).subscribe(courses => {
-          this.courses = courses.map(c => { return { course: c.course, id: c.id, routeLink: "/teacher-course-home/" + c.id}; });
+          this.courses = courses.map(c => { return { course: c.course, id: c.id, routeLink: "/teacher-course-list/" + c.id }; });
         });
       }
     });
 
-    this.coursesSvc.getCourseYearById(this.courseId).subscribe(course => {
-      this.courseYear = course[0];
-    });
-
-    this.coursesSvc.getStudents(this.courseId).subscribe(students => {
-      this.students = students;
-    });
   }
 }
