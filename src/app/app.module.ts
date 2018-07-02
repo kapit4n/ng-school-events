@@ -19,6 +19,7 @@ import { SchoolYearsService } from "./services/school-years.service";
 
 import { AppComponent } from "./app.component";
 import { RouterModule, Routes } from "@angular/router";
+
 import { TodaysComponent } from "./components/todays/todays.component";
 import { IncomingComponent } from "./components/incoming/incoming.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -40,7 +41,6 @@ import { CourseHomeComponent } from "./components/admin/course-home/course-home.
 import { LogoutComponent } from "./components/auth/logout/logout.component";
 import { AdminRegisterComponent } from "./components/users/admin-register/admin-register.component";
 import { UserInviteComponent } from "./components/users/user-invite/user-invite.component";
-import { CourseListComponent } from "./components/teacher/course-list/course-list.component";
 import { StudentFollowUpComponent } from "./components/students/student-follow-up/student-follow-up.component";
 import { ParentListComponent } from "./components/users/parent-list/parent-list.component";
 import { ParentRegisterComponent } from "./components/users/parent-register/parent-register.component";
@@ -50,24 +50,23 @@ import { UserInfoEditExtComponent } from "./components/users/user-info-edit-ext/
 import { ParentProfileComponent } from "./components/users/parent-profile/parent-profile.component";
 import { UserInviteListComponent } from "./components/users/user-invite-list/user-invite-list.component";
 import { UserFirstTimeComponent } from "./components/users/user-first-time/user-first-time.component";
-import { CourseListAdminComponent } from "./components/admin/course-list-admin/course-list-admin.component";
-import { CourseAddAdminComponent } from "./components/admin/course-add-admin/course-add-admin.component";
 import { GestionAddAdminComponent } from "./components/gestions/gestion-add-admin/gestion-add-admin.component";
-import { YearAddAdminComponent } from "./components/admin/year-add-admin/year-add-admin.component";
-import { YearListAdminComponent } from "./components/admin/year-list-admin/year-list-admin.component";
-import { StudentHomeComponent } from "./components/admin/student-home/student-home.component";
-import { StudentCourseComponent } from "./components/admin/student-course/student-course.component";
-import { StudentParentsComponent } from "./components/admin/student-parents/student-parents.component";
-import { YearCourseComponent } from "./components/admin/year-course/year-course.component";
-import { YearHomeComponent } from "./components/admin/year-home/year-home.component";
 import { TeacherManagementComponent } from "./components/users/teacher-management/teacher-management.component";
 import { StudentManagementComponent } from "./components/users/student-management/student-management.component";
 import { ParentManagementComponent } from "./components/users/parent-management/parent-management.component";
+
+import { YearAddAdminComponent } from "./components/admin/year-add-admin/year-add-admin.component";
+import { YearListAdminComponent } from "./components/admin/year-list-admin/year-list-admin.component";
+import { StudentHomeComponent } from "./components/admin/student-home/student-home.component";
+import { CourseAddAdminComponent } from "./components/admin/course-add-admin/course-add-admin.component";
+import { CourseListAdminComponent } from "./components/admin/course-list-admin/course-list-admin.component";
+import { StudentCourseComponent } from "./components/admin/student-course/student-course.component";
+import { StudentParentsComponent } from "./components/admin/student-parents/student-parents.component";
 import { TeacherHomeComponent } from "./components/admin/teacher-home/teacher-home.component";
 import { ParentHomeComponent } from "./components/admin/parent-home/parent-home.component";
 import { CourseYearComponent } from "./components/admin/course-year/course-year.component";
-import { SonHomeComponent } from "./components/parent/son-home/son-home.component";
-import { TeacherCourseHomeComponent } from "./components/teacher/teacher-course-home/teacher-course-home.component";
+import { YearCourseComponent } from "./components/admin/year-course/year-course.component";
+import { YearHomeComponent } from "./components/admin/year-home/year-home.component";
 import { AnnListAdminComponent } from "./components/admin/ann-list-admin/ann-list-admin.component";
 import { AnnAddAdminComponent } from "./components/admin/ann-add-admin/ann-add-admin.component";
 import { AnnHomeComponent } from "./components/admin/ann-home/ann-home.component";
@@ -77,9 +76,14 @@ import { StudentsContainerComponent } from "./components/admin/students-containe
 import { CoursesContainerComponent } from "./components/admin/courses-container/courses-container.component";
 import { YearsContainerComponent } from "./components/admin/years-container/years-container.component";
 import { AnnsContainerComponent } from "./components/admin/anns-container/anns-container.component";
+
+import { CourseListComponent } from "./components/teacher/course-list/course-list.component";
+import { TeacherCourseHomeComponent } from "./components/teacher/teacher-course-home/teacher-course-home.component";
 import { TeacherCoursesContainerComponent } from "./components/teacher/teacher-courses-container/teacher-courses-container.component";
+
 import { SonsContainerComponent } from './components/parent/sons-container/sons-container.component';
 import { SonListComponent } from './components/parent/son-list/son-list.component';
+import { SonHomeComponent } from "./components/parent/son-home/son-home.component";
 
 const appRoutes: Routes = [
   // Common pages
