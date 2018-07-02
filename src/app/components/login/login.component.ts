@@ -13,6 +13,8 @@ import { Location } from '@angular/common';
 export class LoginComponent implements OnInit {
   
   loginInfo: any;
+  hasError = false;
+  errorInfo = "Error to login";
   constructor(private router: Router, private location: Location, private authSvc: AuthService,
               private loginSvc: LoginService, private rolesSvc: RolesService) {
     this.loginInfo = {};
@@ -21,11 +23,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onLogin() {
-    this.loginSvc.login(this.loginInfo).subscribe( userData => {
-      this.authSvc.saveSessionInfo(userData);
-      this.rolesSvc.reloadUser();
-      window.location.href = ""; // reload the entire page to reload services
-    });
+    this.loginSvc.login(this.loginInfo).subscribe(
+      userData => {
+        this.hasError = false;
+        this.authSvc.saveSessionInfo(userData);
+        this.rolesSvc.reloadUser();
+        window.location.href = ""; // reload the entire page to reload services
+      }, error => {
+        this.hasError = true;
+      });
   }
 
 }
