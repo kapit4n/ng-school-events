@@ -17,5 +17,6 @@ export class PaginationComponent implements OnInit {
     this.rangePages = [];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }
