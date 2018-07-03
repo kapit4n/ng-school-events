@@ -27,7 +27,10 @@ export class TeachersService {
 
   public updateTeacherInfo(teacherInfo: any): Observable<any> {
     return this.http
-      .put(this.configSvc.backendUrl + "/teachers/" + teacherInfo.id, teacherInfo)
+      .put(
+        this.configSvc.backendUrl + "/teachers/" + teacherInfo.id,
+        teacherInfo
+      )
       .map(res => res.json());
   }
 
@@ -35,8 +38,19 @@ export class TeachersService {
     return this.http
       .get(
         this.configSvc.backendUrl +
-          "/users?filter[include]=teachers&filter[limit]=" + limit + "&filter[skip]=" + skip + "&filter[where][userType]=teacher"
+          "/users?filter[include]=teachers&filter[limit]=" +
+          limit +
+          "&filter[skip]=" +
+          skip +
+          "&filter[where][userType]=teacher"
       )
+      .map(res => res.json());
+  }
+
+  // http://localhost:3000/api/students/count?where[firstName][regexp]=/H/i
+  public getTeachersCount(): Observable<any> {
+    return this.http
+      .get(this.configSvc.backendUrl + "/users/count?where[userType]=teacher")
       .map(res => res.json());
   }
 
@@ -54,18 +68,16 @@ export class TeachersService {
       )
       .map(res => res.json());
   }
-  
 
   public getCourseYear(courseTeachers): Observable<any> {
-    
-    var where = "filter[where][id]eq]=" + courseTeachers[0]['course-year'].id;
+    var where = "filter[where][id]eq]=" + courseTeachers[0]["course-year"].id;
     if (courseTeachers.length > 1)
       where = courseTeachers
-      .map(
-        courseTeacher =>
-          "filter[where][id][inq]=" + courseTeacher["course-year"].id
-      )
-      .join("&");
+        .map(
+          courseTeacher =>
+            "filter[where][id][inq]=" + courseTeacher["course-year"].id
+        )
+        .join("&");
     return this.http
       .get(
         this.configSvc.backendUrl +
@@ -80,5 +92,4 @@ export class TeachersService {
       .get(this.configSvc.backendUrl + "/teachers/" + teacherId + "")
       .map(res => res.json());
   }
-
 }
