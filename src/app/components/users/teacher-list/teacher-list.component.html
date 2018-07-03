@@ -25,24 +25,6 @@
     </tr>
   </tbody>
   <tfoot>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" i18n>Previous</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" i18n>Next</a>
-        </li>
-      </ul>
-    </nav>
+    <app-pagination *ngIf="pages > 1" pages="pages"></app-pagination>
   </tfoot>
 </table>

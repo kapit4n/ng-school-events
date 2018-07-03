@@ -12,6 +12,7 @@ export class TeacherManagementComponent implements OnInit {
     closeResult: string;
     teachers: any[];
     teacherInfo: any;
+    pages = 0;
     constructor(private modalService: NgbModal,
         private teachersSvc: TeachersService) {
         this.teachers = [];
@@ -25,6 +26,9 @@ export class TeacherManagementComponent implements OnInit {
     loadTeachers() {
         this.teachersSvc.getTeachers().subscribe(teachers => {
             this.teachers = teachers;
+        });
+        this.teachersSvc.getTeachersCount().subscribe( count => {
+            this.pages = count.count / 10;
         });
     }
 

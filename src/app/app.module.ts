@@ -84,6 +84,7 @@ import { TeacherCoursesContainerComponent } from "./components/teacher/teacher-c
 import { SonsContainerComponent } from './components/parent/sons-container/sons-container.component';
 import { SonListComponent } from './components/parent/son-list/son-list.component';
 import { SonHomeComponent } from "./components/parent/son-home/son-home.component";
+import { PaginationComponent } from './components/common/pagination/pagination.component';
 
 const appRoutes: Routes = [
   // Common pages
@@ -366,7 +367,8 @@ const appRoutes: Routes = [
     AnnsContainerComponent,
     TeacherCoursesContainerComponent,
     SonsContainerComponent,
-    SonListComponent
+    SonListComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
