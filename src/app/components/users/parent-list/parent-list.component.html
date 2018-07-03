@@ -10,21 +10,21 @@
   </thead>
   <tbody>
     <tr *ngFor="let parentUser of parentUsers">
-      <td>{{parentUser.email}}</td>
+      <td>{{parentUser.email ? parentUser.email: ''}}</td>
       <td>{{parentUser.parents ? parentUser.parents.firstName : ''}} {{parentUser.parents ? parentUser.parents.lastName : ''}}</td>
       <td>{{parentUser.parents ? parentUser.parents.gender : ''}}</td>
-      <td>{{parentUser.emailVerified ? 'Yes' : 'No'}}</td>
+      <td>{{parentUser?.emailVerified ? 'Yes' : 'No'}}</td>
       <td>
-        <button type="button" class="btn">
+        <button type="button" class="btn" *ngIf="parentUser.parents">
           <span class="fa fa-trash" aria-hidden="true"></span>
         </button>
-        <a class="btn btn-info" href="parent-management/{{parentUser.parents.id}}">
+        <a class="btn btn-info" href="parent-management/{{parentUser.parents.id}}"  *ngIf="parentUser.parents">
           <span class="fa fa-info" aria-hidden="true"></span>
         </a>
       </td>
     </tr>
   </tbody>
   <tfoot>
-    <app-pagination [pages]="pages" [currentPage]="currentPage"></app-pagination>
+    <app-pagination [pages]="pages" [currentPage]="currentPage" baseUrl="parent-management"></app-pagination>
   </tfoot>
 </table>

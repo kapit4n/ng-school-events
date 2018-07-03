@@ -6,7 +6,6 @@ import "rxjs/add/operator/map";
 
 @Injectable()
 export class ParentsService {
-
   parentUrl = "parents";
   userUrl = "users";
   sParentUrl = "student-parents";
@@ -29,22 +28,25 @@ export class ParentsService {
 
   public updateParentInfo(parentInfo: any): Observable<any> {
     return this.http
-      .put(`${this.configSvc.backendUrl}/${this.parentUrl}/${parentInfo.id}`, parentInfo)
+      .put(
+        `${this.configSvc.backendUrl}/${this.parentUrl}/${parentInfo.id}`,
+        parentInfo
+      )
       .map(res => res.json());
   }
 
-  public getParents(): Observable<any> {
+  public getParents(limit = 1, skip = 0): Observable<any> {
     return this.http
-      .get(
-        `${this.configSvc.backendUrl}/${this.userUrl}?filter[include]=parents&filter[where][userType]=parent`
-      )
+      .get(`${this.configSvc.backendUrl}/${this.userUrl}?filter[include]=parents&&filter[limit]=${limit}&filter[skip]=${skip}&filter[where][userType]=parent`)
       .map(res => res.json());
   }
 
   public getParentsCount(): Observable<any> {
     return this.http
       .get(
-        `${this.configSvc.backendUrl}/${this.userUrl}/count?where[userType]=parent`
+        `${this.configSvc.backendUrl}/${
+          this.userUrl
+        }/count?where[userType]=parent`
       )
       .map(res => res.json());
   }
@@ -52,14 +54,20 @@ export class ParentsService {
   public getSons(): Observable<any> {
     return this.http
       .get(
-        `${this.configSvc.backendUrl}/${this.sParentUrl}?filter[include]=parent&filter[include]=student`
+        `${this.configSvc.backendUrl}/${
+          this.sParentUrl
+        }?filter[include]=parent&filter[include]=student`
       )
       .map(res => res.json());
   }
 
   public getParentByUserId(id: string): Observable<any> {
     return this.http
-      .get(`${this.configSvc.backendUrl}/${this.parentUrl}?filter[where][userId]=${id}`)
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.parentUrl
+        }?filter[where][userId]=${id}`
+      )
       .map(res => res.json());
   }
 
@@ -69,11 +77,12 @@ export class ParentsService {
       .map(res => res.json());
   }
 
-
   public getStudents(parentId = ""): Observable<any> {
     return this.http
       .get(
-        `${this.configSvc.backendUrl}/${this.sParentUrl}?filter[include]=student&filter[where][parentId]=${parentId}`
+        `${this.configSvc.backendUrl}/${
+          this.sParentUrl
+        }?filter[include]=student&filter[where][parentId]=${parentId}`
       )
       .map(res => res.json());
   }
@@ -81,10 +90,10 @@ export class ParentsService {
   public getStudent(studentId = ""): Observable<any> {
     return this.http
       .get(
-        `${this.configSvc.backendUrl}/${this.sParentUrl}?filter[include]=student&filter[where][id]=${studentId}`
+        `${this.configSvc.backendUrl}/${
+          this.sParentUrl
+        }?filter[include]=student&filter[where][id]=${studentId}`
       )
       .map(res => res.json());
   }
-
-
 }
