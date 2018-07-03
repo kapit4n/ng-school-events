@@ -41,6 +41,14 @@ export class ParentsService {
       .map(res => res.json());
   }
 
+  public getParentsCount(): Observable<any> {
+    return this.http
+      .get(
+        `${this.configSvc.backendUrl}/${this.userUrl}/count?where[userType]=parent`
+      )
+      .map(res => res.json());
+  }
+
   public getSons(): Observable<any> {
     return this.http
       .get(
@@ -55,11 +63,12 @@ export class ParentsService {
       .map(res => res.json());
   }
 
-    public getParent(parentId): Observable<any> {
+  public getParent(parentId): Observable<any> {
     return this.http
       .get(`${this.configSvc.backendUrl}/${this.parentUrl}/${parentId}`)
       .map(res => res.json());
   }
+
 
   public getStudents(parentId = ""): Observable<any> {
     return this.http
