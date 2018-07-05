@@ -34,8 +34,8 @@
   </tr>
   <tr *ngFor="let schoolYear of schoolYearList">
     <td>{{schoolYear.year}}</td>
-    <td>{{schoolYear.startDate}}</td>
-    <td>{{schoolYear.endDate}}</td>
+    <td>{{schoolYear.startDate | date}}</td>
+    <td>{{schoolYear.endDate | date}}</td>
     <td>
       <button type="button" class="btn">
         <span class="fa fa-trash" aria-hidden="true"></span>

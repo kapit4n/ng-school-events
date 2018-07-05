@@ -30,6 +30,10 @@ export class YearListAdminComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.route.snapshot.queryParams["page"]) {
+      this.currentPage = Number(this.route.snapshot.queryParams["page"]);
+    }
+
     this.loadSchoolYears();
   }
 
