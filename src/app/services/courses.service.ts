@@ -24,34 +24,52 @@ export class CoursesService {
 
   public getStudents(courseId = ""): Observable<any> {
     return this.http
-      .get( `${this.configSvc.backendUrl}/${this.cStudentUrl}?filter[include]=student&filter[where][course-yearId]=${courseId}`)
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.cStudentUrl
+        }?filter[include]=student&filter[where][course-yearId]=${courseId}`
+      )
       .map(res => res.json());
   }
 
   public getCourse(courseId): Observable<any> {
-    return this.http.get(`${this.configSvc.backendUrl}/${this.courseUrl}/${courseId}`).map(res => res.json());
+    return this.http
+      .get(`${this.configSvc.backendUrl}/${this.courseUrl}/${courseId}`)
+      .map(res => res.json());
   }
 
-  public getCourses(filter = "", page = 0): Observable<any> {
+  public getCourses(filter = "", limit = 10, skip = 0): Observable<any> {
     if (filter) {
       return this.http
-        .get( `${this.configSvc.backendUrl}/${this.courseUrl}?filter[where][name][regexp]=/${filter}/i` )
+        .get(
+          `${this.configSvc.backendUrl}/${
+            this.courseUrl
+        }?filter[limit]=${limit}&filter[skip]=${skip}&filter[where][name][regexp]=/${filter}/i`
+        )
         .map(res => res.json());
     } else {
       return this.http
-        .get(`${this.configSvc.backendUrl}/${this.courseUrl}`)
+        .get(
+          `${this.configSvc.backendUrl}/${
+            this.courseUrl
+          }?filter[limit]=${limit}&filter[skip]=${skip}&`
+        )
         .map(res => res.json());
     }
   }
 
-  public getCoursesCount(filter = "", page = 0): Observable<any> {
+  public getCoursesCount(filter = ""): Observable<any> {
     if (filter) {
       return this.http
-        .get( `${this.configSvc.backendUrl}/${this.courseUrl}?where[name][regexp]=/${filter}/i` )
+        .get(
+          `${this.configSvc.backendUrl}/${
+            this.courseUrl
+          }/count?where[name][regexp]=/${filter}/i`
+        )
         .map(res => res.json());
     } else {
       return this.http
-        .get(`${this.configSvc.backendUrl}${this.courseUrl}/count`)
+        .get(`${this.configSvc.backendUrl}/${this.courseUrl}/count`)
         .map(res => res.json());
     }
   }
@@ -59,56 +77,75 @@ export class CoursesService {
   public getCoursesByYear(filter = "", page = 0): Observable<any> {
     if (filter) {
       return this.http
-        .get( `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course` )
+        .get(
+          `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course`
+        )
         .map(res => res.json());
     } else {
       return this.http
-        .get(`${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course`) .map(res => res.json());
+        .get(
+          `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course`
+        )
+        .map(res => res.json());
     }
   }
 
   public getCourseTeacherRel(courseId, teacherId): Observable<any> {
     return this.http
-        .get(
-          `${this.configSvc.backendUrl}/${this.cTeacherUrl}?filter[where][course-yearId]=${courseId}&filter[where][teacherId]=${teacherId}`
-        )
-        .map(res => res.json());
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.cTeacherUrl
+        }?filter[where][course-yearId]=${courseId}&filter[where][teacherId]=${teacherId}`
+      )
+      .map(res => res.json());
   }
 
   public getCourseYears(courseId): Observable<any> {
     return this.http
-        .get(
-          `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=school-year&filter[where][courseId]=${courseId}`
-        )
-        .map(res => res.json());
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.cYearUrl
+        }?filter[include]=school-year&filter[where][courseId]=${courseId}`
+      )
+      .map(res => res.json());
   }
 
   public getCourseYearById(courseYearId): Observable<any> {
     return this.http
-        .get(
-          `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=school-year&filter[include]=course&filter[where][id]=${courseYearId}`
-        )
-        .map(res => res.json());
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.cYearUrl
+        }?filter[include]=school-year&filter[include]=course&filter[where][id]=${courseYearId}`
+      )
+      .map(res => res.json());
   }
 
   public getYearCourses(filter = "", page = 0): Observable<any> {
     if (filter) {
       return this.http
-        .get( `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course`)
+        .get(
+          `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course`
+        )
         .map(res => res.json());
     } else {
       return this.http
-        .get( `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course` )
+        .get(
+          `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course`
+        )
         .map(res => res.json());
     }
   }
 
   public removeStudentFromCourse(relId): Observable<any> {
-    return this.http.delete(`${this.configSvc.backendUrl}/${this.cStudentUrl}/${relId}`).map(res => res.json());
+    return this.http
+      .delete(`${this.configSvc.backendUrl}/${this.cStudentUrl}/${relId}`)
+      .map(res => res.json());
   }
 
   public removeTeacherFromCourse(relId): Observable<any> {
-    return this.http.delete(`${this.configSvc.backendUrl}/${this.cTeacherUrl}/${relId}`).map(res => res.json());
+    return this.http
+      .delete(`${this.configSvc.backendUrl}/${this.cTeacherUrl}/${relId}`)
+      .map(res => res.json());
   }
 
   public addStudentToCourse(courseStudent): Observable<any> {

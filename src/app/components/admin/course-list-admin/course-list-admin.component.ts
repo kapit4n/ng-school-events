@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { CoursesService } from "../../../services/courses.service";
+import { ConfigurationService } from "../../../services/configuration.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-course-list-admin",
@@ -12,21 +14,47 @@ export class CourseListAdminComponent implements OnInit {
   newCourse = {};
   courseList = [];
   searchText = "";
-  currentPage = 0;
+
+  // pagination attributes
+  pages = 0;
+  currentPage = 1;
+  rangePages = [];
+
   constructor(
+    private route: ActivatedRoute,
     private modalService: NgbModal,
-    private coursesSvc: CoursesService
-  ) {
-  }
+    private coursesSvc: CoursesService,
+    private confSvc: ConfigurationService
+  ) {}
 
   ngOnInit() {
+    if (this.route.snapshot.queryParams["page"]) {
+      this.currentPage = Number(this.route.snapshot.queryParams["page"]);
+    }
+
     this.loadCourses();
   }
 
   loadCourses() {
     this.coursesSvc
-      .getCourses(this.searchText, this.currentPage)
+      .getCourses(
+        this.searchText,
+        this.confSvc.pageSize,
+        (this.currentPage - 1) * this.confSvc.pageSize
+      )
       .subscribe(courses => (this.courseList = courses));
+
+
+    this.coursesSvc
+      .getCoursesCount(this.searchText)
+      .subscribe(countInfo => {
+        this.pages = countInfo.count / this.confSvc.pageSize;
+        const range = (from, to, step) =>
+          Array(Math.floor((to - from) / step) + 1)
+            .fill(0)
+            .map((v, i) => from + i * step);
+        this.rangePages = range(1, this.pages, 1);
+      });
   }
 
   saveCourse() {
@@ -46,7 +74,7 @@ export class CourseListAdminComponent implements OnInit {
       }
     );
   }
-  
+
   search() {
     this.loadCourses();
   }
