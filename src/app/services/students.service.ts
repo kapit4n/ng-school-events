@@ -6,7 +6,6 @@ import "rxjs/add/operator/map";
 
 @Injectable()
 export class StudentsService {
-  
   studentUrl = "students";
   cStudentUrl = "course-students";
   cYearUrl = "course-years";
@@ -23,31 +22,37 @@ export class StudentsService {
       .map(res => res.json());
   }
 
-  public getStudents(filter = "", page = 0): Observable<any> {
+  public getStudents(filter = "", limit = 10, skip = 0): Observable<any> {
     if (filter) {
       return this.http
         .get(
-          `${this.configSvc.backendUrl}/${this.studentUrl}?filter[where][firstName][regexp]=/${filter}/i`
+          `${this.configSvc.backendUrl}/${
+            this.studentUrl
+          }?filter[limit]=${limit}&filter[skip]=${skip}&filter[where][firstName][regexp]=/${filter}/i`
         )
         .map(res => res.json());
     } else {
       return this.http
-        .get(`${this.configSvc.backendUrl}/${this.studentUrl}`)
+        .get(
+          `${this.configSvc.backendUrl}/${ this.studentUrl }/?filter[limit]=${limit}&filter[skip]=${skip}`
+        )
         .map(res => res.json());
     }
   }
 
   // http://localhost:3000/api/students/count?where[firstName][regexp]=/H/i
-  public getStudentsCount(filter = "", page = 0): Observable<any> {
+  public getStudentsCount(filter = ""): Observable<any> {
     if (filter) {
       return this.http
         .get(
-          `${this.configSvc.backendUrl}/${this.studentUrl}/count?where[firstName][regexp]=/${filter}/i`
+          `${this.configSvc.backendUrl}/${
+            this.studentUrl
+          }/count?where[firstName][regexp]=/${filter}/i`
         )
         .map(res => res.json());
     } else {
       return this.http
-        .get(`${this.configSvc.backendUrl}/${this.studentUrl}/count"`)
+        .get(`${this.configSvc.backendUrl}/${this.studentUrl}/count`)
         .map(res => res.json());
     }
   }
@@ -61,14 +66,15 @@ export class StudentsService {
   public getCourses(studentId = ""): Observable<any> {
     return this.http
       .get(
-      `${this.configSvc.backendUrl}/${this.cStudentUrl}?filter[include]=course-year&filter[include]=student&filter[where][studentId]=${studentId}`
+        `${this.configSvc.backendUrl}/${
+          this.cStudentUrl
+        }?filter[include]=course-year&filter[include]=student&filter[where][studentId]=${studentId}`
       )
       .map(res => res.json());
   }
 
   public getCourseYears(courseSudents): Observable<any> {
-
-    var where = "filter[where][id]eq]=" + courseSudents[0]['course-year'].id;
+    var where = "filter[where][id]eq]=" + courseSudents[0]["course-year"].id;
     if (courseSudents.length > 1)
       where = courseSudents
         .map(
@@ -78,16 +84,19 @@ export class StudentsService {
         .join("&");
     return this.http
       .get(
-        `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course&${where}`
+        `${this.configSvc.backendUrl}/${
+          this.cYearUrl
+        }?filter[include]=course&${where}`
       )
       .map(res => res.json());
   }
 
-
   public getParents(studentId = ""): Observable<any> {
     return this.http
       .get(
-        `${this.configSvc.backendUrl}/${this.sParentUrl}?filter[include]=parent&filter[include]=student&filter[where][studentId]=${studentId}`
+        `${this.configSvc.backendUrl}/${
+          this.sParentUrl
+        }?filter[include]=parent&filter[include]=student&filter[where][studentId]=${studentId}`
       )
       .map(res => res.json());
   }

@@ -37,13 +37,7 @@ export class TeachersService {
   public getTeachers(limit = 10, skip = 0): Observable<any> {
     return this.http
       .get(
-        this.configSvc.backendUrl +
-          "/users?filter[include]=teachers&filter[limit]=" +
-          limit +
-          "&filter[skip]=" +
-          skip +
-          "&filter[where][userType]=teacher"
-      )
+        `${this.configSvc.backendUrl}/users?filter[include]=teachers&filter[limit]=${limit}&filter[skip]=${skip}&filter[where][userType]=teacher`)
       .map(res => res.json());
   }
 
