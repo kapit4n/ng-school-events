@@ -22,25 +22,11 @@ export class SonHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.parentsSvc.getSons().subscribe(
-      sons =>
-        (this.sons = sons.map(son => {
-          return {
-            id: son.id,
-            routeLink: "./../../../parent/son/" + son.id,
-            student: son.student
-          };
-        }))
-    );
 
     this.studentParentRelId = this.route.snapshot.paramMap.get("id");
     this.parentsSvc.getStudent(this.studentParentRelId).subscribe( students => {
       this.studentParentRel = students[0];
       
-      this.studentsSvc.getCourses(this.studentParentRel.student.id).subscribe(studentCourseRels => {
-
-      });
-
       this.studentsSvc
         .getCourses(this.studentParentRel.student.id)
         .subscribe(courseStudents => {
