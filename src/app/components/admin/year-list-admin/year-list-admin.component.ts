@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { SchoolYearsService } from "../../../services/school-years.service";
+import { ConfigurationService } from "../../../services/configuration.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-year-list-admin",
@@ -12,9 +14,16 @@ export class YearListAdminComponent implements OnInit {
   newSchoolYear: any;
   schoolYearList: any;
   searchText = "";
+  // pagination attributes
+  pages = 0;
+  currentPage = 1;
+  rangePages = [];
+
   constructor(
+    private route: ActivatedRoute,
     private modalService: NgbModal,
-    private schoolYearsSvc: SchoolYearsService
+    private schoolYearsSvc: SchoolYearsService,
+    private confSvc: ConfigurationService
   ) {
     this.newSchoolYear = {};
     this.schoolYearList = [];
@@ -26,8 +35,23 @@ export class YearListAdminComponent implements OnInit {
 
   loadSchoolYears() {
     this.schoolYearsSvc
-      .getSchoolYears(this.searchText)
+      .getSchoolYears(
+        this.searchText,
+        this.confSvc.pageSize,
+        (this.currentPage - 1) * this.confSvc.pageSize
+      )
       .subscribe(courses => (this.schoolYearList = courses));
+
+    this.schoolYearsSvc
+      .getSchoolYearsCount(this.searchText)
+      .subscribe(countInfo => {
+        this.pages = countInfo.count / this.confSvc.pageSize;
+        const range = (from, to, step) =>
+          Array(Math.floor((to - from) / step) + 1)
+            .fill(0)
+            .map((v, i) => from + i * step);
+        this.rangePages = range(1, this.pages, 1);
+      });
   }
 
   saveSchoolYear() {

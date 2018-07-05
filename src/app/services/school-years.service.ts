@@ -25,17 +25,35 @@ export class SchoolYearsService {
       .map(res => res.json());
   }
 
-  public getSchoolYears(filter = ""): Observable<any> {
+  public getSchoolYears(filter = "", limit = 10, skip = 0): Observable<any> {
     if (filter) {
       return this.http
-        .get(this.configSvc.backendUrl + "/school-years?filter[where][year][regexp]=/" +
-            filter + "/i")
+        .get(
+          `${this.configSvc.backendUrl}/school-years?filter[limit]=${limit}&filter[skip]=${skip}&filter[where][year][regexp]=/${filter}/i`
+        )
         .map(res => res.json());
     } else {
       return this.http
-        .get(this.configSvc.backendUrl + "/school-years")
+        .get(
+          `${
+            this.configSvc.backendUrl
+          }/school-years?filter[limit]=${limit}&filter[skip]=${skip}`
+        )
         .map(res => res.json());
+    }
+  }
 
+  public getSchoolYearsCount(filter = ""): Observable<any> {
+    if (filter) {
+      return this.http
+        .get(
+          `${this.configSvc.backendUrl}/school-years/count?where[year][regexp]=/${filter}/i`
+        )
+        .map(res => res.json());
+    } else {
+      return this.http
+        .get(`${this.configSvc.backendUrl}/school-years/count`)
+        .map(res => res.json());
     }
   }
 
@@ -49,14 +67,25 @@ export class SchoolYearsService {
   }
 
   public getSchoolYearBack(yearId): Observable<any> {
-    return this.http .get(this.configSvc.backendUrl + "/school-years/" + yearId + "?filter[include]=courses").map(res => res.json());
+    return this.http
+      .get(
+        this.configSvc.backendUrl +
+          "/school-years/" +
+          yearId +
+          "?filter[include]=courses"
+      )
+      .map(res => res.json());
   }
 
   public getSchoolYear(yearId): Observable<any> {
-    return this.http .get(this.configSvc.backendUrl + "/school-years/" + yearId + "").map(res => res.json());
+    return this.http
+      .get(this.configSvc.backendUrl + "/school-years/" + yearId + "")
+      .map(res => res.json());
   }
 
   public removeCourseFromYear(courseId): Observable<any> {
-    return this.http.delete(this.configSvc.backendUrl + "/course-years/" + courseId).map(res => res.json());
+    return this.http
+      .delete(this.configSvc.backendUrl + "/course-years/" + courseId)
+      .map(res => res.json());
   }
 }

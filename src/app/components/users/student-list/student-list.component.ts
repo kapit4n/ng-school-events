@@ -39,6 +39,7 @@ export class StudentListComponent implements OnInit {
       .subscribe(students => {
         this.students = students;
       });
+      
     this.studentsSvc
       .getStudentsCount(this.searchText)
       .subscribe(countInfo => {
