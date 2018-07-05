@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserInfoEditExtComponent implements OnInit {
 
-  @Input() teacher: any;
+  @Input() userInfo: any;
   constructor() {
-    this.teacher = {};
+    this.userInfo = {};
   }
 
   ngOnInit() {

@@ -1,25 +1,13 @@
-<div class="form-group">
-  <label for="firstName" i18n>First Name</label>
-  <input type="text" readonly class="form-control" id="firstName" name="firstName" i18n-placeholder placeholder="First Name" required [(ngModel)]="userInfo.firstName"
-    #firstName="ngModel" minlength="5">
-</div>
-<div class="form-group">
-  <label for="lastName"i18n>Last Name</label>
-  <input type="text" readonly class="form-control" id="lastName" i18n-placeholder placeholder="Last Name" value="Data" required [(ngModel)]="userInfo.lastName"
-    [ngModelOptions]="{standalone: true}">
-</div>
-<div class="form-group">
-  <label for="gender" i18n>Gender</label>
-  <div class="form-check">
-    <input class="form-check-input" readonly type="radio" name="gender" id="male" value="male" checked [(ngModel)]="userInfo.gender">
-    <label class="form-check-label" for="male" i18n>
-      Male
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" readonly type="radio" name="gender" id="female" value="female" [(ngModel)]="userInfo.gender">
-    <label class="form-check-label" for="female" i18n>
-      Female
-    </label>
-  </div>
-</div>
+
+<dl>
+  <dt i18n>First Name</dt>
+  <dd>{{userInfo.firstName}}</dd>
+  <dt i18n>Last Name</dt>
+  <dd>{{userInfo.lastName}}</dd>
+  <dt i18n>Gender</dt>
+  <dd>{{userInfo.gender}}</dd>
+  <dt i18n>Details</dt>
+  <dd>{{userInfo.details}}</dd>
+  <dt i18n>Address</dt>
+  <dd>{{userInfo.address}}</dd>
+</dl>
