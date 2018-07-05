@@ -4,6 +4,9 @@ import { UsersService } from "./users.service";
 @Injectable()
 export class RolesService {
   userInfo: any;
+
+  homeUrl = "/home"; 
+
   constructor(private usersSvc: UsersService) {
     this.usersSvc.getCurrentUser().subscribe(res => this.userInfo = res );
   }
@@ -24,7 +27,9 @@ export class RolesService {
 
   reloadUser() {
     this.userInfo = {};
-    this.usersSvc.getCurrentUser().subscribe(res => this.userInfo = res);
+    this.usersSvc.getCurrentUser().subscribe(res => {
+      this.userInfo = res;
+    });
   }
   
   isAdmin() {
