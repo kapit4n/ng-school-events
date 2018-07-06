@@ -32,16 +32,24 @@ export class YearHomeComponent implements OnInit {
       this.schoolYear = schoolYear;
     });
 
-    this.coursesSvc.getCourses().subscribe(courses => {
-      this.availableCourses = courses;
-    });
+    
     this.loadCourses();
   }
 
   loadCourses() {
     this.schoolYearsSvc
       .getCourses()
-      .subscribe(assigned => (this.assignedCourses = assigned));
+      .subscribe(assigned => {
+        this.assignedCourses = assigned;
+        this.availableCourses = [];
+        this.coursesSvc.getCourses().subscribe(courses => {
+          courses.forEach(course => {
+            if (!assigned.some(c => c.course.name == course.name)){
+              this.availableCourses.push(course);
+            }
+          })
+        });
+      });
   }
 
   addCourse(course) {
