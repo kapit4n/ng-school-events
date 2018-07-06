@@ -20,27 +20,19 @@
   </div>
 </ng-template>
 <button i18n class="btn btn-outline-primary" (click)="open(content)">Add</button>
-<div class="form-group">
-  <label for="search" i18n>Search by Title</label>
-  <input type="text" (keyup.enter)="search()" class="form-control" id="search" i18n-placeholder placeholder="Search" value="Data"
-    required [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
-</div>
-<table class="table">
-  <tr class="thead-dark">
-    <th scope="col" i18n>Title</th>
-    <th scope="col" i18n>Details</th>
-    <th scope="col"></th>
-  </tr>
-  <tr *ngFor="let ann of annList">
-    <td>{{ann.title}}</td>
-    <td>{{ann.details}}</td>
-    <td>
-      <button type="button" class="btn" (click)="deleteAnn(ann.id)">
-        <span class="fa fa-trash" aria-hidden="true"></span>
-      </button>
-      <a class="btn btn-info" href="ann-list-admin/{{ann.id}}">
-        <span class="fa fa-info" aria-hidden="true"></span>
-      </a>
-    </td>
-  </tr>
-</table>
+
+  <button
+    class="btn btn-primary pull-right"
+    (click)="addAnnouncement()">
+    Add new Announcement
+  </button>
+  <div class="clearfix"></div>
+<hr>
+<mwl-calendar-month-view
+  [viewDate]="viewDate"
+  [events]="events"
+  [refresh]="refresh"
+  [activeDayIsOpen]="activeDayIsOpen"
+  (dayClicked)="dayClicked($event.day)">
+</mwl-calendar-month-view>
+

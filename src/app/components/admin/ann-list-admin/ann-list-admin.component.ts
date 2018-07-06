@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+// calendar imports
+import { CalendarEvent } from 'angular-calendar';
+import { isSameDay, isSameMonth } from 'date-fns';
+import { colors } from '../../../utilities/event-colors';
+import {Subject} from 'rxjs';
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { AnnsService } from "../../../services/anns.service";
 
@@ -13,6 +18,20 @@ export class AnnListAdminComponent implements OnInit {
   searchText = "";
   annList: any;
   currentPage = 0;
+
+  // calendar properties
+  refresh: Subject<any> = new Subject();
+  activeDayIsOpen: boolean;
+  viewDate: Date = new Date();
+  events: CalendarEvent[] = [
+    {
+      start: new Date(),
+      title: 'An event',
+      color: colors.red
+    }
+  ];
+
+
 
   constructor(private modalService: NgbModal, private annsSvc: AnnsService) {
     this.newAnn = {};
@@ -67,5 +86,30 @@ export class AnnListAdminComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+
+  //calendar methods
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+        this.viewDate = date;
+      }
+    }
+  }
+
+  addAnnouncement(): void  {
+    this.events.push({
+      start: new Date(),
+      title: 'An event',
+      color: colors.red
+    });
+    this.refresh.next();
   }
 }
