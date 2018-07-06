@@ -36,7 +36,7 @@ export class TeacherListComponent implements OnInit {
       });
 
     this.teachersSvc.getTeachersCount().subscribe(countInfo => {
-      this.pages = countInfo.count / this.confSvc.pageSize;
+      this.pages = Math.round(countInfo.count / this.confSvc.pageSize);
       const range = (from, to, step) =>
         Array(Math.floor((to - from) / step) + 1)
           .fill(0)
