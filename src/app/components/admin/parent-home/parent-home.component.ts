@@ -32,10 +32,6 @@ export class ParentHomeComponent implements OnInit {
       this.parent = parent;
     });
 
-    this.studentsSvc.getStudents().subscribe(students => {
-      this.availableStudents = students;
-    });
-
     this.loadStudents();
   }
 
@@ -43,6 +39,14 @@ export class ParentHomeComponent implements OnInit {
     this.assignedStudents = [];
     this.parentsSvc.getStudents(this.parentId).subscribe(students => {
       this.assignedStudents = students;
+      this.availableStudents = [];
+      this.studentsSvc.getStudents().subscribe(aStudents => {
+        aStudents.forEach(student => {
+          if (!this.assignedStudents.some(s => s.student.firstName == student.firstName)) {
+            this.availableStudents.push(student);
+          }
+        });
+      });
     });
   }
 
