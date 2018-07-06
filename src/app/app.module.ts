@@ -85,6 +85,8 @@ import { SonsContainerComponent } from './components/parent/sons-container/sons-
 import { SonListComponent } from './components/parent/son-list/son-list.component';
 import { SonHomeComponent } from "./components/parent/son-home/son-home.component";
 import { PaginationComponent } from './components/common/pagination/pagination.component';
+import {CalendarModule} from 'angular-calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   // Common pages
@@ -380,7 +382,9 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
-    BreadcrumbsModule
+    BreadcrumbsModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot()
   ],
   providers: [
     ConfigurationService,
