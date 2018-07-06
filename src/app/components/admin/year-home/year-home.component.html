@@ -1,11 +1,15 @@
 <dl>
   <dt i18n>School Year</dt>
-  <dd>{{schoolYear.name}}</dd>
+  <dd>{{schoolYear.year}}</dd>
+  <dt i18n>Is Current Year</dt>
+  <dd>{{schoolYear.isCurrent}}</dd>
   <dt i18n>Start Date</dt>
   <dd>{{schoolYear.startDate | date:'fullDate'}}</dd>
   <dt i18n>End Date</dt>
   <dd>{{schoolYear.endDate | date:'fullDate'}}</dd>
 </dl>
+
+<button i18n class="btn btn-primary" (click)="setAsCurrent()" *ngIf="!schoolYear.isCurrent">Set As Current Year</button>
 
 <button i18n class="btn btn-primary" data-toggle="modal" data-target="#coursesModal">Assign Courses</button>
 

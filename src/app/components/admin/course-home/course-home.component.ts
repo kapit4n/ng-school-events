@@ -19,14 +19,18 @@ export class CourseHomeComponent implements OnInit {
 
   @Input() courseInfo: any;
 
-  constructor(private coursesSvc: CoursesService, private studentsSvc: StudentsService, private modalService: NgbModal,
-    private route: ActivatedRoute) {
-      this.courseYear = {};
-    }
+  constructor(
+    private coursesSvc: CoursesService,
+    private studentsSvc: StudentsService,
+    private modalService: NgbModal,
+    private route: ActivatedRoute
+  ) {
+    this.courseYear = {};
+  }
 
-    ngOnInit() {
+  ngOnInit() {
     this.courseYearId = this.route.snapshot.paramMap.get("courseYearId");
-    
+
     this.coursesSvc.getCourseYearById(this.courseYearId).subscribe(course => {
       this.courseYear = course[0];
     });
@@ -34,12 +38,15 @@ export class CourseHomeComponent implements OnInit {
     this.studentsSvc.getStudents().subscribe(students => {
       this.availableStudents = students;
     });
-    
+
     this.loadStudents();
   }
 
   addStudent(student) {
-    let studentCourse = { studentId: student.id, "course-yearId": this.courseYearId };
+    let studentCourse = {
+      studentId: student.id,
+      "course-yearId": this.courseYearId
+    };
     this.coursesSvc
       .addStudentToCourse(studentCourse)
       .subscribe(updatedCourse => {
@@ -80,4 +87,5 @@ export class CourseHomeComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
 }

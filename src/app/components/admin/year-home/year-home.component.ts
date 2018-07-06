@@ -32,30 +32,43 @@ export class YearHomeComponent implements OnInit {
       this.schoolYear = schoolYear;
     });
 
-    
     this.loadCourses();
   }
 
   loadCourses() {
-    this.schoolYearsSvc
-      .getCourses()
-      .subscribe(assigned => {
-        this.assignedCourses = assigned;
-        this.availableCourses = [];
-        this.coursesSvc.getCourses().subscribe(courses => {
-          courses.forEach(course => {
-            if (!assigned.some(c => c.course.name == course.name)){
-              this.availableCourses.push(course);
-            }
-          })
+    this.schoolYearsSvc.getCourses(this.yearId).subscribe(assigned => {
+      this.assignedCourses = assigned;
+      this.availableCourses = [];
+      this.coursesSvc.getCourses().subscribe(courses => {
+        courses.forEach(course => {
+          if (!assigned.some(c => c.course.name == course.name)) {
+            this.availableCourses.push(course);
+          }
         });
       });
+    });
   }
 
   addCourse(course) {
     let courseYear = { courseId: course.id, schoolYearId: this.yearId };
     this.schoolYearsSvc.addCourseToYear(courseYear).subscribe(updatedCourse => {
       this.loadCourses();
+    });
+  }
+
+  setAsCurrent() {
+    this.schoolYear.isCurrent = true;
+    this.schoolYearsSvc.updateSchoolYear(this.schoolYear).subscribe( updated => {
+      this.schoolYearsSvc.getSchoolYears().subscribe(schoolYears => {
+        schoolYears.forEach(schoolYearToUpdate => {
+          if (schoolYearToUpdate.id != updated.id) {
+            schoolYearToUpdate.isCurrent = false;
+            this.schoolYearsSvc
+              .updateSchoolYear(schoolYearToUpdate)
+              .subscribe(updatedFalse => {});
+          }
+        });
+      });
     });
   }
 
@@ -67,9 +80,7 @@ export class YearHomeComponent implements OnInit {
     });
   }
 
-  addAllCourses() {
-
-  }
+  addAllCourses() {}
 
   open(content) {
     this.modalService.open(content).result.then(

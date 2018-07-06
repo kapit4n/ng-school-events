@@ -18,6 +18,12 @@ export class SchoolYearsService {
       .post(this.configSvc.backendUrl + "/school-years", schoolYear)
       .map(res => res.json());
   }
+  
+  public updateSchoolYear(schoolYear: any): Observable<any> {
+    return this.http
+      .put(`${this.configSvc.backendUrl}/school-years/${schoolYear.id}`, schoolYear)
+      .map(res => res.json());
+  }
 
   public addCourseToYear(courseYear): Observable<any> {
     return this.http
@@ -25,7 +31,7 @@ export class SchoolYearsService {
       .map(res => res.json());
   }
 
-  public getSchoolYears(filter = "", limit = 10, skip = 0): Observable<any> {
+  public getSchoolYears(filter = "", limit = 100, skip = 0): Observable<any> {
     if (filter) {
       return this.http
         .get(
@@ -59,9 +65,7 @@ export class SchoolYearsService {
 
   public getCourses(yearId = ""): Observable<any> {
     return this.http
-      .get(
-        this.configSvc.backendUrl +
-          "/course-years?filter[include]=school-year&filter[include]=course"
+      .get(`${this.configSvc.backendUrl}/course-years?filter[include]=school-year&filter[include]=course&filter[where][schoolYearId]=${yearId}`
       )
       .map(res => res.json());
   }
