@@ -34,14 +34,6 @@ export class StudentHomeComponent implements OnInit {
       this.student = student;
     });
 
-    this.coursesSvc.getCoursesByYear().subscribe( courses => {
-      this.availableCourses = courses;
-    });
-
-    this.parentsSvc.getParents().subscribe( parents => {
-      this.availableParents = parents;
-    });
-
     this.loadCourses();
     this.loadParents();
   }
@@ -50,14 +42,34 @@ export class StudentHomeComponent implements OnInit {
     this.studentsSvc
       .getCourses(this.studentId)
       .subscribe(courseStudents => {
-        this.studentsSvc.getCourseYears(courseStudents).subscribe(courseYears => this.assignedCourses = courseYears);
+        this.studentsSvc.getCourseYears(courseStudents).subscribe(courseYears => {
+          this.assignedCourses = courseYears;
+          this.coursesSvc.getCoursesByYear().subscribe(courses => {
+            this.availableCourses = [];
+            courses.forEach(course => {
+              if (!this.assignedCourses.some(c => c.id == course.id)) {
+                this.availableCourses.push(course);
+              }
+            })
+          });
+        });
       });
   }
 
   loadParents() {
     this.studentsSvc
       .getParents(this.studentId)
-      .subscribe(assigned => (this.aParents = assigned));
+      .subscribe(assigned => {
+        this.aParents = assigned;
+        this.parentsSvc.getParents().subscribe(parents => {
+          this.availableParents = [];
+          parents.forEach(parent => {
+            if (!this.aParents.some(p => p.parent.id == parent.parents.id && parent.emailVerified)) {
+              this.availableParents.push(parent);
+            }
+          })
+        });
+      });
   }
 
   addCourse(course) {
@@ -77,7 +89,6 @@ export class StudentHomeComponent implements OnInit {
   }
 
   addParent(userParent) {
-    console.log(userParent);
     let parentStudent = { parentId: userParent.parents.id, studentId: this.studentId };
     this.studentsSvc
       .saveParentStudentRel(parentStudent)
