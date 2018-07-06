@@ -22,6 +22,7 @@ export class AnnListAdminComponent implements OnInit {
   // calendar properties
   refresh: Subject<any> = new Subject();
   activeDayIsOpen: boolean;
+  view: string = 'month';
   viewDate: Date = new Date();
   events: CalendarEvent[] = [
     {

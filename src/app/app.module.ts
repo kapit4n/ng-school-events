@@ -87,6 +87,8 @@ import { SonHomeComponent } from "./components/parent/son-home/son-home.componen
 import { PaginationComponent } from './components/common/pagination/pagination.component';
 import {CalendarModule} from 'angular-calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CalendarHeaderComponent } from './components/common/calendar-header/calendar-header.component';
+import { CalendarViewComponent } from './components/common/calendar-view/calendar-view.component';
 
 const appRoutes: Routes = [
   // Common pages
@@ -370,7 +372,9 @@ const appRoutes: Routes = [
     TeacherCoursesContainerComponent,
     SonsContainerComponent,
     SonListComponent,
-    PaginationComponent
+    PaginationComponent,
+    CalendarHeaderComponent,
+    CalendarViewComponent
   ],
   imports: [
     BrowserModule,

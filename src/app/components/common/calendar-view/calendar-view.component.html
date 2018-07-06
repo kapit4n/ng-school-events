@@ -1,0 +1,21 @@
+<h3>
+  Announcements
+  <button
+    class="btn btn-primary center-block"
+    (click)="addAnnouncement()">
+    Add new General Announcement
+  </button>
+  <div class="clearfix"></div>
+</h3>
+<hr>
+<app-calendar-header
+  [(view)]="view"
+  [(viewDate)]="viewDate">
+</app-calendar-header>
+<mwl-calendar-month-view
+  [viewDate]="viewDate"
+  [events]="events"
+  [refresh]="refresh"
+  [activeDayIsOpen]="activeDayIsOpen"
+  (dayClicked)="dayClicked($event.day)">
+</mwl-calendar-month-view>
