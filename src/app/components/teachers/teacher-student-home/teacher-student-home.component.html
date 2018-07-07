@@ -11,21 +11,23 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col" i18n>Registered Date</th>
-      <th scope="col" i18n>Title</th>
       <th scope="col" i18n>Subject</th>
       <th scope="col" i18n>Is Delayed</th>
       <th scope="col" i18n>Is Absent</th>
+      <th scope="col" i18n>Title</th>
+      <th scope="col" i18n>historyDetails</th>
       <th scope="col" i18n>Observation</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let follow of followUps">
-      <td>{{follow.registereddDate}}</td>
-      <td>{{follow.title}}</td>
+      <td>{{follow.registereddDate | date}}</td>
       <td>{{follow.subject}}</td>
       <td>{{follow.isDelayed}}</td>
       <td>{{follow.isAbsent}}</td>
+      <td>{{follow.title}}</td>
+      <td>{{follow.historyDetails}}</td>
       <td>{{follow.observation}}</td>
       <td></td>
     </tr>

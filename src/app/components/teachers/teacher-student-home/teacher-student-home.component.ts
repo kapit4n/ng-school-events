@@ -11,21 +11,23 @@ export class TeacherStudentHomeComponent implements OnInit {
   followUps = [
     {
       id: 1,
-      registereddDate: "1-1-1",
-      title: "Title",
+      registereddDate: new Date(),
       subject: "Subject",
       isDelayed: true,
       isAbsent: false,
-      observation: "Subject "
+      title: "Title",
+      historyDetails: "historyDetails",
+      observation: "Observation "
     },
     {
       id: 2,
-      registereddDate: "2-2-2",
-      title: "Title 1",
+      registereddDate: new Date(),
       subject: "Subject 1",
       isDelayed: true,
       isAbsent: false,
-      observation: "Subject 1"
+      title: "Title 1",
+      historyDetails: "historyDetails",
+      observation: "Observation 1"
     }
   ];
 
