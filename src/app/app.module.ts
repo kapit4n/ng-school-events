@@ -89,6 +89,7 @@ import {CalendarModule} from 'angular-calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CalendarHeaderComponent } from './components/common/calendar-header/calendar-header.component';
 import { CalendarViewComponent } from './components/common/calendar-view/calendar-view.component';
+import { TeacherStudentHomeComponent } from './components/teachers/teacher-student-home/teacher-student-home.component';
 
 const appRoutes: Routes = [
   // Common pages
@@ -284,6 +285,11 @@ const appRoutes: Routes = [
         path: ":courseId",
         component: TeacherCourseHomeComponent,
         data: { breadcrumb: "Show" }
+      },
+      {
+        path: ":courseId/teacher-student-home/:studentId",
+        component: TeacherStudentHomeComponent,
+        data: { breadcrumb: "StudentShow" }
       }
     ]
   },
@@ -374,7 +380,8 @@ const appRoutes: Routes = [
     SonListComponent,
     PaginationComponent,
     CalendarHeaderComponent,
-    CalendarViewComponent
+    CalendarViewComponent,
+    TeacherStudentHomeComponent
   ],
   imports: [
     BrowserModule,
