@@ -42,6 +42,9 @@ export class TeacherHomeComponent implements OnInit {
   loadCourses() {
     this.assignedCourses = [];
     this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
+      console.log(teacher);
+      console.log(teacher);
+      console.log(teacher);
       if (teacher.length > 0) {
         this.teachersSvc
             .getCourseYear(teacher)

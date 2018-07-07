@@ -42,19 +42,31 @@ export class StudentHomeComponent implements OnInit {
     this.studentsSvc
       .getCourses(this.studentId)
       .subscribe(courseStudents => {
-        this.studentsSvc.getCourseYears(courseStudents).subscribe(courseYears => {
-          this.assignedCourses = courseYears;
+        console.log("courseStudents");
+        console.log(courseStudents);
+        if (courseStudents.length > 0){
+          this.studentsSvc
+          .getCourseYears(courseStudents)
+          .subscribe(courseYears => {
+              this.assignedCourses = courseYears;
+              this.coursesSvc.getCoursesByYear().subscribe(courses => {
+                this.availableCourses = [];
+                courses.forEach(course => {
+                  if (
+                    !this.assignedCourses.some(c => c.id == course.id)
+                  ) {
+                    this.availableCourses.push(course);
+                  }
+                });
+              });
+            });
+          } else {
           this.coursesSvc.getCoursesByYear().subscribe(courses => {
-            this.availableCourses = [];
-            courses.forEach(course => {
-              if (!this.assignedCourses.some(c => c.id == course.id)) {
-                this.availableCourses.push(course);
-              }
-            })
+            this.availableCourses = courses;
           });
-        });
-      });
-  }
+          }
+          });
+        }
 
   loadParents() {
     this.studentsSvc
