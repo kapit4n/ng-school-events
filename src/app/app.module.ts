@@ -90,6 +90,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CalendarHeaderComponent } from './components/common/calendar-header/calendar-header.component';
 import { CalendarViewComponent } from './components/common/calendar-view/calendar-view.component';
 import { TeacherStudentHomeComponent } from './components/teachers/teacher-student-home/teacher-student-home.component';
+import { CalendarModalComponent } from './components/common/calendar-modal/calendar-modal.component';
 
 const appRoutes: Routes = [
   // Common pages
@@ -381,7 +382,8 @@ const appRoutes: Routes = [
     PaginationComponent,
     CalendarHeaderComponent,
     CalendarViewComponent,
-    TeacherStudentHomeComponent
+    TeacherStudentHomeComponent,
+    CalendarModalComponent
   ],
   imports: [
     BrowserModule,

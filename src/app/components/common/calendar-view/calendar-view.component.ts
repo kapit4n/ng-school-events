@@ -3,6 +3,8 @@ import { CalendarEvent} from 'angular-calendar';
 import { isSameDay, isSameMonth } from 'date-fns';
 import { colors } from '../../../utilities/event-colors';
 import {Subject} from 'rxjs';
+import {CalendarManagementService} from '../calendar-management.service';
+import {Announcement} from '../announcements.model';
 
 @Component({
   selector: 'app-calendar-view',
@@ -15,16 +17,25 @@ export class CalendarViewComponent implements OnInit {
   activeDayIsOpen: boolean;
   view: string = 'month';
   viewDate: Date = new Date();
-  events: CalendarEvent[] = [
-    {
-      start: new Date(),
-      title: 'An event',
-      color: colors.red
-    }
-  ];
+  events: CalendarEvent[] = [];
+  announcements: Announcement[];
 
-  constructor() { }
+  constructor(private cmService: CalendarManagementService ) { }
   ngOnInit() {
+    this.announcements = this.cmService.getAnnouncements();
+    this.cmService.announcementsChanged
+      .subscribe(
+        (annoucements: Announcement[]) => {
+          this.announcements = annoucements;
+          this.events.push({
+            start: annoucements[annoucements.length - 1].startDate,
+            end: annoucements[annoucements.length - 1].endDate,
+            title: annoucements[annoucements.length - 1].title,
+            color: colors.red
+          });
+          this.refresh.next();
+        }
+      );
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
