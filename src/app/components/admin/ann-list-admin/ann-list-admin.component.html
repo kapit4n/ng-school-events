@@ -1,44 +1,7 @@
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 i18n class="modal-title">Add Announcement</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <app-ann-add-admin [annInfo]="newAnn"></app-ann-add-admin>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-primary" (click)="saveAnn(); c('Close click');">Save</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-  </div>
-</ng-template>
-<button i18n class="btn btn-outline-primary" (click)="open(content)">Add</button>
 
-  <button
-    class="btn btn-primary pull-right"
-    (click)="addAnnouncement()">
-    Add new General Announcement
-  </button>
-  <div class="clearfix"></div>
+<app-calendar-modal (passData)="getData( $event )"></app-calendar-modal>
 <hr>
-<app-calendar-header
-  [(view)]="view"
-  [(viewDate)]="viewDate">
-</app-calendar-header>
-<mwl-calendar-month-view
-  [viewDate]="viewDate"
-  [events]="events"
-  [refresh]="refresh"
-  [activeDayIsOpen]="activeDayIsOpen"
-  (dayClicked)="dayClicked($event.day)">
-</mwl-calendar-month-view>
+<app-calendar-view ></app-calendar-view>
 
 
 

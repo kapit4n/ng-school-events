@@ -1,0 +1,50 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">New General Announcement</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="inputsForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="titleField" formControlName="titleField" [(ngModel)]="titleField" required>
+      </div>
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <div class="input-group">
+          <input id="startDate" class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp" ngbDatepicker #dp="ngbDatepicker"
+                 formControlName="startDateField" [(ngModel)]="startDateField">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Calendar_vmc2015.png" style="width: 2rem; height: 2rem; cursor: pointer;"/>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="duration">Duration (in days)</label>
+        <input type="number" class="form-control" id="duration" name="durationField" formControlName="durationField" [(ngModel)]="durationField" required>
+        <p class="error-msg text-danger"
+           *ngIf="inputsForm.controls.durationField.errors.required && inputsForm.controls.durationField.dirty">
+          This field is required!</p>
+        <p  class="error-msg text-danger"
+            *ngIf="inputsForm.controls.durationField.dirty && inputsForm.get('durationField').errors.validDuration">
+          Duration should be greater than 0</p>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="c('Close click'); setValues()">Add</button>
+    <button type="button" class="btn btn-outline-warning" (click)="c('Close click')">Close</button>
+  </div>
+
+</ng-template>
+<div class="form-row text-center">
+  <div class="col-12">
+    <button class="btn btn-outline-danger" (click)="open(content)">Add new General Announcement </button>
+  </div>
+</div>
