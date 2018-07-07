@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherStudentHomeComponent implements OnInit {
   student = { firstName: "First Name", lastName: "Last Name" };
+  newFollowUp = {};
   followUps = [
     {
       id: 1,
@@ -25,10 +26,14 @@ export class TeacherStudentHomeComponent implements OnInit {
       isDelayed: true,
       isAbsent: false,
       observation: "Subject 1"
-    }    
+    }
   ];
 
   constructor() {}
 
   ngOnInit() {}
+
+  saveFollowUp() {
+    this.newFollowUp = {};
+  }
 }
