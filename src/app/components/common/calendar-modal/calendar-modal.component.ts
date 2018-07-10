@@ -2,6 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {Announcement} from '../announcements.model';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class CalendarModalComponent implements OnInit {
   titleField: string;
   startDateField: Date;
   durationField: number;
+  announcement = new Announcement();
   @Output() passData: EventEmitter<Object> = new EventEmitter();
 
   constructor(private modalService: NgbModal, private fb: FormBuilder) {
@@ -52,7 +54,18 @@ export class CalendarModalComponent implements OnInit {
   }
 
   setValues() {
-    this.passData.emit({titleField: this.titleField, startDateField: this.startDateField, durationField: this.durationField });
+    console.log('Objeto');
+    console.log(this.announcement);
+    this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate)
+    console.log(this.announcement);
+    this.passData.emit(this.announcement);
+    // this.passData.emit({titleField: this.titleField, startDateField: this.startDateField, durationField: this.durationField });
+  }
+
+  private addDays(date: any, days: number ): Date {
+    const result = new Date( date );
+    result.setDate(result.getDate() + days - 1 );
+    return result;
   }
 
   // validations
