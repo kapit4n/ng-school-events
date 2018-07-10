@@ -11,13 +11,10 @@ import {Announcement} from '../../common/announcements.model';
   providers: [CalendarManagementService]
 })
 export class AnnListAdminComponent implements OnInit {
-  newAnn: any;
-  annList: any;
   announcements: Announcement[];
+  announcement = new Announcement();
 
-  constructor(private annsSvc: AnnsService, private cmService: CalendarManagementService) {
-    this.newAnn = {};
-    this.annList = [];
+  constructor(private cmService: CalendarManagementService) {
   }
 
   // loadAnns() {
@@ -37,15 +34,12 @@ export class AnnListAdminComponent implements OnInit {
       );
   }
 
-  getData(message: any) {
-    console.log(message.titleField);
-    console.log(message.startDateField);
-    console.log(message.durationField);
-    this.cmService.addAnnouncement(new Announcement(
-      message.titleField,
-      message.startDateField,
-      this.addDays(message.startDateField, message.durationField)
-    ));
+  getData(message: Announcement) {
+    console.log(message.title);
+    console.log(message.startDate);
+    console.log(message.endDate);
+    console.log(message);
+    this.cmService.addAnnouncement(message);
   }
 
   private addDays(date: any, days: number ): Date {
