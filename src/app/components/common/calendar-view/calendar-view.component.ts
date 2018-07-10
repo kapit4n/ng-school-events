@@ -52,13 +52,4 @@ export class CalendarViewComponent implements OnInit {
     }
   }
 
-  addAnnouncement(): void  {
-    this.events.push({
-      start: new Date(),
-      title: 'An event',
-      color: colors.red
-    });
-    this.refresh.next();
-  }
-
 }

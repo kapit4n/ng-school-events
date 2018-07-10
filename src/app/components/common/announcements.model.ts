@@ -1,4 +1,4 @@
 export class Announcement {
 
-  constructor(public title: string, public startDate: any , public endDate: any ) {}
+  constructor(public title?: string, public startDate?: any , public endDate?: any ) {}
 }
