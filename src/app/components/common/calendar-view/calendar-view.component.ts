@@ -20,17 +20,19 @@ export class CalendarViewComponent implements OnInit {
   events: CalendarEvent[] = [];
   announcements: Announcement[];
 
-  constructor(private cmService: CalendarManagementService ) { }
+  constructor(private cmService: CalendarManagementService ) {}
+
   ngOnInit() {
     this.announcements = this.cmService.getAnnouncements();
+    this.loadAnnouncements();
     this.cmService.announcementsChanged
       .subscribe(
-        (annoucements: Announcement[]) => {
-          this.announcements = annoucements;
+        (announcements: Announcement[]) => {
+          this.announcements = announcements;
           this.events.push({
-            start: annoucements[annoucements.length - 1].startDate,
-            end: annoucements[annoucements.length - 1].endDate,
-            title: annoucements[annoucements.length - 1].title,
+            start: announcements[announcements.length - 1].startDate,
+            end: announcements[announcements.length - 1].endDate,
+            title: announcements[announcements.length - 1].title,
             color: colors.red
           });
           this.refresh.next();
@@ -52,4 +54,22 @@ export class CalendarViewComponent implements OnInit {
     }
   }
 
+  public loadAnnouncements() {
+    this.cmService.loadAnnouncementsFromDB()
+      .subscribe(
+        (announcements: Announcement[]) => {
+          this.announcements = announcements;
+          for (let entry of announcements) {
+            this.events.push({
+              start: new Date(entry.startDate.toString()),
+              end: new Date(entry.endDate.toString()),
+              title: entry.title,
+              color: colors.red
+            });
+          }
+          this.refresh.next();
+        }
+      );
+
+  }
 }

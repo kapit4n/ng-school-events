@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 
-import { AnnsService } from '../../../services/anns.service';
 import {CalendarManagementService} from '../../common/calendar-management.service';
 import {Announcement} from '../../common/announcements.model';
 
@@ -17,14 +16,7 @@ export class AnnListAdminComponent implements OnInit {
   constructor(private cmService: CalendarManagementService) {
   }
 
-  // loadAnns() {
-  //   this.annsSvc
-  //     .getAnns(this.searchText, this.currentPage)
-  //     .subscribe(anns => (this.annList = anns));
-  // }
-
   ngOnInit() {
-    // this.loadAnns();
     this.announcements = this.cmService.getAnnouncements();
     this.cmService.announcementsChanged
       .subscribe(
@@ -35,11 +27,11 @@ export class AnnListAdminComponent implements OnInit {
   }
 
   getData(message: Announcement) {
-    console.log(message.title);
-    console.log(message.startDate);
-    console.log(message.endDate);
-    console.log(message);
-    this.cmService.addAnnouncement(message);
+
+    this.cmService.addAnnouncement(message).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    ); // aqui agregare un subscribe para consolidar el http request y  registrar/recargar lista y limpiar el popup
   }
 
   private addDays(date: any, days: number ): Date {
@@ -48,13 +40,5 @@ export class AnnListAdminComponent implements OnInit {
     return result;
   }
 
-  // saveAnn() {
-  //   this.newAnn['year-schoolId'] = 1;
-  //   this.newAnn['annType'] = 'General';
-  //   this.annsSvc.registerAnn(this.newAnn).subscribe(registered => {
-  //     this.loadAnns();
-  //   });
-  //   this.newAnn = {};
-  // }
 
 }

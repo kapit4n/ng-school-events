@@ -54,12 +54,8 @@ export class CalendarModalComponent implements OnInit {
   }
 
   setValues() {
-    console.log('Objeto');
-    console.log(this.announcement);
-    this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate)
-    console.log(this.announcement);
+    this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate);
     this.passData.emit(this.announcement);
-    // this.passData.emit({titleField: this.titleField, startDateField: this.startDateField, durationField: this.durationField });
   }
 
   private addDays(date: any, days: number ): Date {
