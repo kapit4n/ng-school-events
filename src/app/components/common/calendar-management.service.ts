@@ -3,6 +3,7 @@ import {Announcement} from './announcements.model';
 
 import { ConfigurationService } from '../../services/configuration.service';
 import { HttpClientService } from '../../services/http-client.service';
+import {Observable} from '../../../../node_modules/rxjs/Rx';
 // import {Observable} from '../../../../node_modules/rxjs/Rx';
 
 
@@ -26,11 +27,31 @@ export class CalendarManagementService {
     return this.announcements.slice();
   }
 
-  addAnnouncement(announcement: Announcement) {
-    console.log(announcement);
+  public loadAnnouncementsFromDB(): Observable<any>  {
+    return this.http
+      .get(
+        `${this.configSvc.backendUrl}/announcement2s`
+      )
+      .map(res => res.json())
+      .catch(
+        (error: Response) => {
+          return Observable.throw('Something went wrong');
+        }
+      );
+  }
+
+  addAnnouncement(announcement: any): Observable<any> {
     this.announcements.push(announcement);
     this.announcementsChanged.emit(this.announcements.slice());
-    this.registerAnnouncement(announcement);
+    return this.http
+      .post(this.configSvc.backendUrl + '/announcement2s', announcement)
+      .map(res => res.json())
+      .catch(
+        (error: Response) => {
+          return Observable.throw('Something went wrong');
+        }
+      );
+    //this.registerAnnouncement(announcement);
   }
 
   registerAnnouncement(announcement: Announcement): void {
