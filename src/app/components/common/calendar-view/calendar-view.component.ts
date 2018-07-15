@@ -1,10 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewChild, TemplateRef} from '@angular/core';
 import { CalendarEvent} from 'angular-calendar';
 import { isSameDay, isSameMonth } from 'date-fns';
 import { colors } from '../../../utilities/event-colors';
 import {Subject} from 'rxjs';
 import {CalendarManagementService} from '../calendar-management.service';
 import {Announcement} from '../announcements.model';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-calendar-view',
@@ -15,12 +16,13 @@ import {Announcement} from '../announcements.model';
 export class CalendarViewComponent implements OnInit {
   refresh: Subject<any> = new Subject();
   activeDayIsOpen: boolean;
-  view: string = 'month';
+  view: string = 'week';
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
   announcements: Announcement[];
+  @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
-  constructor(private cmService: CalendarManagementService ) {}
+  constructor(private cmService: CalendarManagementService, private modal: NgbModal ) {}
 
   ngOnInit() {
     this.announcements = this.cmService.getAnnouncements();
@@ -70,6 +72,10 @@ export class CalendarViewComponent implements OnInit {
           this.refresh.next();
         }
       );
+  }
 
+  handleEvent(action: string, event: CalendarEvent): void {
+    // this.modalData = { event, action };
+    this.modal.open(this.modalContent, { size: 'lg' });
   }
 }

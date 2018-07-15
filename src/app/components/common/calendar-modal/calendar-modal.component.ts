@@ -14,7 +14,7 @@ import {Announcement} from '../announcements.model';
 export class CalendarModalComponent implements OnInit {
   closeResult: string;
   inputsForm: FormGroup;
-  titleField: string;
+  title: string;
   startDateField: Date;
   durationField: number;
   announcement = new Announcement();
@@ -29,9 +29,9 @@ export class CalendarModalComponent implements OnInit {
 
   ngOnInit() {
     this.inputsForm = this.fb.group({
-      titleField: [this.titleField, []],
-      startDateField: [this.startDateField, []],
-      durationField: [this.durationField, [Validators.required, this.checkDuration]]
+      title: ['', [Validators.required]],
+      startDateField: ['', [Validators.required]],
+      durationField: ['', [Validators.required, this.checkDuration]]
     });
   }
 
@@ -54,8 +54,16 @@ export class CalendarModalComponent implements OnInit {
   }
 
   setValues() {
+    this.announcement.title = this.inputsForm.get('title').value;
+    this.announcement.startDate = this.inputsForm.get('startDateField').value;
+    this.announcement.endDate = this.inputsForm.get('durationField').value;
     this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate);
     this.passData.emit(this.announcement);
+    this.inputsForm.reset();
+  }
+
+  reset() {
+    this.inputsForm.reset();
   }
 
   private addDays(date: any, days: number ): Date {
@@ -66,10 +74,10 @@ export class CalendarModalComponent implements OnInit {
 
   // validations
   checkDuration(control: FormControl) {
-    if (control.value > 0) {
-      return {validDuration: false};
-    } else {
+    if (control.value <= 0 || control.value > 30 ) {
       return {validDuration: true};
+    } else {
+      return null;
     }
   }
 }

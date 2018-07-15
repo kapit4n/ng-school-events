@@ -48,7 +48,7 @@ export class CalendarManagementService {
       .map(res => res.json())
       .catch(
         (error: Response) => {
-          return Observable.throw('Something went wrong');
+          return Observable.throw(`Something went wrong with adding announcement records:${announcement.toString()}`);
         }
       );
     //this.registerAnnouncement(announcement);
