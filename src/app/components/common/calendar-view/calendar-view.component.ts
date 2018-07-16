@@ -1,5 +1,5 @@
 import {Component, OnInit, ChangeDetectionStrategy, ViewChild, TemplateRef} from '@angular/core';
-import { CalendarEvent} from 'angular-calendar';
+import {CalendarEvent, CalendarEventAction} from 'angular-calendar';
 import { isSameDay, isSameMonth } from 'date-fns';
 import { colors } from '../../../utilities/event-colors';
 import {Subject} from 'rxjs';
@@ -20,22 +20,42 @@ export class CalendarViewComponent implements OnInit {
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
   announcements: Announcement[];
+  currentAnnoucement: Announcement = new Announcement();
+  currentAction: string;
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
+  actions: CalendarEventAction[] = [
+    {
+      label: '<i class="fa fa-fw fa-pencil"></i>',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.handleEvent('Edited', event);
+      }
+    },
+    {
+      label: '<i class="fa fa-fw fa-times"></i>',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.events = this.events.filter(iEvent => iEvent !== event);
+        this.handleEvent('Deleted', event);
+      }
+    }
+  ];
 
   constructor(private cmService: CalendarManagementService, private modal: NgbModal ) {}
 
   ngOnInit() {
     this.announcements = this.cmService.getAnnouncements();
     this.loadAnnouncements();
+    // CRITICAL CHANGE
     this.cmService.announcementsChanged
       .subscribe(
-        (announcements: Announcement[]) => {
-          this.announcements = announcements;
+        (announcement: Announcement) => {
+          this.announcements.push(announcement);
           this.events.push({
-            start: announcements[announcements.length - 1].startDate,
-            end: announcements[announcements.length - 1].endDate,
-            title: announcements[announcements.length - 1].title,
-            color: colors.red
+            id: announcement.id,
+            start: announcement.startDate,
+            end: announcement.endDate,
+            title: announcement.title,
+            color: colors.red,
+            actions: this.actions
           });
           this.refresh.next();
         }
@@ -63,10 +83,12 @@ export class CalendarViewComponent implements OnInit {
           this.announcements = announcements;
           for (let entry of announcements) {
             this.events.push({
+              id : entry.id,
               start: new Date(entry.startDate.toString()),
               end: new Date(entry.endDate.toString()),
               title: entry.title,
-              color: colors.red
+              color: colors.red,
+              actions: this.actions
             });
           }
           this.refresh.next();
@@ -76,6 +98,14 @@ export class CalendarViewComponent implements OnInit {
 
   handleEvent(action: string, event: CalendarEvent): void {
     // this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.currentAnnoucement = this.announcements.find( search => search.id === event.id.toString() );
+    this.currentAction = action;
+    //console.log(event);
+    if (this.currentAction === 'Deleted') {
+      this.modal.open(this.modalContent, {size: 'sm'});
+    } else {
+      this.modal.open(this.modalContent, {size: 'lg'});
+    }
+
   }
 }

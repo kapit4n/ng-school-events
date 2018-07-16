@@ -54,12 +54,20 @@ export class CalendarModalComponent implements OnInit {
   }
 
   setValues() {
+    this.announcement.id = this.generateId();
     this.announcement.title = this.inputsForm.get('title').value;
     this.announcement.startDate = this.inputsForm.get('startDateField').value;
     this.announcement.endDate = this.inputsForm.get('durationField').value;
     this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate);
+    console.log('danger danget');
+    console.log(this.announcement);
     this.passData.emit(this.announcement);
     this.inputsForm.reset();
+  }
+
+  generateId(): string {
+    const id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
+    return id;
   }
 
   reset() {
