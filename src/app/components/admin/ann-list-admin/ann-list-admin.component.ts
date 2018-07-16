@@ -27,7 +27,6 @@ export class AnnListAdminComponent implements OnInit {
   }
 
   getData(message: Announcement) {
-
     this.cmService.addAnnouncement(message).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)

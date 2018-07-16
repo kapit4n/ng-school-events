@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherStudentHomeComponent implements OnInit {
   student = { firstName: "First Name", lastName: "Last Name" };
-  newFollowUp = {};
-  followUps = [
+  newFollowUp: {id?: number, registereddDate?: any, subject?: string, isDelayed?: boolean, isAbsent?: boolean,
+    title?: string, historyDetails?: string, observation?: string };
+  followUps: { id: number, registereddDate: any, subject: string, isDelayed: boolean, isAbsent: boolean,
+    title: string, historyDetails: string, observation: string }[] = [
     {
       id: 1,
       registereddDate: new Date(),

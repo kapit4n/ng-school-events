@@ -12,11 +12,7 @@ import {Observable} from '../../../../node_modules/rxjs/Rx';
 })
 export class CalendarManagementService {
   announcementsChanged = new EventEmitter<Announcement[]>();
-  private announcements: Announcement[] = [
-    new Announcement('new Announcement 1', new Date(), new Date()),
-    new Announcement('new Announcement 2', new Date(), new Date()),
-    new Announcement('new Announcement 3', new Date(), new Date())
-  ];
+  private announcements: Announcement[] = [];
 
   constructor(
     private configSvc: ConfigurationService,
@@ -42,13 +38,14 @@ export class CalendarManagementService {
 
   addAnnouncement(announcement: any): Observable<any> {
     this.announcements.push(announcement);
-    this.announcementsChanged.emit(this.announcements.slice());
+    // CRITICAL CHANGE
+    this.announcementsChanged.emit(announcement);
     return this.http
       .post(this.configSvc.backendUrl + '/announcement2s', announcement)
       .map(res => res.json())
       .catch(
         (error: Response) => {
-          return Observable.throw('Something went wrong');
+          return Observable.throw(`Something went wrong with adding announcement records:${announcement.toString()}`);
         }
       );
     //this.registerAnnouncement(announcement);

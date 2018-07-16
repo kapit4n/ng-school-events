@@ -38,7 +38,7 @@ export class TeacherHomeComponent implements OnInit {
 
     this.loadCourses();
   }
-  
+
   loadCourses() {
     this.assignedCourses = [];
     this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
@@ -74,4 +74,7 @@ export class TeacherHomeComponent implements OnInit {
         });
     });
   }
+
+  addAllCourses() { }
+
 }
