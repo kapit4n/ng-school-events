@@ -18,19 +18,22 @@ export class AnnListAdminComponent implements OnInit {
 
   ngOnInit() {
     this.announcements = this.cmService.getAnnouncements();
-    this.cmService.announcementsChanged
-      .subscribe(
-        (announcements: Announcement[]) => {
-          this.announcements = announcements;
-        }
-      );
+    // this.cmService.announcementsChanged
+    //   .subscribe(
+    //     (announcements: Announcement[]) => {
+    //       this.announcements = announcements;
+    //     }
+    //   );
   }
 
   getData(message: Announcement) {
     this.cmService.addAnnouncement(message).subscribe(
-    (response) => console.log(response),
+    (response) => {
+      console.log(response);
+      this.cmService.updateSingleAnnouncement(message, 'Insert');
+    },
       (error) => console.log(error)
-  ); // aqui agregare un subscribe para consolidar el http request y  registrar/recargar lista y limpiar el popup
+  );
   }
 
   private addDays(date: any, days: number ): Date {

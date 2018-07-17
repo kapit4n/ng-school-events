@@ -35,7 +35,6 @@ export class CalendarViewComponent implements OnInit {
     {
       label: '<i class="fa fa-fw fa-times"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        //this.events = this.events.filter(iEvent => iEvent !== event);
         this.handleEvent('Deleted', event);
       }
     }
@@ -51,7 +50,6 @@ export class CalendarViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.announcements = this.cmService.getAnnouncements();
     this.loadAnnouncements();
     // edit implementation
     this.editFormGroup = this.fb.group({
@@ -60,11 +58,11 @@ export class CalendarViewComponent implements OnInit {
       startDateField: ['', [Validators.required]],
       durationField: ['', [Validators.required, this.checkDuration]]
     });
-    // CRITICAL CHANGE
-    this.cmService.announcementsChanged
+    // CRITICAL CHANGE FOR SINGLE UPDATE
+    this.cmService.singleAnnouncementsInserted
       .subscribe(
         (announcement: Announcement) => {
-          this.announcements.push(announcement);
+          this.announcements = this.cmService.getAnnouncements();
           this.events.push({
             id: announcement.id,
             start: announcement.startDate,
@@ -80,6 +78,7 @@ export class CalendarViewComponent implements OnInit {
     this.cmService.announcementsUpserted
       .subscribe(
         (announcement: Announcement) => {
+          this.announcements = this.cmService.getAnnouncements();
           const objIndex = this.announcements.findIndex((obj => obj.id === announcement.id.toString()));
           this.announcements[objIndex] = announcement;
           const evtIndex = this.events.findIndex((obj => obj.id === announcement.id.toString()));
@@ -99,6 +98,7 @@ export class CalendarViewComponent implements OnInit {
             this.events.splice(evtIndex, 1);
           }
           this.refresh.next();
+          this.announcements = this.cmService.getAnnouncements();
         }
       );
   }
@@ -121,7 +121,8 @@ export class CalendarViewComponent implements OnInit {
     this.cmService.loadAnnouncementsFromDB()
       .subscribe(
         (announcements: Announcement[]) => {
-          this.announcements = announcements;
+          this.cmService.setAnnouncements(announcements)
+          this.announcements = this.cmService.getAnnouncements();
           for (let entry of announcements) {
             this.events.push({
               id : entry.id,
@@ -138,15 +139,18 @@ export class CalendarViewComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    // this.modalData = { event, action };
     this.currentAnnouncement = this.announcements.find( search => search.id === event.id.toString() );
     this.currentAction = action;
-    // console.log(event);
     if (this.currentAction === 'Deleted') {
       this.modal.open(this.modalContent, {size: 'sm'});
     } else {
-      this.rebuildForm();
-      this.modal.open(this.modalContent);
+      if (this.currentAction === 'Clicked') {
+        this.modal.open(this.modalContent);
+      } else
+        if (this.currentAction === 'Edited') {
+          this.rebuildForm();
+          this.modal.open(this.modalContent);
+        }
     }
   }
 
@@ -159,8 +163,11 @@ export class CalendarViewComponent implements OnInit {
     });
   }
 
+  resetForm() {
+    this.editFormGroup.reset();
+  }
+
   // edit form validation
-  // validations
   checkDuration(control: FormControl) {
     if (control.value <= 0 || control.value > 30 ) {
       return {validDuration: true};
@@ -190,14 +197,20 @@ export class CalendarViewComponent implements OnInit {
     this.currentAnnouncement.endDate = this.editFormGroup.get('durationField').value;
     this.currentAnnouncement.endDate = this.addDays(this.currentAnnouncement.startDate, this.currentAnnouncement.endDate);
     this.cmService.upsertAnnouncement(this.currentAnnouncement).subscribe(
-      (response) => console.log(response),
+      (response) => {
+        console.log(response);
+        this.cmService.updateSingleAnnouncement(this.currentAnnouncement, 'Update');
+      },
       (error) => console.log(error)
     );
   }
 
   deleteAnnouncement() {
     this.cmService.deleteAnnouncement(this.currentAnnouncement).subscribe(
-      (response) => console.log(response),
+      (response) => {
+        console.log(response);
+        this.cmService.updateSingleAnnouncement(this.currentAnnouncement, 'Delete');
+      },
       (error) => console.log(error)
     );
   }
