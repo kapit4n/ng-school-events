@@ -15,6 +15,7 @@ export class CalendarModalComponent implements OnInit {
   closeResult: string;
   inputsForm: FormGroup;
   title: string;
+  description: string;
   startDateField: Date;
   durationField: number;
   announcement = new Announcement();
@@ -30,6 +31,7 @@ export class CalendarModalComponent implements OnInit {
   ngOnInit() {
     this.inputsForm = this.fb.group({
       title: ['', [Validators.required]],
+      description: [''],
       startDateField: ['', [Validators.required]],
       durationField: ['', [Validators.required, this.checkDuration]]
     });
@@ -56,11 +58,10 @@ export class CalendarModalComponent implements OnInit {
   setValues() {
     this.announcement.id = this.generateId();
     this.announcement.title = this.inputsForm.get('title').value;
+    this.announcement.description = this.inputsForm.get('description').value;
     this.announcement.startDate = this.inputsForm.get('startDateField').value;
     this.announcement.endDate = this.inputsForm.get('durationField').value;
     this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate);
-    console.log('danger danget');
-    console.log(this.announcement);
     this.passData.emit(this.announcement);
     this.inputsForm.reset();
   }
