@@ -28,9 +28,9 @@ export class AnnListAdminComponent implements OnInit {
 
   getData(message: Announcement) {
     this.cmService.addAnnouncement(message).subscribe(
-      (response) => console.log(response),
+    (response) => console.log(response),
       (error) => console.log(error)
-    ); // aqui agregare un subscribe para consolidar el http request y  registrar/recargar lista y limpiar el popup
+  ); // aqui agregare un subscribe para consolidar el http request y  registrar/recargar lista y limpiar el popup
   }
 
   private addDays(date: any, days: number ): Date {

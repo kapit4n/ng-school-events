@@ -1,6 +1,7 @@
 <ng-template #modalContent let-close="close">
   <div [ngSwitch]="currentAction">
     <div  *ngSwitchCase="'Clicked'">
+
       <div class="modal-header">
         <h5 class="modal-title">Annoucement Details</h5>
         <button type="button" class="close" (click)="close()">
@@ -9,69 +10,117 @@
       </div>
       <div class="modal-body">
           <div class="form-group">
-            <label for="title">Title</label>
-            <input [readonly]="true" type="text" class="form-control" id="title"
+            <label for="title-ro">Title</label>
+            <input [readonly]="true" type="text" class="form-control" id="title-ro"
                    placeholder="Data retrieval error" name="title"
-                   [value]="currentAnnoucement?.title">
+                   [value]="currentAnnouncement?.title">
+          </div>
+          <div class="form-group">
+            <label for="description-ro">Description</label>
+            <textarea [readonly]="true" rows="2" class="form-control" id="description-ro"
+                      placeholder="" name="description"
+                      [value]="currentAnnouncement.description ? currentAnnouncement.description : ''"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="startDate-ro">Start Date</label>
+              <input [readonly]="true" type="text" class="form-control" id="startDate-ro" name="startDate"
+                     placeholder="Data retrieval error" [value]="currentAnnouncement?.startDate | date ">
+          </div>
+          <div class="form-group">
+            <label for="endDate-ro">End Date</label>
+            <input [readonly]="true" type="text" class="form-control" id="endDate-ro" name="endDate"
+                 placeholder="Data retrieval error" [value]="currentAnnouncement?.endDate | date ">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+      </div>
+
+    </div>
+    <div  *ngSwitchCase="'Edited'">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Annoucement</h5>
+        <button type="button" class="close" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editFormGroup" autocomplete="off" >
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input  type="text" class="form-control" id="title" placeholder="Enter a title" name="title" formControlName="title" required>
+            <div *ngIf="editFormGroup.controls['title'].invalid && (editFormGroup.controls['title'].dirty || editFormGroup.controls['title'].touched)"
+                 class="alert alert-danger">
+              <div *ngIf="editFormGroup.controls['title'].errors.required">
+                This field is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea rows="2" class="form-control" id="description" placeholder="" name="description" formControlName="description"></textarea>
           </div>
           <div class="form-group">
             <label for="startDate">Start Date</label>
-              <input [readonly]="true" type="text" class="form-control" id="startDate" name="startDate"
-                     placeholder="Data retrieval error" [value]="currentAnnoucement?.startDate | date ">
+            <div class="input-group">
+              <input id="startDate" class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" ngbDatepicker #dp="ngbDatepicker"
+                     formControlName="startDateField" required>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Calendar_vmc2015.png" style="width: 2rem; height: 2rem; cursor: pointer;"/>
+                </button>
+              </div>
+            </div>
+            <div *ngIf="editFormGroup.controls['startDateField'].invalid && (editFormGroup.controls['startDateField'].dirty || editFormGroup.controls['startDateField'].touched)"
+                 class="alert alert-danger">
+              <div *ngIf="editFormGroup.controls['startDateField'].errors.required">
+                This field is required.
+              </div>
+            </div>
           </div>
           <div class="form-group">
-            <label for="endDate">End Date</label>
-            <input [readonly]="true" type="text" class="form-control" id="endDate" name="endDate"
-                 placeholder="Data retrieval error" [value]="currentAnnoucement?.endDate | date ">
+            <label for="duration">Duration (in days)</label>
+            <input type="number" class="form-control" id="duration" name="durationField" formControlName="durationField" placeholder="Enter the duration" required>
+            <div *ngIf="editFormGroup.controls['durationField'].invalid && (editFormGroup.controls['durationField'].dirty || editFormGroup.controls['durationField'].touched)"
+                 class="alert alert-danger">
+              <div *ngIf="editFormGroup.controls['durationField'].errors.required">
+                This field is required.
+              </div>
+              <div *ngIf="editFormGroup.get('durationField').errors.validDuration">
+                Please enter a number between 1 and 30 days
+              </div>
+            </div>
           </div>
+
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+        <button type="button" class="btn btn-default" (click)="close(); updateAnnouncement()"
+                [disabled]="editFormGroup.invalid || editFormGroup.pristine">Update</button>
+        <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
       </div>
-    </div>
-    <div  *ngSwitchCase="'Edited'">
-      <div class="modal-header">
-        <h5 class="modal-title">EDIT EVENT ACTION</h5>
-        <button type="button" class="close" (click)="close()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Announcement Details</p>
-        <div>
-          TITLE:
-          <pre>{{ currentAnnoucement?.title }}</pre>
-        </div>
-        <div>
-          ID:
-          <pre>{{ currentAnnoucement?.id }}</pre>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
-      </div>
+
     </div>
     <div  *ngSwitchCase="'Deleted'">
+
       <div class="modal-header">
-        <h5 class="modal-title">DELETE EVENT ACTION</h5>
+        <h5 class="modal-title">Confirm Delete</h5>
         <button type="button" class="close" (click)="close()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Announcement Details</p>
         <div>
-          TITLE:
-          <pre>{{ currentAnnoucement?.title }}</pre>
-        </div>
-        <div>
-          ID:
-          <pre>{{ currentAnnoucement?.id }}</pre>
+          Do you really want to delete the "{{currentAnnouncement?.title}}" announcement ?
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+        <button type="button" class="btn btn-primary" (click)="close(); deleteAnnouncement()">Yes</button>
+        <button type="button" class="btn btn-danger" (click)="close()">No</button>
       </div>
+
     </div>
   </div>
 </ng-template>

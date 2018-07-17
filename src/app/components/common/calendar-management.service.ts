@@ -12,6 +12,8 @@ import {Observable} from '../../../../node_modules/rxjs/Rx';
 })
 export class CalendarManagementService {
   announcementsChanged = new EventEmitter<Announcement[]>();
+  announcementsUpserted = new EventEmitter<Announcement[]>();
+  announcementsDeleted = new EventEmitter<Announcement[]>();
   private announcements: Announcement[] = [];
 
   constructor(
@@ -57,6 +59,36 @@ export class CalendarManagementService {
     this.http
       .post(this.configSvc.backendUrl + '/announcement2s', announcement)
       .map(res => res.json());
+  }
+
+  // EDIT STUFF
+  upsertAnnouncement(announcement: any): Observable<any> {
+    this.announcements.push(announcement);
+    // CRITICAL CHANGE
+    this.announcementsUpserted.emit(announcement);
+    return this.http
+      .put(`${this.configSvc.backendUrl}/announcement2s/${announcement.id}`, announcement)
+      .map(res => res.json())
+      .catch(
+        (error: Response) => {
+          return Observable.throw(`Something went wrong with updating the announcement record:${announcement.toString()}`);
+        }
+      );
+  }
+
+  // EDIT STUFF
+  deleteAnnouncement(announcement: any): Observable<any> {
+    this.announcements.push(announcement);
+    // CRITICAL CHANGE
+    this.announcementsDeleted.emit(announcement);
+    return this.http
+      .delete(this.configSvc.backendUrl + "/announcement2s/" + announcement.id)
+      .map(res => res.json())
+      .catch(
+        (error: Response) => {
+          return Observable.throw(`Something went wrong with deleting the announcement:${announcement.toString()}`);
+        }
+      );
   }
 }
 
