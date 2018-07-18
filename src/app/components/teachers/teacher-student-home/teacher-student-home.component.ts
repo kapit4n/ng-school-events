@@ -12,7 +12,14 @@ export class TeacherStudentHomeComponent implements OnInit {
   student = { firstName: "First Name", lastName: "Last Name" };
   followUps: any;
   studentId: any;
+  courseId: any;
   newFollowUp: any;
+  searchText = "";
+
+  pages = 0;
+  currentPage = 1;
+  rangePages = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -25,13 +32,33 @@ export class TeacherStudentHomeComponent implements OnInit {
 
   ngOnInit() {
     this.studentId = this.route.snapshot.paramMap.get("studentId");
+    this.courseId = this.route.snapshot.paramMap.get("courseId");
+    if (this.route.snapshot.queryParams["page"]) {
+      this.currentPage = Number(this.route.snapshot.queryParams["page"]);
+    }
     this.loadFollowUps();
   }
 
   loadFollowUps() {
     this.followUpsSvc
-      .getFollowUps(this.studentId)
+      .getFollowUps(
+        this.studentId,
+        this.searchText,
+        this.confSvc.pageSize,
+        (this.currentPage - 1) * this.confSvc.pageSize
+      )
       .subscribe(followUps => (this.followUps = followUps));
+
+    this.followUpsSvc
+      .getFollowUpsCount(this.studentId, this.searchText)
+      .subscribe(countInfo => {
+        this.pages = Math.round(countInfo.count / this.confSvc.pageSize);
+        const range = (from, to, step) =>
+          Array(Math.floor((to - from) / step) + 1)
+            .fill(0)
+            .map((v, i) => from + i * step);
+        this.rangePages = range(1, this.pages, 1);
+      });
   }
 
   saveFollowUp() {

@@ -38,6 +38,24 @@ export class FollowUpsService {
     }
   }
 
+  public getFollowUpsCount(studentId, filter = "", limit = 100, skip = 0): Observable<any> {
+    if (filter) {
+      return this.http
+        .get(
+          `${this.configSvc.backendUrl}/${
+            this.endPoint
+        }/count?&where[studentId]=${studentId}&where[title][regexp]=/${filter}/i`
+        )
+        .map(res => res.json());
+    } else {
+      return this.http
+        .get(
+          `${this.configSvc.backendUrl}/${ this.endPoint }/count?where[studentId]=${studentId}`
+        )
+        .map(res => res.json());
+    }
+  }
+
   public removeFollowUp(folloUpId): Observable<any> {
     return this.http
       .delete(`${this.configSvc.backendUrl}/${this.endPoint}/${folloUpId}`)

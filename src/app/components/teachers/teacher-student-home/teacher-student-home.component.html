@@ -36,6 +36,9 @@
       </td>
     </tr>
   </tbody>
+  <tfoot>
+    <app-pagination [pages]="pages" [currentPage]="currentPage" baseUrl="teacher-course-list/{{courseId}}/teacher-student-home/{{studentId}}" [rangePages]="rangePages"></app-pagination>
+  </tfoot>
 </table>
 
 
