@@ -39,4 +39,10 @@ export class FollowUpsService {
         .map(res => res.json());
     }
   }
+
+  public removeFollowUp(folloUpId): Observable<any> {
+    return this.http
+      .delete(`${this.configSvc.backendUrl}/${this.endPoint}/${folloUpId}`)
+      .map(res => res.json());
+  }
 }
