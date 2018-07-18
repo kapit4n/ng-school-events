@@ -12,37 +12,7 @@ export class TeacherStudentHomeComponent implements OnInit {
   /*newFollowUp: {id?: number, registereddDate?: any, subject?: string, isDelayed?: boolean, isAbsent?: boolean,
     title?: string, historyDetails?: string, observation?: string };
   */
-  followUps: {
-    id: number;
-    registeredDate: any;
-    subject: string;
-    isDelayed: boolean;
-    isAbsent: boolean;
-    title: string;
-    historyDetails: string;
-    observation: string;
-  }[] = [
-    {
-      id: 1,
-      registeredDate: new Date(),
-      subject: "Subject",
-      isDelayed: true,
-      isAbsent: false,
-      title: "Title",
-      historyDetails: "historyDetails",
-      observation: "Observation "
-    },
-    {
-      id: 2,
-      registeredDate: new Date(),
-      subject: "Subject 1",
-      isDelayed: true,
-      isAbsent: false,
-      title: "Title 1",
-      historyDetails: "historyDetails",
-      observation: "Observation 1"
-    }
-  ];
+  followUps: any;
 
   newFollowUp: any;
 
@@ -51,13 +21,22 @@ export class TeacherStudentHomeComponent implements OnInit {
     private confSvc: ConfigurationService
   ) {
     this.newFollowUp = {};
+    this.followUps = [];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadFollowUps();
+  }
+
+  loadFollowUps(){
+    this.followUpsSvc.getFollowUps().subscribe (followUps => this.followUps = followUps);
+  }
 
   saveFollowUp() {
     this.newFollowUp.registeredDate = new Date();
-    this.followUpsSvc.registerFollowUp(this.newFollowUp).subscribe( follow => console.log(follow));
+    this.followUpsSvc
+      .registerFollowUp(this.newFollowUp)
+      .subscribe(follow => console.log(follow));
 
     this.followUps.push(this.newFollowUp);
     this.newFollowUp = {};
