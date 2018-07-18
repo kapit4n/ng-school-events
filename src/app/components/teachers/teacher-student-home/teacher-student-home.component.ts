@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherStudentHomeComponent implements OnInit {
   student = { firstName: "First Name", lastName: "Last Name" };
-  newFollowUp: {id?: number, registereddDate?: any, subject?: string, isDelayed?: boolean, isAbsent?: boolean,
+  /*newFollowUp: {id?: number, registereddDate?: any, subject?: string, isDelayed?: boolean, isAbsent?: boolean,
     title?: string, historyDetails?: string, observation?: string };
+  */
   followUps: { id: number, registereddDate: any, subject: string, isDelayed: boolean, isAbsent: boolean,
     title: string, historyDetails: string, observation: string }[] = [
     {
@@ -33,11 +34,18 @@ export class TeacherStudentHomeComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  newFollowUp: any;
 
-  ngOnInit() {}
+  constructor() {
+    this.newFollowUp = {};
+  }
+
+  ngOnInit() {
+  }
 
   saveFollowUp() {
+    this.newFollowUp.registereddDate = new Date();
+    this.followUps.push(this.newFollowUp);
     this.newFollowUp = {};
   }
 }
