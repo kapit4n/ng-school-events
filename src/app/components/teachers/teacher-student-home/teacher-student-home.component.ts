@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FollowUpsService } from "../../../services/follow-ups.service";
+import { ConfigurationService } from "../../../services/configuration.service";
 
 @Component({
   selector: "app-teacher-student-home",
@@ -10,11 +12,19 @@ export class TeacherStudentHomeComponent implements OnInit {
   /*newFollowUp: {id?: number, registereddDate?: any, subject?: string, isDelayed?: boolean, isAbsent?: boolean,
     title?: string, historyDetails?: string, observation?: string };
   */
-  followUps: { id: number, registereddDate: any, subject: string, isDelayed: boolean, isAbsent: boolean,
-    title: string, historyDetails: string, observation: string }[] = [
+  followUps: {
+    id: number;
+    registeredDate: any;
+    subject: string;
+    isDelayed: boolean;
+    isAbsent: boolean;
+    title: string;
+    historyDetails: string;
+    observation: string;
+  }[] = [
     {
       id: 1,
-      registereddDate: new Date(),
+      registeredDate: new Date(),
       subject: "Subject",
       isDelayed: true,
       isAbsent: false,
@@ -24,7 +34,7 @@ export class TeacherStudentHomeComponent implements OnInit {
     },
     {
       id: 2,
-      registereddDate: new Date(),
+      registeredDate: new Date(),
       subject: "Subject 1",
       isDelayed: true,
       isAbsent: false,
@@ -36,15 +46,19 @@ export class TeacherStudentHomeComponent implements OnInit {
 
   newFollowUp: any;
 
-  constructor() {
+  constructor(
+    private followUpsSvc: FollowUpsService,
+    private confSvc: ConfigurationService
+  ) {
     this.newFollowUp = {};
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   saveFollowUp() {
-    this.newFollowUp.registereddDate = new Date();
+    this.newFollowUp.registeredDate = new Date();
+    this.followUpsSvc.registerFollowUp(this.newFollowUp).subscribe( follow => console.log(follow));
+
     this.followUps.push(this.newFollowUp);
     this.newFollowUp = {};
   }

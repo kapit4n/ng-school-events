@@ -8,6 +8,7 @@ export class ConfigurationService {
 
   config: any;
   backendUrl = "http://localhost:3000/api";
+  
   pageSize = 2;
   constructor(private http: Http) {
     
