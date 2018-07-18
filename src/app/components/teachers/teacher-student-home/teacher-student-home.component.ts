@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 import { FollowUpsService } from "../../../services/follow-ups.service";
 import { ConfigurationService } from "../../../services/configuration.service";
 
@@ -10,10 +11,11 @@ import { ConfigurationService } from "../../../services/configuration.service";
 export class TeacherStudentHomeComponent implements OnInit {
   student = { firstName: "First Name", lastName: "Last Name" };
   followUps: any;
-
+  studentId: any;
   newFollowUp: any;
 
   constructor(
+    private route: ActivatedRoute,
     private followUpsSvc: FollowUpsService,
     private confSvc: ConfigurationService
   ) {
@@ -22,21 +24,23 @@ export class TeacherStudentHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.studentId = this.route.snapshot.paramMap.get("studentId");
     this.loadFollowUps();
   }
 
-  loadFollowUps(){
-    this.followUpsSvc.getFollowUps().subscribe (followUps => this.followUps = followUps);
+  loadFollowUps() {
+    this.followUpsSvc
+      .getFollowUps(this.studentId)
+      .subscribe(followUps => (this.followUps = followUps));
   }
 
   saveFollowUp() {
     this.newFollowUp.registeredDate = new Date();
-    this.followUpsSvc
-      .registerFollowUp(this.newFollowUp)
-      .subscribe(follow => {
-        this.loadFollowUps();
-        this.newFollowUp = {};
-      });
+    this.newFollowUp.studentId = this.studentId;
+    this.followUpsSvc.registerFollowUp(this.newFollowUp).subscribe(follow => {
+      this.loadFollowUps();
+      this.newFollowUp = {};
+    });
   }
 
   removeFollowUp(id) {

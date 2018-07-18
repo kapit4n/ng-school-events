@@ -20,21 +20,19 @@ export class FollowUpsService {
       .map(res => res);
   }
 
-  public getFollowUps(filter = "", limit = 100, skip = 0): Observable<any> {
+  public getFollowUps(studentId, filter = "", limit = 100, skip = 0): Observable<any> {
     if (filter) {
       return this.http
         .get(
           `${this.configSvc.backendUrl}/${
             this.endPoint
-          }?filter[limit]=${limit}&filter[skip]=${skip}&filter[where][year][regexp]=/${filter}/i`
+        }?filter[limit]=${limit}&filter[skip]=${skip}&filter[where][studentId]=${studentId}&filter[where][year][regexp]=/${filter}/i`
         )
         .map(res => res.json());
     } else {
       return this.http
         .get(
-          `${this.configSvc.backendUrl}/${
-            this.endPoint
-          }?filter[limit]=${limit}&filter[skip]=${skip}`
+          `${this.configSvc.backendUrl}/${ this.endPoint }?filter[limit]=${limit}&filter[skip]=${skip}&filter[where][studentId]=${studentId}`
         )
         .map(res => res.json());
     }
