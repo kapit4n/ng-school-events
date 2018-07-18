@@ -29,7 +29,11 @@
       <td>{{follow.title}}</td>
       <td>{{follow.historyDetails}}</td>
       <td>{{follow.observation}}</td>
-      <td></td>
+      <td>
+        <button type="button" class="btn" (click)="removeFollowUp(follow.id)">
+          <span class="fa fa-trash" aria-hidden="true"></span>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

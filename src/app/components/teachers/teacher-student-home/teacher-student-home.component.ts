@@ -9,9 +9,6 @@ import { ConfigurationService } from "../../../services/configuration.service";
 })
 export class TeacherStudentHomeComponent implements OnInit {
   student = { firstName: "First Name", lastName: "Last Name" };
-  /*newFollowUp: {id?: number, registereddDate?: any, subject?: string, isDelayed?: boolean, isAbsent?: boolean,
-    title?: string, historyDetails?: string, observation?: string };
-  */
   followUps: any;
 
   newFollowUp: any;
@@ -36,9 +33,15 @@ export class TeacherStudentHomeComponent implements OnInit {
     this.newFollowUp.registeredDate = new Date();
     this.followUpsSvc
       .registerFollowUp(this.newFollowUp)
-      .subscribe(follow => console.log(follow));
+      .subscribe(follow => {
+        this.loadFollowUps();
+        this.newFollowUp = {};
+      });
+  }
 
-    this.followUps.push(this.newFollowUp);
-    this.newFollowUp = {};
+  removeFollowUp(id) {
+    this.followUpsSvc.removeFollowUp(id).subscribe(result => {
+      this.loadFollowUps();
+    });
   }
 }

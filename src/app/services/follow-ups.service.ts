@@ -16,7 +16,7 @@ export class FollowUpsService {
 
   public registerFollowUp(followUp: any): Observable<any> {
     return this.http
-      .post(`this.configSvc.backendUrl/${this.endPoint}`, followUp)
+      .post(`${this.configSvc.backendUrl}/${this.endPoint}`, followUp)
       .map(res => res);
   }
 
