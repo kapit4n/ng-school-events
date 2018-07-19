@@ -91,6 +91,8 @@ import { TeacherStudentHomeComponent } from './components/teachers/teacher-stude
 import { CalendarModalComponent } from './components/common/calendar-modal/calendar-modal.component';
 import { CalendarReadViewComponent } from './components/common/calendar-read-view/calendar-read-view.component';
 import { AnnouncementsHomeComponent } from './components/parent/announcements-home/announcements-home.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+
 
 const appRoutes: Routes = [
   // Common pages
@@ -385,7 +387,8 @@ const appRoutes: Routes = [
     BreadcrumbsModule,
     BrowserAnimationsModule,
     CalendarModule.forRoot(),
-    SimpleNotificationsModule.forRoot()
+    SimpleNotificationsModule.forRoot(),
+    AngularMultiSelectModule
   ],
   providers: [
     ConfigurationService,
