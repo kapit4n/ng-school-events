@@ -1,4 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<script>
+  $('.popover-dismiss').popover({
+      trigger: 'focus'
+    });
+
+</script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a i18n class="navbar-brand" [href]="rolesSvc.homeUrl">SCHOOL EVENTS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -85,7 +91,15 @@
       <a i18n class="nav-link" routerLink="/children" routerLinkActive="active">Sons</a>
     </li>
     <li>
-      <button *ngIf="true" (click)="sendMessageVoid()" style="background-color: darkgrey;">
+      <button *ngIf="true" (click)="sendMessageVoid()"  style="background-color: darkgrey;" data-container="body" 
+      data-toggle="popover" data-placement="bottom" 
+      data-content='
+      <ul class="list-group">
+        <li class="list-group-item">Event 1</li>
+        <li class="list-group-item">Event 2</li>
+        <li class="list-group-item">Event 3</li>
+      </ul>
+      '>
         <span class="fa-stack fa-1x has-badge" data-count="10">
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
@@ -107,7 +121,5 @@
 
   <breadcrumb [allowBootstrap]="true"></breadcrumb>
   <router-outlet></router-outlet>
-
-  
 
 </div>
