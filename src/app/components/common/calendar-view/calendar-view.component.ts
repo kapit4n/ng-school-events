@@ -121,7 +121,7 @@ export class CalendarViewComponent implements OnInit {
     this.cmService.loadAnnouncementsFromDB()
       .subscribe(
         (announcements: Announcement[]) => {
-          this.cmService.setAnnouncements(announcements)
+          this.cmService.setAnnouncements(announcements);
           this.announcements = this.cmService.getAnnouncements();
           for (let entry of announcements) {
             this.events.push({
