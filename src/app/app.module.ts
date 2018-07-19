@@ -4,6 +4,7 @@ import { HttpModule } from "@angular/http";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { BreadcrumbsModule } from "ng6-breadcrumbs";
+import { SimpleNotificationsModule } from "angular2-notifications";
 
 import { ConfigurationService } from "./services/configuration.service";
 import { GestionService } from "./services/gestion.service";
@@ -397,7 +398,8 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     BreadcrumbsModule,
     BrowserAnimationsModule,
-    CalendarModule.forRoot()
+    CalendarModule.forRoot(),
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [
     ConfigurationService,

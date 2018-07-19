@@ -7,6 +7,7 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { ActivatedRoute, NavigationEnd } from "@angular/router";
 import { SocketService } from "./services/socket.service";
+import { NotificationsService } from "angular2-notifications";
 
 enum Action {
   JOINED,
@@ -45,7 +46,8 @@ export class AppComponent implements OnInit {
     public parentsSvc: ParentsService,
     private location: Location,
     private router: ActivatedRoute,
-    private socketService: SocketService
+    private socketService: SocketService,
+    private _notificationSvc: NotificationsService
   ) {
     setTheme("bs4");
     this.userType = this.rolesSvc.getUserType();
@@ -88,9 +90,13 @@ export class AppComponent implements OnInit {
     this.socketService.onEvent(Event.CONNECT).subscribe(() => {
       console.log("connected");
     });
-    
+
     this.socketService.onEvent("message").subscribe(() => {
       console.log("chat message");
+      var temp = { animate: "fromRight", clickToClose: true, pauseOnHover: true, showProgressBar: true, timeOut: 5000 };
+
+      this._notificationSvc.create("Title", "Hello This is a message", "success", temp);
+
     });
 
     this.socketService.onEvent(Event.DISCONNECT).subscribe(() => {
@@ -100,6 +106,10 @@ export class AppComponent implements OnInit {
 
   sendMessageVoid() {
     console.log("This ii");
+    var temp = { animate: "fromRight", clickToClose: true, pauseOnHover: true, showProgressBar: true, timeOut: 5000};
+
+    this._notificationSvc.create("Title", "Hello This is a notification", "success", temp);
+
     this.sendMessage("This is a message");
   }
 

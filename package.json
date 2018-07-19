@@ -23,6 +23,7 @@
     "@angular/router": "6.0.0",
     "@ng-bootstrap/ng-bootstrap": "^2.0.0",
     "angular-calendar": "^0.25.2",
+    "angular2-notifications": "^1.0.2",
     "bootstrap-confirmation2": "^4.0.0",
     "core-js": "^2.4.1",
     "express": "^4.16.3",
