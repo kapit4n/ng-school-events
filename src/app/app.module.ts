@@ -69,14 +69,11 @@ import { CourseYearComponent } from "./components/admin/course-year/course-year.
 import { YearCourseComponent } from "./components/admin/year-course/year-course.component";
 import { YearHomeComponent } from "./components/admin/year-home/year-home.component";
 import { AnnListAdminComponent } from "./components/admin/ann-list-admin/ann-list-admin.component";
-import { AnnAddAdminComponent } from "./components/admin/ann-add-admin/ann-add-admin.component";
-import { AnnHomeComponent } from "./components/admin/ann-home/ann-home.component";
 import { ParentsContainerComponent } from "./components/admin/parents-container/parents-container.component";
 import { TeachersContainerComponent } from "./components/admin/teachers-container/teachers-container.component";
 import { StudentsContainerComponent } from "./components/admin/students-container/students-container.component";
 import { CoursesContainerComponent } from "./components/admin/courses-container/courses-container.component";
 import { YearsContainerComponent } from "./components/admin/years-container/years-container.component";
-import { AnnsContainerComponent } from "./components/admin/anns-container/anns-container.component";
 
 import { CourseListComponent } from "./components/teacher/course-list/course-list.component";
 import { TeacherCourseHomeComponent } from "./components/teacher/teacher-course-home/teacher-course-home.component";
@@ -250,20 +247,7 @@ const appRoutes: Routes = [
   },
   {
     path: "ann-list-admin",
-    component: AnnsContainerComponent,
-    data: { breadcrumb: "Announcements" },
-    children: [
-      {
-        path: "",
-        component: AnnListAdminComponent,
-        data: { breadcrumb: "List" }
-      },
-      {
-        path: ":id",
-        component: AnnHomeComponent,
-        data: { breadcrumb: "Show" }
-      }
-    ]
+    component: AnnListAdminComponent
   },
   {
     path: "year-add-admin",
@@ -369,14 +353,11 @@ const appRoutes: Routes = [
     SonHomeComponent,
     TeacherCourseHomeComponent,
     AnnListAdminComponent,
-    AnnAddAdminComponent,
-    AnnHomeComponent,
     ParentsContainerComponent,
     TeachersContainerComponent,
     StudentsContainerComponent,
     CoursesContainerComponent,
     YearsContainerComponent,
-    AnnsContainerComponent,
     TeacherCoursesContainerComponent,
     SonsContainerComponent,
     SonListComponent,
