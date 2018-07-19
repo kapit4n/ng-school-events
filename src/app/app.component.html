@@ -90,9 +90,12 @@
     <li class="nav-item">
       <a i18n class="nav-link" routerLink="/children" routerLinkActive="active">Sons</a>
     </li>
+    <li class="nav-item">
+      <a i18n class="nav-link" routerLink="/annoucements-parent-home" routerLinkActive="active">Annoucements</a>
+    </li>
     <li>
-      <button *ngIf="true" (click)="sendMessageVoid()"  style="background-color: darkgrey;" data-container="body" 
-      data-toggle="popover" data-placement="bottom" 
+      <button *ngIf="true" (click)="sendMessageVoid()"  style="background-color: darkgrey;" data-container="body"
+      data-toggle="popover" data-placement="bottom"
       data-content='
       <ul class="list-group">
         <li class="list-group-item">Event 1</li>
@@ -106,7 +109,7 @@
         </span>
       </button>
     </li>
-    
+
     <li>
       <button *ngIf="true" (click)="sendMessageVoid()" style="background-color: blueviolet;">
         <span class="fa-stack fa-1x has-badge" data-count="5">

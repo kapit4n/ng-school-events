@@ -89,6 +89,8 @@ import { CalendarHeaderComponent } from './components/common/calendar-header/cal
 import { CalendarViewComponent } from './components/common/calendar-view/calendar-view.component';
 import { TeacherStudentHomeComponent } from './components/teachers/teacher-student-home/teacher-student-home.component';
 import { CalendarModalComponent } from './components/common/calendar-modal/calendar-modal.component';
+import { CalendarReadViewComponent } from './components/common/calendar-read-view/calendar-read-view.component';
+import { AnnouncementsHomeComponent } from './components/parent/announcements-home/announcements-home.component';
 
 const appRoutes: Routes = [
   // Common pages
@@ -292,6 +294,7 @@ const appRoutes: Routes = [
       { path: ":id", component: SonHomeComponent, data: { breadcrumb: "Show" } }
     ]
   },
+  { path: "annoucements-parent-home", component: AnnouncementsHomeComponent },
   {
     path: "",
     redirectTo: "/home",
@@ -365,7 +368,9 @@ const appRoutes: Routes = [
     CalendarHeaderComponent,
     CalendarViewComponent,
     TeacherStudentHomeComponent,
-    CalendarModalComponent
+    CalendarModalComponent,
+    CalendarReadViewComponent,
+    AnnouncementsHomeComponent
   ],
   imports: [
     BrowserModule,
