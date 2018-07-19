@@ -294,7 +294,7 @@ const appRoutes: Routes = [
       { path: ":id", component: SonHomeComponent, data: { breadcrumb: "Show" } }
     ]
   },
-  { path: "annoucements-parent-home", component: AnnouncementsHomeComponent },
+  { path: 'annoucements-parent-home', component: AnnouncementsHomeComponent },
   {
     path: "",
     redirectTo: "/home",
