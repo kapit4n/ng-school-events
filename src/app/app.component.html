@@ -70,8 +70,13 @@
     <li class="nav-item">
       <a i18n class="nav-link" routerLink="/todays" routerLinkActive="active">Events</a>
     </li>
-    <li class="nav-item">
-      <a i18n class="nav-link" routerLink="/student-follow-up" routerLinkActive="active">Follow up</a>
+    <li>
+      <button *ngIf="true" (click)="sendMessageVoid()" style="background-color: darkgrey;">
+        <span class="fa-stack fa-1x has-badge" data-count="10">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
+        </span>
+      </button>
     </li>
   </ul>
 
@@ -79,13 +84,29 @@
     <li class="nav-item">
       <a i18n class="nav-link" routerLink="/children" routerLinkActive="active">Sons</a>
     </li>
+    <li>
+      <button *ngIf="true" (click)="sendMessageVoid()" style="background-color: darkgrey;">
+        <span class="fa-stack fa-1x has-badge" data-count="10">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
+        </span>
+      </button>
+    </li>
+    
+    <li>
+      <button *ngIf="true" (click)="sendMessageVoid()" style="background-color: blueviolet;">
+        <span class="fa-stack fa-1x has-badge" data-count="5">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-bed fa-stack-1x fa-inverse"></i>
+        </span>
+      </button>
+    </li>
   </ul>
 
   <simple-notifications></simple-notifications>
 
   <breadcrumb [allowBootstrap]="true"></breadcrumb>
   <router-outlet></router-outlet>
-  <button (click)="sendMessageVoid()" *ngIf="false">Send message</button>
 
   
 
