@@ -96,25 +96,10 @@
     <li>
       <button *ngIf="true" (click)="sendMessageVoid()"  style="background-color: darkgrey;" data-container="body"
       data-toggle="popover" data-placement="bottom"
-      data-content='
-      <ul class="list-group">
-        <li class="list-group-item">Event 1</li>
-        <li class="list-group-item">Event 2</li>
-        <li class="list-group-item">Event 3</li>
-      </ul>
-      '>
-        <span class="fa-stack fa-1x has-badge" data-count="10">
+      attr.data-content="{{dataContentEvents}}">
+        <span class="fa-stack fa-1x has-badge" attr.data-count="{{countFollowUps}}">
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
-        </span>
-      </button>
-    </li>
-
-    <li>
-      <button *ngIf="true" (click)="sendMessageVoid()" style="background-color: blueviolet;">
-        <span class="fa-stack fa-1x has-badge" data-count="5">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-bed fa-stack-1x fa-inverse"></i>
         </span>
       </button>
     </li>

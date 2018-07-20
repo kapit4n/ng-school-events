@@ -8,6 +8,8 @@ import { Router } from "@angular/router";
 import { ActivatedRoute, NavigationEnd } from "@angular/router";
 import { SocketService } from "./services/socket.service";
 import { NotificationsService } from "angular2-notifications";
+import { FollowUpsService } from "./services/follow-ups.service";
+import { ConfigurationService } from "./services/configuration.service";
 
 enum Action {
   JOINED,
@@ -39,6 +41,8 @@ export class AppComponent implements OnInit {
   messages: any[] = [];
   messageContent: string;
   ioConnection: any;
+  dataContentEvents = ``;
+  countFollowUps = 0;
 
   constructor(
     public authSvc: AuthService,
@@ -47,7 +51,9 @@ export class AppComponent implements OnInit {
     private location: Location,
     private router: ActivatedRoute,
     private socketService: SocketService,
-    private _notificationSvc: NotificationsService
+    private _notificationSvc: NotificationsService,
+    private followUpsSvc: FollowUpsService,
+    private confSvc: ConfigurationService
   ) {
     setTheme("bs4");
     this.userType = this.rolesSvc.getUserType();
@@ -71,6 +77,23 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.initIoConnection();
+    this.followUpsSvc
+    .getFollowUpsAll()
+    .subscribe(followUps => {
+      this.dataContentEvents = `<ul class="list-group">`;
+      for ( let i = 0; i < followUps.length; i++) {
+        this.dataContentEvents += `<li class="list-group-item">${followUps[i].title}</li>`;
+      }
+      this.dataContentEvents += `</ul>`;
+    });
+
+
+    this.followUpsSvc
+      .getFollowUpsCountAll()
+      .subscribe(countInfo => {
+        console.log(countInfo.count);
+        this.countFollowUps = countInfo.count;
+      });
   }
 
   reloadUrl(sonUrl) {
@@ -91,12 +114,22 @@ export class AppComponent implements OnInit {
       console.log("connected");
     });
 
-    this.socketService.onEvent("message").subscribe(() => {
-      console.log("chat message");
-      var temp = { animate: "fromRight", clickToClose: true, pauseOnHover: true, showProgressBar: true, timeOut: 5000 };
+    this.socketService.onEvent("message").subscribe(data => {
+        
+    });
 
-      this._notificationSvc.create("Title", "Hello This is a message", "success", temp);
-
+    this.socketService.onEvent("followUp").subscribe(data => {
+      
+      console.log(data);
+      console.log("follow up");
+      var temp = {
+        animate: "fromRight",
+        clickToClose: true,
+        pauseOnHover: true,
+        showProgressBar: true,
+        timeOut: 3000
+      };
+      this._notificationSvc.create("Title", "One follow up created", "success", temp);
     });
 
     this.socketService.onEvent(Event.DISCONNECT).subscribe(() => {
@@ -105,12 +138,25 @@ export class AppComponent implements OnInit {
   }
 
   sendMessageVoid() {
+    this.sendMessage("Some is viewing notifications");
+    /*
     console.log("This ii");
-    var temp = { animate: "fromRight", clickToClose: true, pauseOnHover: true, showProgressBar: true, timeOut: 5000};
+    var temp = {
+      animate: "fromRight",
+      clickToClose: true,
+      pauseOnHover: true,
+      showProgressBar: true,
+      timeOut: 5000
+    };
 
-    this._notificationSvc.create("Title", "Hello This is a notification", "success", temp);
+    this._notificationSvc.create(
+      "Title",
+      "Hello This is a notification",
+      "success",
+      temp
+    );
 
-    this.sendMessage("This is a message");
+    */
   }
 
   public sendMessage(message: string) {
