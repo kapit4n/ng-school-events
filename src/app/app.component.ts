@@ -123,6 +123,8 @@ export class AppComponent implements OnInit {
 
     this.socketService.onEvent("followUp").subscribe(data => {
       
+      this.loadNotification();
+      
       console.log(data);
       console.log("follow up");
       var temp = {
