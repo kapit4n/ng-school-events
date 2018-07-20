@@ -284,6 +284,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: "student-follow-up", component: StudentFollowUpComponent },
+  { path: 'announcements-teacher-home', component: AnnListAdminComponent },
 
   // Pages for parent role
   { path: "parent-profile", component: ParentProfileComponent },
@@ -296,7 +297,7 @@ const appRoutes: Routes = [
       { path: ":id", component: SonHomeComponent, data: { breadcrumb: "Show" } }
     ]
   },
-  { path: 'annoucements-parent-home', component: AnnouncementsHomeComponent },
+  { path: 'announcements-parent-home', component: AnnouncementsHomeComponent },
   {
     path: "",
     redirectTo: "/home",
