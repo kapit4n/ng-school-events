@@ -3,24 +3,18 @@ import { Component, OnInit} from '@angular/core';
 import {CalendarManagementService} from '../../common/calendar-management.service';
 import {Announcement} from '../../common/announcements.model';
 
-import { RolesService } from "../../../services/roles.service";
-import { SocketService } from "../../../services/socket.service";
-
 @Component({
-  selector: "app-ann-list-admin",
-  templateUrl: "./ann-list-admin.component.html",
-  styleUrls: ["./ann-list-admin.component.css"],
+  selector: 'app-ann-list-admin',
+  templateUrl: './ann-list-admin.component.html',
+  styleUrls: ['./ann-list-admin.component.css'],
   providers: [CalendarManagementService]
 })
 export class AnnListAdminComponent implements OnInit {
   announcements: Announcement[];
   announcement = new Announcement();
 
-  constructor(
-    private cmService: CalendarManagementService,
-    public rolesSvc: RolesService,
-    private socketService: SocketService
-  ) {}
+  constructor(private cmService: CalendarManagementService) {
+  }
 
   ngOnInit() {
     this.announcements = this.cmService.getAnnouncements();
@@ -32,31 +26,34 @@ export class AnnListAdminComponent implements OnInit {
     //   );
   }
 
-  public sendMessage(message: string) {
-    if (!message) {
-      return;
-    }
-    this.socketService.followUp({
-      from: this.rolesSvc.getUserName(),
-      content: message
-    });
-  }
-
   getData(message: Announcement) {
     this.cmService.addAnnouncement(message).subscribe(
-      response => {
-        this.sendMessage("An Ann was created");
-
-        console.log(response);
-        this.cmService.updateSingleAnnouncement(message, "Insert");
-      },
-      error => console.log(error)
-    );
+    (response) => {
+      console.log(response);
+      this.cmService.updateSingleAnnouncement(message, 'Insert');
+    },
+      (error) => console.log(error)
+  );
   }
 
-  private addDays(date: any, days: number): Date {
-    const result = new Date(date);
-    result.setDate(result.getDate() + days - 1);
+  getCFData(message: any) {
+    // CO-ANN INSERTION
+    // this.cmService.addAnnouncement(message).subscribe(
+    //   (response) => {
+    //     console.log(response);
+    //     this.cmService.updateSingleAnnouncement(message, 'Insert');
+    //   },
+    //   (error) => console.log(error)
+    // );
+    console.log('GET CF DATA');
+    console.log(message);
+  }
+
+  private addDays(date: any, days: number ): Date {
+    const result = new Date( date );
+    result.setDate(result.getDate() + days - 1 );
     return result;
   }
+
+
 }
