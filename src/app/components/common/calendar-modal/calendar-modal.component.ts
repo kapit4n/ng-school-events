@@ -3,6 +3,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import {Announcement} from '../announcements.model';
+import {RolesService} from '../../../services/roles.service';
 
 
 @Component({
@@ -44,7 +45,10 @@ export class CalendarModalComponent implements OnInit {
   };
   @Output() passCFData: EventEmitter<Object> = new EventEmitter();
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder) {
+  constructor(
+    private modalService: NgbModal,
+    private fb: FormBuilder,
+    public rolesSvc: RolesService) {
   }
 
   get today() {

@@ -7,6 +7,7 @@ import {CalendarManagementService} from '../calendar-management.service';
 import {Announcement} from '../announcements.model';
 import {NgbDateAdapter, NgbDateNativeAdapter, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {RolesService} from '../../../services/roles.service';
 
 @Component({
   selector: 'app-calendar-view',
@@ -25,25 +26,35 @@ export class CalendarViewComponent implements OnInit {
   currentAnnouncement: Announcement = new Announcement();
   currentAction: string;
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fa fa-fw fa-pencil"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      }
-    },
-    {
-      label: '<i class="fa fa-fw fa-times"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Deleted', event);
-      }
-    }
-  ];
+  actions: CalendarEventAction[];
   // edit implementation
   editFormGroup: FormGroup;
   startDateField: Date;
 
-  constructor(private cmService: CalendarManagementService, private modal: NgbModal, private fb: FormBuilder ) {}
+  constructor(private cmService: CalendarManagementService,
+              private modal: NgbModal,
+              private fb: FormBuilder,
+              public rolesSvc: RolesService) {
+    if (rolesSvc.isTeacher()) {
+      this.actions = [] ;
+    } else {
+      this.actions = [
+        {
+          label: '<i class="fa fa-fw fa-pencil"></i>',
+          onClick: ({ event }: { event: CalendarEvent }): void => {
+            this.handleEvent('Edited', event);
+          }
+        },
+        {
+          label: '<i class="fa fa-fw fa-times"></i>',
+          onClick: ({ event }: { event: CalendarEvent }): void => {
+            this.handleEvent('Deleted', event);
+          }
+        }
+      ];
+    }
+
+  }
 
   get today() {
     return new Date();
