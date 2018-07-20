@@ -77,23 +77,26 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.initIoConnection();
+    this.loadNotification();
+  }
+
+  loadNotification(): void {
     this.followUpsSvc
     .getFollowUpsAll()
     .subscribe(followUps => {
       this.dataContentEvents = `<ul class="list-group">`;
-      for ( let i = 0; i < followUps.length; i++) {
+      for (let i = 0; i < followUps.length; i++) {
         this.dataContentEvents += `<li class="list-group-item">${followUps[i].title}</li>`;
       }
       this.dataContentEvents += `</ul>`;
     });
 
-
     this.followUpsSvc
-      .getFollowUpsCountAll()
-      .subscribe(countInfo => {
-        console.log(countInfo.count);
-        this.countFollowUps = countInfo.count;
-      });
+    .getFollowUpsCountAll()
+    .subscribe(countInfo => {
+      console.log(countInfo.count);
+      this.countFollowUps = countInfo.count;
+    });
   }
 
   reloadUrl(sonUrl) {
@@ -164,7 +167,7 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    this.socketService.send({
+    this.socketService.followUp({
       from: this.rolesSvc.getUserName(),
       content: message
     });
