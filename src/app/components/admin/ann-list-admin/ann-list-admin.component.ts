@@ -36,6 +36,19 @@ export class AnnListAdminComponent implements OnInit {
   );
   }
 
+  getCFData(message: any) {
+    // CO-ANN INSERTION
+    // this.cmService.addAnnouncement(message).subscribe(
+    //   (response) => {
+    //     console.log(response);
+    //     this.cmService.updateSingleAnnouncement(message, 'Insert');
+    //   },
+    //   (error) => console.log(error)
+    // );
+    console.log('GET CF DATA');
+    console.log(message);
+  }
+
   private addDays(date: any, days: number ): Date {
     const result = new Date( date );
     result.setDate(result.getDate() + days - 1 );
