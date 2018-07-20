@@ -149,7 +149,7 @@
 
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-md-auto">
+    <div *ngIf="rolesSvc.isAdmin()" class="col-md-auto">
       <button class="btn btn-danger" (click)="open('General',content)">Add new General Announcement </button>
     </div>
     <div class="col-md-auto">
