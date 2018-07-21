@@ -80,17 +80,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.initIoConnection();
-    this.loadNotification();
+    this.loadFollowUps();
     this.loadAnnoucement();
   }
 
-  loadNotification(): void {
+  loadFollowUps(): void {
     this.followUpsSvc.getFollowUpsAll().subscribe(followUps => {
       this.dataContentEvents = `<ul class="list-group">`;
       for (let i = 0; i < followUps.length; i++) {
-        this.dataContentEvents += `<li class="list-group-item">${
-          followUps[i].title
-        }</li>`;
+        this.dataContentEvents += `<li class="list-group-item">${followUps[i].title} <a href="children/${followUps[i].student.id}">${followUps[i].student.firstName}</a></li>`;
       }
       this.dataContentEvents += `</ul>`;
     });
@@ -125,7 +123,7 @@ export class AppComponent implements OnInit {
     this.socketService.onEvent("message").subscribe(data => {});
 
     this.socketService.onEvent("followUp").subscribe(data => {
-      this.loadNotification();
+      this.loadFollowUps();
 
       var temp = {
         animate: "fromRight",

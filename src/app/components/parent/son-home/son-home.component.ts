@@ -28,7 +28,7 @@ export class SonHomeComponent implements OnInit {
       this.studentParentRel = students[0];
       
       this.studentsSvc
-        .getCourses(this.studentParentRel.student.id)
+        .getCourses(this.studentParentRel.id)
         .subscribe(courseStudents => {
           this.studentsSvc
             .getCourseYears(courseStudents)

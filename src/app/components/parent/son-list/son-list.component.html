@@ -9,7 +9,7 @@
     <tr *ngFor="let son of sons">
       <td>{{son.student ? son.student.firstName : ''}} {{son.student ? son.student.lastName : ''}}</td>
       <td>
-        <a class="btn btn-info" href="children/{{son?.id}}">
+        <a class="btn btn-info" href="children/{{son.student?.id}}">
           <span class="fa fa-info" aria-hidden="true"></span>
         </a>
       </td>

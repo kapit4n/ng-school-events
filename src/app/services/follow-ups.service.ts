@@ -41,7 +41,7 @@ export class FollowUpsService {
   public getFollowUpsAll(): Observable<any> {
     return this.http
       .get(
-        `${this.configSvc.backendUrl}/${ this.endPoint }`
+        `${this.configSvc.backendUrl}/${ this.endPoint }?filter[include]=student`
       ).map(res => res.json());
   }
 

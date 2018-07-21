@@ -9,6 +9,7 @@ export class ParentsService {
   parentUrl = "parents";
   userUrl = "users";
   sParentUrl = "student-parents";
+  studentsUrl = "students";
   constructor(
     private configSvc: ConfigurationService,
     private http: HttpClientService
@@ -87,12 +88,22 @@ export class ParentsService {
       .map(res => res.json());
   }
 
-  public getStudent(studentId = ""): Observable<any> {
+  public getStudentRel(studentId = ""): Observable<any> {
     return this.http
       .get(
         `${this.configSvc.backendUrl}/${
           this.sParentUrl
         }?filter[include]=student&filter[where][id]=${studentId}`
+      )
+      .map(res => res.json());
+  }
+
+  public getStudent(studentId = ""): Observable<any> {
+    return this.http
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.studentsUrl
+        }?filter[where][id]=${studentId}`
       )
       .map(res => res.json());
   }
