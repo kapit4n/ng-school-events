@@ -8,7 +8,7 @@ import {colors} from '../../utilities/event-colors';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class CalendarManagementService {
   announcementsChanged = new EventEmitter<Announcement[]>();
@@ -27,35 +27,44 @@ export class CalendarManagementService {
     return this.announcements.slice();
   }
 
-  public loadAnnouncementsFromDB(): Observable<any>  {
+  public loadAnnouncementsFromDB(): Observable<any> {
     return this.http
-      .get(
-        `${this.configSvc.backendUrl}/announcement2s`
-      )
+      .get(`${this.configSvc.backendUrl}/announcement2s`)
       .map(res => res.json())
-      .catch(
-        (error: Response) => {
-          return Observable.throw('Something went wrong with the loading process of Announcements');
-        }
-      );
+      .catch((error: Response) => {
+        return Observable.throw(
+          "Something went wrong with the loading process of Announcements"
+        );
+      });
+  }
+
+  public getAnnsCountAll(): Observable<any> {
+    return this.http
+      .get(`${this.configSvc.backendUrl}/announcement2s/count`)
+      .map(res => res.json())
+      .catch((error: Response) => {
+        return Observable.throw(
+          "Something went wrong with the loading process of Announcements"
+        );
+      });
   }
 
   addAnnouncement(announcement: any): Observable<any> {
     return this.http
-      .post(this.configSvc.backendUrl + '/announcement2s', announcement)
+      .post(this.configSvc.backendUrl + "/announcement2s", announcement)
       .map(res => res.json())
-      .catch(
-        (error: Response) => {
-          return Observable.throw(`Something went wrong with the adding an announcement:${announcement.toString()}`);
-        }
-      );
+      .catch((error: Response) => {
+        return Observable.throw(
+          `Something went wrong with the adding an announcement:${announcement.toString()}`
+        );
+      });
   }
 
   registerAnnouncement(announcement: Announcement): void {
-    console.log('post comand');
+    console.log("post comand");
     console.log(announcement);
     this.http
-      .post(this.configSvc.backendUrl + '/announcement2s', announcement)
+      .post(this.configSvc.backendUrl + "/announcement2s", announcement)
       .map(res => res.json());
   }
 
@@ -63,13 +72,16 @@ export class CalendarManagementService {
   upsertAnnouncement(announcement: any): Observable<any> {
     // this.announcementsUpserted.emit(announcement);
     return this.http
-      .put(`${this.configSvc.backendUrl}/announcement2s/${announcement.id}`, announcement)
+      .put(
+        `${this.configSvc.backendUrl}/announcement2s/${announcement.id}`,
+        announcement
+      )
       .map(res => res.json())
-      .catch(
-        (error: Response) => {
-          return Observable.throw(`Something went wrong with the update of the announcement record:${announcement.toString()}`);
-        }
-      );
+      .catch((error: Response) => {
+        return Observable.throw(
+          `Something went wrong with the update of the announcement record:${announcement.toString()}`
+        );
+      });
   }
 
   // DELETE STUFF
@@ -77,11 +89,11 @@ export class CalendarManagementService {
     return this.http
       .delete(this.configSvc.backendUrl + "/announcement2s/" + announcement.id)
       .map(res => res.json())
-      .catch(
-        (error: Response) => {
-          return Observable.throw(`Something went wrong with deleting the announcement record:${announcement.toString()}`);
-        }
-      );
+      .catch((error: Response) => {
+        return Observable.throw(
+          `Something went wrong with deleting the announcement record:${announcement.toString()}`
+        );
+      });
   }
 
   // experimental stuff
@@ -92,17 +104,20 @@ export class CalendarManagementService {
 
   // experimental stuff
   updateSingleAnnouncement(announcement: Announcement, action: string) {
-    if ( action === 'Insert') {
+    if (action === "Insert") {
       this.announcements.push(announcement);
       this.singleAnnouncementsInserted.emit(announcement);
     } else {
-      if ( action === 'Update') {
-        const objIndex = this.announcements.findIndex((obj => obj.id === announcement.id.toString()));
+      if (action === "Update") {
+        const objIndex = this.announcements.findIndex(
+          obj => obj.id === announcement.id.toString()
+        );
         this.announcements[objIndex] = announcement;
         this.announcementsUpserted.emit(announcement);
-      } else
-      if ( action === 'Delete') {
-        const evtIndex = this.announcements.findIndex((obj => obj.id === announcement.id.toString()));
+      } else if (action === "Delete") {
+        const evtIndex = this.announcements.findIndex(
+          obj => obj.id === announcement.id.toString()
+        );
         if (evtIndex !== -1) {
           this.announcements.splice(evtIndex, 1);
           this.announcementsDeleted.emit(announcement);
