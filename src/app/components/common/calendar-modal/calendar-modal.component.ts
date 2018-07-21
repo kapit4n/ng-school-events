@@ -4,6 +4,9 @@ import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import {Announcement} from '../announcements.model';
 import {RolesService} from '../../../services/roles.service';
+import {CoursesService} from '../../../services/courses.service';
+import {AuthService} from '../../../services/auth.service';
+import {TeachersService} from '../../../services/teachers.service';
 
 
 @Component({
@@ -23,32 +26,30 @@ export class CalendarModalComponent implements OnInit {
   announcement = new Announcement();
   @Output() passData: EventEmitter<Object> = new EventEmitter();
   currentAction: string;
+  courseList = [];
 
   // multi-select
   // itemList = [];
   // selectedItems = [];
   // settings = {};
-  itemList = [
-    { "id": 1, "itemName": "Angular" },
-    { "id": 2, "itemName": "JavaScript" },
-    { "id": 3, "itemName": "HTML" },
-    { "id": 4, "itemName": "CSS" },
-    { "id": 5, "itemName": "ReactJS" },
-    { "id": 6, "itemName": "HTML5" }
-  ];
+  itemList = [];
   selectedItems = [];
-  settings = {
-    text: "Select Skills",
-    selectAllText: 'Select All',
-    unSelectAllText: 'UnSelect All',
-    classes: "myclass custom-class"
-  };
+  settings = {};
   @Output() passCFData: EventEmitter<Object> = new EventEmitter();
+
+  // load courses stuff
+  searchText = '';
+  teacherId = '';
+  isCurrentUserTeacher: boolean = false;
 
   constructor(
     private modalService: NgbModal,
     private fb: FormBuilder,
-    public rolesSvc: RolesService) {
+    public rolesSvc: RolesService,
+    private coursesSvc: CoursesService,
+    private authSvc: AuthService,
+    private teachersSvc: TeachersService
+    ) {
   }
 
   get today() {
@@ -63,12 +64,19 @@ export class CalendarModalComponent implements OnInit {
       durationField: ['', [Validators.required, this.checkDuration]]
     });
     this.inputsCourseForm = this.fb.group({
-      skills: [[], Validators.required],
+      courseMultiSelect: [[], Validators.required],
       title: ['', [Validators.required]],
       description: [''],
       startDateField: ['', [Validators.required]],
       durationField: ['', [Validators.required, this.checkDuration]]
     });
+    if (this.rolesSvc.isAdmin()) {
+      this.loadAllCourseDataSet();
+    } else if (this.rolesSvc.isTeacher()) {
+      this.loadTeacherCourseDataSet();
+      this.teacherId = this.authSvc.getCurrentUserId();
+      this.isCurrentUserTeacher = true;
+    }
   }
 
   open(action: string, content) {
@@ -156,5 +164,65 @@ export class CalendarModalComponent implements OnInit {
   }
   onDeSelectAll(items: any) {
     console.log(items);
+  }
+
+  loadAllCourseDataSet() {
+    this.settings = {
+      text: 'Select one or more Courses',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      classes: 'myclass custom-class',
+      enableSearchFilter: true,
+      noDataLabel: 'There are no Courses registered'
+    };
+
+    this.coursesSvc
+      .getCourses(
+        this.searchText,
+        100,
+        0
+      )
+      .subscribe(courses => {
+        this.courseList = courses;
+        for (let item of this.courseList) {
+         this.itemList.push({
+           id: item.id,
+           itemName: item.name
+         });
+        }
+        console.log('itemList');
+        console.log(this.itemList);
+      } );
+  }
+
+  loadTeacherCourseDataSet() {
+    this.settings = {
+      text: 'Select one or more Courses',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      classes: 'myclass custom-class',
+      enableSearchFilter: true,
+      noDataLabel: 'There are no Course(s) for this Teacher'
+    };
+
+    this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
+      if (teacher.length > 0) {
+        this.teachersSvc
+          .getCourseYear(teacher)
+          .subscribe(courses => {
+            this.courseList = courses;
+            for (let item of this.courseList) {
+              this.itemList.push({
+                id: item.course.id,
+                itemName: item.course.name
+              });
+            }
+            console.log('itemList');
+            console.log(this.itemList);
+            console.log('courseList');
+            console.log(this.courseList);
+          } );
+      }
+    });
   }
 }

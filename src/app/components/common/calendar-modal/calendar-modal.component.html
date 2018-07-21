@@ -76,7 +76,7 @@
       <div class="modal-body">
         <form [formGroup]="inputsCourseForm" autocomplete="off" >
           <div class="form-group">
-            <label for="coursesSelected">Skills</label>
+            <label for="coursesSelected">Courses</label>
             <angular2-multiselect
               id="coursesSelected"
               [data]="itemList"
@@ -84,8 +84,15 @@
               (onSelect)="onItemSelect($event)"
               (onDeSelect)="OnItemDeSelect($event)"
               (onSelectAll)="onSelectAll($event)"
-              (onDeSelectAll)="onDeSelectAll($event)" formControlName="skills">
+              (onDeSelectAll)="onDeSelectAll($event)"
+              formControlName="courseMultiSelect">
             </angular2-multiselect>
+            <div *ngIf="inputsCourseForm.controls['courseMultiSelect'].invalid  && (inputsCourseForm.controls['courseMultiSelect'].dirty || inputsCourseForm.controls['courseMultiSelect'].dirty)"
+                 class="alert alert-danger">
+              <div *ngIf="inputsCourseForm.controls['courseMultiSelect'].errors.required">
+                This field is required.
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
