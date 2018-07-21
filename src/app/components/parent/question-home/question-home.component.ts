@@ -46,6 +46,7 @@ export class QuestionHomeComponent implements OnInit {
 
   saveQuestion() {
     this.questionsSvc.registerQuestion(this.newQuestion).subscribe(question => {
+      question.answers = [];
       this.questions.push(question);
       this.questionMap[question.id] = question;
       this.newQuestion = {};
