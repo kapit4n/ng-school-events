@@ -31,13 +31,21 @@ export class CalendarViewComponent implements OnInit {
   editFormGroup: FormGroup;
   startDateField: Date;
 
+  isCurrentUserTeacher: boolean = false;
+
   constructor(private cmService: CalendarManagementService,
               private modal: NgbModal,
               private fb: FormBuilder,
               public rolesSvc: RolesService) {
-    if (rolesSvc.isTeacher()) {
-      this.actions = [] ;
-    } else {
+  }
+
+  get today() {
+    return new Date();
+  }
+
+  ngOnInit() {
+    // Loading actions according userTypes:
+    if (this.rolesSvc.isAdmin()) {
       this.actions = [
         {
           label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -52,15 +60,12 @@ export class CalendarViewComponent implements OnInit {
           }
         }
       ];
+    } else if (this.rolesSvc.isTeacher()) {
+      this.actions = [] ;
+      this.isCurrentUserTeacher = true;
     }
 
-  }
-
-  get today() {
-    return new Date();
-  }
-
-  ngOnInit() {
+    // loading the Announcements from the database
     this.loadAnnouncements();
     // edit implementation
     this.editFormGroup = this.fb.group({
