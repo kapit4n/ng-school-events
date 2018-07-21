@@ -25,29 +25,35 @@ export class QuestionHomeComponent implements OnInit {
 
   ngOnInit() {
     this.studentId = this.route.snapshot.paramMap.get("id");
-    this.loadQuestion();
+    this.loadQuestions();
   }
 
-  loadQuestion() {
-    this.parentsSvc
-      .getCourseByStudentId(this.studentId)
-      .subscribe(courses => {
-        this.course = courses[0];
-        this.questionsSvc
-          .getQuestions(this.course["course-year"].courseId)
-          .subscribe(questions => {
-            this.questions = questions;
-          });
-      });
+  loadQuestions() {
+    this.parentsSvc.getCourseByStudentId(this.studentId).subscribe(courses => {
+      this.course = courses[0];
+      this.questionsSvc
+        .getQuestions(this.course["course-year"].courseId)
+        .subscribe(questions => {
+          this.questions = questions;
+        });
+    });
   }
 
   saveQuestion() {
     console.log(this.newQuestion);
-    this.questionsSvc
-      .registerQuestion(this.newQuestion)
-      .subscribe(follow => {
-        this.loadQuestion();
-        this.newQuestion = {};
-      });
+    this.questionsSvc.registerQuestion(this.newQuestion).subscribe(question => {
+      this.loadQuestions();
+      this.newQuestion = {};
+    });
+  }
+
+  saveAnswer(questionId: string, answerInput: string) {
+    let answerDescr = (document.getElementById(answerInput + questionId) as HTMLInputElement).value);
+    let answer = { description: answerDescr, questionId: questionId };
+
+    this.questionsSvc.registerAnswer(answer).subscribe(answerResult => {
+      this.loadQuestions();
+      this.newQuestion = {};
+    });
   }
 }

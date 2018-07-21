@@ -9,6 +9,8 @@ import "rxjs/add/operator/map";
 })
 export class QuestionsService {
   questionUrl = "questions";
+  answerUrl = "answers";
+  includeAnswers = "filter[include]=answers";
 
   constructor(
     private configSvc: ConfigurationService,
@@ -17,7 +19,7 @@ export class QuestionsService {
 
   public getQuestions(limit = 1, skip = 0): Observable<any> {
     return this.http
-      .get(`${this.configSvc.backendUrl}/${this.questionUrl}`)
+      .get(`${this.configSvc.backendUrl}/${this.questionUrl}?${this.includeAnswers}`)
       .map(res => res.json());
   }
 
@@ -27,5 +29,9 @@ export class QuestionsService {
       .map(res => res);
   }
 
-
+  public registerAnswer(answer: any): Observable<any> {
+    return this.http
+      .post(`${this.configSvc.backendUrl}/${this.answerUrl}`, answer)
+      .map(res => res);
+  }
 }
