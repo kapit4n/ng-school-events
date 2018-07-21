@@ -12,6 +12,7 @@ export class QuestionHomeComponent implements OnInit {
   studentId = "0";
   course: any;
   questions = [];
+  questionMap = [];
   newQuestion: any;
 
   constructor(
@@ -34,15 +35,19 @@ export class QuestionHomeComponent implements OnInit {
       this.questionsSvc
         .getQuestions(this.course["course-year"].courseId)
         .subscribe(questions => {
+          this.questionMap = questions.reduce(function (map, obj) {
+            map[obj.id] = obj;
+            return map;
+          }, {});
           this.questions = questions;
         });
     });
   }
 
   saveQuestion() {
-    console.log(this.newQuestion);
     this.questionsSvc.registerQuestion(this.newQuestion).subscribe(question => {
-      this.loadQuestions();
+      this.questions.push(question);
+      this.questionMap[question.id] = question;
       this.newQuestion = {};
     });
   }
@@ -52,7 +57,7 @@ export class QuestionHomeComponent implements OnInit {
     let answer = { description: answerDescr, questionId: questionId };
 
     this.questionsSvc.registerAnswer(answer).subscribe(answerResult => {
-      this.loadQuestions();
+      this.questionMap[questionId].answers.push(answerResult);
       this.newQuestion = {};
     });
   }

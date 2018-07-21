@@ -26,12 +26,12 @@ export class QuestionsService {
   public registerQuestion(question: any): Observable<any> {
     return this.http
       .post(`${this.configSvc.backendUrl}/${this.questionUrl}`, question)
-      .map(res => res);
+      .map(res => res.json());
   }
 
   public registerAnswer(answer: any): Observable<any> {
     return this.http
       .post(`${this.configSvc.backendUrl}/${this.answerUrl}`, answer)
-      .map(res => res);
+      .map(res => res.json());
   }
 }

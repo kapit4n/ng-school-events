@@ -14,7 +14,9 @@
     <div id="collapse{{question.id}}" class="collapse" attr.aria-labelledby="heading{{question.id}}"
      attr.data-parent="#accordion">
       <div class="card-body">
-         {{question.description}}
+        <p>
+          {{question.description}}
+        </p> 
         <ul class="chat" *ngFor="let answer of question.answers">
           <li class="left clearfix">
             <span class="chat-img pull-left">
