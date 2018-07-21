@@ -110,19 +110,27 @@ export class CalendarModalComponent implements OnInit {
   }
 
   setCFValues() {
-    // this.announcement.id = this.generateId();
-    // this.announcement.title = this.inputsForm.get('title').value;
-    // this.announcement.description = this.inputsForm.get('description').value;
-    // this.announcement.startDate = this.inputsForm.get('startDateField').value;
-    // this.announcement.endDate = this.inputsForm.get('durationField').value;
-    // this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate);
-    // this.passData.emit(this.announcement);
-    this.passCFData.emit(this.inputsCourseForm.getRawValue());
+    this.announcement.id = this.generateCFId();
+    this.announcement.title = this.inputsCourseForm.get('title').value;
+    this.announcement.description = this.inputsCourseForm.get('description').value;
+    this.announcement.startDate = this.inputsCourseForm.get('startDateField').value;
+    this.announcement.endDate = this.inputsCourseForm.get('durationField').value;
+    this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate);
+    this.announcement.courseMultiSelect = this.inputsCourseForm.get('courseMultiSelect').value;
+    if (this.isCurrentUserTeacher) {
+      this.announcement.createdBy = this.teacherId;
+    }
+    this.passCFData.emit(this.announcement);
     this.inputsCourseForm.reset();
   }
 
   generateId(): string {
     const id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
+    return id;
+  }
+
+  generateCFId(): string {
+    const id = 'CF-' + (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
     return id;
   }
 
