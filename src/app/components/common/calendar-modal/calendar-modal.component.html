@@ -67,7 +67,7 @@
 
     <div  *ngSwitchCase="'PerCourse'">
       <div class="modal-header">
-        <h4 class="modal-title">New General Announcement</h4>
+        <h4 class="modal-title">New Announcement Per Course(s)</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click'); resetCF()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -157,7 +157,7 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div *ngIf="rolesSvc.isAdmin()" class="col-md-auto">
-      <button class="btn btn-danger" (click)="open('General',content)">Add new General Announcement </button>
+      <button class="btn btn-success" (click)="open('General',content)">Add new General Announcement </button>
     </div>
     <div class="col-md-auto">
       <button class="btn btn-warning" (click)="open('PerCourse', content)">Add new Announcement per Course </button>

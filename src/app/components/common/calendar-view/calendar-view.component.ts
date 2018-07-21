@@ -8,6 +8,7 @@ import {Announcement} from '../announcements.model';
 import {NgbDateAdapter, NgbDateNativeAdapter, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RolesService} from '../../../services/roles.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-calendar-view',
@@ -27,15 +28,33 @@ export class CalendarViewComponent implements OnInit {
   currentAction: string;
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
   actions: CalendarEventAction[];
+  adminActions: CalendarEventAction[] = [
+    {
+      label: '<i class="fa fa-fw fa-pencil"></i>',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.handleEvent('Edited', event);
+      }
+    },
+    {
+      label: '<i class="fa fa-fw fa-times"></i>',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.handleEvent('Deleted', event);
+      }
+    }
+  ];
   // edit implementation
   editFormGroup: FormGroup;
   startDateField: Date;
 
   isCurrentUserTeacher: boolean = false;
+  isCurrentUserAdmin: boolean = false;
+  teacherId = '';
+  colorEvent: any = colors.green;
 
   constructor(private cmService: CalendarManagementService,
               private modal: NgbModal,
               private fb: FormBuilder,
+              private authSvc: AuthService,
               public rolesSvc: RolesService) {
   }
 
@@ -46,6 +65,7 @@ export class CalendarViewComponent implements OnInit {
   ngOnInit() {
     // Loading actions according userTypes:
     if (this.rolesSvc.isAdmin()) {
+      this.isCurrentUserAdmin = true;
       this.actions = [
         {
           label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -63,6 +83,7 @@ export class CalendarViewComponent implements OnInit {
     } else if (this.rolesSvc.isTeacher()) {
       this.actions = [] ;
       this.isCurrentUserTeacher = true;
+      this.teacherId = this.authSvc.getCurrentUserId();
     }
 
     // loading the Announcements from the database
@@ -79,12 +100,23 @@ export class CalendarViewComponent implements OnInit {
       .subscribe(
         (announcement: Announcement) => {
           this.announcements = this.cmService.getAnnouncements();
+          this.colorEvent = announcement.id.startsWith('CF-') ? colors.yellow : colors.green ;
+          if ( this.isCurrentUserAdmin ) {
+            this.actions = this.adminActions;
+          } else {
+            if (this.isCurrentUserTeacher && announcement.createdBy === this.teacherId ) {
+              this.actions = this.adminActions;
+            } else {
+              this.actions = [];
+            }
+          }
+
           this.events.push({
             id: announcement.id,
             start: announcement.startDate,
             end: announcement.endDate,
             title: announcement.title,
-            color: colors.red,
+            color: this.colorEvent,
             actions: this.actions
           });
           this.refresh.next();
@@ -140,12 +172,22 @@ export class CalendarViewComponent implements OnInit {
           this.cmService.setAnnouncements(announcements);
           this.announcements = this.cmService.getAnnouncements();
           for (let entry of announcements) {
+            this.colorEvent = entry.id.startsWith('CF-') ? colors.yellow : colors.green ;
+            if ( this.isCurrentUserAdmin ) {
+              this.actions = this.adminActions;
+            } else {
+              if (this.isCurrentUserTeacher && entry.createdBy === this.teacherId ) {
+                this.actions = this.adminActions;
+              } else {
+                this.actions = [];
+              }
+            }
             this.events.push({
               id : entry.id,
               start: new Date(entry.startDate.toString()),
               end: new Date(entry.endDate.toString()),
               title: entry.title,
-              color: colors.red,
+              color: this.colorEvent,
               actions: this.actions
             });
           }

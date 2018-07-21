@@ -45,7 +45,7 @@ export class AnnListAdminComponent implements OnInit {
   getData(message: Announcement) {
     this.cmService.addAnnouncement(message).subscribe(
     (response) => {
-      this.sendMessage('An Ann was created');
+      this.sendMessage('A General Announcement was created');
       console.log(response);
       this.cmService.updateSingleAnnouncement(message, 'Insert');
     },
@@ -55,13 +55,14 @@ export class AnnListAdminComponent implements OnInit {
 
   getCFData(message: any) {
     // CO-ANN INSERTION
-    // this.cmService.addAnnouncement(message).subscribe(
-    //   (response) => {
-    //     console.log(response);
-    //     this.cmService.updateSingleAnnouncement(message, 'Insert');
-    //   },
-    //   (error) => console.log(error)
-    // );
+    this.cmService.addAnnouncement(message).subscribe(
+      (response) => {
+        this.sendMessage('An Announcement per Course(s) was created');
+        console.log(response);
+        this.cmService.updateSingleAnnouncement(message, 'Insert');
+      },
+      (error) => console.log(error)
+    );
     console.log('GET CF DATA');
     console.log(message);
   }
