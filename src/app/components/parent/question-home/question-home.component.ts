@@ -45,6 +45,7 @@ export class QuestionHomeComponent implements OnInit {
   }
 
   saveQuestion() {
+    this.newQuestion.courseId = this.course.id;
     this.questionsSvc.registerQuestion(this.newQuestion).subscribe(question => {
       question.answers = [];
       this.questions.push(question);
@@ -54,12 +55,12 @@ export class QuestionHomeComponent implements OnInit {
   }
 
   saveAnswer(questionId: string, answerInput: string) {
-    let answerDescr = (document.getElementById(answerInput + questionId) as HTMLInputElement).value);
+    let answerDescr = (document.getElementById(answerInput + questionId) as HTMLInputElement).value;
     let answer = { description: answerDescr, questionId: questionId };
 
     this.questionsSvc.registerAnswer(answer).subscribe(answerResult => {
       this.questionMap[questionId].answers.push(answerResult);
-      this.newQuestion = {};
+      (document.getElementById(answerInput + questionId) as HTMLInputElement).value = '';
     });
   }
 }
