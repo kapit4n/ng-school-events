@@ -310,7 +310,7 @@ const appRoutes: Routes = [
     data: { breadcrumb: "questions" },
     children: [
       { path: "", component: QuestionsCoursesComponent, data: { breadcrumb: "Questions Courses" }},
-      { path: ":courseId", component: QuestionHomeComponent, data: { breadcrumb: "Question" } }
+      { path: ":id", component: QuestionHomeComponent, data: { breadcrumb: "Question" } }
     ]
   },
 

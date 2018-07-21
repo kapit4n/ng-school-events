@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ParentsService } from "../../../services/parents.service";
+import { QuestionsService } from "../../../services/questions.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-question-home',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionHomeComponent implements OnInit {
 
-  constructor() { }
+  studentId = "0";
+  course: any;
+  questions = [];
+
+  constructor(private route: ActivatedRoute,
+      private parentsSvc: ParentsService,
+      private questionsSvc: QuestionsService
+  ) { 
+    this.course = {};
+  }
 
   ngOnInit() {
+    this.studentId = this.route.snapshot.paramMap.get("id");
+    this.parentsSvc.getCourseByStudentId(this.studentId).subscribe(courses => {
+      this.course = courses[0];
+  
+      this.questionsSvc
+        .getQuestions(this.course.course.id)
+        .subscribe(questions => {
+          this.questions = questions;
+        });
+    });
   }
 
 }

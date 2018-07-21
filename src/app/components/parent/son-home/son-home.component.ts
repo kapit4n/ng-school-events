@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ParentsService } from "../../../services/parents.service";
-import { StudentsService } from "../../../services/students.service";
 import { ActivatedRoute } from "@angular/router";
+import { StudentsService } from "../../../services/students.service";
 import { FollowUpsService } from "../../../services/follow-ups.service";
 import { ConfigurationService } from "../../../services/configuration.service";
 
