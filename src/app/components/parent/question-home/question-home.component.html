@@ -11,10 +11,36 @@
       </h5>
     </div>
 
-    <div id="collapse{{question.id}}" class="collapse show" attr.aria-labelledby="heading{{question.id}}"
+    <div id="collapse{{question.id}}" class="collapse" attr.aria-labelledby="heading{{question.id}}"
      attr.data-parent="#accordion">
       <div class="card-body">
          {{question.description}}
+        <ul class="chat">
+          <li class="left clearfix">
+            <span class="chat-img pull-left">
+              <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+            </span>
+            <div class="chat-body clearfix">
+              <div class="header">
+                <strong class="primary-font">Jack Sparrow</strong>
+                <small class="pull-right text-muted">
+                  <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+              </p>
+            </div>
+          </li>
+        </ul>
+        <div class="panel-footer">
+          <div class="input-group">
+            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+            <span class="input-group-btn">
+              <button class="btn btn-warning btn-sm" id="btn-chat">
+                Response</button>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -38,7 +64,7 @@
               </div>
 
               <div class="form-group">
-            <label for="isAbsent" i18n>Description</label>
+                <label for="isAbsent" i18n>Description</label>
                 <div class="form-check">
                   <input type="text" class="form-control" id="description" i18n-placeholder placeholder="Description" value="Data" required [(ngModel)]="newQuestion.description"
                     [ngModelOptions]="{standalone: true}">
