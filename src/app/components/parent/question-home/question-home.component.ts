@@ -35,10 +35,21 @@ export class QuestionHomeComponent implements OnInit {
       this.questionsSvc
         .getQuestions(this.course["course-year"].courseId)
         .subscribe(questions => {
+          
           this.questionMap = questions.reduce(function (map, obj) {
             map[obj.id] = obj;
             return map;
           }, {});
+
+          questions.forEach( data => {
+            this.questionsSvc.getAnswersByQuestionId(data.id).subscribe( answers => {
+              console.log(answers);
+              if (answers.length){
+                this.questionMap[answers[0].questionId].answers = answers;
+              }
+            });
+          });
+
           this.questions = questions;
         });
     });
@@ -65,21 +76,7 @@ export class QuestionHomeComponent implements OnInit {
   }
 
   removeAnswer(questionId, id) {
-    var auxAnswers = this.questionMap[questionId].answers;
-    var index = -1;
-    var i = 0; 
-    var found = false;
-    while(i < auxAnswers.length && !found) {
-      if (auxAnswers[i].id == id) {
-        index = i;
-      }
-      i++;
-    }
-    
-    if (index > -1) {
-      this.questionMap[questionId].answers.splice(index, 1);
-    }
-
+    this.questionMap[questionId].answers = this.questionMap[questionId].answers.filter(q => q.id != id);
     this.questionsSvc.removeAnswer(id).subscribe(res => {
       console.log(res);
     });

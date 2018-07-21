@@ -27,6 +27,14 @@ export class QuestionsService {
       .map(res => res.json());
   }
 
+  public getAnswersByQuestionId(questionId: any): Observable<any> {
+    return this.http
+      .get(
+        `${this.configSvc.backendUrl}/${this.answerUrl}?filter[where][questionId]=${questionId}`
+      )
+      .map(res => res.json());
+  }
+
   public registerQuestion(question: any): Observable<any> {
     return this.http
       .post(`${this.configSvc.backendUrl}/${this.questionUrl}`, question)
