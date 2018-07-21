@@ -65,7 +65,7 @@
       <a i18n class="nav-link" routerLink="/course-list-admin" routerLinkActive="active">Courses</a>
     </li>
     <li class="nav-item">
-      <a i18n class="nav-link" routerLink="/ann-list-admin" routerLinkActive="active">Announcements</a>
+      <a i18n class="nav-link" routerLink="/ann-list-admin" routerLinkActive="active">Announcements <span class="badge badge-primary">{{annCount}}</span></a>
     </li>
   </ul>
 
@@ -92,7 +92,7 @@
       <a i18n class="nav-link" routerLink="/children" routerLinkActive="active">Sons</a>
     </li>
     <li class="nav-item">
-      <a i18n class="nav-link" routerLink="/announcements-parent-home" routerLinkActive="active">Announcements</a>
+      <a i18n class="nav-link" routerLink="/announcements-parent-home" routerLinkActive="active">Announcements <span class="badge badge-primary">{{annCount}}</span></a>
     </li>
     <li>
       <button *ngIf="true" (click)="sendMessageVoid()"  style="background-color: darkgrey;" data-container="body"
