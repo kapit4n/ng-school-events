@@ -303,6 +303,17 @@ const appRoutes: Routes = [
       { path: ":id", component: SonHomeComponent, data: { breadcrumb: "Show" } }
     ]
   },
+  
+  {
+    path: "questions",
+    component: QuestionsContainerComponent,
+    data: { breadcrumb: "questions" },
+    children: [
+      { path: "", component: QuestionsCoursesComponent, data: { breadcrumb: "Questions Courses" }},
+      { path: ":courseId", component: QuestionHomeComponent, data: { breadcrumb: "Question" } }
+    ]
+  },
+
   { path: 'announcements-parent-home', component: AnnouncementsHomeComponent },
   {
     path: "",
