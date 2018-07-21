@@ -25,17 +25,29 @@ export class QuestionHomeComponent implements OnInit {
 
   ngOnInit() {
     this.studentId = this.route.snapshot.paramMap.get("id");
-    this.parentsSvc.getCourseByStudentId(this.studentId).subscribe(courses => {
-      this.course = courses[0];
-      this.questionsSvc
-        .getQuestions(this.course["course-year"].courseId)
-        .subscribe(questions => {
-          this.questions = questions;
-        });
-    });
+    this.loadQuestion();
+  }
+
+  loadQuestion() {
+    this.parentsSvc
+      .getCourseByStudentId(this.studentId)
+      .subscribe(courses => {
+        this.course = courses[0];
+        this.questionsSvc
+          .getQuestions(this.course["course-year"].courseId)
+          .subscribe(questions => {
+            this.questions = questions;
+          });
+      });
   }
 
   saveQuestion() {
     console.log(this.newQuestion);
+    this.questionsSvc
+      .registerQuestion(this.newQuestion)
+      .subscribe(follow => {
+        this.loadQuestion();
+        this.newQuestion = {};
+      });
   }
 }
