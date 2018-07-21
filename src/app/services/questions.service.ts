@@ -19,7 +19,11 @@ export class QuestionsService {
 
   public getQuestions(limit = 1, skip = 0): Observable<any> {
     return this.http
-      .get(`${this.configSvc.backendUrl}/${this.questionUrl}?${this.includeAnswers}`)
+      .get(
+        `${this.configSvc.backendUrl}/${this.questionUrl}?${
+          this.includeAnswers
+        }`
+      )
       .map(res => res.json());
   }
 
@@ -32,6 +36,12 @@ export class QuestionsService {
   public registerAnswer(answer: any): Observable<any> {
     return this.http
       .post(`${this.configSvc.backendUrl}/${this.answerUrl}`, answer)
+      .map(res => res.json());
+  }
+
+  public removeAnswer(id): Observable<any> {
+    return this.http
+      .delete(`${this.configSvc.backendUrl}/${this.answerUrl}/${id}`)
       .map(res => res.json());
   }
 }

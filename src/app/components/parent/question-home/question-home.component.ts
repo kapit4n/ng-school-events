@@ -63,4 +63,25 @@ export class QuestionHomeComponent implements OnInit {
       (document.getElementById(answerInput + questionId) as HTMLInputElement).value = '';
     });
   }
+
+  removeAnswer(questionId, id) {
+    var auxAnswers = this.questionMap[questionId].answers;
+    var index = -1;
+    var i = 0; 
+    var found = false;
+    while(i < auxAnswers.length && !found) {
+      if (auxAnswers[i].id == id) {
+        index = i;
+      }
+      i++;
+    }
+    
+    if (index > -1) {
+      this.questionMap[questionId].answers.splice(index, 1);
+    }
+
+    this.questionsSvc.removeAnswer(id).subscribe(res => {
+      console.log(res);
+    });
+  }
 }
