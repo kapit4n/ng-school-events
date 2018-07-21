@@ -25,6 +25,7 @@ export class CalendarReadViewComponent implements OnInit {
   currentAnnouncement: Announcement = new Announcement();
   currentAction: string;
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
+  colorEvent: any = colors.green;
 
   constructor(private cmService: CalendarManagementService, private modal: NgbModal) { }
 
@@ -43,12 +44,13 @@ export class CalendarReadViewComponent implements OnInit {
           this.cmService.setAnnouncements(announcements);
           this.announcements = this.cmService.getAnnouncements();
           for (let entry of announcements) {
+            this.colorEvent = entry.id.startsWith('CF-') ? colors.yellow : colors.green ;
             this.events.push({
               id : entry.id,
               start: new Date(entry.startDate.toString()),
               end: new Date(entry.endDate.toString()),
               title: entry.title,
-              color: colors.red
+              color: this.colorEvent
             });
           }
           this.refresh.next();

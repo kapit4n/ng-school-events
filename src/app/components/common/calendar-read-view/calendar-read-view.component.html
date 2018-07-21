@@ -2,12 +2,28 @@
   <div [ngSwitch]="currentAction">
     <div  *ngSwitchCase="'Clicked'">
       <div class="modal-header">
-        <h5 class="modal-title">Annoucement Details</h5>
+        <h5 class="modal-title">Announcement Details</h5>
         <button type="button" class="close" (click)="close()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+        <div *ngIf="currentAnnouncement.id.startsWith('CF-')" class="form-group">
+          <table class="table table-sm">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Course(s)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let course of currentAnnouncement.courseMultiSelect; let i = index" >
+              <th scope="row">{{ i+1 }}</th>
+              <td>{{ course.itemName }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="form-group">
           <label for="title-ro">Title</label>
           <input [readonly]="true" type="text" class="form-control" id="title-ro"
