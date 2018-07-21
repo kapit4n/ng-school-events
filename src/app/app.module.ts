@@ -92,6 +92,12 @@ import { CalendarModalComponent } from './components/common/calendar-modal/calen
 import { CalendarReadViewComponent } from './components/common/calendar-read-view/calendar-read-view.component';
 import { AnnouncementsHomeComponent } from './components/parent/announcements-home/announcements-home.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import { QuestionsContainerComponent } from './components/parent/questions-container/questions-container.component';
+import { QuestionsContainerTeacherComponent } from './components/teacher/questions-container-teacher/questions-container-teacher.component';
+import { QuestionsCoursesTeacherComponent } from './components/teacher/questions-courses-teacher/questions-courses-teacher.component';
+import { QuestionsCoursesComponent } from './components/parent/questions-courses/questions-courses.component';
+import { QuestionHomeComponent } from './components/parent/question-home/question-home.component';
+import { QuestionHomeTeacherComponent } from './components/teacher/question-home-teacher/question-home-teacher.component';
 
 
 const appRoutes: Routes = [
@@ -373,7 +379,13 @@ const appRoutes: Routes = [
     TeacherStudentHomeComponent,
     CalendarModalComponent,
     CalendarReadViewComponent,
-    AnnouncementsHomeComponent
+    AnnouncementsHomeComponent,
+    QuestionsContainerComponent,
+    QuestionsContainerTeacherComponent,
+    QuestionsCoursesTeacherComponent,
+    QuestionsCoursesComponent,
+    QuestionHomeComponent,
+    QuestionHomeTeacherComponent
   ],
   imports: [
     BrowserModule,

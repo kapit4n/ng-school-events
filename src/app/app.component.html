@@ -77,7 +77,7 @@
       <a i18n class="nav-link" routerLink="/announcements-teacher-home" routerLinkActive="active">Announcements <span class="badge badge-primary">{{annCount}}</span></a>
     </li>
     <li>
-      <button *ngIf="true" (click)="sendMessageVoid()" style="background-color: darkgrey;" data-container="body" data-toggle="popover"
+      <button *ngIf="false" (click)="sendMessageVoid()" style="background-color: darkgrey;" data-container="body" data-toggle="popover"
         data-placement="bottom" attr.data-content="{{dataContentEvents}}">
         <span class="fa-stack fa-1x has-badge" attr.data-count="{{countFollowUps}}">
           <i class="fa fa-circle fa-stack-2x"></i>
