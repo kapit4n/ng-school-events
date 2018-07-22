@@ -24,7 +24,7 @@
             </span>
             <div class="chat-body clearfix">
               <div class="header">
-                <strong class="primary-font">Jack Sparrow</strong>
+                <strong class="primary-font">{{answer.parent?.firstName}}</strong>
                 <button type="button" class="pull-right close" (click)="removeAnswer(question.id, answer.id)">&times;</button>
                 <small class="pull-right text-muted">
                   <span class="glyphicon glyphicon-time"></span>12 mins ago</small>

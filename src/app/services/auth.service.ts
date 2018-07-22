@@ -5,7 +5,10 @@ import { Router } from "@angular/router";
   providedIn: "root"
 })
 export class AuthService {
+
+  
   constructor(private router: Router) {
+
   }
 
   private accessTokenLabel = "access_token";
@@ -20,6 +23,7 @@ export class AuthService {
   }
 
   public saveSessionInfo(user) {
+    console.log(user);
     localStorage.setItem(this.accessTokenLabel, user.id);
     localStorage.setItem(this.userIdLabel, user.userId);
   }

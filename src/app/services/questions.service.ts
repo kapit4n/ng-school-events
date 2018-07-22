@@ -11,6 +11,8 @@ export class QuestionsService {
   questionUrl = "questions";
   answerUrl = "answers";
   includeAnswers = "filter[include]=answers";
+  includeParent = "filter[include]=parent";
+  includeTeacher = "filter[include]=teacher";
 
   constructor(
     private configSvc: ConfigurationService,
@@ -30,7 +32,7 @@ export class QuestionsService {
   public getAnswersByQuestionId(questionId: any): Observable<any> {
     return this.http
       .get(
-        `${this.configSvc.backendUrl}/${this.answerUrl}?filter[where][questionId]=${questionId}`
+        `${this.configSvc.backendUrl}/${this.answerUrl}?${this.includeParent}&${this.includeTeacher}&filter[where][questionId]=${questionId}`
       )
       .map(res => res.json());
   }

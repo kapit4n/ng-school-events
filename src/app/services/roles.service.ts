@@ -46,6 +46,27 @@ export class RolesService {
     return "";
   }
 
+  getUserId() {
+    if (this.userInfo) {
+      return this.userInfo.id;
+    }
+    return "";
+  }
+
+  getParentId() {
+    if (this.userInfo.parents) {
+      return this.userInfo.parents.id;
+    }
+    return "";
+  }
+
+  getTeacherId() {
+    if (this.userInfo.teachers) {
+      return this.userInfo.teachers.id;
+    }
+    return "";
+  }
+
   getUserName() {
     if (this.userInfo) {
       if (this.userInfo.teachers) return this.userInfo.teachers.firstName;

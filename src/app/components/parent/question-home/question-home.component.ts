@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ParentsService } from "../../../services/parents.service";
 import { QuestionsService } from "../../../services/questions.service";
+import { RolesService } from "../../../services/roles.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -18,6 +19,7 @@ export class QuestionHomeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private parentsSvc: ParentsService,
+    private rolesSvc: RolesService,
     private questionsSvc: QuestionsService
   ) {
     this.course = {};
@@ -57,6 +59,8 @@ export class QuestionHomeComponent implements OnInit {
 
   saveQuestion() {
     this.newQuestion.courseId = this.course.id;
+    this.newQuestion.parentId = this.rolesSvc.getParentId();
+    this.newQuestion.teacherId = this.rolesSvc.getTeacherId();
     this.questionsSvc.registerQuestion(this.newQuestion).subscribe(question => {
       question.answers = [];
       this.questions.push(question);
@@ -67,7 +71,7 @@ export class QuestionHomeComponent implements OnInit {
 
   saveAnswer(questionId: string, answerInput: string) {
     let answerDescr = (document.getElementById(answerInput + questionId) as HTMLInputElement).value;
-    let answer = { description: answerDescr, questionId: questionId };
+    let answer = { description: answerDescr, questionId: questionId, parentId: this.rolesSvc.getParentId(), teacherId: this.rolesSvc.getTeacherId() };
 
     this.questionsSvc.registerAnswer(answer).subscribe(answerResult => {
       this.questionMap[questionId].answers.push(answerResult);
