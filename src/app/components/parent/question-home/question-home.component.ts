@@ -74,6 +74,11 @@ export class QuestionHomeComponent implements OnInit {
     let answer = { description: answerDescr, questionId: questionId, parentId: this.rolesSvc.getParentId(), teacherId: this.rolesSvc.getTeacherId() };
 
     this.questionsSvc.registerAnswer(answer).subscribe(answerResult => {
+      if (this.rolesSvc.isParent()) {
+        answerResult.parent = this.rolesSvc.getParent();
+      } else {
+        answerResult.teacher = this.rolesSvc.getTeacher();
+      }
       this.questionMap[questionId].answers.push(answerResult);
       (document.getElementById(answerInput + questionId) as HTMLInputElement).value = '';
     });

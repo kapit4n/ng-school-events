@@ -60,11 +60,25 @@ export class RolesService {
     return "";
   }
 
+  getParent() {
+    if (this.userInfo.parents) {
+      return this.userInfo.parents;
+    }
+    return {};
+  }
+
   getTeacherId() {
     if (this.userInfo.teachers) {
       return this.userInfo.teachers.id;
     }
     return "";
+  }
+
+  getTeacher() {
+    if (this.userInfo.teachers) {
+      return this.userInfo.teachers;
+    }
+    return {};
   }
 
   getUserName() {
