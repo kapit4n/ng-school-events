@@ -8,6 +8,7 @@
           aria-expanded="true" attr.aria-controls="collapse{{question.id}}">
           {{question.title}}
         </button>
+        <button type="button" class="pull-right close" (click)="removeQuestion(question.id)">&times;</button>
       </h5>
     </div>
 

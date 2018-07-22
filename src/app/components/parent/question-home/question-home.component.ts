@@ -90,4 +90,10 @@ export class QuestionHomeComponent implements OnInit {
       console.log(res);
     });
   }
+  
+  removeQuestion(id) {
+    this.questionsSvc.removeQuestion(id).subscribe(res => {
+      this.questions = this.questions.filter(q => q.id != id);
+    });
+  }
 }

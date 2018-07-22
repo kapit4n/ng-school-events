@@ -54,4 +54,11 @@ export class QuestionsService {
       .delete(`${this.configSvc.backendUrl}/${this.answerUrl}/${id}`)
       .map(res => res.json());
   }
+  
+  public removeQuestion(id): Observable<any> {
+    return this.http
+      .delete(`${this.configSvc.backendUrl}/${this.questionUrl}/${id}`)
+      .map(res => res.json());
+  }
+
 }
