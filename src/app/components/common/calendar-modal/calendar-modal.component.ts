@@ -34,13 +34,22 @@ export class CalendarModalComponent implements OnInit {
   // settings = {};
   itemList = [];
   selectedItems = [];
-  settings = {};
+  settings = {
+    text: 'Select one or more Courses',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    classes: 'myclass custom-class',
+    enableSearchFilter: true,
+    noDataLabel: 'There are no Course(s) related to this user',
+    searchPlaceholderText: 'Search by Course Name'
+  };
   @Output() passCFData: EventEmitter<Object> = new EventEmitter();
 
   // load courses stuff
   searchText = '';
   teacherId = '';
   isCurrentUserTeacher: boolean = false;
+  isCurrentUserAdmin: boolean = false;
 
   constructor(
     private modalService: NgbModal,
@@ -71,16 +80,29 @@ export class CalendarModalComponent implements OnInit {
       durationField: ['', [Validators.required, this.checkDuration]]
     });
     if (this.rolesSvc.isAdmin()) {
+      this.isCurrentUserAdmin = true;
       this.loadAllCourseDataSet();
     } else if (this.rolesSvc.isTeacher()) {
+      this.isCurrentUserTeacher = true;
       this.loadTeacherCourseDataSet();
       this.teacherId = this.authSvc.getCurrentUserId();
-      this.isCurrentUserTeacher = true;
     }
   }
 
   open(action: string, content) {
     this.currentAction = action;
+    // console.log(`Admin: ${this.isCurrentUserAdmin}`);
+    // console.log(`Teacher: ${this.isCurrentUserTeacher}`);
+    // console.log(`AdminServ: ${this.rolesSvc.isAdmin()}`);
+    // console.log(`TeacherServ: ${this.rolesSvc.isTeacher()}`);
+    if (this.currentAction === 'PerCourse') {
+      // this.clearDataSets();
+      if ( this.rolesSvc.isAdmin()) {
+        this.loadAllCourseDataSet();
+      } else if ( this.rolesSvc.isTeacher()) {
+        this.loadTeacherCourseDataSet();
+      }
+    }
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -117,7 +139,7 @@ export class CalendarModalComponent implements OnInit {
     this.announcement.endDate = this.inputsCourseForm.get('durationField').value;
     this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate);
     this.announcement.courseMultiSelect = this.inputsCourseForm.get('courseMultiSelect').value;
-    if (this.isCurrentUserTeacher) {
+    if (this.rolesSvc.isTeacher()) {
       this.announcement.createdBy = this.teacherId;
     }
     this.passCFData.emit(this.announcement);
@@ -175,15 +197,7 @@ export class CalendarModalComponent implements OnInit {
   }
 
   loadAllCourseDataSet() {
-    this.settings = {
-      text: 'Select one or more Courses',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      classes: 'myclass custom-class',
-      enableSearchFilter: true,
-      noDataLabel: 'There are no Courses registered'
-    };
-
+    this.itemList = [];
     this.coursesSvc
       .getCourses(
         this.searchText,
@@ -204,15 +218,7 @@ export class CalendarModalComponent implements OnInit {
   }
 
   loadTeacherCourseDataSet() {
-    this.settings = {
-      text: 'Select one or more Courses',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      classes: 'myclass custom-class',
-      enableSearchFilter: true,
-      noDataLabel: 'There are no Course(s) for this Teacher'
-    };
-
+    this.itemList = [];
     this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
       if (teacher.length > 0) {
         this.teachersSvc
@@ -233,4 +239,10 @@ export class CalendarModalComponent implements OnInit {
       }
     });
   }
+
+  clearDataSets() {
+    this.itemList = [];
+    this.selectedItems = [];
+  }
 }
+

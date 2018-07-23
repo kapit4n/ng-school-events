@@ -159,7 +159,7 @@
     <div *ngIf="rolesSvc.isAdmin()" class="col-md-auto">
       <button class="btn btn-success" (click)="open('General',content)">Add new General Announcement </button>
     </div>
-    <div class="col-md-auto">
+    <div *ngIf="rolesSvc.isAdmin() || rolesSvc.isTeacher() " class="col-md-auto">
       <button class="btn btn-warning" (click)="open('PerCourse', content)">Add new Announcement per Course </button>
     </div>
   </div>
