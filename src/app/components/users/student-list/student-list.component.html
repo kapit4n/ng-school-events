@@ -1,4 +1,24 @@
-<a class="btn btn-outline-primary" i18n href="/student-register">Add</a>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 i18n class="modal-title">Add Student</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <app-user-info-edit [userInfo]="newStudent"></app-user-info-edit>
+
+  <div class="form-group">
+    <label for="birthDate" i18n>Birth Date</label>
+    <input type="date" class="form-control" id="birthDate" placeholder="Birth Date" required [(ngModel)]="newStudent.birthDate"
+      [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" (click)="saveStudent(); c('Close click');">Save</button>
+  </div>
+</ng-template>
+
+<button i18n class="btn btn-outline-primary" (click)="open(content)">Add</button>
 
 <div class="form-group">
   <label for="search" i18n>Search by Name</label>
