@@ -66,6 +66,12 @@ export class YearListAdminComponent implements OnInit {
     });
   }
 
+  removeYear(id: any) {
+    this.schoolYearsSvc.removeSchoolYear(id).subscribe(removed => {
+      this.loadSchoolYears();
+    });
+  }
+
   open(content) {
     this.modalService.open(content).result.then(
       result => {

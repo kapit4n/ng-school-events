@@ -92,4 +92,10 @@ export class SchoolYearsService {
       .delete(this.configSvc.backendUrl + "/course-years/" + courseId)
       .map(res => res.json());
   }
+
+  public removeSchoolYear(id: any): Observable<any> {
+    return this.http
+      .delete(this.configSvc.backendUrl + "/school-years/" + id)
+      .map(res => res.json());
+  }
 }

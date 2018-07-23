@@ -76,8 +76,10 @@ export class TeacherStudentHomeComponent implements OnInit {
 
   saveFollowUp() {
     this.sendMessage("An Follow up was created");
+    
     this.newFollowUp.registeredDate = new Date();
     this.newFollowUp.studentId = this.studentId;
+    
     this.followUpsSvc.registerFollowUp(this.newFollowUp).subscribe(follow => {
       this.loadFollowUps();
       this.newFollowUp = {};

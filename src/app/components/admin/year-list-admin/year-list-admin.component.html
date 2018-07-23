@@ -37,7 +37,7 @@
     <td>{{schoolYear.startDate | date}}</td>
     <td>{{schoolYear.endDate | date}}</td>
     <td>
-      <button type="button" class="btn">
+      <button type="button" class="btn" (click)="removeYear(schoolYear.id)">
         <span class="fa fa-trash" aria-hidden="true"></span>
       </button>
       <a class="btn btn-info" href="years/{{schoolYear.id}}">
