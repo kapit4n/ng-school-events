@@ -44,22 +44,25 @@ export class CourseListAdminComponent implements OnInit {
       )
       .subscribe(courses => (this.courseList = courses));
 
-
-    this.coursesSvc
-      .getCoursesCount(this.searchText)
-      .subscribe(countInfo => {
-        this.pages = Math.round(countInfo.count / this.confSvc.pageSize);
-        const range = (from, to, step) =>
-          Array(Math.floor((to - from) / step) + 1)
-            .fill(0)
-            .map((v, i) => from + i * step);
-        this.rangePages = range(1, this.pages, 1);
-      });
+    this.coursesSvc.getCoursesCount(this.searchText).subscribe(countInfo => {
+      this.pages = Math.round(countInfo.count / this.confSvc.pageSize);
+      const range = (from, to, step) =>
+        Array(Math.floor((to - from) / step) + 1)
+          .fill(0)
+          .map((v, i) => from + i * step);
+      this.rangePages = range(1, this.pages, 1);
+    });
   }
 
   saveCourse() {
     let newCourse = this.newCourse;
     this.coursesSvc.registerCourse(newCourse).subscribe(course => {
+      this.loadCourses();
+    });
+  }
+
+  removeCourse(id) {
+    this.coursesSvc.removeCourse(id).subscribe(removed => {
       this.loadCourses();
     });
   }

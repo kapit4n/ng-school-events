@@ -37,7 +37,7 @@
     <td>{{course.isArchived}}</td>
     <td>{{course.details}}</td>
     <td>
-      <button type="button" class="btn">
+      <button type="button" class="btn" (click)="removeCourse(course.id)">
         <span class="fa fa-trash" aria-hidden="true"></span>
       </button>
       <a class="btn btn-info" href="course-list-admin/{{course.id}}">

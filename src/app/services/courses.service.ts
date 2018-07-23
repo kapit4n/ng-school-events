@@ -136,6 +136,12 @@ export class CoursesService {
     }
   }
 
+  public removeCourse(id): Observable<any> {
+    return this.http
+      .delete(`${this.configSvc.backendUrl}/${this.courseUrl}/${id}`)
+      .map(res => res.json());
+  }
+
   public removeStudentFromCourse(relId): Observable<any> {
     return this.http
       .delete(`${this.configSvc.backendUrl}/${this.cStudentUrl}/${relId}`)
