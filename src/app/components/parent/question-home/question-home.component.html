@@ -7,7 +7,9 @@
         <button class="btn btn-link collapsed" data-toggle="collapse" attr.data-target="#collapse{{question.id}}"
           aria-expanded="true" attr.aria-controls="collapse{{question.id}}">
           {{question.title}}
-        </button>
+        </button> <br>
+        <small class="pull-left text-muted">
+          <span class="glyphicon glyphicon-time"></span>Asked by: {{question.parent?.firstName}} {{question.parent?.lastName}} {{question.teacher?.firstName}} {{question.teacher?.lastName}}</small>
         <button type="button" class="pull-right close" (click)="removeQuestion(question.id)">&times;</button>
       </h5>
     </div>
@@ -25,7 +27,7 @@
             </span>
             <div class="chat-body clearfix">
               <div class="header">
-                <strong class="primary-font">{{answer.parent?.firstName}}</strong>
+                <strong class="primary-font">{{answer.parent?.firstName}} {{answer.parent?.lastName}} {{answer.teacher?.firstName}} {{answer.teacher?.lastName}}</strong>
                 <button type="button" class="pull-right close" (click)="removeAnswer(question.id, answer.id)">&times;</button>
                 <small class="pull-right text-muted">
                   <span class="glyphicon glyphicon-time"></span>12 mins ago</small>

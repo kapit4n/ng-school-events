@@ -51,18 +51,24 @@ export class QuestionHomeComponent implements OnInit {
               }
             });
           });
-
           this.questions = questions;
         });
     });
   }
 
   saveQuestion() {
-    this.newQuestion.courseId = this.course.id;
+    this.newQuestion.courseId = this.course["course-year"].courseId;
     this.newQuestion.parentId = this.rolesSvc.getParentId();
     this.newQuestion.teacherId = this.rolesSvc.getTeacherId();
     this.questionsSvc.registerQuestion(this.newQuestion).subscribe(question => {
       question.answers = [];
+
+       if (this.rolesSvc.isParent()) {
+        question.parent = this.rolesSvc.getParent();
+      } else {
+        question.teacher = this.rolesSvc.getTeacher();
+      }
+
       this.questions.push(question);
       this.questionMap[question.id] = question;
       this.newQuestion = {};

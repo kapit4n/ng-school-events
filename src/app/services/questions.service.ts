@@ -19,12 +19,12 @@ export class QuestionsService {
     private http: HttpClientService
   ) {}
 
-  public getQuestions(limit = 1, skip = 0): Observable<any> {
+  public getQuestions(courseId: any): Observable<any> {
     return this.http
       .get(
         `${this.configSvc.backendUrl}/${this.questionUrl}?${
           this.includeAnswers
-        }`
+      }&${this.includeParent}&${this.includeTeacher}&filter[where][courseId]=${courseId}`
       )
       .map(res => res.json());
   }
