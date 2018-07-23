@@ -12,6 +12,7 @@ import { ActivatedRoute } from "@angular/router";
 export class CourseListAdminComponent implements OnInit {
   closeResult: string;
   newCourse = {};
+  editCourse = {};
   courseList = [];
   searchText = "";
 
@@ -61,6 +62,12 @@ export class CourseListAdminComponent implements OnInit {
     });
   }
 
+  updateCourse() {
+    this.coursesSvc.updateCourse(this.editCourse).subscribe(course => {
+      this.loadCourses();
+    });
+  }
+
   removeCourse(id) {
     this.coursesSvc.removeCourse(id).subscribe(removed => {
       this.loadCourses();
@@ -68,6 +75,18 @@ export class CourseListAdminComponent implements OnInit {
   }
 
   open(content) {
+    this.modalService.open(content).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+  }
+  
+  openEdit(toEdit, content) {
+    this.editCourse = toEdit;
     this.modalService.open(content).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;

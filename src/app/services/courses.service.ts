@@ -22,6 +22,12 @@ export class CoursesService {
       .map(res => res.json());
   }
 
+  public updateCourse(course: any): Observable<any> {
+    return this.http
+      .put(`${this.configSvc.backendUrl}/${this.courseUrl}/${course.id}`, course)
+      .map(res => res.json());
+  }
+
   public getStudents(courseId = ""): Observable<any> {
     return this.http
       .get(

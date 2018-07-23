@@ -5,21 +5,27 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <app-course-add-admin [courseInfo]="newCourse"></app-course-add-admin>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-course-add-admin [courseInfo]="newCourse"></app-course-add-admin>
   <div class="modal-footer">
     <button type="submit" class="btn btn-primary" (click)="saveCourse(); c('Close click');">Save</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
   </div>
 </ng-template>
+
+<ng-template #contentEdit let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 i18n class="modal-title">Edit Course</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <app-course-add-admin [courseInfo]="editCourse"></app-course-add-admin>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" (click)="updateCourse(); c('Close click');">Save</button>
+  </div>
+</ng-template>
+
 <button i18n class="btn btn-outline-primary" (click)="open(content)">Add</button>
+
 <div class="form-group">
   <label for="search" i18n>Search by course name</label>
   <input type="text" (keyup.enter)="search()" class="form-control" id="search" i18n-placeholder placeholder="Search" value="Data"
@@ -43,6 +49,9 @@
       <a class="btn btn-info" href="course-list-admin/{{course.id}}">
         <span class="fa fa-info" aria-hidden="true"></span>
       </a>
+      <button type="button" class="btn" (click)="openEdit(course, contentEdit)">
+        <span class="fa fa-edit" aria-hidden="true"></span>
+      </button>
     </td>
   </tr>
   <tfoot>
