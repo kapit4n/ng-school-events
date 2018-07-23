@@ -140,7 +140,7 @@ export class CalendarModalComponent implements OnInit {
     this.announcement.endDate = this.addDays(this.announcement.startDate, this.announcement.endDate);
     this.announcement.courseMultiSelect = this.inputsCourseForm.get('courseMultiSelect').value;
     if (this.rolesSvc.isTeacher()) {
-      this.announcement.createdBy = this.teacherId;
+      this.announcement.createdBy = this.authSvc.getCurrentUserId();
     }
     this.passCFData.emit(this.announcement);
     this.inputsCourseForm.reset();
@@ -219,7 +219,7 @@ export class CalendarModalComponent implements OnInit {
 
   loadTeacherCourseDataSet() {
     this.itemList = [];
-    this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
+    this.teachersSvc.getCourses(this.authSvc.getCurrentUserId()).subscribe(teacher => {
       if (teacher.length > 0) {
         this.teachersSvc
           .getCourseYear(teacher)
@@ -231,10 +231,6 @@ export class CalendarModalComponent implements OnInit {
                 itemName: item.course.name
               });
             }
-            console.log('itemList');
-            console.log(this.itemList);
-            console.log('courseList');
-            console.log(this.courseList);
           } );
       }
     });

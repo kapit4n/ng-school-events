@@ -21,12 +21,11 @@ import {TeachersService} from '../../../services/teachers.service';
 export class CalendarViewComponent implements OnInit {
   refresh: Subject<any> = new Subject();
   activeDayIsOpen: boolean;
-  view: string = 'week';
+  view = 'week';
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
   announcements: Announcement[];
   currentAnnouncement: Announcement = new Announcement();
-  // teacherAnnouncement: any ;
   currentAction: string;
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
   actions: CalendarEventAction[];
@@ -48,11 +47,12 @@ export class CalendarViewComponent implements OnInit {
   editFormGroup: FormGroup;
   startDateField: Date;
 
-  isCurrentUserTeacher: boolean = false;
-  isCurrentUserAdmin: boolean = false;
+  isCurrentUserTeacher = false;
+  isCurrentUserAdmin = false;
   teacherId = '';
   colorEvent: any = colors.green;
-  // courseList = [];
+  announcementForThisTeacher: any ;
+  teacherCourseIDs: { id: string, itemName: string } [ ] = [] ;
 
   constructor(private cmService: CalendarManagementService,
               private modal: NgbModal,
@@ -107,46 +107,21 @@ export class CalendarViewComponent implements OnInit {
           this.colorEvent = announcement.id.startsWith('CF-') ? colors.yellow : colors.green ;
           if ( this.rolesSvc.isAdmin() ) {
             this.actions = this.adminActions;
-            this.events.push({
-              id: announcement.id,
-              start: announcement.startDate,
-              end: announcement.endDate,
-              title: announcement.title,
-              color: this.colorEvent,
-              actions: this.actions
-            });
           } else {
             if (this.rolesSvc.isTeacher() && announcement.createdBy === this.authSvc.getCurrentUserId() ) {
               this.actions = this.adminActions;
             } else {
               this.actions = [];
-              for (let course of announcement.courseMultiSelect) {
-                const teacherCourseIDs = this.returnTeacherCoursesIDs();
-                if ( teacherCourseIDs.length > 0 ) {
-                  let announcementForThisTeacher = teacherCourseIDs.find( search => search.id === course.id );
-                  if (announcementForThisTeacher !== undefined || announcementForThisTeacher !== null) {
-                    this.events.push({
-                      id: announcement.id,
-                      start: announcement.startDate,
-                      end: announcement.endDate,
-                      title: announcement.title,
-                      color: this.colorEvent,
-                      actions: this.actions
-                    });
-                    break ;
-                  }
-                }
-              }
             }
           }
-          // this.events.push({
-          //   id: announcement.id,
-          //   start: announcement.startDate,
-          //   end: announcement.endDate,
-          //   title: announcement.title,
-          //   color: this.colorEvent,
-          //   actions: this.actions
-          // });
+          this.events.push({
+            id: announcement.id,
+            start: announcement.startDate,
+            end: announcement.endDate,
+            title: announcement.title,
+            color: this.colorEvent,
+            actions: this.actions
+          });
 
           this.refresh.next();
         }
@@ -201,7 +176,7 @@ export class CalendarViewComponent implements OnInit {
           this.cmService.setAnnouncements(announcements);
           this.announcements = this.cmService.getAnnouncements();
 
-          for (let entry of announcements) {
+          for (const entry of announcements) {
             this.colorEvent = entry.id.startsWith('CF-') ? colors.yellow : colors.green ;
             if ( this.rolesSvc.isAdmin() ) {
               this.actions = this.adminActions;
@@ -229,42 +204,48 @@ export class CalendarViewComponent implements OnInit {
                 if (this.rolesSvc.isTeacher()) {
                   this.actions = [];
                   if (entry.id.startsWith('CF-')) {
-                    let announcementForThisTeacher = null ;
-                    console.log('entry.coursemultiselect');
-                    console.log(entry);
-                    let teacherCourseIDs = this.returnTeacherCoursesIDs();
-                    let stringarray = ['1uno', '2dos', '3tres'];
-                    console.log('courses for this teacher');
-                    console.log(teacherCourseIDs);
-                    console.log(stringarray);
-                    console.log('courses for this teacher - lentgh');
-                    console.log(teacherCourseIDs.length);
-                    console.log(stringarray.length);
-                    // console.log(teacherCourseIDs.);
+                    this.announcementForThisTeacher = null ;
+                    // special code start
+                    let courseIDs: { id: string, itemName: string } [ ] = [];
+                    let totalCourses = [];
 
-                    for (let course of entry.courseMultiSelect) {
-                      console.log('course-iterator-before length check');
-                      console.log(course);
-                      if (teacherCourseIDs.length > 0) {
-                        console.log('course-iterator-after length check');
-                        console.log(course);
-                        announcementForThisTeacher = teacherCourseIDs.find(search => search.id === course.id);
-                        console.log('announcement for this teacher');
-                        console.log(announcementForThisTeacher);
-                        if (announcementForThisTeacher !== undefined || announcementForThisTeacher !== null) {
-                          this.events.push({
-                            id: entry.id,
-                            start: new Date(entry.startDate.toString()),
-                            end: new Date(entry.endDate.toString()),
-                            title: entry.title,
-                            color: this.colorEvent,
-                            actions: this.actions
+                    this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
+                      if (teacher.length > 0) {
+                        this.teachersSvc
+                          .getCourseYear(teacher)
+                          .subscribe(courses => {
+                            totalCourses = courses;
+                            for (let item of totalCourses) {
+                              courseIDs.push({
+                                id: item.course.id,
+                                itemName: item.course.name
+                              });
+                            }
+                            this.teacherCourseIDs = courseIDs;
+                            this.colorEvent = entry.id.startsWith('CF-') ? colors.yellow : colors.green ;
+                              // SECOND more special code start
+                            if (this.teacherCourseIDs.length > 0) {
+                              for (const course of this.teacherCourseIDs) {
+                                this.announcementForThisTeacher = entry.courseMultiSelect.find(search => search.id === course.id.toString());
+                                if (this.announcementForThisTeacher) {
+                                  this.events.push({
+                                    id: entry.id,
+                                    start: new Date(entry.startDate.toString()),
+                                    end: new Date(entry.endDate.toString()),
+                                    title: entry.title,
+                                    color: this.colorEvent,
+                                    actions: this.actions
+                                  });
+                                  this.refresh.next();
+                                  break;
+                                }
+                                this.announcementForThisTeacher = null;
+                              }
+                            }
                           });
-                          teacherCourseIDs = [];
-                          break;
-                        }
                       }
-                    }
+                    });
+                    // special code end
                   } else {
                     this.actions = [];
                     this.events.push({
@@ -323,7 +304,7 @@ export class CalendarViewComponent implements OnInit {
     }
   }
 
-  private substractDays(start: any, end: any) : number {
+  private substractDays(start: any, end: any): number {
     const startDate = new Date(start);
     const endDate = new Date(end);
     let result = 0;
@@ -360,27 +341,5 @@ export class CalendarViewComponent implements OnInit {
       },
       (error) => console.log(error)
     );
-  }
-
-  returnTeacherCoursesIDs(): any {
-    let courseIDs = [];
-    let totalCourses = [];
-    let stringvalue: string ;
-    this.teachersSvc.getCourses(this.authSvc.getCurrentUserId()).subscribe(teacher => {
-      if (teacher.length > 0) {
-        this.teachersSvc
-          .getCourseYear(teacher)
-          .subscribe(courses => {
-            for (let item of totalCourses) {
-              console.log('stringvalue');
-              stringvalue = item.course.id.toString();
-              console.log(stringvalue);
-              courseIDs.push(stringvalue);
-            }
-          } );
-      }
-    });
-
-    return courseIDs;
   }
 }
