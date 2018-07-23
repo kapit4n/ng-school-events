@@ -18,6 +18,26 @@
   </div>
 </ng-template>
 
+<ng-template #contentEdit let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 i18n class="modal-title">Edit Student</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <app-user-info-edit [userInfo]="editStudent"></app-user-info-edit>
+
+  <div class="form-group">
+    <label for="birthDate" i18n>Birth Date</label>
+    <input type="date" class="form-control" id="birthDate" placeholder="Birth Date" required [(ngModel)]="editStudent.birthDate"
+      [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" (click)="updateStudent(); c('Close click');">Update</button>
+  </div>
+</ng-template>
+
 <button i18n class="btn btn-outline-primary" (click)="open(content)">Add</button>
 
 <div class="form-group">
@@ -45,6 +65,9 @@
         <a class="btn btn-info" href="student-management/{{student.id}}">
           <span class="fa fa-info" aria-hidden="true"></span>
         </a>
+        <button type="button" class="btn" (click)="openEdit(student, contentEdit)">
+          <span class="fa fa-edit" aria-hidden="true"></span>
+        </button>
       </td>
     </tr>
   </tbody>

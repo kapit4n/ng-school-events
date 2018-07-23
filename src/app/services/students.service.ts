@@ -22,6 +22,12 @@ export class StudentsService {
       .map(res => res.json());
   }
 
+  public updateStudent(student: any): Observable<any> {
+    return this.http
+      .put(`${this.configSvc.backendUrl}/${this.studentUrl}/${student.id}`, student)
+      .map(res => res.json());
+  }
+
   public getStudents(filter = "", limit = 10, skip = 0): Observable<any> {
     if (filter) {
       return this.http

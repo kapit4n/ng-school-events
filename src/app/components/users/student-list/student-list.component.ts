@@ -13,6 +13,7 @@ export class StudentListComponent implements OnInit {
   students: any[];
   searchText = "";
   newStudent = {};
+  editStudent = {};
   closeResult: string;
 
   pages = 0;
@@ -60,7 +61,25 @@ export class StudentListComponent implements OnInit {
     });
   }
 
+  updateStudent() {
+    this.studentsSvc.updateStudent(this.updateStudent).subscribe(student => {
+      this.loadStudents();
+    });
+  }
+
   open(content) {
+    this.modalService.open(content).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+  }
+
+  openEdit(toEdit, content) {
+    this.editStudent = toEdit;
     this.modalService.open(content).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;
@@ -80,7 +99,7 @@ export class StudentListComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  
+
   search() {
     this.loadStudents();
   }
