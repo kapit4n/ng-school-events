@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <input type="email" placeholder="example@gmail.com" [(ngModel)]="parentInfo.email">
+          <input type="email" i18n-placeholder placeholder="example@gmail.com" [(ngModel)]="parentInfo.email">
           <button i18n type="submit" class="btn btn-primary" (click)="inviteParent()">Invite</button>
         </div>
         <app-user-invite-list [users]="parents"></app-user-invite-list>

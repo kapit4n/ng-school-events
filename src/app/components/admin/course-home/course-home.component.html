@@ -7,19 +7,22 @@
 
 <button i18n class="btn btn-primary" data-toggle="modal" data-target="#studentsModal">Assign Student</button>
 
-<table class="table">
+<p class="h6 my-3"><u><ng-container i18n>Students assigned to this course:</ng-container></u></p>
+
+<table class="table table-hover">
   <thead class="thead-dark">
     <tr>
       <th scope="col" i18n>Student</th>
-      <th scope="col"></th>
+      <th scope="col" i18n>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let student of assignedStudents">
-      <td>{{student.student.firstName}}</td>
+      <td>{{student.student?.firstName}} {{student.student?.lastName}} </td>
       <td>
-        <button type="button" class="btn" (click)="removeStudent(student.id)">
+        <button type="button" class="btn btn-outline-danger btn-space" (click)="removeStudent(student.id)">
           <span class="fa fa-trash" aria-hidden="true"></span>
+          <span class="small" i18n>  Delete Association</span>
         </button>
       </td>
     </tr>
@@ -39,8 +42,8 @@
             <div class="col-md-6">
               <span i18n>Available Students</span>
               <ul class="list-group" style="height:300px;overflow: scroll;">
-                <li style="height: 70px;" class="list-group-item d-flex justify-content-between align-items-center"
-                  *ngFor="let student of availableStudents">{{student.firstName}}
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                  *ngFor="let student of availableStudents">{{student?.firstName}} {{student?.lastName}}
                   <button type="button" class="btn btn-primary" (click)="addStudent(student)">
                     <span class="fa fa-angle-right" aria-hidden="true"></span>
                   </button>
@@ -50,7 +53,7 @@
             <div class="col-md-6">
               <span i18n>Assigned Students</span>
               <ul class="list-group" style="height:300px;overflow: scroll;">
-                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let student of assignedStudents">{{student.student.firstName}}
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let student of assignedStudents">{{student.student?.firstName}} {{student.student?.lastName}}
                   <button type="button" class="btn btn-primary" (click)="removeStudent(student.id)">
                     <span class="fa fa-trash" aria-hidden="true"></span>
                   </button>

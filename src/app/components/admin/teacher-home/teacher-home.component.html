@@ -4,20 +4,26 @@
   <dt i18n>Details</dt>
   <dd>{{teacher.details}}</dd>
 </dl>
+<hr>
+
 <button i18n class="btn btn-primary" data-toggle="modal" data-target="#coursesModal">Assign Courses</button>
-<table class="table">
+
+<p class="h6 my-3"><u><ng-container i18n>Courses assigned to this teacher:</ng-container></u></p>
+
+<table class="table table-hover">
   <thead class="thead-dark">
     <tr>
       <th scope="col" i18n>Name</th>
-      <th scope="col"></th>
+      <th scope="col" i18n>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let course of assignedCourses">
       <td>{{course.course.name}}</td>
       <td>
-        <button type="button" class="btn" (click)="removeCourse(course.id)">
+        <button type="button" class="btn btn-outline-danger btn-space" (click)="removeCourse(course.id)">
           <span class="fa fa-trash" aria-hidden="true"></span>
+          <span class="small" i18n>  Delete Association</span>
         </button>
       </td>
     </tr>
@@ -42,7 +48,7 @@
                 <span class="fa fa-angle-right" aria-hidden="true"></span>
               </button>
               <ul class="list-group" style="height:300px;overflow: scroll;">
-                <li style="height: 70px;" class="list-group-item d-flex justify-content-between align-items-center" 
+                <li class="list-group-item d-flex justify-content-between align-items-center"
                 *ngFor="let course of availableCourses">{{course.course.name}}
                   <button type="button" class="btn btn-primary" (click)="addCourse(course)">
                     <span class="fa fa-angle-right" aria-hidden="true"></span>
