@@ -12,6 +12,7 @@ import { ActivatedRoute } from "@angular/router";
 export class YearListAdminComponent implements OnInit {
   closeResult: string;
   newSchoolYear: any;
+  editSchoolYear: any;
   schoolYearList: any;
   searchText = "";
   // pagination attributes
@@ -26,6 +27,7 @@ export class YearListAdminComponent implements OnInit {
     private confSvc: ConfigurationService
   ) {
     this.newSchoolYear = {};
+    this.editSchoolYear = {};
     this.schoolYearList = [];
   }
 
@@ -66,6 +68,13 @@ export class YearListAdminComponent implements OnInit {
     });
   }
 
+  updateSchoolYear() {
+    this.schoolYearsSvc.updateSchoolYear(this.editSchoolYear).subscribe(updated => {
+      this.loadSchoolYears();
+      this.editSchoolYear = {};
+    });
+  }
+
   removeYear(id: any) {
     this.schoolYearsSvc.removeSchoolYear(id).subscribe(removed => {
       this.loadSchoolYears();
@@ -73,6 +82,18 @@ export class YearListAdminComponent implements OnInit {
   }
 
   open(content) {
+    this.modalService.open(content).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+  }
+
+  openEdit(toEdit, content) {
+    this.editSchoolYear = toEdit;
     this.modalService.open(content).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;
