@@ -1,20 +1,20 @@
 <div class="form-group">
-  <label for="title" i18n>Title</label>
-  <input type="text" class="form-control" id="title" i18n-placeholder placeholder="Title" value="Data" required
+  <label for="title" >Title</label>
+  <input type="text" class="form-control" id="title"  placeholder="Title" value="Data" required
     [(ngModel)]="annInfo.title" [ngModelOptions]="{standalone: true}">
 </div>
 <div class="form-group">
-  <label for="details" i18n>Details</label>
-  <input type="text" class="form-control" id="details" i18n-placeholder placeholder="Details" value="Data" required [(ngModel)]="annInfo.details"
+  <label for="details" >Details</label>
+  <input type="text" class="form-control" id="details"  placeholder="Details" value="Data" required [(ngModel)]="annInfo.details"
     [ngModelOptions]="{standalone: true}">
 </div>
 <div class="form-group">
-  <label for="publishedDate" i18n>Publication Date</label>
+  <label for="publishedDate" >Publication Date</label>
   <input type="date" class="form-control" id="publishedDate" placeholder="Birth Date" required [(ngModel)]="annInfo.publishedDate"
     [ngModelOptions]="{standalone: true}">
 </div>
 <div class="form-group">
-  <label for="duration" i18n>Duration in days</label>
+  <label for="duration" >Duration in days</label>
   <input type="number" class="form-control" id="duration" placeholder="days" required [(ngModel)]="annInfo.duration"
     [ngModelOptions]="{standalone: true}">
 </div>
