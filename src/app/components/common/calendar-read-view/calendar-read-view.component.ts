@@ -6,6 +6,12 @@ import {Subject} from 'rxjs';
 import {CalendarManagementService} from '../calendar-management.service';
 import {Announcement} from '../announcements.model';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from '../../../services/auth.service';
+import {RolesService} from '../../../services/roles.service';
+import {ParentsService} from '../../../services/parents.service';
+import {CoursesService} from '../../../services/courses.service';
+import {StudentsService} from '../../../services/students.service';
+import {a, v} from '@angular/core/src/render3';
 
 
 
@@ -27,13 +33,30 @@ export class CalendarReadViewComponent implements OnInit {
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
   colorEvent: any = colors.green;
 
-  constructor(private cmService: CalendarManagementService, private modal: NgbModal) { }
+  isCurrentUserParent = false;
+  parentId = '';
+  announcementForThisParent: any ;
+  parentCourseIDs: { id: string, itemName: string } [ ] = [] ;
+  assignedStudents = [];
+
+
+  constructor(private cmService: CalendarManagementService,
+              private modal: NgbModal,
+              private authSvc: AuthService,
+              public rolesSvc: RolesService,
+              private parentsSvc: ParentsService,
+              private coursesSvc: CoursesService,
+              private studentsSvc: StudentsService) { }
 
   get today() {
     return new Date();
   }
 
   ngOnInit() {
+    if (this.rolesSvc.isParent()) {
+      this.isCurrentUserParent = true;
+      this.parentId = this.authSvc.getCurrentUserId();
+    }
     this.loadAnnouncements();
   }
 
@@ -43,15 +66,66 @@ export class CalendarReadViewComponent implements OnInit {
         (announcements: Announcement[]) => {
           this.cmService.setAnnouncements(announcements);
           this.announcements = this.cmService.getAnnouncements();
+
           for (let entry of announcements) {
             this.colorEvent = entry.id.startsWith('CF-') ? colors.yellow : colors.green ;
-            this.events.push({
-              id : entry.id,
-              start: new Date(entry.startDate.toString()),
-              end: new Date(entry.endDate.toString()),
-              title: entry.title,
-              color: this.colorEvent
-            });
+            if (this.rolesSvc.isParent()) {
+              if (entry.id.startsWith('CF-')) {
+                this.announcementForThisParent = null ;
+                let courseIDs = [];
+                let courseUniqueIDs = [];
+                let totalCourses = [];
+                this.parentsSvc.getSons().subscribe(children => {
+                  this.assignedStudents = children;
+                  if (children.length > 0) {
+                    for (let child of children) {
+                      this.studentsSvc
+                        .getCourses(child.student.id)
+                        .subscribe(courses => {
+                          totalCourses = courses;
+                          for (let item of totalCourses) {
+                            courseIDs.push(item['course-year'].courseId);
+                          }
+                          courseUniqueIDs = courseIDs.filter(function(element, index, originalArray) {
+                            return originalArray.indexOf(element) === index;
+                          });
+                          this.parentCourseIDs = courseUniqueIDs;
+                          this.colorEvent = entry.id.startsWith('CF-') ? colors.yellow : colors.green ;
+                          if (this.parentCourseIDs.length > 0) {
+                            for (const course of this.parentCourseIDs) {
+                              this.announcementForThisParent = entry.courseMultiSelect.find(search => search.id === course.toString());
+                              if (this.announcementForThisParent) {
+                                  this.events.push({
+                                    id: entry.id,
+                                    start: new Date(entry.startDate.toString()),
+                                    end: new Date(entry.endDate.toString()),
+                                    title: entry.title,
+                                    color: this.colorEvent,
+                                  });
+                                  if ( !this.isUnique(this.events)) {
+                                    this.events.splice(this.events.length - 1, 1);
+                                  }
+                                  this.refresh.next();
+                                  break;
+                              }
+                              this.announcementForThisParent = null;
+                            }
+                          }
+
+                        });
+                      }
+                  }
+                });
+              } else {
+                this.events.push({
+                  id : entry.id,
+                  start: new Date(entry.startDate.toString()),
+                  end: new Date(entry.endDate.toString()),
+                  title: entry.title,
+                  color: this.colorEvent
+                });
+              }
+            }
           }
           this.refresh.next();
         }
@@ -78,6 +152,18 @@ export class CalendarReadViewComponent implements OnInit {
         this.viewDate = date;
       }
     }
+  }
+
+  isUnique(arr: any): boolean {
+    let tmpArr = [];
+    for ( let obj in arr ) {
+      if ( tmpArr.indexOf(arr[obj].id) < 0){
+        tmpArr.push(arr[obj].id);
+      } else {
+        return false; // Duplicate value for property1 found
+      }
+    }
+    return true; // No duplicate values found for property1
   }
 
 }
