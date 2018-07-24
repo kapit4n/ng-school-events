@@ -4,10 +4,13 @@
   <dt i18n>Last Name</dt>
   <dd>{{student.lastName}}</dd>
 </dl>
+<hr>
+
+<p class="h5 my-3"><u><ng-container i18n>Follow-up items for this student: </ng-container></u></p>
 
 <button i18n class="btn btn-primary" data-toggle="modal" data-target="#followUpModel">Add Follow Up</button>
 
-<table class="table">
+<table class="table table-hover">
   <thead class="thead-dark">
     <tr>
       <th scope="col" i18n>Registered Date</th>
@@ -17,7 +20,7 @@
       <th scope="col" i18n>Title</th>
       <th scope="col" i18n>historyDetails</th>
       <th scope="col" i18n>Observation</th>
-      <th scope="col"></th>
+      <th scope="col" i18n>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -30,8 +33,13 @@
       <td>{{follow.historyDetails}}</td>
       <td>{{follow.observation}}</td>
       <td>
-        <button type="button" class="btn" (click)="removeFollowUp(follow.id)">
+        <button type="button" class="btn btn-outline-secondary btn-space">
+          <span class="fa fa-edit" aria-hidden="true"></span>
+          <span class="small" i18n>  Edit</span>
+        </button>
+        <button type="button" class="btn btn-outline-danger btn-space" (click)="removeFollowUp(follow.id)">
           <span class="fa fa-trash" aria-hidden="true"></span>
+          <span class="small" i18n>  Delete</span>
         </button>
       </td>
     </tr>

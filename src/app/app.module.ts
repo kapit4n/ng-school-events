@@ -312,7 +312,7 @@ const appRoutes: Routes = [
       { path: ":id", component: SonHomeComponent, data: { breadcrumb: "Show" } }
     ]
   },
-  
+
   {
     path: "questions",
     component: QuestionsContainerComponent,

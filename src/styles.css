@@ -5,6 +5,10 @@
   font-weight:bold;
 }
 
+.btn-space {
+  margin-right: 5px;
+}
+
 /* Overrides list-group-item from Bootstrap */
 .list-group-item {
   padding-top: 5px;

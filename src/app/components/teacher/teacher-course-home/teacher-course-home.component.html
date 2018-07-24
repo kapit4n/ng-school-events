@@ -5,19 +5,20 @@
   <dd>{{courseYear.course?.details}}</dd>
 </dl>
 
-<table class="table">
+<table class="table table-hover">
   <thead class="thead-dark">
     <tr>
       <th scope="col" i18n>Student Name</th>
-      <th scope="col"></th>
+      <th scope="col" i18n>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let student of students">
       <td>{{student.student ? student.student.firstName : ''}} {{student.student ? student.student.lastName : ''}}</td>
       <td>
-        <a class="btn btn-info" href="teacher-course-list/{{courseId}}/teacher-student-home/{{student.student?.id}}">
-          <span class="fa fa-info" aria-hidden="true"></span>
+        <a class="btn btn-outline-info btn-space" href="teacher-course-list/{{courseId}}/teacher-student-home/{{student.student?.id}}">
+          <span class="fa fa-info-circle" aria-hidden="true"></span>
+          <span class="small" i18n>  More details</span>
         </a>
       </td>
     </tr>
