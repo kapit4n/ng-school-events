@@ -67,6 +67,12 @@ export class StudentListComponent implements OnInit {
     });
   }
 
+  removeStudent(id) {
+    this.studentsSvc.removeStudent(id).subscribe(removed => {
+      this.loadStudents();
+    });
+  }
+
   open(content) {
     this.modalService.open(content).result.then(
       result => {

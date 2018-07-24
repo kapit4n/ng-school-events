@@ -59,7 +59,7 @@
       <td colspan="2">{{student.firstName}} {{student.lastName}}</td>
       <td colspan="2">{{student.gender}}</td>
       <td>
-        <button type="button" class="btn">
+        <button type="button" class="btn" (click)="removeStudent(student.id)">
           <span class="fa fa-trash" aria-hidden="true"></span>
         </button>
         <a class="btn btn-info" href="student-management/{{student.id}}">

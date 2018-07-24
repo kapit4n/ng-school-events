@@ -107,6 +107,12 @@ export class StudentsService {
       .map(res => res.json());
   }
 
+  public removeStudent(id): Observable<any> {
+    return this.http
+      .delete(`${this.configSvc.backendUrl}/${this.studentUrl}/${id}`)
+      .map(res => res.json());
+  }
+
   public removeParentStudentRel(relId): Observable<any> {
     return this.http
       .delete(`${this.configSvc.backendUrl}/${this.sParentUrl}/${relId}`)
