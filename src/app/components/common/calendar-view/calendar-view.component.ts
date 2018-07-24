@@ -209,7 +209,7 @@ export class CalendarViewComponent implements OnInit {
                     let courseIDs: { id: string, itemName: string } [ ] = [];
                     let totalCourses = [];
 
-                    this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
+                    this.teachersSvc.getCourses(this.authSvc.getCurrentUserId()).subscribe(teacher => {
                       if (teacher.length > 0) {
                         this.teachersSvc
                           .getCourseYear(teacher)
