@@ -76,6 +76,10 @@
     <li class="nav-item">
       <a i18n class="nav-link" routerLink="/announcements-teacher-home" routerLinkActive="active">Announcements <span class="badge badge-primary">{{annCount}}</span></a>
     </li>
+    <li class="nav-item">
+      <a i18n class="nav-link" routerLink="/teacher-questions" routerLinkActive="active">Questions</a>
+    </li>
+
     <li>
       <button *ngIf="false" (click)="sendMessageVoid()" style="background-color: darkgrey;" data-container="body" data-toggle="popover"
         data-placement="bottom" attr.data-content="{{dataContentEvents}}">

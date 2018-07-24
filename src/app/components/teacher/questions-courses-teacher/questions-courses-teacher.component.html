@@ -1,3 +1,18 @@
-<p>
-  questions-courses-teacher works!
-</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" i18n>Full Name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{course.course.name}}</td>
+      <td>
+        <a class="btn btn-info" href="teacher-questions/{{course.courseId}}">
+          <span class="fa fa-info" aria-hidden="true"></span>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

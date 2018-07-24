@@ -11,7 +11,9 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class QuestionHomeComponent implements OnInit {
   studentId = "0";
+  courseId = "0";
   course: any;
+  courseStudent: any;
   questions = [];
   questionMap = [];
   newQuestion: any;
@@ -28,36 +30,71 @@ export class QuestionHomeComponent implements OnInit {
 
   ngOnInit() {
     this.studentId = this.route.snapshot.paramMap.get("id");
+    this.courseId = this.route.snapshot.paramMap.get("courseId");
     this.loadQuestions();
   }
 
   loadQuestions() {
-    this.parentsSvc.getCourseByStudentId(this.studentId).subscribe(courses => {
-      this.course = courses[0];
-      this.questionsSvc
-        .getQuestions(this.course["course-year"].courseId)
-        .subscribe(questions => {
-          
-          this.questionMap = questions.reduce(function (map, obj) {
-            map[obj.id] = obj;
-            return map;
-          }, {});
-
-          questions.forEach( data => {
-            this.questionsSvc.getAnswersByQuestionId(data.id).subscribe( answers => {
-              console.log(answers);
-              if (answers.length){
-                this.questionMap[answers[0].questionId].answers = answers;
-              }
+    if(this.courseId) {
+        this.questionsSvc.getQuestions(this.courseId)
+            .subscribe(questions => {
+              this.questionMap = questions.reduce(function(map, obj) {
+                map[obj.id] = obj;
+                return map;
+              }, {});
+  
+              questions.forEach(data => {
+                this.questionsSvc
+                  .getAnswersByQuestionId(data.id)
+                  .subscribe(answers => {
+                    console.log(answers);
+                    if (answers.length) {
+                      this.questionMap[
+                        answers[0].questionId
+                      ].answers = answers;
+                    }
+                  });
+              });
+              this.questions = questions;
             });
-          });
-          this.questions = questions;
-        });
-    });
+    } else {
+      this.parentsSvc.getCourseByStudentId(this.studentId).subscribe(
+        courses => {
+          this.courseStudent = courses[0];
+          this.questionsSvc
+            .getQuestions(this.courseStudent["course-year"].courseId)
+            .subscribe(questions => {
+              this.questionMap = questions.reduce(function(map, obj) {
+                map[obj.id] = obj;
+                return map;
+              }, {});
+  
+              questions.forEach(data => {
+                this.questionsSvc
+                  .getAnswersByQuestionId(data.id)
+                  .subscribe(answers => {
+                    console.log(answers);
+                    if (answers.length) {
+                      this.questionMap[
+                        answers[0].questionId
+                      ].answers = answers;
+                    }
+                  });
+              });
+              this.questions = questions;
+            });
+        }
+      );
+    }
   }
 
   saveQuestion() {
-    this.newQuestion.courseId = this.course["course-year"].courseId;
+    if(this.courseId) {
+      this.newQuestion.courseId = this.courseId;
+    } else {
+      this.newQuestion.courseId = this.course["course-year"].courseId;
+
+    }
     this.newQuestion.parentId = this.rolesSvc.getParentId();
     this.newQuestion.teacherId = this.rolesSvc.getTeacherId();
     this.questionsSvc.registerQuestion(this.newQuestion).subscribe(question => {

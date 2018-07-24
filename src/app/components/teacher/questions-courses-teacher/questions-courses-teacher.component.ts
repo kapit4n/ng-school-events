@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TeachersService } from "../../../services/teachers.service";
+import { RolesService } from "../../../services/roles.service";
 
 @Component({
   selector: 'app-questions-courses-teacher',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionsCoursesTeacherComponent implements OnInit {
 
-  constructor() { }
+  courses = [];
+  constructor(private teachersSvc: TeachersService, private rolesSvc: RolesService) {}
 
   ngOnInit() {
+    this.courses = [];
+    this.teachersSvc.getCourses(this.rolesSvc.getTeacherId()).subscribe(teacher => {
+      if (teacher.length > 0) {
+        this.teachersSvc
+          .getCourseYear(teacher)
+          .subscribe(courses => {
+            this.courses = courses;
+            console.log(this.courses);
+          });
+      }
+    });
   }
-
 }

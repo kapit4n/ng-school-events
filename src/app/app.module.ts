@@ -291,6 +291,15 @@ const appRoutes: Routes = [
   },
   { path: "student-follow-up", component: StudentFollowUpComponent },
   { path: 'announcements-teacher-home', component: AnnListAdminComponent },
+  {
+    path: "teacher-questions",
+    component: QuestionsContainerTeacherComponent,
+    data: { breadcrumb: "teacher-questions" },
+    children: [
+      { path: "", component: QuestionsCoursesTeacherComponent, data: { breadcrumb: "Questions Courses" }},
+      { path: ":courseId", component: QuestionHomeComponent, data: { breadcrumb: "Question" } }
+    ]
+  },
 
   // Pages for parent role
   { path: "parent-profile", component: ParentProfileComponent },
