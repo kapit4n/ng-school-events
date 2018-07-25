@@ -12,7 +12,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * clone the repo
 * go to main folder
 * `npm install`
-* `ng serve` for a dev server. 
+* `ng serve` for a dev server or ng serve --configuration=es for spanish.
 * Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
