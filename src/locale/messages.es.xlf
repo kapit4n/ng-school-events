@@ -1654,7 +1654,7 @@
       </trans-unit>
       <trans-unit id="fdf7cbdc140d0aab0f0b6c06065a0fd448ed6a2e" datatype="html">
         <source>Title</source>
-        <source>Título</source>
+        <target>Título</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
           <context context-type="linenumber">35</context>
