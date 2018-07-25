@@ -1,18 +1,16 @@
   /* avatarContainer needed to position the button. Adjust the width as needed */
 .avatarContainer {
-  position: relative;
-  width: 65px;
 }
 
 .avatarContainer img {
-  width: 65px;
+  width: 40px;
   height: auto;
 }
 
 .avatarContainer .btn {
   position: absolute;
-  top: 82%;
-  left: 28%;
+  top: 71%;
+  left: 25%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: transparent;
