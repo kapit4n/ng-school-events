@@ -102,156 +102,156 @@ import { QuestionHomeTeacherComponent } from './components/teacher/question-home
 
 const appRoutes: Routes = [
   // Common pages
-  { path: "home", component: HomeComponent, data: { breadcrumb: "Home" } },
+  { path: "home", component: HomeComponent, data: { breadcrumb: "Página Principal" } },
   {
     path: "logout",
     component: LogoutComponent,
-    data: { breadcrumb: "Logout" }
+    data: { breadcrumb: "Cerrar Sesión" }
   },
-  { path: "login", component: LoginComponent, data: { breadcrumb: "Login" } },
+  { path: "login", component: LoginComponent, data: { breadcrumb: "Iniciar Sesión" } },
 
   // Pages for admin
   {
     path: "gestion-current",
     component: GestionCurrentComponent,
-    data: { breadcrumb: "Current" }
+    data: { breadcrumb: "Gestión Actual" }
   },
   {
     path: "user-first-time/:email",
     component: UserFirstTimeComponent,
-    data: { breadcrumb: "Firsttime" }
+    data: { breadcrumb: "Establecer Password" }
   },
   {
     path: "admin-register",
     component: AdminRegisterComponent,
-    data: { breadcrumb: "Admin Register" }
+    data: { breadcrumb: "Registro de nuevo Administrador" }
   },
 
   {
     path: "teacher-management",
     component: TeachersContainerComponent,
-    data: { breadcrumb: "Teachers" },
+    data: { breadcrumb: "Profesores" },
     children: [
       {
         path: "",
         component: TeacherManagementComponent,
-        data: { breadcrumb: "List" }
+        data: { breadcrumb: "Lista" }
       },
       {
         path: ":id",
         component: TeacherHomeComponent,
-        data: { breadcrumb: "Show" }
+        data: { breadcrumb: "Detalles" }
       }
     ]
   },
   {
     path: "teacher-register",
     component: TeacherRegisterComponent,
-    data: { breadcrumb: "Teacher Register" }
+    data: { breadcrumb: "Registro de Profesores" }
   },
   {
     path: "teacher-list",
     component: TeacherListComponent,
-    data: { breadcrumb: "Teacher Liost" }
+    data: { breadcrumb: "Lista de Profesores" }
   },
 
   {
     path: "parent-management",
     component: ParentsContainerComponent,
-    data: { breadcrumb: "Parents" },
+    data: { breadcrumb: "Padres" },
     children: [
       {
         path: "",
         component: ParentManagementComponent,
-        data: { breadcrumb: "List" }
+        data: { breadcrumb: "Lista" }
       },
       {
         path: ":id",
         component: ParentHomeComponent,
-        data: { breadcrumb: "Show" }
+        data: { breadcrumb: "Detalles" }
       }
     ]
   },
   {
     path: "parent-register",
     component: ParentRegisterComponent,
-    data: { breadcrumb: "Parent Register" }
+    data: { breadcrumb: "Registro de Padres" }
   },
   {
     path: "parent-list",
     component: ParentListComponent,
-    data: { breadcrumb: "Parent list" }
+    data: { breadcrumb: "Lista de Padres" }
   },
 
   {
     path: "student-management",
     component: StudentsContainerComponent,
-    data: { breadcrumb: "Students" },
+    data: { breadcrumb: "Estudiantes" },
     children: [
       {
         path: "",
         component: StudentManagementComponent,
-        data: { breadcrumb: "Students" }
+        data: { breadcrumb: "Lista" }
       },
       {
         path: ":id",
         component: StudentHomeComponent,
-        data: { breadcrumb: "Students" }
+        data: { breadcrumb: "Detalles" }
       }
     ]
   },
   {
     path: "student-register",
     component: StudentRegisterComponent,
-    data: { breadcrumb: "Register Student" }
+    data: { breadcrumb: "Registro de Estudiantes" }
   },
   {
     path: "student-list",
     component: StudentListComponent,
-    data: { breadcrumb: "Student list" }
+    data: { breadcrumb: "Lista de Estudiantes" }
   },
   {
     path: "course-list-admin",
     component: CoursesContainerComponent,
-    data: { breadcrumb: "Courses" },
+    data: { breadcrumb: "Cursos" },
     children: [
       {
         path: "",
         component: CourseListAdminComponent,
-        data: { breadcrumb: "List" }
+        data: { breadcrumb: "Lista" }
       },
       {
         path: ":courseId",
         component: CourseYearComponent,
-        data: { breadcrumb: "Show" }
+        data: { breadcrumb: "Detalles" }
       },
       {
         path: "rel/:courseYearId",
         component: CourseHomeComponent,
-        data: { breadcrumb: "Course Year" }
+        data: { breadcrumb: "Detalle de Gestión" }
       }
     ]
   },
   {
     path: "course-add-admin",
     component: CourseAddAdminComponent,
-    data: { breadcrumb: "Course Add" }
+    data: { breadcrumb: "Añadir Curso" }
   },
 
   {
     path: "years",
     component: ParentsContainerComponent,
-    data: { breadcrumb: "School Years" },
+    data: { breadcrumb: "Gestiones Escolares" },
     children: [
       {
         path: "",
         component: YearListAdminComponent,
-        data: { breadcrumb: "List" }
+        data: { breadcrumb: "Lista" }
       },
       {
         path: ":id",
         component: YearHomeComponent,
-        data: { breadcrumb: "Show" }
+        data: { breadcrumb: "Detalles" }
       }
     ]
   },
@@ -262,7 +262,7 @@ const appRoutes: Routes = [
   {
     path: "year-add-admin",
     component: YearAddAdminComponent,
-    data: { breadcrumb: "Add" }
+    data: { breadcrumb: "Añadir" }
   },
 
   // Pages for teacher role
@@ -270,22 +270,22 @@ const appRoutes: Routes = [
   {
     path: "teacher-course-list",
     component: TeacherCoursesContainerComponent,
-    data: { breadcrumb: "Courses" },
+    data: { breadcrumb: "Cursos Asociados" },
     children: [
       {
         path: "",
         component: CourseListComponent,
-        data: { breadcrumb: "List" }
+        data: { breadcrumb: "Lista" }
       },
       {
         path: ":courseId",
         component: TeacherCourseHomeComponent,
-        data: { breadcrumb: "Show" }
+        data: { breadcrumb: "Detalles" }
       },
       {
         path: ":courseId/teacher-student-home/:studentId",
         component: TeacherStudentHomeComponent,
-        data: { breadcrumb: "StudentShow" }
+        data: { breadcrumb: "Detalles de Estudiante" }
       }
     ]
   },
@@ -294,10 +294,10 @@ const appRoutes: Routes = [
   {
     path: "teacher-questions",
     component: QuestionsContainerTeacherComponent,
-    data: { breadcrumb: "teacher-questions" },
+    data: { breadcrumb: "Foro" },
     children: [
-      { path: "", component: QuestionsCoursesTeacherComponent, data: { breadcrumb: "Questions Courses" }},
-      { path: ":courseId", component: QuestionHomeComponent, data: { breadcrumb: "Question" } }
+      { path: "", component: QuestionsCoursesTeacherComponent, data: { breadcrumb: "Conversaciones por Curso" }},
+      { path: ":courseId", component: QuestionHomeComponent, data: { breadcrumb: "Lista" } }
     ]
   },
 
@@ -306,20 +306,20 @@ const appRoutes: Routes = [
   {
     path: "children",
     component: SonsContainerComponent,
-    data: { breadcrumb: "Children" },
+    data: { breadcrumb: "Hijos Relacionados" },
     children: [
-      { path: "", component: SonListComponent, data: { breadcrumb: "List" }},
-      { path: ":id", component: SonHomeComponent, data: { breadcrumb: "Show" } }
+      { path: "", component: SonListComponent, data: { breadcrumb: "Lista" }},
+      { path: ":id", component: SonHomeComponent, data: { breadcrumb: "Detalles" } }
     ]
   },
 
   {
     path: "questions",
     component: QuestionsContainerComponent,
-    data: { breadcrumb: "questions" },
+    data: { breadcrumb: "Foro" },
     children: [
-      { path: "", component: QuestionsCoursesComponent, data: { breadcrumb: "Questions Courses" }},
-      { path: ":id", component: QuestionHomeComponent, data: { breadcrumb: "Question" } }
+      { path: "", component: QuestionsCoursesComponent, data: { breadcrumb: "Conversaciones por Estudiante" }},
+      { path: ":id", component: QuestionHomeComponent, data: { breadcrumb: "Lista" } }
     ]
   },
 
