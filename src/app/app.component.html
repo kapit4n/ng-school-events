@@ -37,8 +37,8 @@
         <span>Signed as {{rolesSvc.getUserType()}} - {{rolesSvc.getUserName()}} </span>
 
         <div class="list-group" style="padding-left: 0; padding-right: 0;">
-          <a i18n href="/teacher-profile" class="list-group-item list-group-item-action list-group-item-light">Profile</a>
-          <a i18n href="/logout" class="list-group-item list-group-item-action list-group-item-light">Logout</a>
+          <a i18n href="/teacher-profile" class="list-group-item list-group-item-action list-group-item-light">Profile <i class="fa fa-edit" aria-hidden="true"></i></a>
+          <a i18n href="/logout" class="list-group-item list-group-item-action list-group-item-light">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>
         </div>
          '>&#x25BC;</button>
   
@@ -47,8 +47,12 @@
           attr.data-content='
           <span>Signed as {{rolesSvc.getUserType()}} - {{rolesSvc.getUserName()}}</span>
           <div class="list-group">
-            <a i18n href="/parent-profile" class="list-group-item list-group-item-action list-group-item-light">Profile</a>
-            <a i18n href="/logout" class="list-group-item list-group-item-action list-group-item-light">Logout</a>
+            <a i18n href="/parent-profile" class="list-group-item list-group-item-action list-group-item-light">Profile
+              <i class="fa fa-edit" aria-hidden="true"></i>
+            </a>
+            <a i18n href="/logout" class="list-group-item list-group-item-action list-group-item-light">Logout
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </a>
           </div>
           '>&#x25BC;</button>
   
@@ -57,7 +61,9 @@
           attr.data-content='
           <span>Signed as {{rolesSvc.getUserType()}} {{rolesSvc.getUserName()}} </span>
           <div class="list-group" style="padding-left: 0; padding-right: 0;">
-            <a i18n href="/logout" class="list-group-item list-group-item-action list-group-item-light">Logout</a>
+            <a i18n href="/logout" class="list-group-item list-group-item-action list-group-item-light">Logout
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </a>
           </div>
 
           '>&#x25BC;</button>
