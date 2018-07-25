@@ -1,5 +1,5 @@
 import {Component, OnInit, ChangeDetectionStrategy, ViewChild, TemplateRef} from '@angular/core';
-import {CalendarEvent, CalendarEventAction} from 'angular-calendar';
+import {CalendarEvent, CalendarEventAction, DAYS_OF_WEEK} from 'angular-calendar';
 import { isSameDay, isSameMonth } from 'date-fns';
 import { colors } from '../../../utilities/event-colors';
 import {Subject} from 'rxjs';
@@ -43,6 +43,10 @@ export class CalendarViewComponent implements OnInit {
       }
     }
   ];
+  // related to internationalization
+  weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
+  weekendDays: number[] = [DAYS_OF_WEEK.SATURDAY, DAYS_OF_WEEK.SUNDAY];
+
   // edit implementation
   editFormGroup: FormGroup;
   startDateField: Date;

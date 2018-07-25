@@ -7,14 +7,14 @@
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="viewDateChange.next(viewDate)">
-        Previous
+        <ng-container i18n>Previous</ng-container>
       </div>
       <div
         class="btn btn-outline-secondary"
         mwlCalendarToday
         [(viewDate)]="viewDate"
         (viewDateChange)="viewDateChange.next(viewDate)">
-        Today
+        <ng-container i18n>Today</ng-container>
       </div>
       <div
         class="btn btn-primary"
@@ -22,12 +22,12 @@
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="viewDateChange.next(viewDate)">
-        Next
+        <ng-container i18n>Next</ng-container>
       </div>
     </div>
   </div>
   <div class="col-md-4">
-    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale}}</h3>
   </div>
   <div class="col-md-4">
     <div class="btn-group">
@@ -35,13 +35,13 @@
         class="btn btn-primary"
         (click)="viewChange.emit('week')"
         [class.active]="view === 'week'">
-        Week
+        <ng-container i18n>Week</ng-container>
       </div>
       <div
         class="btn btn-primary"
         (click)="viewChange.emit('month')"
         [class.active]="view === 'month'">
-        Month
+        <ng-container i18n>Month</ng-container>
       </div>
     </div>
   </div>
