@@ -33,18 +33,34 @@
   
         <button *ngIf="rolesSvc.isTeacher()" style="border-radius: 50%;color: black; font-size: 30px;" type="button"
          data-placement="bottom" class="btn btn-info" data-toggle="popover" i18n-title title="Teacher settings"
-         data-content='<a i18n class="nav-link" href="/teacher-profile" routerLinkActive="active">Profile</a>
-         <br>
-         <a i18n href="/logout" class="btn btn-link">Logout</a>'>&#x25BC;</button>
+         attr.data-content='
+        <span>Signed as {{rolesSvc.getUserType()}} - {{rolesSvc.getUserName()}} </span>
+
+        <div class="list-group" style="padding-left: 0; padding-right: 0;">
+          <a i18n href="/teacher-profile" class="list-group-item list-group-item-action list-group-item-light">Profile</a>
+          <a i18n href="/logout" class="list-group-item list-group-item-action list-group-item-light">Logout</a>
+        </div>
+         '>&#x25BC;</button>
   
         <button *ngIf="rolesSvc.isParent()" style="border-radius: 50%;color: black; font-size: 30px;" type="button"
           data-placement="bottom" class="btn btn-info" data-toggle="popover" i18n-title title="Parent settings"
-          data-content='<a i18n class="nav-link" href="/parent-profile" routerLinkActive="active">Profile</a>
-          <br> <a i18n href="/logout" class="btn btn-link">Logout</a>'>&#x25BC;</button>
+          attr.data-content='
+          <span>Signed as {{rolesSvc.getUserType()}} - {{rolesSvc.getUserName()}}</span>
+          <div class="list-group">
+            <a i18n href="/parent-profile" class="list-group-item list-group-item-action list-group-item-light">Profile</a>
+            <a i18n href="/logout" class="list-group-item list-group-item-action list-group-item-light">Logout</a>
+          </div>
+          '>&#x25BC;</button>
   
         <button *ngIf="rolesSvc.isAdmin()" style="border-radius: 50%;color: black; font-size: 30px;" type="button"
           data-placement="bottom" class="btn btn-info" data-toggle="popover" i18n-title title="Admin settings"
-          data-content='<a i18n href="/logout" class="btn btn-link">Logout</a>'>&#x25BC;</button>
+          attr.data-content='
+          <span>Signed as {{rolesSvc.getUserType()}} {{rolesSvc.getUserName()}} </span>
+          <div class="list-group" style="padding-left: 0; padding-right: 0;">
+            <a i18n href="/logout" class="list-group-item list-group-item-action list-group-item-light">Logout</a>
+          </div>
+
+          '>&#x25BC;</button>
   
       </div>
     </div>
@@ -90,7 +106,7 @@
   </ul>
 
   <ul class="nav nav-tabs" *ngIf="rolesSvc.isParent()">
-    <li class="nav-item">
+      <li class="nav-item">
       <a i18n class="nav-link" routerLink="/children" routerLinkActive="active">Sons</a>
     </li>
     <li class="nav-item">

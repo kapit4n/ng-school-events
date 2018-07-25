@@ -5,12 +5,19 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <app-user-info-edit [userInfo]="newStudent"></app-user-info-edit>
-
-  <div class="form-group">
-    <label for="birthDate" i18n>Birth Date</label>
-    <input type="date" class="form-control" id="birthDate" i18n-placeholder placeholder="Birth Date" required [(ngModel)]="newStudent.birthDate"
-      [ngModelOptions]="{standalone: true}">
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <app-user-info-edit [userInfo]="newStudent"></app-user-info-edit>
+          <div class="form-group">
+            <label for="birthDate" i18n>Birth Date</label>
+            <input type="date" class="form-control" id="birthDate" i18n-placeholder placeholder="Birth Date" required [(ngModel)]="newStudent.birthDate"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="modal-footer">
