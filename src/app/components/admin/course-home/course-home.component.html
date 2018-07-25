@@ -40,7 +40,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              <span i18n>Available Students</span>
+              <span i18n class="bold">Available Students</span>
               <ul class="list-group" style="height:300px;overflow: scroll;">
                 <li class="list-group-item d-flex justify-content-between align-items-center"
                   *ngFor="let student of availableStudents">{{student?.firstName}} {{student?.lastName}}
@@ -51,7 +51,7 @@
               </ul>
             </div>
             <div class="col-md-6">
-              <span i18n>Assigned Students</span>
+              <span i18n class="bold">Assigned Students</span>
               <ul class="list-group" style="height:300px;overflow: scroll;">
                 <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let student of assignedStudents">{{student.student?.firstName}} {{student.student?.lastName}}
                   <button type="button" class="btn btn-primary" (click)="removeStudent(student.id)">
