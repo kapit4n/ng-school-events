@@ -42,7 +42,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              <span i18n>Available Courses</span>
+              <span i18n class="bold">Available Courses</span>
               <button type="button" class="btn btn-primary" (click)="addAllCourses()">
                 <span class="fa fa-angle-right" aria-hidden="true"></span>
                 <span class="fa fa-angle-right" aria-hidden="true"></span>
@@ -57,7 +57,7 @@
               </ul>
             </div>
             <div class="col-md-6">
-              <span i18n>Assigned Courses</span>
+              <span i18n class="bold">Assigned Courses</span>
               <ul class="list-group" style="height:300px;overflow: scroll;">
                 <li class="list-group-item d-flex justify-content-between align-items-center"
                  *ngFor="let assigCourse of assignedCourses">{{assigCourse.course.name}}

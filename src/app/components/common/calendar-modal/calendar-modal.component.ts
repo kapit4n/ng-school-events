@@ -35,13 +35,13 @@ export class CalendarModalComponent implements OnInit {
   itemList = [];
   selectedItems = [];
   settings = {
-    text: 'Select one or more Courses',
-    selectAllText: 'Select All',
-    unSelectAllText: 'UnSelect All',
+    text: 'Seleccione uno o más cursos',
+    selectAllText: 'Marcar Todos',
+    unSelectAllText: 'Desmarcar Todos',
     classes: 'myclass custom-class',
     enableSearchFilter: true,
-    noDataLabel: 'There are no Course(s) related to this user',
-    searchPlaceholderText: 'Search by Course Name'
+    noDataLabel: 'No hay cursos relacionados con este usuario',
+    searchPlaceholderText: 'Buscar por nombre de curso'
   };
   @Output() passCFData: EventEmitter<Object> = new EventEmitter();
 
