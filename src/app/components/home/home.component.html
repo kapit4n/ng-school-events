@@ -25,7 +25,7 @@
 <div *ngIf="authSvc.isAuthenticated() && rolesSvc.isParent()">
 <ul class="nav nav-tabs">
   <li class="nav-item" *ngFor="let son of sons">
-    <a i18n class="nav-link" [routerLink]="son.routeLink" routerLinkActive="active">{{son.student.firstName}}</a>
+    <a class="nav-link" [routerLink]="son.routeLink" routerLinkActive="active">{{son.student.firstName}}</a>
   </li>
 </ul>
 </div>
