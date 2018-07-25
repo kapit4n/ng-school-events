@@ -1,7 +1,7 @@
 <div>
   <ul class="nav nav-tabs">
     <li class="nav-item" *ngFor="let course of courses">
-      <a i18n class="nav-link"  [routerLink]="course.routeLink"  routerLinkActive="active">{{course.course.name}}</a>
+      <a class="nav-link"  [routerLink]="course.routeLink"  routerLinkActive="active">{{course.course.name}}</a>
     </li>
   </ul>
   <router-outlet></router-outlet>
