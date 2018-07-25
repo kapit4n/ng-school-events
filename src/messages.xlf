@@ -189,109 +189,118 @@
         <source>SCHOOL EVENTS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">
         <source>Login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8e4288f562b1fc2decfac618e7d1221eec34bed8" datatype="html">
         <source>Teacher settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e3b017e6597e8a3d4769aa4e7b5f9c44961f22b0" datatype="html">
         <source>Parent settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="930d21e1ab924041c061db01a04b48f9f77d4e50" datatype="html">
         <source>Admin settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
         <source>Home</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3b5a01452f69c3aace016de63d4022209e1884b6" datatype="html">
         <source>Parents</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0af4a91d71f8f086f2d094df6a9a4b19272416b5" datatype="html">
         <source>Teachers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="69f2c202c62cee82a032906b5c0c36ef1fb07540" datatype="html">
         <source>Students</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="003c94fc143882ac8af6251a1595fe62978fe3e6" datatype="html">
         <source>Years</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7eec194fdb5177fb2a2b67ddfd1a5c71a943eb9d" datatype="html">
         <source>Courses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">65</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="eeb391d947a5423605271d485d0a6250f0fc4ee1" datatype="html">
+        <source>Announcements <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="INTERPOLATION" equiv-text="{{annCount}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">68</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="4f2f0b97734f9f3c1c90b4ee9f048e51640cb8ac" datatype="html">
-        <source>Announcements</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">99</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="af88c1e95a1d16d3cdbb7210981e0bfb6dc1d137" datatype="html">
-        <source>Events</source>
+      <trans-unit id="c8706cd57d97eb04a61f99e848a9d47d1ccb7d53" datatype="html">
+        <source>Questions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">80</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="7d91503661c1d9ee9a3d5391b4e9479a245aa8c9" datatype="html">
-        <source>Follow up</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3ee718ff327be1fef84fadce03e5cf9d40f9a30e" datatype="html">
         <source>Sons</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3d0557f58106d0774beaf8d416f0255e7b26bba4" datatype="html">
@@ -329,6 +338,26 @@
           <context context-type="sourcefile">app/components/users/student-register/student-register.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-register/student-register.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="52c9a103b812f258bcddc3d90a6e3f46871d25fe" datatype="html">
         <source>Save</source>
@@ -349,12 +378,28 @@
           <context context-type="linenumber">10</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
           <context context-type="linenumber">18</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d7b35c384aecd25a516200d6921836374613dfe7" datatype="html">
@@ -371,49 +416,97 @@
           <context context-type="sourcefile">app/components/users/parent-register/parent-register.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">137</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.previous-month" datatype="html">
+        <source>Previous month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.next-month" datatype="html">
+        <source>Next month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f73b4250224db0b1f0e402e16e772079e5665bf5" datatype="html">
+        <source>Add Student</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8e78cd1d45497a04bf3ad3e43994859ee9641635" datatype="html">
+        <source>Edit Student</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="f6755cff4957d5c3c89bafce5651f1b6fa2b1fd9" datatype="html">
         <source>Add</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">41</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">155</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5762e136c4c6115f2bed8e7fa809baf65f86a2b7" datatype="html">
         <source>Search by Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
         <source>Search</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">45</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">31</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="484b0e541230d60ddb5fbd771a34a5c8d90e7a57" datatype="html">
         <source>Full Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/teacher-list/teacher-list.component.ts</context>
@@ -424,7 +517,23 @@
           <context context-type="linenumber">5</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/son-list/son-list.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teacher/questions-courses-teacher/questions-courses-teacher.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/questions-courses/questions-courses.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -432,7 +541,7 @@
         <source>Gender</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">53</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/teacher-list/teacher-list.component.ts</context>
@@ -449,6 +558,165 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/parent-list/parent-list.component.ts</context>
           <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="030b4423b92167200e39519599f9b863b4f7c62c" datatype="html">
+        <source>Actions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/teacher-list/teacher-list.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-home/course-home.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/parent-list/parent-list.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-year/course-year.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teacher/teacher-course-home/teacher-course-home.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/son-list/son-list.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teacher/questions-courses-teacher/questions-courses-teacher.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/questions-courses/questions-courses.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="04329e155d7b0be1d038c2fbb889f5b843fb4012" datatype="html">
+        <source>  More details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/teacher-list/teacher-list.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/parent-list/parent-list.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-year/course-year.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teacher/teacher-course-home/teacher-course-home.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/son-list/son-list.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9ab194cce5b0d4a0e92a37ac3c514321e50169d9" datatype="html">
+        <source>  Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="72a407f2b32256e12d3ac1ee80b04a0db2b4b810" datatype="html">
+        <source>  Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/student-list/student-list.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/teacher-list/teacher-list.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/parent-list/parent-list.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-year/course-year.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1d1131be4fe33b8cb27b0df18caf3a80b6233768" datatype="html">
+        <source>Invite teacher</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/teacher-register/teacher-register.component.ts</context>
+          <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="244aae9346da82b0922506c2d2581373a15641cc" datatype="html">
@@ -478,10 +746,6 @@
         <source>Verified</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/teacher-list/teacher-list.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/users/parent-list/parent-list.component.ts</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
@@ -559,15 +823,15 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-add-admin/course-add-admin.component.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-add-admin/course-add-admin.component.ts</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
@@ -580,18 +844,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teacher/teacher-course-home/teacher-course-home.component.ts</context>
           <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-add-admin/ann-add-admin.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-add-admin/ann-add-admin.component.ts</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-home/ann-home.component.ts</context>
-          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="729754dd19eb9ce0670b0aeb5a6ae60574c2c563" datatype="html">
@@ -631,44 +883,18 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0f00df23914f2394e2e9ff0a3a1b60159f999323" datatype="html">
-        <source>
-      Male
-    </source>
+      <trans-unit id="097b5dfee5665aa0f7daba8b696acecde6445474" datatype="html">
+        <source>Male</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/user-info-edit/user-info-edit.component.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1a816db97dcf5fe3966ff06a0482fcc60ee8c585" datatype="html">
-        <source>
-      Female
-    </source>
+      <trans-unit id="18f3bafdc69b800737e303bc1cb0753bd9dd3f32" datatype="html">
+        <source>Female</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/user-info-edit/user-info-edit.component.ts</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ngb.datepicker.previous-month" datatype="html">
-        <source>Previous month</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ngb.datepicker.next-month" datatype="html">
-        <source>Next month</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b7a285515e41f0c8038d8b8e65b5199cb9928681" datatype="html">
@@ -688,77 +914,67 @@
           <context context-type="sourcefile">app/components/admin/course-home/course-home.component.ts</context>
           <context context-type="linenumber">8</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="04890e9bdfd30f333cb35845f835580e73e36a19" datatype="html">
+        <source>Students assigned to this course:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-home/course-home.component.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="61727bf4fa2cb34dc5bdf598b6cb917d0c44ac86" datatype="html">
         <source>Student</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-home/course-home.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="37b5a84ab44c446e767de0544fa1c7f5ffc1fef2" datatype="html">
+        <source>  Delete Association</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-home/course-home.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="62cf5bb5a0e147b201a3561af17b630e051101f6" datatype="html">
+        <source>Assign Student to <x id="INTERPOLATION" equiv-text="{{courseYear.course?.name}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-home/course-home.component.ts</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9576ace2e5e11cbf4fcb126350475f7aa7f96096" datatype="html">
         <source>Available Students</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-home/course-home.component.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">43</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cc5b97d7d9f833c3e580ad93b9a459e1d5dd2b3e" datatype="html">
         <source>Assigned Students</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-home/course-home.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">54</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="f4e529ae5ffd73001d1ff4bbdeeb0a72e342e5c8" datatype="html">
-        <source>Close</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/course-home/course-home.component.ts</context>
-          <context context-type="linenumber">64</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">135</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
-          <context context-type="linenumber">73</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/users/teacher-management/teacher-management.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/users/teacher-management/teacher-management.component.ts</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/users/parent-management/parent-management.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/users/parent-management/parent-management.component.ts</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cfc2f436ec2beffb042e7511a73c89c372e86a6c" datatype="html">
@@ -773,6 +989,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teacher/course-list/course-list.component.ts</context>
           <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d41a410d48f529a49ee97e5933e2028f1084e117" datatype="html">
+        <source>Account Verified</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/parent-list/parent-list.component.ts</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="87637632e9f612cf25e205ac950105bc158c20ff" datatype="html">
@@ -814,12 +1037,34 @@
           <context context-type="sourcefile">app/components/users/user-info-edit-ext/user-info-edit-ext.component.ts</context>
           <context context-type="linenumber">14</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/user-info-edit-ext/user-info-edit-ext.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="9b38b1721a51eeb8c1ac9a88025686c4781ebe77" datatype="html">
         <source>Cell Phone</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/users/user-info-edit-ext/user-info-edit-ext.component.ts</context>
           <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/user-info-edit-ext/user-info-edit-ext.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="409adc47d32b4f33e6b9dbf174669f2f43e10eed" datatype="html">
+        <source>details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/user-info-edit-ext/user-info-edit-ext.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4c47b69693858b1da6eba8b99b358b0d331312a8" datatype="html">
+        <source>address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/user-info-edit-ext/user-info-edit-ext.component.ts</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d8b81951d25439864e92f750f7c99d7426d6517c" datatype="html">
@@ -847,40 +1092,47 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="111c9dbde57c8c9069838fd2428a27279868d991" datatype="html">
-        <source>Search by course name</source>
+      <trans-unit id="756b2b2744938130877e47fd8e697024cb532092" datatype="html">
+        <source>Edit Course</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0de12ddd5e017be2df9ae412f2b566d26f531fd9" datatype="html">
+        <source>Search by Course name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0c2d0e97890355f5113f8101d505cf8374a577ad" datatype="html">
         <source>Course Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">36</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-add-admin/course-add-admin.component.ts</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ca43737c88c092b23cc2407b2246b6b43f9728bd" datatype="html">
         <source>Is Archived</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-list-admin/course-list-admin.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
         <source>Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/course-add-admin/course-add-admin.component.ts</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">6</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-add-admin/year-add-admin.component.ts</context>
@@ -888,27 +1140,19 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">54</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">17</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="67812e3d00295936c248d1262d826035df1d96a2" datatype="html">
@@ -947,44 +1191,142 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="f4e529ae5ffd73001d1ff4bbdeeb0a72e342e5c8" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
+          <context context-type="linenumber">145</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/teacher-management/teacher-management.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/teacher-management/teacher-management.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/parent-management/parent-management.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/parent-management/parent-management.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">156</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f1d77b1f461c611e8b1647bd1f2843df66810da2" datatype="html">
+        <source>Edit School Year</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="71529c37b0d4a48dbf5cc30a42b7542297f59f2f" datatype="html">
         <source>Search By School Year</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3e6acd589d8b82cafd8546409da0a36469d297a0" datatype="html">
         <source>Start Date</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
           <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0f551576faafbd2806d4af653469655f1b35afe1" datatype="html">
         <source>End Date</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-list-admin/year-list-admin.component.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
           <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="984acd9e746dae5899870bb770f868dde2e6868d" datatype="html">
         <source>Assign Courses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
@@ -992,73 +1334,102 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0d9bdff9d7a0f7befdc4de8b7aa60198d786e5bb" datatype="html">
+        <source>Courses assigned to this student:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="84249530ab868130c0e511488078e9e40315b5f7" datatype="html">
         <source>Assign Parent</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="abdfb25716cf87654812b0cd685d84e0ef7397bd" datatype="html">
+        <source>Parent(s) related to this student:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f3a87b34fde970f906d188c3c5359cba175c6866" datatype="html">
+        <source>  Delete Relationship</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="11ffe154b0951eb00e76e102b73a3857099a42d8" datatype="html">
         <source>Available Courses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">71</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0e5388f32aafcf8739183640182076165eaf01d2" datatype="html">
         <source>Assigned Courses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">86</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">63</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="59e255e069c36454c2c4b00252c91d105617e3f4" datatype="html">
         <source>Assign Parents</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4ed664d5812066397e85ab02881b23816763b9fb" datatype="html">
         <source>Available Parents</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">106</context>
+          <context context-type="linenumber">116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f16148693e929a1c230c6b34768feb3f253112cb" datatype="html">
         <source>Assigned Parents</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/student-home/student-home.component.ts</context>
-          <context context-type="linenumber">121</context>
+          <context context-type="linenumber">131</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c0e7354691fa5fd29d04f4fbda31b8586f0bad72" datatype="html">
@@ -1080,6 +1451,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
           <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="43ec41c96e4150856754496b1ce7c17fa77f2d86" datatype="html">
+        <source>Courses associated to this school year:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a5141645c18f46947c8334a4fef8656ca158b121" datatype="html">
@@ -1114,11 +1492,25 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="6bc09c0642ed22bd7efeb450cede86be6abbdb08" datatype="html">
+        <source>email@gmail.com</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/users/parent-management/parent-management.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="6237ff3a29d96a2418eb0007bebc0be1dda21cdd" datatype="html">
         <source>Teacher</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
           <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="93d8249569fa19b4c1bb088bc762d967ccd6b2f2" datatype="html">
+        <source>Courses assigned to this teacher:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/teacher-home/teacher-home.component.ts</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3a4c2a9e76634ff14a60d52a718296f722d47c67" datatype="html">
@@ -1132,11 +1524,25 @@
         <source>Assign Students</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c9e2024058aefceed71e1fdef14f38dd4be2a304" datatype="html">
+        <source>Students related to this parent:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="59a8c38db3091a63ac1cb9590188dc3a972acfb3" datatype="html">
+        <source> Actions </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/admin/parent-home/parent-home.component.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f6e04edea3bb3a59d5904725bfbc2c440e793001" datatype="html">
@@ -1146,66 +1552,159 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1cb1d342ec9447b4e42f103a51fda8d307bf9e59" datatype="html">
-        <source>Student Name</source>
+      <trans-unit id="465a5cc9488d3a455e8d12d674cb8468327e8c4e" datatype="html">
+        <source>Follow-Up items registered for this student:</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teacher/teacher-course-home/teacher-course-home.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="fdf7cbdc140d0aab0f0b6c06065a0fd448ed6a2e" datatype="html">
-        <source>Title</source>
+      <trans-unit id="31f0fd813978e4f4d4edfbba5416b7ad782d73fd" datatype="html">
+        <source>Registered Date</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-add-admin/ann-add-admin.component.ts</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
+          <context context-type="linenumber">31</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-add-admin/ann-add-admin.component.ts</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4b0ca852bafa5037c4e64c7b18f9cd1e14b799de" datatype="html">
+        <source>Subject</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
           <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deed015cbe796f9840b25ffe263c7d772be009d2" datatype="html">
+        <source>Is Delayed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="925526efcc0c823b89c34254f630892a7abd0aa9" datatype="html">
+        <source>Is Absent</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">19</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
           <context context-type="linenumber">70</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="fdf7cbdc140d0aab0f0b6c06065a0fd448ed6a2e" datatype="html">
+        <source>Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2393499fb6f7168b313e4358963cd8e0d7f73239" datatype="html">
-        <source>Publication Date</source>
+      <trans-unit id="bf4dea8674783d25907ee5d6c44d57affe5d6de4" datatype="html">
+        <source>historyDetails</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-add-admin/ann-add-admin.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
+          <context context-type="linenumber">36</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-home/ann-home.component.ts</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">21</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="d2a4fa4d00f42fbcfbf8faea946815f5c4873d42" datatype="html">
-        <source>Duration in days</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-add-admin/ann-add-admin.component.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">90</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="f61c6867295f3b53d23557021f2f4e0aa1d0b8fc" datatype="html">
-        <source>Type</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-home/ann-home.component.ts</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a02ea1d4e7424ca989929da5e598f379940fdbf2" datatype="html">
-        <source>Duration</source>
+      <trans-unit id="2169ac89595ea71e589b9e3bba75a51f20c4662e" datatype="html">
+        <source>Observation</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/admin/ann-home/ann-home.component.ts</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1cb1d342ec9447b4e42f103a51fda8d307bf9e59" datatype="html">
+        <source>Student Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teacher/teacher-course-home/teacher-course-home.component.ts</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="680d5c75b7fd8d37961083608b9fcdc4167b4c43" datatype="html">
@@ -1222,95 +1721,380 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="f8f48124d7169a409b91569d6925218a336928a7" datatype="html">
-        <source>Add Follow UP</source>
+      <trans-unit id="7894005657cc4ffdf1251ee7289623a994a76d79" datatype="html">
+        <source>Announcement Details</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="31f0fd813978e4f4d4edfbba5416b7ad782d73fd" datatype="html">
-        <source>Registered Date</source>
+      <trans-unit id="94a483b1b185108ff5681ec24b771200b52dcff2" datatype="html">
+        <source>Course(s) which received this announcement</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4b0ca852bafa5037c4e64c7b18f9cd1e14b799de" datatype="html">
-        <source>Subject</source>
+      <trans-unit id="51ec382833d8802091efa53b5b0c6c2f54b04119" datatype="html">
+        <source>Data retrieval error</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="eec715de352a6b114713b30b640d319fa78207a0" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-read-view/calendar-read-view.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="56f4981d62713f90aa2f57053d60873b941e1499" datatype="html">
+        <source>Edit Annoucement</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d2b49b4311a61de65db864b29aaa9300d99fda73" datatype="html">
+        <source>Enter a title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
           <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">103</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="deed015cbe796f9840b25ffe263c7d772be009d2" datatype="html">
-        <source>Is Delayed</source>
+      <trans-unit id="7cbdabcece469fab89cfa687ab152bca18b97498" datatype="html">
+        <source>This field is required.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">88</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">63</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="925526efcc0c823b89c34254f630892a7abd0aa9" datatype="html">
-        <source>Is Absent</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">111</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">124</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="bf4dea8674783d25907ee5d6c44d57affe5d6de4" datatype="html">
-        <source>historyDetails</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
           <context context-type="linenumber">18</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">41</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">143</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2169ac89595ea71e589b9e3bba75a51f20c4662e" datatype="html">
-        <source>Observation</source>
+      <trans-unit id="0975ec32ee779170d014d2ae26d4cf863003b620" datatype="html">
+        <source>(Optional) Enter a Description</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="64dd43f6da4ff77961111bf04e9ceb2b7b17d1e3" datatype="html">
-        <source>Create parent</source>
+      <trans-unit id="08bf05baa49f05263ee8198d322a82a6e3a75694" datatype="html">
+        <source>yyyy-mm-dd</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6c02f3e31d63df8d2ff155ec82e53c62c0ed8918" datatype="html">
+        <source>Invalid date format.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">133</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0d143ede40a2a9609c62777ad7f9081571ed6cd4" datatype="html">
+        <source>Duration (in days)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a6c8f3e6b834554fbb0bd68fb406d98e44f4e3df" datatype="html">
+        <source>Enter the duration</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="64444b9ae5eab598959435878bbf7971f14f4901" datatype="html">
+        <source>Please enter a number between 1 and 30 days.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">127</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="047f50bc5b5d17b5bec0196355953e1a5c590ddb" datatype="html">
+        <source>Update</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ec8eb226f34ac76dea28d32c1a2c58de2abd14b5" datatype="html">
+        <source>Confirm Delete operation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0dafe6194e8c191a1e78d5cfe640abeed3f4d3b3" datatype="html">
+        <source>Do you really want to delete the </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">151</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="00ebd41b87e7b3a012796ea8824b97962cbaa102" datatype="html">
+        <source>announcement ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">151</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4f20f2d5a6882190892e58b85f6ccbedfa737952" datatype="html">
+        <source>Yes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">155</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d3ae7deebc5949b0c1c78b9847886a94321d9fd" datatype="html">
+        <source>No</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-view/calendar-view.component.ts</context>
+          <context context-type="linenumber">156</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ce90f732abbb4e7353c77d479990681f6ca3d84e" datatype="html">
+        <source>Follow-up items registered for this student:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0528e5f37041aaaa8a7e914c434a4032139e7b0a" datatype="html">
+        <source>Add Follow Up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="792ecf46c94c272c07adaa2b3c3ea6200122a985" datatype="html">
+        <source>Create Follow Up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="43952137cf08797af1d425e34a1ee4cab262a3c9" datatype="html">
         <source>observation</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="38ff99789b5f89d7fdf8ba63ba526eb015d1683a" datatype="html">
+        <source>New General Announcement</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="de0cb8bfb122e2d37ce087ed49cdc1cf1332798e" datatype="html">
+        <source>Enter a description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="82a0d15d3093c424cce45e10dd09fc69b873742f" datatype="html">
+        <source>Please enter a number between 1 and 30 days</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">146</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1478382042ecc3896386af9fe442084f5deb0431" datatype="html">
+        <source>New Announcement Per Course(s)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="242ae5bc1a1cf432d6d366e5cc2be52f5135b008" datatype="html">
+        <source>Add new General Announcement </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">166</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1dae2154b97bc5d1b723cb6e96aabe4e1fe04eee" datatype="html">
+        <source>Add new Announcement per Course </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
+          <context context-type="linenumber">169</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c440871b893b0a09ca1020ecbb2bd4525d58e2ec" datatype="html">
+        <source>  View Conversations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teacher/questions-courses-teacher/questions-courses-teacher.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/questions-courses/questions-courses.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4188ef67a196ca21d68f20405b99fb6b2f6476c7" datatype="html">
+        <source>Add Question</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a330b986161369e1c4b590c90a7d40617da35370" datatype="html">
+        <source>Create question</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
     </body>

@@ -19,7 +19,7 @@
       <div class="card-body">
         <p>
           {{question.description}}
-        </p> 
+        </p>
         <ul class="chat" *ngFor="let answer of question.answers">
           <li class="left clearfix">
             <span class="chat-img pull-left">
@@ -82,7 +82,7 @@
       </div>
       <div class="modal-footer">
         <button i18n type="button" class="btn" (click)="saveQuestion()" data-dismiss="modal">Save</button>
-        <button i18n type="button" class="close" data-dismiss="modal">Close</button>
+        <button i18n type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

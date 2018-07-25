@@ -12,14 +12,14 @@
   <label for="gender" i18n>Gender</label>
   <div class="form-check">
     <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked [(ngModel)]="userInfo.gender">
-    <label i18n class="form-check-label" for="male">
-      Male
+    <label class="form-check-label" for="male">
+      <ng-container i18n>Male</ng-container>
     </label>
   </div>
   <div class="form-check">
     <input class="form-check-input" type="radio" name="gender" id="female" value="female" [(ngModel)]="userInfo.gender">
-    <label i18n class="form-check-label" for="female">
-      Female
+    <label class="form-check-label" for="female">
+      <ng-container i18n>Female</ng-container>
     </label>
   </div>
 </div>
