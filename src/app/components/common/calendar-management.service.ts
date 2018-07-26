@@ -38,6 +38,17 @@ export class CalendarManagementService {
       });
   }
 
+  public getAnnsAll(): Observable<any> {
+    return this.http
+      .get(`${this.configSvc.backendUrl}/announcement2s`)
+      .map(res => res.json())
+      .catch((error: Response) => {
+        return Observable.throw(
+          "Something went wrong with the loading process of Announcements"
+        );
+      });
+  }
+
   public getAnnsCountAll(): Observable<any> {
     return this.http
       .get(`${this.configSvc.backendUrl}/announcement2s/count`)

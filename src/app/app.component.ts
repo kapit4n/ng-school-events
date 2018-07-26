@@ -85,16 +85,36 @@ export class AppComponent implements OnInit {
   }
 
   loadFollowUps(): void {
+    this.countFollowUps = 0;
+    this.dataContentEvents = `<ul class="list-group" style="width: 250px;">`;
+    var flagToCLose = true;
     this.followUpsSvc.getFollowUpsAll().subscribe(followUps => {
-      this.dataContentEvents = `<ul class="list-group">`;
       for (let i = 0; i < followUps.length; i++) {
-        this.dataContentEvents += `<li class="list-group-item">${followUps[i].title} <a href="children/${followUps[i].student.id}">${followUps[i].student.firstName}</a></li>`;
+        this.dataContentEvents += `<li class="list-group-item" >New Follow up for ${followUps[i].student.firstName} <a class="pull-right" href="children/${followUps[i].student.id}">GO</a></li>`;
       }
-      this.dataContentEvents += `</ul>`;
+      this.cmService.getAnnsAll().subscribe(anns => {
+        for (let i = 0; i < anns.length; i++) {
+          this.dataContentEvents += `<li class="list-group-item" >New Announcement up for ${anns[i].id} <a class="pull-right" href="children/${anns[i].id}">GO</a></li>`;
+          if (flagToCLose){
+            this.dataContentEvents += `</ul>`;
+            flagToCLose = false;
+          }
+        }
+      });
+      if (flagToCLose){
+        this.dataContentEvents += `</ul>`;
+        flagToCLose = false;
+      }
     });
+  
+    
 
     this.followUpsSvc.getFollowUpsCountAll().subscribe(countInfo => {
-      this.countFollowUps = countInfo.count;
+      this.countFollowUps += countInfo.count;
+    });
+
+    this.cmService.getAnnsCountAll().subscribe(countInfo => {
+      this.countFollowUps += countInfo.count;
     });
   }
 
