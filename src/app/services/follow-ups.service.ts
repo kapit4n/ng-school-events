@@ -20,6 +20,12 @@ export class FollowUpsService {
       .map(res => res);
   }
 
+  public updateFollowUp(followUp: any): Observable<any> {
+    return this.http
+      .put(`${this.configSvc.backendUrl}/${this.endPoint}/${followUp.id}`, followUp)
+      .map(res => res);
+  }
+
   public getFollowUps(studentId, filter = "", limit = 100, skip = 0): Observable<any> {
     if (filter) {
       return this.http

@@ -16,6 +16,7 @@ export class TeacherStudentHomeComponent implements OnInit {
   studentId: any;
   courseId: any;
   newFollowUp: any;
+  editFollowUp: any;
   searchText = "";
 
   pages = 0;
@@ -30,6 +31,7 @@ export class TeacherStudentHomeComponent implements OnInit {
     private socketService: SocketService
   ) {
     this.newFollowUp = {};
+    this.editFollowUp = {};
     this.followUps = [];
   }
 
@@ -86,9 +88,20 @@ export class TeacherStudentHomeComponent implements OnInit {
     });
   }
 
+  updateFollowUp() {
+    this.sendMessage("An Follow up was updated");    
+    this.followUpsSvc.updateFollowUp(this.editFollowUp).subscribe(follow => {
+      this.loadFollowUps();
+    });
+  }
+
   removeFollowUp(id) {
     this.followUpsSvc.removeFollowUp(id).subscribe(result => {
       this.loadFollowUps();
     });
+  }
+
+  openEdit(toEdit) {
+    this.editFollowUp = toEdit;
   }
 }
