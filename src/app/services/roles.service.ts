@@ -74,6 +74,11 @@ export class RolesService {
     return "";
   }
 
+  getTeacherParentId() {
+    if (this.getTeacherId()) return this.getTeacherId();
+    else return this.getParentId();
+  }
+
   getTeacher() {
     if (this.userInfo.teachers) {
       return this.userInfo.teachers;
