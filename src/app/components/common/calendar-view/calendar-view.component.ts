@@ -10,36 +10,38 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RolesService} from '../../../services/roles.service';
 import {AuthService} from '../../../services/auth.service';
 import {TeachersService} from '../../../services/teachers.service';
+import { SocketService } from "../../../services/socket.service";
+import { NotificationsService } from "angular2-notifications";
 
 @Component({
-  selector: 'app-calendar-view',
+  selector: "app-calendar-view",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './calendar-view.component.html',
-  styleUrls: ['./calendar-view.component.css'],
-  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
+  templateUrl: "./calendar-view.component.html",
+  styleUrls: ["./calendar-view.component.css"],
+  providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
 })
 export class CalendarViewComponent implements OnInit {
   refresh: Subject<any> = new Subject();
   activeDayIsOpen: boolean;
-  view = 'week';
+  view = "week";
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
   announcements: Announcement[];
   currentAnnouncement: Announcement = new Announcement();
   currentAction: string;
-  @ViewChild('modalContent') modalContent: TemplateRef<any>;
+  @ViewChild("modalContent") modalContent: TemplateRef<any>;
   actions: CalendarEventAction[];
   adminActions: CalendarEventAction[] = [
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
+        this.handleEvent("Edited", event);
       }
     },
     {
       label: '<i class="fa fa-fw fa-times"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Deleted', event);
+        this.handleEvent("Deleted", event);
       }
     }
   ];
@@ -53,24 +55,31 @@ export class CalendarViewComponent implements OnInit {
 
   isCurrentUserTeacher = false;
   isCurrentUserAdmin = false;
-  teacherId = '';
+  teacherId = "";
   colorEvent: any = colors.green;
-  announcementForThisTeacher: any ;
-  teacherCourseIDs: { id: string, itemName: string } [ ] = [] ;
+  announcementForThisTeacher: any;
+  teacherCourseIDs: { id: string; itemName: string }[] = [];
+  messages: any[] = [];
+  ioConnection: any;
 
-  constructor(private cmService: CalendarManagementService,
-              private modal: NgbModal,
-              private fb: FormBuilder,
-              private authSvc: AuthService,
-              public rolesSvc: RolesService,
-              private teachersSvc: TeachersService) {
-  }
+  constructor(
+    private cmService: CalendarManagementService,
+    private modal: NgbModal,
+    private fb: FormBuilder,
+    private authSvc: AuthService,
+    public rolesSvc: RolesService,
+    private teachersSvc: TeachersService,
+    private socketService: SocketService,
+    private _notificationSvc: NotificationsService
+  ) {}
 
   get today() {
     return new Date();
   }
 
   ngOnInit() {
+    this.initIoConnection();
+
     // Loading actions according userTypes:
     if (this.rolesSvc.isAdmin()) {
       this.isCurrentUserAdmin = true;
@@ -78,18 +87,18 @@ export class CalendarViewComponent implements OnInit {
         {
           label: '<i class="fa fa-fw fa-pencil"></i>',
           onClick: ({ event }: { event: CalendarEvent }): void => {
-            this.handleEvent('Edited', event);
+            this.handleEvent("Edited", event);
           }
         },
         {
           label: '<i class="fa fa-fw fa-times"></i>',
           onClick: ({ event }: { event: CalendarEvent }): void => {
-            this.handleEvent('Deleted', event);
+            this.handleEvent("Deleted", event);
           }
         }
       ];
     } else if (this.rolesSvc.isTeacher()) {
-      this.actions = [] ;
+      this.actions = [];
       this.isCurrentUserTeacher = true;
       this.teacherId = this.authSvc.getCurrentUserId();
     }
@@ -98,65 +107,75 @@ export class CalendarViewComponent implements OnInit {
     this.loadAnnouncements();
     // edit implementation
     this.editFormGroup = this.fb.group({
-      title: ['', [Validators.required]],
-      description: [''],
-      startDateField: ['', [Validators.required]],
-      durationField: ['', [Validators.required, this.checkDuration]]
+      title: ["", [Validators.required]],
+      description: [""],
+      startDateField: ["", [Validators.required]],
+      durationField: ["", [Validators.required, this.checkDuration]]
     });
     // CRITICAL CHANGE FOR SINGLE UPDATE
-    this.cmService.singleAnnouncementsInserted
-      .subscribe(
-        (announcement: Announcement) => {
-          this.announcements = this.cmService.getAnnouncements();
-          this.colorEvent = announcement.id.startsWith('CF-') ? colors.yellow : colors.green ;
-          if ( this.rolesSvc.isAdmin() ) {
+    this.cmService.singleAnnouncementsInserted.subscribe(
+      (announcement: Announcement) => {
+        this.announcements = this.cmService.getAnnouncements();
+        this.colorEvent = announcement.id.startsWith("CF-")
+          ? colors.yellow
+          : colors.green;
+        if (this.rolesSvc.isAdmin()) {
+          this.actions = this.adminActions;
+        } else {
+          if (
+            this.rolesSvc.isTeacher() &&
+            announcement.createdBy === this.authSvc.getCurrentUserId()
+          ) {
             this.actions = this.adminActions;
           } else {
-            if (this.rolesSvc.isTeacher() && announcement.createdBy === this.authSvc.getCurrentUserId() ) {
-              this.actions = this.adminActions;
-            } else {
-              this.actions = [];
-            }
+            this.actions = [];
           }
-          this.events.push({
-            id: announcement.id,
-            start: announcement.startDate,
-            end: announcement.endDate,
-            title: announcement.title,
-            color: this.colorEvent,
-            actions: this.actions
-          });
+        }
+        this.events.push({
+          id: announcement.id,
+          start: announcement.startDate,
+          end: announcement.endDate,
+          title: announcement.title,
+          color: this.colorEvent,
+          actions: this.actions
+        });
 
-          this.refresh.next();
-        }
-      );
+        this.refresh.next();
+      }
+    );
     // EDIT STUFF
-    this.cmService.announcementsUpserted
-      .subscribe(
-        (announcement: Announcement) => {
-          this.announcements = this.cmService.getAnnouncements();
-          const objIndex = this.announcements.findIndex((obj => obj.id === announcement.id.toString()));
-          this.announcements[objIndex] = announcement;
-          const evtIndex = this.events.findIndex((obj => obj.id === announcement.id.toString()));
-          this.events[evtIndex].start = announcement.startDate;
-          this.events[evtIndex].end = announcement.endDate;
-          this.events[evtIndex].title = announcement.title;
-          this.refresh.next();
-        }
-      );
+    this.cmService.announcementsUpserted.subscribe(
+      (announcement: Announcement) => {
+        this.announcements = this.cmService.getAnnouncements();
+        const objIndex = this.announcements.findIndex(
+          obj => obj.id === announcement.id.toString()
+        );
+        this.announcements[objIndex] = announcement;
+        const evtIndex = this.events.findIndex(
+          obj => obj.id === announcement.id.toString()
+        );
+        this.events[evtIndex].start = announcement.startDate;
+        this.events[evtIndex].end = announcement.endDate;
+        this.events[evtIndex].title = announcement.title;
+        this.refresh.next();
+      }
+    );
     // DELETE STUFF
-    this.cmService.announcementsDeleted
-      .subscribe(
-        (announcement: Announcement) => {
-          this.announcements = this.announcements.filter(iAnnounce => iAnnounce !== announcement);
-          const evtIndex = this.events.findIndex((obj => obj.id === announcement.id.toString()));
-          if (evtIndex !== -1) {
-            this.events.splice(evtIndex, 1);
-          }
-          this.refresh.next();
-          this.announcements = this.cmService.getAnnouncements();
+    this.cmService.announcementsDeleted.subscribe(
+      (announcement: Announcement) => {
+        this.announcements = this.announcements.filter(
+          iAnnounce => iAnnounce !== announcement
+        );
+        const evtIndex = this.events.findIndex(
+          obj => obj.id === announcement.id.toString()
+        );
+        if (evtIndex !== -1) {
+          this.events.splice(evtIndex, 1);
         }
-      );
+        this.refresh.next();
+        this.announcements = this.cmService.getAnnouncements();
+      }
+    );
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -173,47 +192,71 @@ export class CalendarViewComponent implements OnInit {
     }
   }
 
-  public loadAnnouncements() {
-    this.cmService.loadAnnouncementsFromDB()
-      .subscribe(
-        (announcements: Announcement[]) => {
-          this.cmService.setAnnouncements(announcements);
-          this.announcements = this.cmService.getAnnouncements();
+  private initIoConnection(): void {
+    this.socketService.initSocket();
 
-          for (const entry of announcements) {
-            this.colorEvent = entry.id.startsWith('CF-') ? colors.yellow : colors.green ;
-            if ( this.rolesSvc.isAdmin() ) {
+    this.ioConnection = this.socketService
+      .onMessage()
+      .subscribe((message: any) => {
+        this.messages.push(message);
+      });
+    this.socketService.onEvent(Event.CONNECT).subscribe(() => {
+      console.log("connected");
+    });
+
+    this.socketService.onEvent("anns").subscribe(data => {
+      this.loadAnnouncements();
+    });
+
+    this.socketService.onEvent(Event.DISCONNECT).subscribe(() => {
+      console.log("disconnected");
+    });
+  }
+
+  public loadAnnouncements() {
+    this.cmService
+      .loadAnnouncementsFromDB()
+      .subscribe((announcements: Announcement[]) => {
+        this.cmService.setAnnouncements(announcements);
+        this.announcements = this.cmService.getAnnouncements();
+
+        for (const entry of announcements) {
+          this.colorEvent = entry.id.startsWith("CF-")
+            ? colors.yellow
+            : colors.green;
+          if (this.rolesSvc.isAdmin()) {
+            this.actions = this.adminActions;
+            this.events.push({
+              id: entry.id,
+              start: new Date(entry.startDate.toString()),
+              end: new Date(entry.endDate.toString()),
+              title: entry.title,
+              color: this.colorEvent,
+              actions: this.actions
+            });
+          } else {
+            if (entry.createdBy === this.authSvc.getCurrentUserId()) {
               this.actions = this.adminActions;
               this.events.push({
-                id : entry.id,
+                id: entry.id,
                 start: new Date(entry.startDate.toString()),
                 end: new Date(entry.endDate.toString()),
                 title: entry.title,
                 color: this.colorEvent,
                 actions: this.actions
               });
-
             } else {
-              if (entry.createdBy === this.authSvc.getCurrentUserId() ) {
-                this.actions = this.adminActions;
-                this.events.push({
-                  id: entry.id,
-                  start: new Date(entry.startDate.toString()),
-                  end: new Date(entry.endDate.toString()),
-                  title: entry.title,
-                  color: this.colorEvent,
-                  actions: this.actions
-                });
-              } else {
-                if (this.rolesSvc.isTeacher()) {
-                  this.actions = [];
-                  if (entry.id.startsWith('CF-')) {
-                    this.announcementForThisTeacher = null ;
-                    // special code start
-                    let courseIDs: { id: string, itemName: string } [ ] = [];
-                    let totalCourses = [];
+              if (this.rolesSvc.isTeacher()) {
+                this.actions = [];
+                if (entry.id.startsWith("CF-")) {
+                  this.announcementForThisTeacher = null;
+                  // special code start
+                  let courseIDs: { id: string; itemName: string }[] = [];
+                  let totalCourses = [];
 
-                    this.teachersSvc.getCourses(this.authSvc.getCurrentUserId()).subscribe(teacher => {
+                  this.teachersSvc
+                    .getCourses(this.authSvc.getCurrentUserId())
+                    .subscribe(teacher => {
                       if (teacher.length > 0) {
                         this.teachersSvc
                           .getCourseYear(teacher)
@@ -226,11 +269,15 @@ export class CalendarViewComponent implements OnInit {
                               });
                             }
                             this.teacherCourseIDs = courseIDs;
-                            this.colorEvent = entry.id.startsWith('CF-') ? colors.yellow : colors.green ;
-                              // SECOND more special code start
+                            this.colorEvent = entry.id.startsWith("CF-")
+                              ? colors.yellow
+                              : colors.green;
+                            // SECOND more special code start
                             if (this.teacherCourseIDs.length > 0) {
                               for (const course of this.teacherCourseIDs) {
-                                this.announcementForThisTeacher = entry.courseMultiSelect.find(search => search.id === course.id.toString());
+                                this.announcementForThisTeacher = entry.courseMultiSelect.find(
+                                  search => search.id === course.id.toString()
+                                );
                                 if (this.announcementForThisTeacher) {
                                   this.events.push({
                                     id: entry.id,
@@ -249,40 +296,40 @@ export class CalendarViewComponent implements OnInit {
                           });
                       }
                     });
-                    // special code end
-                  } else {
-                    this.actions = [];
-                    this.events.push({
-                      id: entry.id,
-                      start: new Date(entry.startDate.toString()),
-                      end: new Date(entry.endDate.toString()),
-                      title: entry.title,
-                      color: this.colorEvent,
-                      actions: this.actions
-                    });
-                  }
+                  // special code end
+                } else {
+                  this.actions = [];
+                  this.events.push({
+                    id: entry.id,
+                    start: new Date(entry.startDate.toString()),
+                    end: new Date(entry.endDate.toString()),
+                    title: entry.title,
+                    color: this.colorEvent,
+                    actions: this.actions
+                  });
                 }
               }
             }
           }
-          this.refresh.next();
         }
-      );
+        this.refresh.next();
+      });
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.currentAnnouncement = this.announcements.find( search => search.id === event.id.toString() );
+    this.currentAnnouncement = this.announcements.find(
+      search => search.id === event.id.toString()
+    );
     this.currentAction = action;
-    if (this.currentAction === 'Deleted') {
-      this.modal.open(this.modalContent, {size: 'sm'});
+    if (this.currentAction === "Deleted") {
+      this.modal.open(this.modalContent, { size: "sm" });
     } else {
-      if (this.currentAction === 'Clicked') {
+      if (this.currentAction === "Clicked") {
         this.modal.open(this.modalContent);
-      } else
-        if (this.currentAction === 'Edited') {
-          this.rebuildForm();
-          this.modal.open(this.modalContent);
-        }
+      } else if (this.currentAction === "Edited") {
+        this.rebuildForm();
+        this.modal.open(this.modalContent);
+      }
     }
   }
 
@@ -291,7 +338,10 @@ export class CalendarViewComponent implements OnInit {
       title: this.currentAnnouncement.title,
       description: this.currentAnnouncement.description,
       startDateField: new Date(this.currentAnnouncement.startDate),
-      durationField: this.substractDays(this.currentAnnouncement.startDate, this.currentAnnouncement.endDate)
+      durationField: this.substractDays(
+        this.currentAnnouncement.startDate,
+        this.currentAnnouncement.endDate
+      )
     });
   }
 
@@ -301,8 +351,8 @@ export class CalendarViewComponent implements OnInit {
 
   // edit form validation
   checkDuration(control: FormControl) {
-    if (control.value <= 0 || control.value > 30 ) {
-      return {validDuration: true};
+    if (control.value <= 0 || control.value > 30) {
+      return { validDuration: true };
     } else {
       return null;
     }
@@ -312,38 +362,53 @@ export class CalendarViewComponent implements OnInit {
     const startDate = new Date(start);
     const endDate = new Date(end);
     let result = 0;
-    result = (endDate.getDate() - startDate.getDate()) + 1;
+    result = endDate.getDate() - startDate.getDate() + 1;
     return result;
   }
 
-  private addDays(date: any, days: number ): Date {
-    const result = new Date( date );
-    result.setDate(result.getDate() + days - 1 );
+  private addDays(date: any, days: number): Date {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days - 1);
     return result;
   }
 
   updateAnnouncement() {
-    this.currentAnnouncement.title = this.editFormGroup.get('title').value;
-    this.currentAnnouncement.description = this.editFormGroup.get('description').value;
-    this.currentAnnouncement.startDate = this.editFormGroup.get('startDateField').value;
-    this.currentAnnouncement.endDate = this.editFormGroup.get('durationField').value;
-    this.currentAnnouncement.endDate = this.addDays(this.currentAnnouncement.startDate, this.currentAnnouncement.endDate);
+    this.currentAnnouncement.title = this.editFormGroup.get("title").value;
+    this.currentAnnouncement.description = this.editFormGroup.get(
+      "description"
+    ).value;
+    this.currentAnnouncement.startDate = this.editFormGroup.get(
+      "startDateField"
+    ).value;
+    this.currentAnnouncement.endDate = this.editFormGroup.get(
+      "durationField"
+    ).value;
+    this.currentAnnouncement.endDate = this.addDays(
+      this.currentAnnouncement.startDate,
+      this.currentAnnouncement.endDate
+    );
     this.cmService.upsertAnnouncement(this.currentAnnouncement).subscribe(
-      (response) => {
+      response => {
         console.log(response);
-        this.cmService.updateSingleAnnouncement(this.currentAnnouncement, 'Update');
+        this.cmService.updateSingleAnnouncement(
+          this.currentAnnouncement,
+          "Update"
+        );
       },
-      (error) => console.log(error)
+      error => console.log(error)
     );
   }
 
   deleteAnnouncement() {
     this.cmService.deleteAnnouncement(this.currentAnnouncement).subscribe(
-      (response) => {
+      response => {
         console.log(response);
-        this.cmService.updateSingleAnnouncement(this.currentAnnouncement, 'Delete');
+        this.cmService.updateSingleAnnouncement(
+          this.currentAnnouncement,
+          "Delete"
+        );
       },
-      (error) => console.log(error)
+      error => console.log(error)
     );
   }
 }
