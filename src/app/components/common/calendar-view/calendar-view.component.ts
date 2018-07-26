@@ -84,8 +84,12 @@ export class CalendarViewComponent implements OnInit {
 
   ngOnInit() {
     this.initIoConnection();
+    this.loadAnnouncementsAction();
+  }
 
+  loadAnnouncementsAction() {
     // Loading actions according userTypes:
+    this.events = [];
     if (this.rolesSvc.isAdmin()) {
       this.isCurrentUserAdmin = true;
       this.actions = [
@@ -210,7 +214,7 @@ export class CalendarViewComponent implements OnInit {
     });
 
     this.socketService.onEvent("anns").subscribe(data => {
-      this.loadAnnouncements();
+      this.loadAnnouncementsAction();
     });
 
     this.socketService.onEvent(Event.DISCONNECT).subscribe(() => {
