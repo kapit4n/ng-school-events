@@ -2105,6 +2105,27 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="e4dc6b46649b01f802f67f86a9b46edeb02edf84" datatype="html">
+        <source>Asked by: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f18a3ea84bef9244326977ac6cbe371c7e4d55e2" datatype="html">
+        <source>Type your answer here...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4edb71f23e3ff228dbabd05e8ffc364fae8ae467" datatype="html">
+        <source>Response</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="a330b986161369e1c4b590c90a7d40617da35370" datatype="html">
         <source>Create question</source>
         <context-group purpose="location">

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ParentsService } from "../../../services/parents.service";
-import { QuestionsService } from "../../../services/questions.service";
-import { RolesService } from "../../../services/roles.service";
-import { ActivatedRoute } from "@angular/router";
+import { ParentsService } from '../../../services/parents.service';
+import { QuestionsService } from '../../../services/questions.service';
+import { RolesService } from '../../../services/roles.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-question-home",
-  templateUrl: "./question-home.component.html",
-  styleUrls: ["./question-home.component.css"]
+  selector: 'app-question-home',
+  templateUrl: './question-home.component.html',
+  styleUrls: ['./question-home.component.css']
 })
 export class QuestionHomeComponent implements OnInit {
-  studentId = "0";
-  courseId = "0";
+  studentId = '0';
+  courseId = '0';
   course: any;
   courseStudent: any;
   questions = [];
@@ -29,20 +29,20 @@ export class QuestionHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.studentId = this.route.snapshot.paramMap.get("id");
-    this.courseId = this.route.snapshot.paramMap.get("courseId");
+    this.studentId = this.route.snapshot.paramMap.get('id');
+    this.courseId = this.route.snapshot.paramMap.get('courseId');
     this.loadQuestions();
   }
 
   loadQuestions() {
-    if(this.courseId) {
+    if (this.courseId) {
         this.questionsSvc.getQuestions(this.courseId)
             .subscribe(questions => {
               this.questionMap = questions.reduce(function(map, obj) {
                 map[obj.id] = obj;
                 return map;
               }, {});
-  
+
               questions.forEach(data => {
                 this.questionsSvc
                   .getAnswersByQuestionId(data.id)
@@ -62,13 +62,13 @@ export class QuestionHomeComponent implements OnInit {
         courses => {
           this.courseStudent = courses[0];
           this.questionsSvc
-            .getQuestions(this.courseStudent["course-year"].courseId)
+            .getQuestions(this.courseStudent['course-year'].courseId)
             .subscribe(questions => {
               this.questionMap = questions.reduce(function(map, obj) {
                 map[obj.id] = obj;
                 return map;
               }, {});
-  
+
               questions.forEach(data => {
                 this.questionsSvc
                   .getAnswersByQuestionId(data.id)
@@ -89,10 +89,10 @@ export class QuestionHomeComponent implements OnInit {
   }
 
   saveQuestion() {
-    if(this.courseId) {
+    if (this.courseId) {
       this.newQuestion.courseId = this.courseId;
     } else {
-      this.newQuestion.courseId = this.course["course-year"].courseId;
+      this.newQuestion.courseId = this.courseStudent['course-year'].courseId;
 
     }
     this.newQuestion.parentId = this.rolesSvc.getParentId();
@@ -113,8 +113,8 @@ export class QuestionHomeComponent implements OnInit {
   }
 
   saveAnswer(questionId: string, answerInput: string) {
-    let answerDescr = (document.getElementById(answerInput + questionId) as HTMLInputElement).value;
-    let answer = { description: answerDescr, questionId: questionId, parentId: this.rolesSvc.getParentId(), teacherId: this.rolesSvc.getTeacherId() };
+    const answerDescr = (document.getElementById(answerInput + questionId) as HTMLInputElement).value;
+    const answer = { description: answerDescr, questionId: questionId, parentId: this.rolesSvc.getParentId(), teacherId: this.rolesSvc.getTeacherId() };
 
     this.questionsSvc.registerAnswer(answer).subscribe(answerResult => {
       if (this.rolesSvc.isParent()) {
@@ -133,7 +133,7 @@ export class QuestionHomeComponent implements OnInit {
       console.log(res);
     });
   }
-  
+
   removeQuestion(id) {
     this.questionsSvc.removeQuestion(id).subscribe(res => {
       this.questions = this.questions.filter(q => q.id != id);
