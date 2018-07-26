@@ -13,6 +13,11 @@ import {TeachersService} from '../../../services/teachers.service';
 import { SocketService } from "../../../services/socket.service";
 import { NotificationsService } from "angular2-notifications";
 
+enum Event {
+  CONNECT = 'connect',
+  DISCONNECT = 'disconnect'
+}
+
 @Component({
   selector: "app-calendar-view",
   changeDetection: ChangeDetectionStrategy.OnPush,

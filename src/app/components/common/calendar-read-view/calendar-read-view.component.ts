@@ -15,7 +15,10 @@ import {a, v} from '@angular/core/src/render3';
 import { SocketService } from "../../../services/socket.service";
 import { NotificationsService } from "angular2-notifications";
 
-
+enum Event {
+  CONNECT = 'connect',
+  DISCONNECT = 'disconnect'
+}
 
 @Component({
   selector: 'app-calendar-read-view',
