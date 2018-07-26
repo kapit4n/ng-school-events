@@ -86,25 +86,21 @@ export class AppComponent implements OnInit {
 
   loadFollowUps(): void {
     this.countFollowUps = 0;
-    this.dataContentEvents = `<ul class="list-group" style="width: 250px;">`;
-    var flagToCLose = true;
     this.followUpsSvc.getFollowUpsAll().subscribe(followUps => {
-      for (let i = 0; i < followUps.length; i++) {
-        this.dataContentEvents += `<li class="list-group-item" >New Follow up for ${followUps[i].student.firstName} <a class="pull-right" href="children/${followUps[i].student.id}">GO</a></li>`;
+      this.dataContentEvents += `<ul class="list-group" style="width: 360px;">`;
+      this.dataContentEvents += `<li class="list-group-item list-group-item-dark" >FOLLOW UPS </li>`;
+      for (let i = 0; i < followUps.length && i < 6; i++) {
+        this.dataContentEvents += `<li class="list-group-item list-group-item-light" >New Follow up for ${followUps[i].student.firstName} <a class="pull-right" href="children/${followUps[i].student.id}">GO</a></li>`;
       }
+      this.dataContentEvents += `</ul>`;
       this.cmService.getAnnsAll().subscribe(anns => {
-        for (let i = 0; i < anns.length; i++) {
-          this.dataContentEvents += `<li class="list-group-item" >New Announcement up for ${anns[i].id} <a class="pull-right" href="children/${anns[i].id}">GO</a></li>`;
-          if (flagToCLose){
-            this.dataContentEvents += `</ul>`;
-            flagToCLose = false;
-          }
+        this.dataContentEvents += `<ul class="list-group" style="width: 360px;">`;
+        this.dataContentEvents += `<li class="list-group-item list-group-item-dark" >ANNOUNCEMENTS </li>`;
+        for (let i = 0; i < anns.length && i < 6; i++) {
+          this.dataContentEvents += `<li class="list-group-item list-group-item-light" >New Announcement up for ${anns[i].id} <a class="pull-right" href="children/${anns[i].id}">GO</a></li>`;
         }
-      });
-      if (flagToCLose){
         this.dataContentEvents += `</ul>`;
-        flagToCLose = false;
-      }
+      });
     });
   
     
