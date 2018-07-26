@@ -75,8 +75,6 @@ export class SonHomeComponent implements OnInit {
       console.log("connected");
     });
 
-    this.socketService.onEvent("message").subscribe(data => {});
-
     this.socketService.onEvent("followUp").subscribe(data => {
       this.loadFollowUps();
     });

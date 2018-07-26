@@ -12,6 +12,8 @@ import {ParentsService} from '../../../services/parents.service';
 import {CoursesService} from '../../../services/courses.service';
 import {StudentsService} from '../../../services/students.service';
 import {a, v} from '@angular/core/src/render3';
+import { SocketService } from "../../../services/socket.service";
+import { NotificationsService } from "angular2-notifications";
 
 
 
@@ -43,6 +45,8 @@ export class CalendarReadViewComponent implements OnInit {
   announcementForThisParent: any ;
   parentCourseIDs: { id: string, itemName: string } [ ] = [] ;
   assignedStudents = [];
+  messages: any[] = [];
+  ioConnection: any;
 
 
   constructor(private cmService: CalendarManagementService,
@@ -51,18 +55,44 @@ export class CalendarReadViewComponent implements OnInit {
               public rolesSvc: RolesService,
               private parentsSvc: ParentsService,
               private coursesSvc: CoursesService,
-              private studentsSvc: StudentsService) { }
+              private studentsSvc: StudentsService,
+              private socketService: SocketService,
+              private _notificationSvc: NotificationsService
+    ) { }
 
   get today() {
     return new Date();
   }
 
   ngOnInit() {
+    this.initIoConnection();
     if (this.rolesSvc.isParent()) {
       this.isCurrentUserParent = true;
       this.parentId = this.authSvc.getCurrentUserId();
     }
     this.loadAnnouncements();
+  }
+
+
+  private initIoConnection(): void {
+    this.socketService.initSocket();
+
+    this.ioConnection = this.socketService
+      .onMessage()
+      .subscribe((message: any) => {
+        this.messages.push(message);
+      });
+    this.socketService.onEvent(Event.CONNECT).subscribe(() => {
+      console.log("connected");
+    });
+
+    this.socketService.onEvent("anns").subscribe(data => {
+      this.loadAnnouncements();
+    });
+
+    this.socketService.onEvent(Event.DISCONNECT).subscribe(() => {
+      console.log("disconnected");
+    });
   }
 
   public loadAnnouncements() {
