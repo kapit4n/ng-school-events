@@ -35,11 +35,11 @@ export class TeacherStudentHomeComponent implements OnInit {
     this.followUps = [];
   }
 
-  sendMessage(message: string) {
+  sendFollowUpNofication(message: string) {
     if (!message) {
       return;
     }
-    this.socketService.followUp({
+    this.socketService.followUpNotification({
       from: this.rolesSvc.getUserName(),
       content: message
     });
@@ -77,7 +77,7 @@ export class TeacherStudentHomeComponent implements OnInit {
   }
 
   saveFollowUp() {
-    this.sendMessage("An Follow up was created");
+    this.sendFollowUpNofication("An Follow up was created");
     
     this.newFollowUp.registeredDate = new Date();
     this.newFollowUp.studentId = this.studentId;
@@ -89,7 +89,7 @@ export class TeacherStudentHomeComponent implements OnInit {
   }
 
   updateFollowUp() {
-    this.sendMessage("An Follow up was updated");    
+    this.sendFollowUpNofication("An Follow up was updated");    
     this.followUpsSvc.updateFollowUp(this.editFollowUp).subscribe(follow => {
       this.loadFollowUps();
     });

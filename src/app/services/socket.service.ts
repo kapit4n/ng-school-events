@@ -20,8 +20,12 @@ export class SocketService {
     this.socket.emit('message', message);
   }
 
-  public followUp(message: any): void {
+  public followUpNotification(message: any): void {
     this.socket.emit('followUp', message);
+  }
+
+  public annNotification(message: any): void {
+    this.socket.emit('anns', message);
   }
 
   public onMessage(): Observable<any> {

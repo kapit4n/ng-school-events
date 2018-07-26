@@ -128,11 +128,7 @@ export class AppComponent implements OnInit {
   private initIoConnection(): void {
     this.socketService.initSocket();
 
-    this.ioConnection = this.socketService
-      .onMessage()
-      .subscribe((message: any) => {
-        this.messages.push(message);
-      });
+    this.ioConnection = this.socketService .onMessage() .subscribe((message: any) => { this.messages.push(message); });
     this.socketService.onEvent(Event.CONNECT).subscribe(() => {
       console.log("connected");
     });
@@ -141,23 +137,11 @@ export class AppComponent implements OnInit {
 
     this.socketService.onEvent("followUp").subscribe(data => {
       this.loadFollowUps();
-
-      var temp = {
-        animate: "fromRight",
-        clickToClose: true,
-        pauseOnHover: true,
-        showProgressBar: true,
-        timeOut: 3000
-      };
-      this._notificationSvc.create(
-        "New Follow Up",
-        "One Follow up created",
-        "success",
-        temp
-      );
+      var temp = { animate: "fromRight", clickToClose: true, pauseOnHover: true, showProgressBar: true, timeOut: 3000 };
+      this._notificationSvc.create( "New Follow Up", "One Follow up created", "success", temp );
     });
 
-    this.socketService.onEvent("ann").subscribe(data => {
+    this.socketService.onEvent("anns").subscribe(data => {
       this.loadAnnoucement();
 
       var temp = {
@@ -189,7 +173,7 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    this.socketService.followUp({
+    this.socketService.followUpNotification({
       from: this.rolesSvc.getUserName(),
       content: message
     });

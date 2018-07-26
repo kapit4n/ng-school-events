@@ -32,11 +32,11 @@ export class AnnListAdminComponent implements OnInit {
     //   );
   }
 
-  public sendMessage(message: string) {
+  public sendAnnNotification(message: string) {
     if (!message) {
       return;
     }
-    this.socketService.followUp({
+    this.socketService.annNotification({
       from: this.rolesSvc.getUserName(),
       content: message
     });
@@ -45,20 +45,19 @@ export class AnnListAdminComponent implements OnInit {
   getData(message: Announcement) {
     this.cmService.addAnnouncement(message).subscribe(
     (response) => {
-      this.sendMessage('A General Announcement was created');
+      this.sendAnnNotification('A General Announcement was created');
       console.log(response);
       this.cmService.updateSingleAnnouncement(message, 'Insert');
     },
       (error) => console.log(error)
-  );
+    );
   }
 
   getCFData(message: any) {
     // CO-ANN INSERTION
     this.cmService.addAnnouncement(message).subscribe(
       (response) => {
-        this.sendMessage('An Announcement per Course(s) was created');
-        console.log(response);
+        this.sendAnnNotification("An Announcement per Course(s) was created");
         this.cmService.updateSingleAnnouncement(message, 'Insert');
       },
       (error) => console.log(error)

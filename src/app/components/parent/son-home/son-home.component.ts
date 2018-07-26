@@ -4,6 +4,13 @@ import { ActivatedRoute } from "@angular/router";
 import { StudentsService } from "../../../services/students.service";
 import { FollowUpsService } from "../../../services/follow-ups.service";
 import { ConfigurationService } from "../../../services/configuration.service";
+import { SocketService } from "../../../services/socket.service";
+import { NotificationsService } from "angular2-notifications";
+
+enum Event {
+  CONNECT = 'connect',
+  DISCONNECT = 'disconnect'
+}
 
 @Component({
   selector: "app-son-home",
@@ -20,18 +27,23 @@ export class SonHomeComponent implements OnInit {
   currentPage = 1;
   rangePages = [];
   followUps = [];
+  ioConnection: any;
+  messages: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private parentsSvc: ParentsService,
     private studentsSvc: StudentsService,
     private followUpsSvc: FollowUpsService,
-    private confSvc: ConfigurationService
+    private confSvc: ConfigurationService,
+    private socketService: SocketService,
+    private _notificationSvc: NotificationsService
   ) {
     this.studentParentRel = {};
   }
 
   ngOnInit() {
+    this.initIoConnection();
     this.studentParentRelId = this.route.snapshot.paramMap.get("id");
     if (this.route.snapshot.queryParams["page"]) {
       this.currentPage = Number(this.route.snapshot.queryParams["page"]);
@@ -49,6 +61,29 @@ export class SonHomeComponent implements OnInit {
     });
 
     this.loadFollowUps();
+  }
+
+  private initIoConnection(): void {
+    this.socketService.initSocket();
+
+    this.ioConnection = this.socketService
+      .onMessage()
+      .subscribe((message: any) => {
+        this.messages.push(message);
+      });
+    this.socketService.onEvent(Event.CONNECT).subscribe(() => {
+      console.log("connected");
+    });
+
+    this.socketService.onEvent("message").subscribe(data => {});
+
+    this.socketService.onEvent("followUp").subscribe(data => {
+      this.loadFollowUps();
+    });
+
+    this.socketService.onEvent(Event.DISCONNECT).subscribe(() => {
+      console.log("disconnected");
+    });
   }
 
   loadFollowUps() {
