@@ -31,7 +31,6 @@ export class ParentHomeComponent implements OnInit {
     this.parentsSvc.getParent(this.parentId).subscribe(parent => {
       this.parent = parent;
     });
-
     this.loadStudents();
   }
 
@@ -42,7 +41,7 @@ export class ParentHomeComponent implements OnInit {
       this.availableStudents = [];
       this.studentsSvc.getStudents().subscribe(aStudents => {
         aStudents.forEach(student => {
-          if (!this.assignedStudents.some(s => s.student.firstName == student.firstName)) {
+          if (!this.assignedStudents.some(s => (s.student && (s.student.id == student.id)))) {
             this.availableStudents.push(student);
           }
         });
