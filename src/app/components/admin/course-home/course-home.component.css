@@ -32,11 +32,16 @@
 }
 
 .list-group {
-  height: 300px;
+  height: 350px;
   overflow-y: scroll;
 }
 
 .list-group-item {
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.more-space {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
