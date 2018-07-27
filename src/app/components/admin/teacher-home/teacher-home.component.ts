@@ -32,25 +32,33 @@ export class TeacherHomeComponent implements OnInit {
       this.teacher = teacher;
     });
 
-    this.coursesSvc.getYearCourses().subscribe(courses => {
-      this.availableCourses = courses;
-    });
-
+    
+    setTimeout(() => {
     this.loadCourses();
+     }, 1000);
   }
 
   loadCourses() {
     this.assignedCourses = [];
-    this.teachersSvc.getCourses(this.teacherId).subscribe(teacher => {
-      console.log(teacher);
-      console.log(teacher);
-      console.log(teacher);
-      if (teacher.length > 0) {
+    this.availableCourses = [];
+    this.teachersSvc.getCourses(this.teacherId).subscribe(acoursesAux => {
+      if (acoursesAux.length > 0) {
         this.teachersSvc
-            .getCourseYear(teacher)
-            .subscribe(courses => {
-              this.assignedCourses = courses;
+            .getCourseYear(acoursesAux)
+            .subscribe(acourses => {
+              this.assignedCourses = acourses;
+              this.coursesSvc.getYearCourses().subscribe(courses => {
+                courses.forEach(course => {
+                if (!this.assignedCourses.some(s => (s.courseId == course.courseId))) {
+                    this.availableCourses.push(course);
+                  }
+                });
+              });
             });
+      } else {
+        this.coursesSvc.getYearCourses().subscribe(courses => {
+          this.availableCourses = courses;
+        });
       }
     });
   }
