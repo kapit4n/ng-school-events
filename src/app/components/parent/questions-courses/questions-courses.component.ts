@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParentsService } from "../../../services/parents.service";
+import { RolesService } from "../../../services/roles.service";
 
 @Component({
   selector: "app-questions-courses",
@@ -8,11 +9,12 @@ import { ParentsService } from "../../../services/parents.service";
 })
 export class QuestionsCoursesComponent implements OnInit {
   sons = [];
-  constructor(private parentsSvc: ParentsService) {}
+  constructor(private parentsSvc: ParentsService, private rolesSvc: RolesService ) {}
 
   ngOnInit() {
+    setTimeout(() => {
     this.parentsSvc
-      .getSons()
+      .getSons(this.rolesSvc.getParentId())
       .subscribe(
         sons =>
           (this.sons = sons.map(son => {
@@ -23,5 +25,6 @@ export class QuestionsCoursesComponent implements OnInit {
             };
           }))
       );
+      }, 500);
   }
 }
