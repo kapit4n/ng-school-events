@@ -39,7 +39,7 @@ export class YearHomeComponent implements OnInit {
     this.schoolYearsSvc.getCourses(this.yearId).subscribe(assigned => {
       this.assignedCourses = assigned;
       this.availableCourses = [];
-      this.coursesSvc.getCourses().subscribe(courses => {
+      this.coursesSvc.getCourses('', 500).subscribe(courses => {
         courses.forEach(course => {
           if (!assigned.some(c => c.course.name == course.name)) {
             this.availableCourses.push(course);

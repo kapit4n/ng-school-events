@@ -39,7 +39,7 @@ export class ParentHomeComponent implements OnInit {
     this.parentsSvc.getStudents(this.parentId).subscribe(students => {
       this.assignedStudents = students;
       this.availableStudents = [];
-      this.studentsSvc.getStudents().subscribe(aStudents => {
+      this.studentsSvc.getStudents('', 1000).subscribe(aStudents => {
         aStudents.forEach(student => {
           if (!this.assignedStudents.some(s => (s.student && (s.student.id == student.id)))) {
             this.availableStudents.push(student);
