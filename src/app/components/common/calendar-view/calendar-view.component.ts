@@ -371,8 +371,10 @@ export class CalendarViewComponent implements OnInit {
     const startDate = new Date(start);
     const endDate = new Date(end);
     let result = 0;
+    let result2 = 0;
     result = endDate.getDate() - startDate.getDate() + 1;
-    return result;
+    result2 = Math.floor(( Date.parse(end) - Date.parse(start) ) / 86400000) + 1;
+    return result2;
   }
 
   private addDays(date: any, days: number): Date {

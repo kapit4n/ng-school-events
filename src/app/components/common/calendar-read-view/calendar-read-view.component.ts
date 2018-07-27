@@ -162,6 +162,10 @@ export class CalendarReadViewComponent implements OnInit {
                   title: entry.title,
                   color: this.colorEvent
                 });
+                if ( !this.isUnique(this.events)) {
+                  this.events.splice(this.events.length - 1, 1);
+                }
+                this.refresh.next();
               }
             }
           }
