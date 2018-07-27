@@ -508,10 +508,6 @@
           <context context-type="linenumber">4</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/components/teacher/questions-courses-teacher/questions-courses-teacher.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/questions-courses/questions-courses.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
@@ -1131,6 +1127,10 @@
           <context context-type="sourcefile">app/components/parent/son-home/son-home.component.ts</context>
           <context context-type="linenumber">14</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teacher/questions-courses-teacher/questions-courses-teacher.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="ca43737c88c092b23cc2407b2246b6b43f9728bd" datatype="html">
         <source>Is Archived</source>
@@ -1269,7 +1269,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f1d77b1f461c611e8b1647bd1f2843df66810da2" datatype="html">
@@ -1639,6 +1639,14 @@
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
           <context context-type="linenumber">65</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">124</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">125</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="deed015cbe796f9840b25ffe263c7d772be009d2" datatype="html">
         <source>Is Delayed</source>
@@ -1655,6 +1663,10 @@
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
           <context context-type="linenumber">77</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">137</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="925526efcc0c823b89c34254f630892a7abd0aa9" datatype="html">
         <source>Is Absent</source>
@@ -1670,6 +1682,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
           <context context-type="linenumber">70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">130</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fdf7cbdc140d0aab0f0b6c06065a0fd448ed6a2e" datatype="html">
@@ -1698,6 +1714,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
           <context context-type="linenumber">85</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">145</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/common/calendar-modal/calendar-modal.component.ts</context>
@@ -1739,6 +1763,14 @@
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
           <context context-type="linenumber">91</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">151</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="2169ac89595ea71e589b9e3bba75a51f20c4662e" datatype="html">
         <source>Observation</source>
@@ -1754,6 +1786,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
           <context context-type="linenumber">97</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">157</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1cb1d342ec9447b4e42f103a51fda8d307bf9e59" datatype="html">
@@ -1901,7 +1937,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">74</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
@@ -2135,6 +2171,17 @@
           <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
           <context context-type="linenumber">96</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">156</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="38803e4ce84b229038a7d9fc7e763576ab99ba7f" datatype="html">
+        <source>Update Follow Up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/teachers/teacher-student-home/teacher-student-home.component.ts</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="38ff99789b5f89d7fdf8ba63ba526eb015d1683a" datatype="html">
         <source>New General Announcement</source>
@@ -2225,7 +2272,7 @@
         <target>Escriba un comentario aqui...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4edb71f23e3ff228dbabd05e8ffc364fae8ae467" datatype="html">
@@ -2233,7 +2280,7 @@
         <target>Guardar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a330b986161369e1c4b590c90a7d40617da35370" datatype="html">
@@ -2241,7 +2288,7 @@
         <target>Añadir Tema de Conversación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/parent/question-home/question-home.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
     </body>
