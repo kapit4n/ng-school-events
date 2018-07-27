@@ -30,3 +30,13 @@
 .studentAvatar .btn:hover {
   background-color:transparent;
 }
+
+.list-group {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.list-group-item {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}

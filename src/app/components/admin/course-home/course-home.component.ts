@@ -35,7 +35,7 @@ export class CourseHomeComponent implements OnInit {
       this.courseYear = course[0];
     });
 
-    this.studentsSvc.getStudents().subscribe(students => {
+    this.studentsSvc.getStudents('', 500).subscribe(students => {
       this.availableStudents = students;
     });
 
