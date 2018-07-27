@@ -113,7 +113,7 @@ export class CalendarReadViewComponent implements OnInit {
                 let courseIDs = [];
                 let courseUniqueIDs = [];
                 let totalCourses = [];
-                this.parentsSvc.getSons().subscribe(children => {
+                this.parentsSvc.getSons(this.rolesSvc.getParentId()).subscribe(children => {
                   this.assignedStudents = children;
                   if (children.length > 0) {
                     for (let child of children) {
