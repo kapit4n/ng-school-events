@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, APP_INITIALIZER } from "@angular/core";
 import { HttpModule } from "@angular/http";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -98,6 +98,7 @@ import { QuestionsCoursesTeacherComponent } from './components/teacher/questions
 import { QuestionsCoursesComponent } from './components/parent/questions-courses/questions-courses.component';
 import { QuestionHomeComponent } from './components/parent/question-home/question-home.component';
 import { QuestionHomeTeacherComponent } from './components/teacher/question-home-teacher/question-home-teacher.component';
+
 
 
 const appRoutes: Routes = [

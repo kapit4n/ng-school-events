@@ -63,17 +63,19 @@ export class AppComponent implements OnInit {
     this.userName = this.rolesSvc.getUserName();
 
     setTimeout(() => {
-      if (rolesSvc.isParent()) {
-        parentsSvc.getSons().subscribe(
-          sons =>
-            (this.sons = sons.map(son => {
-              return {
-                id: son.id,
-                routeLink: "parent/son/" + son.id,
-                student: son.student
-              };
-            }))
-        );
+      if (rolesSvc.isParent()) {                                                                                                                                                                                                
+        parentsSvc
+          .getSons(rolesSvc.getParentId())
+          .subscribe(
+            sons =>
+              (this.sons = sons.map(son => {
+                return {
+                  id: son.id,
+                  routeLink: "parent/son/" + son.id,
+                  student: son.student
+                };
+              }))
+          );
       }
     }, 500);
   }

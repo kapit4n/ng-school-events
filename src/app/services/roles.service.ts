@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { UsersService } from "./users.service";
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class RolesService {
-  userInfo: any;
-
-  homeUrl = "/home"; 
+  userInfo: any = null;
+  loaded = false;
+  homeUrl = "/home";
 
   constructor(private usersSvc: UsersService) {
-    this.usersSvc.getCurrentUser().subscribe(res => this.userInfo = res );
+    this.usersSvc.getCurrentUser().subscribe(res => {
+      this.userInfo = res;
+      this.loaded = true;
+    });
   }
 
   isTeacher() {
@@ -31,7 +36,7 @@ export class RolesService {
       this.userInfo = res;
     });
   }
-  
+
   isAdmin() {
     if (this.userInfo) {
       return this.userInfo.userType == "admin";
@@ -93,6 +98,4 @@ export class RolesService {
     }
     return "";
   }
-
-  
 }

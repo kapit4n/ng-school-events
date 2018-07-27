@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParentsService } from "../../../services/parents.service";
+import { RolesService } from "../../../services/roles.service";
 
 @Component({
   selector: 'app-son-list',
@@ -9,19 +10,22 @@ import { ParentsService } from "../../../services/parents.service";
 export class SonListComponent implements OnInit {
 
   sons = [];
-  constructor(private parentsSvc: ParentsService) { }
+  constructor(private parentsSvc: ParentsService, private rolesSvc: RolesService) { }
 
   ngOnInit() {
-        this.parentsSvc.getSons().subscribe(
-      sons =>
-        (this.sons = sons.map(son => {
-          return {
-            id: son.id,
-            routeLink: "./../../../parent/son/" + son.id,
-            student: son.student
-          };
-        }))
-    );
+    setTimeout(() => {
+      console.log(this.rolesSvc.getParentId());
+        this.parentsSvc.getSons(this.rolesSvc.getParentId()).subscribe(
+        sons =>
+          (this.sons = sons.map(son => {
+            return {
+              id: son.id,
+              routeLink: "./../../../parent/son/" + son.id,
+              student: son.student
+            };
+          }))
+      );
+    }, 1000);
   }
 
 }

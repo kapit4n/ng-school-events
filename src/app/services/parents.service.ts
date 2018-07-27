@@ -59,12 +59,12 @@ export class ParentsService {
       .map(res => res.json());
   }
 
-  public getSons(): Observable<any> {
+  public getSons(parenId): Observable<any> {
     return this.http
       .get(
         `${this.configSvc.backendUrl}/${
           this.sParentUrl
-        }?filter[include]=parent&filter[include]=student`
+      }?filter[include]=parent&filter[include]=student&filter[where][parentId]=${parenId}`
       )
       .map(res => res.json());
   }
