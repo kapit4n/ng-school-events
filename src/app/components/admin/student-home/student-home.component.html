@@ -111,23 +111,24 @@
           <div class="row">
             <div class="col-md-6">
               <span i18n class="bold">Available Parents</span>
-              <ul class="list-group" style="height:300px;overflow: scroll;">
-                <li class="list-group-item d-flex justify-content-between align-items-center"
+              <ul class="list-group list-group-flush more-space">
+                <li class="list-group-item"
                  *ngFor="let parent of availableParents">{{parent.parents?.firstName}} {{parent.parents?.lastName}}
-                  <button type="button" class="btn btn-primary" (click)="addParent(parent)">
-                    <span class="fa fa-angle-right" aria-hidden="true"></span>
+                  <button type="button" class="btn btn-outline-primary btn-sm pull-right" (click)="addParent(parent)">
+                    <span class="fa fa-arrow-right" aria-hidden="true"></span>
                   </button>
                 </li>
               </ul>
             </div>
             <div class="col-md-6">
               <span i18n class="bold">Assigned Parents</span>
-              <ul class="list-group" style="height:300px;overflow: scroll;">
-                <li class="list-group-item d-flex justify-content-between align-items-center"
-                 *ngFor="let aParent of aParents">{{aParent.parent?.firstName}} {{aParent.parent?.lastName}}
-                  <button type="button" class="btn btn-primary" (click)="removeParent(aParent.id)">
-                    <span class="fa fa-trash" aria-hidden="true"></span>
-                  </button>
+              <ul class="list-group list-group-flush more-space">
+                <li class="list-group-item"
+                 *ngFor="let aParent of aParents">
+                  <button type="button" class="btn btn-outline-primary btn-sm pull-left" (click)="removeParent(aParent.id)">
+                    <span class="fa fa-arrow-left" aria-hidden="true"></span>
+                  </button> &nbsp; &nbsp;
+                  {{aParent.parent?.firstName}} {{aParent.parent?.lastName}}
                 </li>
               </ul>
             </div>
