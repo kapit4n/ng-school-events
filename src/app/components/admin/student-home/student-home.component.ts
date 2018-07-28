@@ -94,9 +94,13 @@ export class StudentHomeComponent implements OnInit {
   }
 
   removeCourse(courseId) {
-    this.coursesSvc.removeStudentFromCourse(courseId).subscribe(res => {
-      this.confMessage = "Course Removed";
-      this.loadCourses();
+    this.coursesSvc.getCourseStudentRel(courseId, this.studentId).subscribe(rel => {
+      this.coursesSvc
+        .removeStudentFromCourse(rel[0].id)
+        .subscribe(res => {
+        this.confMessage = "Course Removed";
+        this.loadCourses();
+      });
     });
   }
 

@@ -171,4 +171,14 @@ export class CoursesService {
       .post(`${this.configSvc.backendUrl}/${this.cTeacherUrl}`, courseTeacher)
       .map(res => res.json());
   }
+
+  public getCourseStudentRel(courseId, studentId): Observable<any> {
+    return this.http
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.cStudentUrl
+          }?filter[where][course-yearId]=${courseId}&filter[where][studentId]=${studentId}`
+      )
+      .map(res => res.json());
+  }
 }
