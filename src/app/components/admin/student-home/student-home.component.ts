@@ -39,32 +39,35 @@ export class StudentHomeComponent implements OnInit {
   }
 
   loadCourses() {
+    this.availableCourses = [];
+    this.assignedCourses = [];
     this.studentsSvc
       .getCourses(this.studentId)
       .subscribe(courseStudents => {
-        console.log("courseStudents");
-        console.log(courseStudents);
         if (courseStudents.length > 0){
           this.studentsSvc
           .getCourseYears(courseStudents)
           .subscribe(courseYears => {
-              this.assignedCourses = courseYears;
-              this.coursesSvc.getCoursesByYear().subscribe(courses => {
-                this.availableCourses = [];
+            this.assignedCourses = courseYears;
+            this.coursesSvc.getCoursesByYear().subscribe(courses => {
                 courses.forEach(course => {
-                  if (
-                    !this.assignedCourses.some(c => c.id == course.id)
-                  ) {
+                  if ( !this.assignedCourses.some(c => c.id == course.id) ) {
                     this.availableCourses.push(course);
                   }
                 });
+                this.availableCourses.sort((n1, n2) =>
+                  n1.name.localeCompare(n2.name)
+                );
               });
             });
           } else {
-          this.coursesSvc.getCoursesByYear().subscribe(courses => {
-            this.availableCourses = courses;
-          });
-          }
+            this.coursesSvc.getCoursesByYear().subscribe(courses => {
+              this.availableCourses = courses;
+              this.availableCourses.sort((n1, n2) =>
+                n1.course.name.localeCompare(n2.course.name)
+              );
+            });
+            }
           });
         }
 
@@ -73,14 +76,30 @@ export class StudentHomeComponent implements OnInit {
       .getParents(this.studentId)
       .subscribe(assigned => {
         this.aParents = assigned;
-        this.parentsSvc.getParents().subscribe(parents => {
-          this.availableParents = [];
-          parents.forEach(parent => {
-            if (!this.aParents.some(p => p.parent.id == parent.parents.id && parent.emailVerified)) {
-              this.availableParents.push(parent);
-            }
-          })
-        });
+        this.availableParents = [];
+        if (this.aParents.length > 0) {
+          this.parentsSvc.getParents().subscribe(parents => {
+            parents.forEach(parent => {
+              if (!this.aParents.some(p => p.parent.id == parent.parents.id && parent.emailVerified)) {
+                this.availableParents.push(parent);
+              }
+            });
+            this.availableParents.sort((n1, n2) =>
+              n1.parents.firstName.localeCompare(n2.parents.firstName)
+            );
+          });
+        } else {
+          this.parentsSvc.getParents().subscribe(parents => {
+            parents.forEach(parent => {
+              if (parent.emailVerified) {
+                this.availableParents.push(parent);
+              }
+            });
+            this.availableParents.sort((n1, n2) =>
+              n1.parents.firstName.localeCompare(n2.parents.firstName)
+            );
+          });
+        }
       });
   }
 

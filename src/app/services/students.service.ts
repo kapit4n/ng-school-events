@@ -97,6 +97,16 @@ export class StudentsService {
       .map(res => res.json());
   }
 
+  public getCourseYearsAll(): Observable<any> {
+    return this.http
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.cYearUrl
+        }?filter[include]=course`
+      )
+      .map(res => res.json());
+  }
+
   public getParents(studentId = ""): Observable<any> {
     return this.http
       .get(
