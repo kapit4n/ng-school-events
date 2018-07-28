@@ -19,7 +19,7 @@
     <div style="position: relative; left: 69%; width: 350px; position: relative; top: 2px;">
       <div style="width: 58px; display: inline-block;">
         <button *ngIf="rolesSvc.isTeacher() || rolesSvc.isParent()" (click)="sendMessageVoid()" style="background-color: darkgrey;" data-container="body" data-toggle="popover"
-          data-placement="bottom" attr.data-content="{{dataContentEvents}}">
+          data-trigger="focus" data-placement="bottom" attr.data-content="{{dataContentEvents}}">
           <span class="fa-stack fa-1x has-badge" attr.data-count="{{countFollowUps}}">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
@@ -32,7 +32,7 @@
           alt="Snow">
 
         <button *ngIf="rolesSvc.isTeacher()" style="border-radius: 50%;color: black; font-size: 30px;" type="button"
-         data-placement="bottom" class="btn btn-info" data-toggle="popover" i18n-title title="Teacher settings"
+         data-placement="bottom" class="btn btn-info" data-toggle="popover" data-trigger="focus" i18n-title title="Teacher settings"
          attr.data-content='
         <span>Signed as {{rolesSvc.getUserType()}} - {{rolesSvc.getUserName()}} </span>
 
@@ -43,7 +43,7 @@
          '>&#x25BC;</button>
 
         <button *ngIf="rolesSvc.isParent()" style="border-radius: 50%;color: black; font-size: 30px;" type="button"
-          data-placement="bottom" class="btn btn-info" data-toggle="popover" i18n-title title="Parent settings"
+          data-placement="bottom" class="btn btn-info" data-toggle="popover" data-trigger="focus" i18n-title title="Parent settings"
           attr.data-content='
           <span>Signed as {{rolesSvc.getUserType()}} - {{rolesSvc.getUserName()}}</span>
           <div class="list-group">
@@ -57,7 +57,7 @@
           '>&#x25BC;</button>
 
         <button *ngIf="rolesSvc.isAdmin()" style="border-radius: 50%;color: black; font-size: 30px;" type="button"
-          data-placement="bottom" class="btn btn-info" data-toggle="popover" i18n-title title="Admin settings"
+          data-placement="bottom" class="btn btn-info" data-toggle="popover" data-trigger="focus" i18n-title title="Admin settings"
           attr.data-content='
           <span>Signed as {{rolesSvc.getUserType()}} {{rolesSvc.getUserName()}} </span>
           <div class="list-group" style="padding-left: 0; padding-right: 0;">

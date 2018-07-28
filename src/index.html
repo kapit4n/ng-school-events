@@ -23,8 +23,13 @@
   <app-root></app-root>
   <script>
     $(function () {
-        $('[data-toggle=popover]').popover({ html: true })
-      })
+      $('[data-toggle=popover]').popover({ html: true })
+    })
+    
+    $('.popover-dismiss').popover({
+      trigger: 'focus'
+    })
+
   </script>
 </body>
 </html>

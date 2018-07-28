@@ -91,7 +91,7 @@ export class AppComponent implements OnInit {
     this.cmService.getAnnsAll().subscribe(anns => {
       this.dataContentEvents += `<ul class="list-group" style="width: 360px;">`;
       this.dataContentEvents += `<li class="list-group-item list-group-item-dark">ANNOUNCEMENTS</li>`;
-      for (let i = 0; i < anns.length && i < 5; i++) {
+      for (let i = 0; i < anns.length ; i++) {
         this.dataContentEvents += `<li class="list-group-item list-group-item-light"> ${(new Date(anns[i].startDate)).toDateString()}: ${anns[i].title} <a class="pull-right" href="children/${anns[i].id}">GO</a></li>`;
       }
       this.dataContentEvents += `</ul>`;
@@ -100,13 +100,13 @@ export class AppComponent implements OnInit {
         this.followUpsSvc.getFollowUpsAll().subscribe(followUps => {
           this.dataContentEvents += `<ul class="list-group" style="width: 360px;">`;
           this.dataContentEvents += `<li class="list-group-item list-group-item-dark">FOLLOW UPS</li>`;
-          for (let i = 0; i < followUps.length && i < 5; i++) {
+          for (let i = 0; i < followUps.length ; i++) {
             this.dataContentEvents += `<li class="list-group-item list-group-item-light" >New Follow up for ${followUps[i].student.firstName} <a class="pull-right" href="children/${followUps[i].student.id}">GO</a></li>`;
           }
           this.dataContentEvents += `</ul>`;
         });
       }
-      });
+    });
 
     this.followUpsSvc.getFollowUpsCountAll().subscribe(countInfo => {
       this.countFollowUps += countInfo.count;
