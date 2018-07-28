@@ -35,10 +35,6 @@ export class CourseHomeComponent implements OnInit {
       this.courseYear = course[0];
     });
 
-    this.studentsSvc.getStudents('', 500).subscribe(students => {
-      this.availableStudents = students;
-    });
-
     this.loadStudents();
   }
 
@@ -57,7 +53,30 @@ export class CourseHomeComponent implements OnInit {
   loadStudents() {
     this.coursesSvc
       .getStudents(this.courseYearId)
-      .subscribe(assigned => (this.assignedStudents = assigned));
+      .subscribe(assigned => {
+        this.assignedStudents = assigned;
+        if (this.assignedStudents.length > 0) {
+          this.studentsSvc.getStudents('', 500).subscribe(students => {
+            students.forEach(student => {
+              if (!this.assignedStudents.some(s => s.studentId == student.id)) {
+                this.availableStudents.push(student);
+              }
+              this.availableStudents.sort((n1, n2) =>
+                n1.firstName.localeCompare(n2.firstName)
+              );
+            });
+          });
+        }
+        else {
+          this.studentsSvc
+            .getStudents("", 500)
+            .subscribe(students => {
+              this.availableStudents = students.sort((n1, n2) =>
+                n1.firstName.localeCompare(n2.firstName)
+              );
+            });
+        }
+      });
   }
 
   removeStudent(studentId) {
