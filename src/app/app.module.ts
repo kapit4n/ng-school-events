@@ -98,6 +98,7 @@ import { QuestionsCoursesTeacherComponent } from './components/teacher/questions
 import { QuestionsCoursesComponent } from './components/parent/questions-courses/questions-courses.component';
 import { QuestionHomeComponent } from './components/parent/question-home/question-home.component';
 import { QuestionHomeTeacherComponent } from './components/teacher/question-home-teacher/question-home-teacher.component';
+import { HeaderComponent } from './components/common/header/header.component';
 
 
 
@@ -406,7 +407,8 @@ const appRoutes: Routes = [
     QuestionsCoursesTeacherComponent,
     QuestionsCoursesComponent,
     QuestionHomeComponent,
-    QuestionHomeTeacherComponent
+    QuestionHomeTeacherComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
