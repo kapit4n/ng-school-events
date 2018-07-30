@@ -8,6 +8,7 @@
 </script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a i18n class="navbar-brand" [href]="rolesSvc.homeUrl">SCHOOL EVENTS</a>
+  <span class="bg-danger bold">this will be removed soon</span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -74,6 +75,8 @@
 
   </div>
 </nav>
+<div class="my-2" name="div-spacer"></div>
+
 <div class="container">
 
   <ul class="nav nav-tabs" *ngIf="rolesSvc.isAdmin()">

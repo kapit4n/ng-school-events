@@ -1,30 +1,143 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-info p-0">
   <div class="container">
-    <a href="index.html" i18n class="navbar-brand" style="font-weight:bold;">SCHOOL EVENTS</a>
+    <a href="index.html" id="brand-text" class="navbar-brand" style="font-weight:bold;">
+      <i class="fa fa-bullhorn fa-2x" aria-hidden="true"></i>&nbsp; &nbsp;
+      <ng-container i18n>SCHOOL EVENTS</ng-container>
+    </a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown mr-3">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-user"></i> Welcome Brad
-          </a>
-          <div class="dropdown-menu">
-            <a href="profile.html" class="dropdown-item">
-              <i class="fa fa-user-circle"></i> Profile
-            </a>
-            <a href="settings.html" class="dropdown-item">
-              <i class="fa fa-gear"></i> Settings
-            </a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a href="login.html" class="nav-link">
-            <i class="fa fa-user-times"></i> Logout
-          </a>
-        </li>
+        <ng-container [ngSwitch]="rolesSvc.getUserType()">
+          <ng-container *ngSwitchCase="'admin'">
+            <li class="nav-item">
+              <div ngbDropdown >
+                <button class="btn btn-outline-primary" id="user-dropdown" ngbDropdownToggle>
+                  <span class="fa-stack fa-lg has-badge">
+                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                    <i class="fa fa-user-o fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                  &nbsp;<ng-container i18n>Welcome Admin</ng-container>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="user-dropdown">
+                  <button class="dropdown-item" routerLink="/logout" routerLinkActive="active">
+                    <i class="fa fa-user-times" aria-hidden="true"></i>
+                    &nbsp;<ng-container i18n>Logout</ng-container>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'teacher'">
+            <li class="nav-item mr-2">
+              <div ngbDropdown >
+                <button class="btn btn-outline-warning" id="notif-dropdown" ngbDropdownToggle>
+                  <span class="fa-stack fa-lg has-badge" data-count="+" >
+                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                    <i class="fa fa-bell fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>&nbsp;<ng-container i18n>Notifications</ng-container>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="notif-dropdown">
+                  <button class="dropdown-item">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    &nbsp;<ng-container i18n>Announcements</ng-container>&nbsp;
+                    <span class="badge badge-danger">10</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div ngbDropdown >
+                <button class="btn btn-outline-primary" id="user-dropdown" ngbDropdownToggle>
+                  <span class="fa-stack fa-lg has-badge">
+                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                    <i class="fa fa-user-o fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                  &nbsp;<ng-container i18n>Welcome</ng-container> {{rolesSvc.getUserName()}}
+                </button>
+                <div ngbDropdownMenu aria-labelledby="user-dropdown">
+                  <button class="dropdown-item" routerLink="/teacher-profile" routerLinkActive="active">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    &nbsp;<ng-container i18n>Profile</ng-container>
+                  </button>
+                  <button class="dropdown-item" routerLink="/logout" routerLinkActive="active">
+                    <i class="fa fa-user-times" aria-hidden="true"></i>
+                    &nbsp;<ng-container i18n>Logout</ng-container>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'parent'">
+            <li class="nav-item mr-2">
+              <div ngbDropdown >
+                <button class="btn btn-outline-warning" id="notif-dropdown" ngbDropdownToggle>
+                  <span class="fa-stack fa-lg has-badge" data-count="+" >
+                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                    <i class="fa fa-bell fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>&nbsp;<ng-container i18n>Notifications</ng-container>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="notif-dropdown">
+                  <button class="dropdown-item">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    &nbsp;<ng-container i18n>Announcements</ng-container>&nbsp;
+                    <span class="badge badge-danger">10</span>
+                  </button>
+                  <div class="dropdown-divider"></div>
+                  <button class="dropdown-item">
+                    <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                    &nbsp;<ng-container i18n>Follow Up - Student A</ng-container>&nbsp;
+                    <span class="badge badge-danger">9</span>
+                  </button>
+                  <button class="dropdown-item">
+                    <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                    &nbsp;<ng-container i18n>Follow Up - Student B</ng-container>&nbsp;
+                    <span class="badge badge-danger">7</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div ngbDropdown >
+                <button class="btn btn-outline-primary" id="user-dropdown" ngbDropdownToggle>
+                  <span class="fa-stack fa-lg has-badge">
+                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                    <i class="fa fa-user-o fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                  &nbsp;<ng-container i18n>Welcome</ng-container> {{rolesSvc.getUserName()}}
+                </button>
+                <div ngbDropdownMenu aria-labelledby="user-dropdown">
+                  <button class="dropdown-item" routerLink="/parent-profile" routerLinkActive="active">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    &nbsp;<ng-container i18n>Profile</ng-container>
+                  </button>
+                  <button class="dropdown-item" routerLink="/logout" routerLinkActive="active" >
+                    <i class="fa fa-user-times" aria-hidden="true"></i>
+                    &nbsp;<ng-container i18n>Logout</ng-container>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ng-container>
+
+          <ng-container *ngSwitchDefault>
+            <li class="nav-item">
+              <div ngbDropdown >
+                <button class="btn btn-outline-success" id="user-dropdown" routerLink="/login" routerLinkActive="active">
+                  <span class="fa-stack fa-lg has-badge">
+                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                    <i class="fa fa-user-plus fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                  &nbsp;<ng-container i18n>Login</ng-container>
+                </button>
+              </div>
+            </li>
+          </ng-container>
+
+        </ng-container>
       </ul>
     </div>
   </div>
