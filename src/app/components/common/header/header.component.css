@@ -17,11 +17,9 @@ color: black;
   color: black;
   font-size: 90%;
 }
-
 :host >>> .dropdown-item:hover{
-  background-color: lightskyblue;
+  background-color:lightskyblue;
 }
-
 :host >>> .dropdown-item{
   font-size: 90%;
 }
