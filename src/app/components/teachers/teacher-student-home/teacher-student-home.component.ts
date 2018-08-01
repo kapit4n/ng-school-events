@@ -4,6 +4,7 @@ import { FollowUpsService } from "../../../services/follow-ups.service";
 import { ConfigurationService } from "../../../services/configuration.service";
 import { RolesService } from "../../../services/roles.service";
 import { SocketService } from "../../../services/socket.service";
+import { NotificationsService } from "../../../services/notifications.service";
 
 @Component({
   selector: "app-teacher-student-home",
@@ -28,7 +29,8 @@ export class TeacherStudentHomeComponent implements OnInit {
     private followUpsSvc: FollowUpsService,
     private confSvc: ConfigurationService,
     public rolesSvc: RolesService,
-    private socketService: SocketService
+    private socketSvc: SocketService,
+    private notificationsSvc: NotificationsService
   ) {
     this.newFollowUp = {};
     this.editFollowUp = {};
@@ -39,7 +41,7 @@ export class TeacherStudentHomeComponent implements OnInit {
     if (!message) {
       return;
     }
-    this.socketService.followUpNotification({
+    this.socketSvc.followUpNotification({
       from: this.rolesSvc.getUserName(),
       content: message
     });
@@ -83,6 +85,7 @@ export class TeacherStudentHomeComponent implements OnInit {
     this.newFollowUp.studentId = this.studentId;
     
     this.followUpsSvc.registerFollowUp(this.newFollowUp).subscribe(follow => {
+      this.notificationsSvc.registerNotification({ studentId: this.studentId }).subscribe(res => {});
       this.loadFollowUps();
       this.newFollowUp = {};
     });

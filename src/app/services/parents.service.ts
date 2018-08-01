@@ -69,6 +69,34 @@ export class ParentsService {
       .map(res => res.json());
   }
 
+  public getSonsNotifications2(parenId): Observable<any> {
+    return this.http
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.sParentUrl
+      }?filter[include]=parent&filter[include]=student&filter[include]=notifications&filter[where][parentId]=${parenId}`
+      )
+      .map(res => res.json());
+  }
+
+
+  public getSonsNotifications(courseSudents): Observable<any> {
+    var where = "filter[where][id]eq]=" + courseSudents[0].studentId;
+    if (courseSudents.length > 1)
+      where = courseSudents
+        .map(
+          courseTeacher =>
+            "filter[where][id][inq]=" + courseTeacher.studentId
+        )
+        .join("&");
+    return this.http
+      .get(
+      `${this.configSvc.backendUrl}/students?filter[include]=notifications&${where}`
+      )
+      .map(res => res.json());
+  }
+
+
   public getParentByUserId(id: string): Observable<any> {
     return this.http
       .get(
