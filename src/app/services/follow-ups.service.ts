@@ -32,13 +32,15 @@ export class FollowUpsService {
         .get(
           `${this.configSvc.backendUrl}/${
             this.endPoint
-        }?filter[limit]=${limit}&filter[skip]=${skip}&filter[where][studentId]=${studentId}&filter[where][year][regexp]=/${filter}/i`
+        }?filter[limit]=${limit}&filter[skip]=${skip}&filter[where][studentId]=${studentId}&filter[order]=registeredDate DESC&filter[where][year][regexp]=/${filter}/i`
         )
         .map(res => res.json());
     } else {
       return this.http
         .get(
-          `${this.configSvc.backendUrl}/${ this.endPoint }?filter[limit]=${limit}&filter[skip]=${skip}&filter[where][studentId]=${studentId}`
+          `${this.configSvc.backendUrl}/${
+            this.endPoint
+          }?filter[limit]=${limit}&filter[skip]=${skip}&filter[order]=registeredDate DESC&filter[where][studentId]=${studentId}`
         )
         .map(res => res.json());
     }
