@@ -8,7 +8,7 @@ import "rxjs/add/operator/timeout";
 import 'rxjs/add/observable/empty';
 
 @Injectable()
-export class NotificationsService {
+export class BellNotificationsService {
 
   constructor(private configSvc: ConfigurationService, private authSvc: AuthService, private http: HttpClientService) { }
 
@@ -23,5 +23,4 @@ export class NotificationsService {
       .delete(`${this.configSvc.backendUrl}/notifications/${notifId}`)
       .map(res => res.json());
   }
-
 }

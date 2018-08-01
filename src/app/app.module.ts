@@ -17,7 +17,7 @@ import { RolesService } from "./services/roles.service";
 import { ParentsService } from "./services/parents.service";
 import { CoursesService } from "./services/courses.service";
 import { SchoolYearsService } from "./services/school-years.service";
-import { NotificationsService } from "./services/notifications.service";
+import { BellNotificationsService } from "./services/bell-notifications.service";
 
 import { AppComponent } from "./app.component";
 import { RouterModule, Routes } from "@angular/router";
@@ -439,7 +439,7 @@ const appRoutes: Routes = [
     ParentsService,
     CoursesService,
     SchoolYearsService,
-    NotificationsService
+    BellNotificationsService
   ],
   bootstrap: [AppComponent]
 })

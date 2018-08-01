@@ -20,15 +20,12 @@ export class HeaderComponent implements OnInit {
             public parentsSvc: ParentsService) { }
 
   ngOnInit() {
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     setTimeout(() => {
     if (this.rolesSvc.getUserType() == "parent") {
-      console.log(this.rolesSvc.getParentId());
       this.parentsSvc.getSons(this.rolesSvc.getParentId()).subscribe(
           sons =>
             this.parentsSvc.getSonsNotifications(sons).subscribe(result => {
               this.sonNotifications = result.filter( noti => noti.notifications.length > 0);
-              console.log(this.sonNotifications);
             })
         );
       }

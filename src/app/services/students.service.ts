@@ -10,6 +10,7 @@ export class StudentsService {
   cStudentUrl = "course-students";
   cYearUrl = "course-years";
   sParentUrl = "student-parents";
+  notificationsUrl = "notifications";
 
   constructor(
     private configSvc: ConfigurationService,
@@ -113,6 +114,16 @@ export class StudentsService {
         `${this.configSvc.backendUrl}/${
           this.sParentUrl
         }?filter[include]=parent&filter[include]=student&filter[where][studentId]=${studentId}`
+      )
+      .map(res => res.json());
+  }
+
+  public getNotifications(studentId = ""): Observable<any> {
+    return this.http
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.notificationsUrl
+        }?filter[where][studentId]=${studentId}`
       )
       .map(res => res.json());
   }

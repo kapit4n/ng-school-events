@@ -6,6 +6,7 @@ import { FollowUpsService } from "../../../services/follow-ups.service";
 import { ConfigurationService } from "../../../services/configuration.service";
 import { SocketService } from "../../../services/socket.service";
 import { NotificationsService } from "angular2-notifications";
+import { BellNotificationsService } from "../../../services/bell-notifications.service";
 
 enum Event {
   CONNECT = 'connect',
@@ -18,8 +19,8 @@ enum Event {
   styleUrls: ["./son-home.component.css"]
 })
 export class SonHomeComponent implements OnInit {
-  studentParentRelId = "noId";
-  studentParentRel: any;
+  studentId = "noId";
+  student: any;
   assignedCourses: any;
   sons = [];
   searchText = "";
@@ -36,23 +37,32 @@ export class SonHomeComponent implements OnInit {
     private studentsSvc: StudentsService,
     private followUpsSvc: FollowUpsService,
     private confSvc: ConfigurationService,
-    private socketService: SocketService,
-    private _notificationSvc: NotificationsService
+    private socketSvc: SocketService,
+    private notificationsSvc: NotificationsService,
+    private bellNotificationsSvc: BellNotificationsService
   ) {
-    this.studentParentRel = {};
+    this.student = {};
   }
 
   ngOnInit() {
     this.initIoConnection();
-    this.studentParentRelId = this.route.snapshot.paramMap.get("id");
+    this.studentId = this.route.snapshot.paramMap.get("id");
     if (this.route.snapshot.queryParams["page"]) {
       this.currentPage = Number(this.route.snapshot.queryParams["page"]);
     }
-    this.parentsSvc.getStudent(this.studentParentRelId).subscribe(students => {
-      this.studentParentRel = students[0];
+    
+    this.studentsSvc.getNotifications(this.studentId).subscribe(notifications => {
+      notifications.forEach(notification => {
+        this.bellNotificationsSvc
+          .removeNotification(notification.id)
+          .subscribe(res => console.log(res));
+      });
+    })
 
+    this.parentsSvc.getStudent(this.studentId).subscribe(students => {
+      this.student = students[0];
       this.studentsSvc
-        .getCourses(this.studentParentRel.id)
+        .getCourses(this.student.id)
         .subscribe(courseStudents => {
           this.studentsSvc
             .getCourseYears(courseStudents)
@@ -64,22 +74,22 @@ export class SonHomeComponent implements OnInit {
   }
 
   private initIoConnection(): void {
-    this.socketService.initSocket();
+    this.socketSvc.initSocket();
 
-    this.ioConnection = this.socketService
+    this.ioConnection = this.socketSvc
       .onMessage()
       .subscribe((message: any) => {
         this.messages.push(message);
       });
-    this.socketService.onEvent(Event.CONNECT).subscribe(() => {
+    this.socketSvc.onEvent(Event.CONNECT).subscribe(() => {
       console.log("connected");
     });
 
-    this.socketService.onEvent("followUp").subscribe(data => {
+    this.socketSvc.onEvent("followUp").subscribe(data => {
       this.loadFollowUps();
     });
 
-    this.socketService.onEvent(Event.DISCONNECT).subscribe(() => {
+    this.socketSvc.onEvent(Event.DISCONNECT).subscribe(() => {
       console.log("disconnected");
     });
   }
@@ -87,7 +97,7 @@ export class SonHomeComponent implements OnInit {
   loadFollowUps() {
     this.followUpsSvc
       .getFollowUps(
-        this.studentParentRelId,
+        this.studentId,
         this.searchText,
         this.confSvc.pageSize,
         (this.currentPage - 1) * this.confSvc.pageSize
@@ -95,7 +105,7 @@ export class SonHomeComponent implements OnInit {
       .subscribe(followUps => (this.followUps = followUps));
 
     this.followUpsSvc
-      .getFollowUpsCount(this.studentParentRelId, this.searchText)
+      .getFollowUpsCount(this.studentId, this.searchText)
       .subscribe(countInfo => {
         this.pages = Math.round(countInfo.count / this.confSvc.pageSize);
         const range = (from, to, step) =>

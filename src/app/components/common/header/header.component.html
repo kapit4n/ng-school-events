@@ -97,7 +97,7 @@
                     <i class="fa fa-address-book-o" aria-hidden="true"></i>
                     &nbsp;<ng-container i18n>Unread Follow Ups - </ng-container>{{notif.firstName}} {{notif.lastName}}
                     <span class="badge badge-danger">{{notif.notifications.length}}</span>
-                    <a class="badge badge-success ml-1" style="cursor: pointer;" routerLink="children/${followUps[i].student.id}">
+                    <a class="badge badge-success ml-1" style="cursor: pointer;" href="children/{{notif.id}}">
                       <ng-container i18n>View</ng-container>
                     </a>
                   </button>

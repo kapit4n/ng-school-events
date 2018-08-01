@@ -1,8 +1,8 @@
 <dl>
   <dt i18n>First Name</dt>
-  <dd>{{studentParentRel?.firstName}}</dd>
+  <dd>{{student?.firstName}}</dd>
   <dt i18n>Last Name</dt>
-  <dd>{{studentParentRel?.lastName}}</dd>
+  <dd>{{student?.lastName}}</dd>
 </dl>
 
 <hr>
@@ -49,7 +49,7 @@
     </tr>
   </tbody>
   <tfoot>
-    <app-pagination [pages]="pages" [currentPage]="currentPage" baseUrl="./children/{{studentParentRelId}}"
+    <app-pagination [pages]="pages" [currentPage]="currentPage" baseUrl="./children/{{studentId}}"
       [rangePages]="rangePages"></app-pagination>
   </tfoot>
 </table>
