@@ -137,10 +137,15 @@ export class AppComponent implements OnInit {
 
     this.socketSvc.onEvent("message").subscribe(data => {});
 
-    this.socketSvc.onEvent("followUp").subscribe(data => {
-      this.loadFollowUps();
-      var temp = { animate: "fromRight", clickToClose: true, pauseOnHover: true, showProgressBar: true, timeOut: 3000 };
-      this._notificationSvc.create( "New Follow Up", "One Follow up created", "success", temp );
+    this.socketSvc.onEvent("followUp").subscribe(data2 => {
+      console.log(data2);
+      this.parentsSvc.getStudentByParentId(this.rolesSvc.getParentId(), data2.studentId).subscribe(data => {
+        if (data.length > 0) {
+          this.loadFollowUps();
+          var temp = { animate: "fromRight", clickToClose: true, pauseOnHover: true, showProgressBar: true, timeOut: 3000 };
+          this._notificationSvc.create( "New Follow Up", "One Follow up created", "success", temp );
+        }
+      });
     });
 
     this.socketSvc.onEvent("anns").subscribe(data => {

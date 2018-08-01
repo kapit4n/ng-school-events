@@ -70,7 +70,7 @@ export class HeaderComponent implements OnInit {
     });
 
     this.socketSvc.onEvent("followUp").subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.loadInfo();
     });
   }
