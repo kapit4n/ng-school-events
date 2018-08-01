@@ -24,6 +24,10 @@ export class SocketService {
     this.socket.emit('followUp', message);
   }
 
+  public followUpReadNotification(message: any): void {
+    this.socket.emit('followUpRead', message);
+  }
+
   public annNotification(message: any): void {
     this.socket.emit('anns', message);
   }

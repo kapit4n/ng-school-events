@@ -57,7 +57,10 @@ export class SonHomeComponent implements OnInit {
           .removeNotification(notification.id)
           .subscribe(res => console.log(res));
       });
-    })
+      setTimeout(() => {
+        this.socketSvc.followUpReadNotification("");
+      }, 1500);
+    });
 
     this.parentsSvc.getStudent(this.studentId).subscribe(students => {
       this.student = students[0];

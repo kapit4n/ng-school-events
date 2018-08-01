@@ -47,6 +47,13 @@ export class TeacherStudentHomeComponent implements OnInit {
     });
   }
 
+  sendFollowUpReadNofication(message: string) {
+    this.socketSvc.followUpReadNotification({
+      from: this.rolesSvc.getUserName(),
+      content: message
+    });
+  }
+
   ngOnInit() {
     this.studentId = this.route.snapshot.paramMap.get("studentId");
     this.courseId = this.route.snapshot.paramMap.get("courseId");
@@ -80,6 +87,7 @@ export class TeacherStudentHomeComponent implements OnInit {
 
   saveFollowUp() {
     this.sendFollowUpNofication("An Follow up was created");
+    this.sendFollowUpReadNofication("");
     
     this.newFollowUp.registeredDate = new Date();
     this.newFollowUp.studentId = this.studentId;

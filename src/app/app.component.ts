@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
     public parentsSvc: ParentsService,
     private location: Location,
     private router: ActivatedRoute,
-    private socketService: SocketService,
+    private socketSvc: SocketService,
     private _notificationSvc: NotificationsService,
     private followUpsSvc: FollowUpsService,
     private confSvc: ConfigurationService,
@@ -128,22 +128,22 @@ export class AppComponent implements OnInit {
   }
 
   private initIoConnection(): void {
-    this.socketService.initSocket();
+    this.socketSvc.initSocket();
 
-    this.ioConnection = this.socketService .onMessage() .subscribe((message: any) => { this.messages.push(message); });
-    this.socketService.onEvent(Event.CONNECT).subscribe(() => {
+    this.ioConnection = this.socketSvc .onMessage() .subscribe((message: any) => { this.messages.push(message); });
+    this.socketSvc.onEvent(Event.CONNECT).subscribe(() => {
       console.log("connected");
     });
 
-    this.socketService.onEvent("message").subscribe(data => {});
+    this.socketSvc.onEvent("message").subscribe(data => {});
 
-    this.socketService.onEvent("followUp").subscribe(data => {
+    this.socketSvc.onEvent("followUp").subscribe(data => {
       this.loadFollowUps();
       var temp = { animate: "fromRight", clickToClose: true, pauseOnHover: true, showProgressBar: true, timeOut: 3000 };
       this._notificationSvc.create( "New Follow Up", "One Follow up created", "success", temp );
     });
 
-    this.socketService.onEvent("anns").subscribe(data => {
+    this.socketSvc.onEvent("anns").subscribe(data => {
       this.loadAnnoucement();
 
       var temp = {
@@ -161,7 +161,7 @@ export class AppComponent implements OnInit {
       );
     });
 
-    this.socketService.onEvent(Event.DISCONNECT).subscribe(() => {
+    this.socketSvc.onEvent(Event.DISCONNECT).subscribe(() => {
       console.log("disconnected");
     });
   }
@@ -175,7 +175,7 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    this.socketService.followUpNotification({
+    this.socketSvc.followUpNotification({
       from: this.rolesSvc.getUserName(),
       content: message
     });
