@@ -40,7 +40,7 @@ export class SocketService {
 
   public onEvent(event: any): Observable<any> {
     return new Observable<any>(observer => {
-      this.socket.on(event, () => observer.next());
+      this.socket.on(event, (data) => observer.next(data));
     });
   }
 }
