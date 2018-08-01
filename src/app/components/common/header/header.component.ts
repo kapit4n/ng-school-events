@@ -44,12 +44,15 @@ export class HeaderComponent implements OnInit {
 
   private loadInfo() {
     if (this.rolesSvc.getUserType() == "parent") {
-      this.parentsSvc.getSons(this.rolesSvc.getParentId()).subscribe(sons =>
-        this.parentsSvc.getSonsNotifications(sons).subscribe(result => {
-          this.sonNotifications = result.filter(
-            noti => noti.notifications.length > 0
-          );
-        })
+      this.parentsSvc.getSons(this.rolesSvc.getParentId()).subscribe(sons => {
+          if (sons.length > 0) {
+            this.parentsSvc.getSonsNotifications(sons).subscribe(result => {
+              this.sonNotifications = result.filter(
+                noti => noti.notifications.length > 0
+              );
+            });
+          }
+      }
       );
     }
   }

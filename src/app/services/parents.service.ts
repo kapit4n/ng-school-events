@@ -69,17 +69,6 @@ export class ParentsService {
       .map(res => res.json());
   }
 
-  public getSonsNotifications2(parenId): Observable<any> {
-    return this.http
-      .get(
-        `${this.configSvc.backendUrl}/${
-          this.sParentUrl
-      }?filter[include]=parent&filter[include]=student&filter[include]=notifications&filter[where][parentId]=${parenId}`
-      )
-      .map(res => res.json());
-  }
-
-
   public getSonsNotifications(courseSudents): Observable<any> {
     var where = "filter[where][id]eq]=" + courseSudents[0].studentId;
     if (courseSudents.length > 1)
