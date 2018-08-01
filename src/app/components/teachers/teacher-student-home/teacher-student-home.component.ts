@@ -46,7 +46,9 @@ export class TeacherStudentHomeComponent implements OnInit {
     }
     this.socketSvc.followUpNotification({
       from: this.rolesSvc.getUserName(),
-      content: message
+      content: message,
+      studentId: this.studentId,
+      courseId: this.courseId
     });
   }
 
@@ -107,13 +109,14 @@ export class TeacherStudentHomeComponent implements OnInit {
   }
 
   updateFollowUp() {
-    this.sendFollowUpNofication("An Follow up was updated");    
+    this.sendFollowUpNofication("An Follow up was Updated");    
     this.followUpsSvc.updateFollowUp(this.editFollowUp).subscribe(follow => {
       this.loadFollowUps();
     });
   }
 
   removeFollowUp(id) {
+    this.sendFollowUpNofication("An Follow up was removed");
     this.followUpsSvc.removeFollowUp(id).subscribe(result => {
       this.loadFollowUps();
     });
