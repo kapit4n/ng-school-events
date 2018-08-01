@@ -4,6 +4,7 @@ import { FollowUpsService } from "../../../services/follow-ups.service";
 import { ConfigurationService } from "../../../services/configuration.service";
 import { RolesService } from "../../../services/roles.service";
 import { SocketService } from "../../../services/socket.service";
+import { StudentsService } from "../../../services/students.service";
 import { BellNotificationsService } from "../../../services/bell-notifications.service";
 
 @Component({
@@ -12,7 +13,7 @@ import { BellNotificationsService } from "../../../services/bell-notifications.s
   styleUrls: ["./teacher-student-home.component.css"]
 })
 export class TeacherStudentHomeComponent implements OnInit {
-  student = { firstName: "First Name", lastName: "Last Name" };
+  student: any;
   followUps: any;
   studentId: any;
   courseId: any;
@@ -30,11 +31,13 @@ export class TeacherStudentHomeComponent implements OnInit {
     private confSvc: ConfigurationService,
     public rolesSvc: RolesService,
     private socketSvc: SocketService,
-    private bellNotificationsSvc: BellNotificationsService
+    private bellNotificationsSvc: BellNotificationsService,
+    private studentsSvc: StudentsService
   ) {
     this.newFollowUp = {};
     this.editFollowUp = {};
     this.followUps = [];
+    this.student = {};
   }
 
   sendFollowUpNofication(message: string) {
@@ -56,6 +59,10 @@ export class TeacherStudentHomeComponent implements OnInit {
 
   ngOnInit() {
     this.studentId = this.route.snapshot.paramMap.get("studentId");
+    this.studentsSvc.getStudent(this.studentId).subscribe(student => {
+      this.student = student;
+    });
+
     this.courseId = this.route.snapshot.paramMap.get("courseId");
     if (this.route.snapshot.queryParams["page"]) {
       this.currentPage = Number(this.route.snapshot.queryParams["page"]);
