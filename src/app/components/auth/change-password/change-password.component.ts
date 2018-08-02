@@ -25,17 +25,15 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword() {
     let changPassword = { oldPassword: this.oldPassword, newPassword: this.newPassword };
-    this.usersSvc.changePassword(changPassword, this.authSvc.getAccessToken()).subscribe(passChanged => {
+    this.usersSvc.changePassword(changPassword).subscribe(passChanged => {
       let userLogin = { email: this.rolesSvc.getUserEmail(), password: this.newPassword };
       this.loginSvc
         .login(userLogin)
         .subscribe(loginInfo => {
-          this.userToken = loginInfo.Id;
           this.authSvc.saveSessionInfo(loginInfo);
           this.rolesSvc.reloadUser();
           window.location.href = ""; // reload the entire page to reload services
         });
     });
   }
-
 }

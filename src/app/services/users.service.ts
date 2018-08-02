@@ -32,7 +32,7 @@ export class UsersService {
       .map(res => res.json());
   }
 
-  public changePassword(user: any, token: string): Observable<any> {
+  public changePasswordFirstTime(user: any, token: string): Observable<any> {
     return this.http
       .post(
         this.configSvc.backendUrl +
@@ -42,6 +42,18 @@ export class UsersService {
       )
       .map(res => res);
   }
+
+
+  public changePassword(user: any): Observable<any> {
+    return this.http
+      .post(
+        this.configSvc.backendUrl +
+          "/users/change-password",
+        user
+      )
+      .map(res => res);
+  }
+
 
   public getCurrentUserId(): string {
     return this.authSvc.getCurrentUserId();
