@@ -6,36 +6,27 @@ import { AuthService } from "../../../services/auth.service";
 import { RolesService } from "../../../services/roles.service";
 
 @Component({
-  selector: "app-user-first-time",
-  templateUrl: "./user-first-time.component.html",
-  styleUrls: ["./user-first-time.component.css"]
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.css']
 })
-export class UserFirstTimeComponent implements OnInit {
-  email: string;
-  userToken: string;
+export class ChangePasswordComponent implements OnInit {
   newPassword: string;
+  oldPassword: string;
   constructor(
     private route: ActivatedRoute,
     private loginSvc: LoginService,
     private usersSvc: UsersService,
     private authSvc: AuthService,
-    private rolesSvc: RolesService
-  ) {}
+    private rolesSvc: RolesService) { }
 
   ngOnInit() {
-    this.email = this.route.snapshot.paramMap.get("email");
-    let userLogin = { email: this.email, password: "password" };
-    this.loginSvc
-      .login(userLogin)
-      .subscribe(loginInfo => {
-        this.userToken = loginInfo.id;
-      });
   }
 
   changePassword() {
-    let changPassword = { oldPassword: "password", newPassword: this.newPassword };
-    this.usersSvc.changePassword(changPassword, this.userToken).subscribe(passChanged => {
-      let userLogin = { email: this.email, password: this.newPassword };
+    let changPassword = { oldPassword: this.oldPassword, newPassword: this.newPassword };
+    this.usersSvc.changePassword(changPassword, this.authSvc.getAccessToken()).subscribe(passChanged => {
+      let userLogin = { email: this.rolesSvc.getUserEmail(), password: this.newPassword };
       this.loginSvc
         .login(userLogin)
         .subscribe(loginInfo => {
@@ -46,4 +37,5 @@ export class UserFirstTimeComponent implements OnInit {
         });
     });
   }
+
 }

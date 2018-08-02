@@ -36,4 +36,13 @@ export class AuthService {
   public getCurrentUserId(): string {
     return localStorage.getItem(this.userIdLabel);
   }
+  
+  public getAccessToken(): string {
+    if (localStorage.getItem(this.accessTokenLabel)) {
+      return localStorage.getItem(this.accessTokenLabel);
+    }
+    return "";
+  }
+
+
 }

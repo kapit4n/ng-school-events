@@ -51,6 +51,13 @@ export class RolesService {
     return "";
   }
 
+  getUserEmail() {
+    if (this.userInfo) {
+      return this.userInfo.email;
+    }
+    return "";
+  }
+
   getUserId() {
     if (this.userInfo) {
       return this.userInfo.id;

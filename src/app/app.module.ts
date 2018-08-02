@@ -100,6 +100,7 @@ import { QuestionsCoursesComponent } from './components/parent/questions-courses
 import { QuestionHomeComponent } from './components/parent/question-home/question-home.component';
 import { QuestionHomeTeacherComponent } from './components/teacher/question-home-teacher/question-home-teacher.component';
 import { HeaderComponent } from './components/common/header/header.component';
+import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
 
 
 
@@ -110,6 +111,11 @@ const appRoutes: Routes = [
     path: "logout",
     component: LogoutComponent,
     data: { breadcrumb: "Cerrar Sesión" }
+  },
+  {
+    path: "change-password",
+    component: ChangePasswordComponent,
+    data: { breadcrumb: "Cambiar Password" }
   },
   { path: "login", component: LoginComponent, data: { breadcrumb: "Iniciar Sesión" } },
 
@@ -409,7 +415,8 @@ const appRoutes: Routes = [
     QuestionsCoursesComponent,
     QuestionHomeComponent,
     QuestionHomeTeacherComponent,
-    HeaderComponent
+    HeaderComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
