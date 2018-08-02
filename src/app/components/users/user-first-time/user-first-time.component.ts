@@ -35,7 +35,7 @@ export class UserFirstTimeComponent implements OnInit {
   changePassword() {
     let changPassword = { oldPassword: "password", newPassword: this.newPassword };
     this.usersSvc.changePassword(changPassword, this.userToken).subscribe(passChanged => {
-      let userLogin = { email: this.email, password: "password" };
+      let userLogin = { email: this.email, password: this.newPassword };
       this.loginSvc
         .login(userLogin)
         .subscribe(loginInfo => {
