@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
     this.socketSvc.initSocket();
 
     this.ioConnection = this.socketSvc.onMessage().subscribe((message: any) => {
-      
+
     });
 
     this.socketSvc.onEvent("followUpRead").subscribe(data => {

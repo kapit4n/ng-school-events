@@ -93,14 +93,16 @@
                     </a>
                   </button>
                   <div class="dropdown-divider"></div>
-                  <button class="dropdown-item" *ngFor="let notif of sonNotifications">
-                    <i class="fa fa-address-book-o" aria-hidden="true"></i>
-                    &nbsp;<ng-container i18n>Unread Follow Ups - </ng-container>{{notif.firstName}} {{notif.lastName}}
-                    <span class="badge badge-danger">{{notif.notifications.length}}</span>
-                    <a class="badge badge-success ml-1" style="cursor: pointer;" href="children/{{notif.id}}">
-                      <ng-container i18n>View</ng-container>
-                    </a>
-                  </button>
+                  <ng-container *ngFor="let notif of sonNotifications">
+                    <button class="dropdown-item" routerLink="/children/{{notif.id}}">
+                      <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                      &nbsp;<ng-container i18n>Unread Follow Ups - </ng-container>{{notif.firstName}} {{notif.lastName}}
+                      <span class="badge badge-danger">{{notif.notifications.length}}</span>
+                      <a class="badge badge-success ml-1" style="cursor: pointer;" href="children/{{notif.id}}">
+                        <ng-container i18n>View</ng-container>
+                      </a>
+                    </button>
+                  </ng-container>
                 </div>
               </div>
             </li>
