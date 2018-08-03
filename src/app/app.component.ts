@@ -143,7 +143,7 @@ export class AppComponent implements OnInit {
         if (data.length > 0) {
           this.loadFollowUps();
           var temp = { animate: "fromRight", clickToClose: true, pauseOnHover: true, showProgressBar: true, timeOut: 3000 };
-          this._notificationSvc.create( "New Follow Up", "One Follow up created", "success", temp );
+          this._notificationSvc.create( "Nuevo Antecedente", "Un nuevo antecedente fue registrado", "success", temp );
         }
       });
     });
@@ -159,8 +159,8 @@ export class AppComponent implements OnInit {
         timeOut: 3000
       };
       this._notificationSvc.create(
-        "New Announcement",
-        "One Announcement was created",
+        "Nuevo Anuncio",
+        "Un nuevo Anuncio fue registrado",
         "success",
         temp
       );
