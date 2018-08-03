@@ -13,6 +13,8 @@ export class AuthService {
 
   private accessTokenLabel = "access_token";
 
+  private roleLabel = "role";
+
   private userIdLabel = "user_id";
 
   public isAuthenticated(): boolean {
@@ -26,6 +28,15 @@ export class AuthService {
     console.log(user);
     localStorage.setItem(this.accessTokenLabel, user.id);
     localStorage.setItem(this.userIdLabel, user.userId);
+  }
+
+  public saveTokenInfo(tokenInfo) {
+    localStorage.setItem(this.accessTokenLabel, tokenInfo.id);
+    localStorage.setItem(this.userIdLabel, tokenInfo.userId);
+  }
+
+  public saveRoleInfo(userInfo) {
+    localStorage.setItem(this.roleLabel, userInfo.userType);
   }
 
   public logout() {
