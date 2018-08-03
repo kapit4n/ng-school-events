@@ -115,7 +115,7 @@ const appRoutes: Routes = [
   {
     path: "change-password",
     component: ChangePasswordComponent,
-    data: { breadcrumb: "Cambiar Password" }
+    data: { breadcrumb: "Cambiar Contraseña" }
   },
   { path: "login", component: LoginComponent, data: { breadcrumb: "Iniciar Sesión" } },
 
