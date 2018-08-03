@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { UsersService } from "./users.service";
-import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: "root"
@@ -10,7 +9,7 @@ export class RolesService {
   loaded = false;
   homeUrl = "/home";
 
-  constructor(private usersSvc: UsersService, private authSvc: AuthService) {
+  constructor(private usersSvc: UsersService) {
     this.usersSvc.getCurrentUser().subscribe(res => {
       this.userInfo = res;
       this.loaded = true;
@@ -18,11 +17,16 @@ export class RolesService {
   }
 
   isTeacher() {
-    return this.authSvc.getUserType() == "teacher";
+    if (this.userInfo) {
+      return this.userInfo.userType == "teacher";
+    }
+    return false;
   }
 
   isParent() {
-    return this.authSvc.getUserType() == "parent";
+    if (this.userInfo) {
+      return this.userInfo.userType == "parent";
+    }
   }
 
   reloadUser() {
@@ -33,11 +37,15 @@ export class RolesService {
   }
 
   isAdmin() {
-    return this.authSvc.getUserType() == "admin";
+    if (this.userInfo) {
+      return this.userInfo.userType == "admin";
+    }
   }
 
   getUserType() {
-    return this.authSvc.getUserType();
+    if (this.userInfo) {
+      return this.userInfo.userType;
+    }
   }
 
   getUserEmail() {
