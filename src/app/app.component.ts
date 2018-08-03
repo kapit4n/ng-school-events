@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
     this.userName = this.rolesSvc.getUserName();
 
     setTimeout(() => {
-      if (rolesSvc.isParent()) {                                                                                                                                                                                                
+      if (rolesSvc.isParent()) {
         parentsSvc
           .getSons(rolesSvc.getParentId())
           .subscribe(
@@ -90,18 +90,18 @@ export class AppComponent implements OnInit {
     this.countFollowUps = 0;
     this.cmService.getAnnsAll().subscribe(anns => {
       this.dataContentEvents += `<ul class="list-group" style="width: 360px;">`;
-      this.dataContentEvents += `<li class="list-group-item list-group-item-dark">ANNOUNCEMENTS</li>`;
+      this.dataContentEvents += `<li class="list-group-item list-group-item-dark">NUEVO ANUNCIO</li>`;
       for (let i = 0; i < anns.length ; i++) {
-        this.dataContentEvents += `<li class="list-group-item list-group-item-light"> ${(new Date(anns[i].startDate)).toDateString()}: ${anns[i].title} <a class="pull-right" href="children/${anns[i].id}">GO</a></li>`;
+        this.dataContentEvents += `<li class="list-group-item list-group-item-light"> Fecha de Inicio ${(new Date(anns[i].startDate)).toDateString()}: ${anns[i].title}</li>`;
       }
       this.dataContentEvents += `</ul>`;
-      
+
       if (this.rolesSvc.isParent()) {
         this.followUpsSvc.getFollowUpsAll().subscribe(followUps => {
           this.dataContentEvents += `<ul class="list-group" style="width: 360px;">`;
-          this.dataContentEvents += `<li class="list-group-item list-group-item-dark">FOLLOW UPS</li>`;
+          this.dataContentEvents += `<li class="list-group-item list-group-item-dark">SEGUIMIENTO</li>`;
           for (let i = 0; i < followUps.length ; i++) {
-            this.dataContentEvents += `<li class="list-group-item list-group-item-light" >New Follow up for ${followUps[i].student.firstName} <a class="pull-right" href="children/${followUps[i].student.id}">GO</a></li>`;
+            this.dataContentEvents += `<li class="list-group-item list-group-item-light" >Nuevo Antecedente de Seguimiento para: ${followUps[i].student.firstName} <a class="pull-right" href="children/${followUps[i].student.id}">Ver</a></li>`;
           }
           this.dataContentEvents += `</ul>`;
         });
