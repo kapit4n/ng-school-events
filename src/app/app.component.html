@@ -29,6 +29,9 @@
 
   <ul class="nav nav-tabs" *ngIf="rolesSvc.isTeacher()">
     <li class="nav-item">
+      <a i18n class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+    <li class="nav-item">
       <a i18n class="nav-link" routerLink="/teacher-course-list" routerLinkActive="active">Courses</a>
     </li>
     <li class="nav-item">
@@ -40,7 +43,10 @@
   </ul>
 
   <ul class="nav nav-tabs" *ngIf="rolesSvc.isParent()">
-      <li class="nav-item">
+    <li class="nav-item">
+      <a i18n class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+    <li class="nav-item">
       <a i18n class="nav-link" routerLink="/children" routerLinkActive="active">Sons</a>
     </li>
     <li class="nav-item">
