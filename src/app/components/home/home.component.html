@@ -1,30 +1,9 @@
-<div *ngIf="!authSvc.isAuthenticated()" class="row">
-    <div class="col-md-5">
-        <img  class="img-fluid" src="http://lh6.ggpht.com/Kdq7QRPSa7tDUflSxlKDUme6Rum1swGsIce7BcjRxLTuicJdN-v2ispI9AXe2usNEU1YxJT4lqoVvlxCfg=s517" alt="">
-    </div>
-    <div class="col-md-7">
-        <p style="padding-top: 10px;" i18n>
-             Host a community event to share information about the positive action your school is taking in relation to bullying and
-            to build support for the National Day of Action. Place the National Day of Action postcard (PDF, 2.3MB) in local businesses
-            and libraries to promote the event. Write to people in your local community using the NDA 2018 letterhead (DOC, 1.9MB) to
-            invite them to participate in your school event. Options include support agencies, elders, universities, local council and
-            businesses, high profile individuals and local media representatives. Invite students, teachers and parents to each contribute
-            one idea that your school could do to address bullying. Collate all the answers and create a document to be presented to
-            the school on the National Day of Action. Run a whole-school review of your school's anti-bullying policy. Highlight snippets
-            and information from your school's behaviour policy in the school newsletter. Highlight your anti-bullying policy on your
-            school's website. Invite parents and community members to a school breakfast or barbeque and showcase your school's anti-bullying
-            work and programs to promote student wellbeing. Make a school mural of positive messages about students' contributions to
-            making your school safe and supportive. Use an online platform to invite students to complete the sentence 'At [our school]
-            we are taking a stand against bullying and violence by...' Invite parents of young children (3 to 8 years of age) to an information
-            session and discuss the important role of both parents and educators in supporting young children's social and emotional
-            development. Use the information and handouts in Starting in early childhood.
-        </p>
-    </div>
-</div>
+
 
 
 <ng-container [ngSwitch]="rolesSvc.getUserType()">
   <ng-container *ngSwitchCase="'admin'">
+    <!-- ADMIN HOME -->
     <!-- ABOUT / WHY SECTION -->
     <section id="about" class="py-1 text-center bg-light">
       <div class="container">
@@ -38,25 +17,22 @@
                 ¡Bienvenido a Vocero Escolar! A continuación, encontrará una explicación de los diferentes roles de su cuenta de usuario. Lea la pagina completa para obtener una descripción general de las funcionalidades que le ofrecemos.
               </p>
             </div>
-
             <!-- ACCORDION -->
             <div id="accordion" role="tablist">
               <div class="card">
                 <div class="card-header" id="heading1">
                   <h5 class="mb-0">
                     <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
-                      <i class="fa fa-arrow-circle-down"></i>Invite Usuarios al Sistema
+                      <i class="fa fa-arrow-circle-down"></i> Invite Usuarios al Sistema
                     </div>
                   </h5>
                 </div>
-
                 <div id="collapse1" class="collapse show">
                   <div class="card-body">
-                    Como un Administrador, usted puede invitar profesores y padres al sistema, con la finalidad de que ellos puedan autenticarse y revisar el contenido de la aplicación.
+                    Como un Administrador, usted puede invitar padres y profesores al sistema, con la finalidad de que ellos puedan autenticarse y revisar el contenido de la aplicación.
                   </div>
                 </div>
               </div>
-
               <div class="card">
                 <div class="card-header" id="heading2">
                   <h5 class="mb-0">
@@ -65,26 +41,38 @@
                     </div>
                   </h5>
                 </div>
-
                 <div id="collapse2" class="collapse">
                   <div class="card-body">
                     Como un Administrador, usted puede registrar estudiantes, sin duda el elemento de información mas importante del sistema.
                   </div>
                 </div>
               </div>
-
               <div class="card">
                 <div class="card-header" id="heading3">
                   <h5 class="mb-0">
                     <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
-                      <i class="fa fa-arrow-circle-down"></i> Open Your Mind
+                      <i class="fa fa-arrow-circle-down"></i>  Maneje Gestiones Escolares
+                    </div>
+                  </h5>
+                </div>
+                <div id="collapse3" class="collapse">
+                  <div class="card-body">
+                    Como un Administrador, usted puede manejar gestiones escolares, con la finalidad de poder usarlos como contenedores de información del actual periodo escolar. Tome en cuenta que es neceario definir una gestión como gestión actual para empezar a trabajar en ella.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="heading4">
+                  <h5 class="mb-0">
+                    <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
+                      <i class="fa fa-arrow-circle-down"></i>  Registre Cursos
                     </div>
                   </h5>
                 </div>
 
-                <div id="collapse3" class="collapse">
+                <div id="collapse4" class="collapse">
                   <div class="card-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi pariatur optio totam obcaecati facere nam nihil inventore dolorum consequuntur quis unde voluptatibus numquam velit veniam explicabo eveniet fugit hic, tenetur. Iusto, consequatur, obcaecati. Ab earum alias, placeat exercitationem possimus quidem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem officia officiis aliquam fugiat, omnis, corrupti dolorum ipsa laudantium sequi dolores!
+                    Como un Administrador, usted puede registrar cursos con la finalidad de brindar un espacio en el cual los padres y profesores compartan su información.
                   </div>
                 </div>
               </div>
@@ -93,51 +81,238 @@
         </div>
       </div>
     </section>
-
     <!-- BOXES -->
     <section id="boxes" class="py-5">
       <div class="container">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-6 col-md-4">
             <div class="card text-center border-primary">
               <div class="card-body">
-                <h3 class="text-primary">Be Better</h3>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, quibusdam.</p>
+                <h4 class="text-primary">Asocie Información</h4>
+                <p class="text-muted">Tome en cuenta que es necesario asociar Estudiantes con Cursos y Padres. También Profesores con Cursos.</p>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-6 col-md-4">
             <div class="card text-center bg-primary text-white">
               <div class="card-body">
-                <h3>Be Smarter</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, quibusdam.</p>
+                <h4 >Anuncios Generales</h4>
+                <p >Programe Anuncios que seran visibles en el calendario académico de todos los usuarios registrados del sistema</p>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-6 col-md-4">
             <div class="card text-center border-primary">
               <div class="card-body">
-                <h3 class="text-primary">Be Faster</h3>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, quibusdam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card text-center bg-primary text-white">
-              <div class="card-body">
-                <h3>Be Stronger</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, quibusdam.</p>
+                <h4 class="text-primary">Anuncios por Curso</h4>
+                <p class="text-muted">Programe Anuncios que seran visibles en el calendario académico de profesores y padres asociados al curso.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-
   </ng-container>
-  <ng-container *ngSwitchCase="'teacher'"><p>this is techer</p></ng-container>
-  <ng-container *ngSwitchCase="'parent'"><p>this is profesor</p></ng-container>
-  <ng-container *ngSwitchDefault><p>:)</p></ng-container>
+
+  <ng-container *ngSwitchCase="'teacher'">
+    <!-- TEACHER HOME -->
+    <!-- ABOUT / WHY SECTION -->
+    <section id="about" class="py-1 text-center bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="info-header mb-5">
+              <h4 class="text-info pb-3">
+                Bienvenido Profesor
+              </h4>
+              <p class="lead pb-3">
+                ¡Bienvenido a Vocero Escolar! A continuación, encontrará una explicación de los diferentes roles de su cuenta de usuario. Lea la pagina completa para obtener una descripción general de las funcionalidades que le ofrecemos.
+              </p>
+            </div>
+            <!-- ACCORDION -->
+            <div id="accordion" role="tablist">
+              <div class="card">
+                <div class="card-header" id="heading1">
+                  <h5 class="mb-0">
+                    <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
+                      <i class="fa fa-arrow-circle-down"></i> Revise sus cursos
+                    </div>
+                  </h5>
+                </div>
+                <div id="collapse1" class="collapse show">
+                  <div class="card-body">
+                    Como un Profesor, usted puede revisar los cursos a los cuales esta asignado
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="heading2">
+                  <h5 class="mb-0">
+                    <div href="#collapse2" data-toggle="collapse" data-parent="#accordion">
+                      <i class="fa fa-arrow-circle-down"></i> Gestione a sus estudiantes
+                    </div>
+                  </h5>
+                </div>
+                <div id="collapse2" class="collapse">
+                  <div class="card-body">
+                    Como un Profesor, usted puede ver los detalles de cada uno de los estudiantes inscritos a los cursos alos cuales usted esta asignado.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- BOXES -->
+    <section id="boxes" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-6 col-md-4">
+            <div class="card text-center border-primary">
+              <div class="card-body">
+                <h4 class="text-primary">Registre Antecedentes</h4>
+                <p class="text-muted">Usted puede registrar antecedentes de seguimiento negativos y/o positivos de cada uno de sus estudiantes asignados </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="card text-center bg-primary text-white">
+              <div class="card-body">
+                <h4 >Anuncios por Curso</h4>
+                <p >Programe Anuncios que seran visibles en el calendario académico de profesores y padres asociados al curso.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="card text-center border-primary">
+              <div class="card-body">
+                <h4 class="text-primary">Publique temas de conversacion</h4>
+                <p class="text-muted">Añada temas de conversación que serán visibles para todos los involucrados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'parent'">
+    <!-- TEACHER HOME -->
+    <!-- ABOUT / WHY SECTION -->
+    <section id="about" class="py-1 text-center bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="info-header mb-5">
+              <h4 class="text-info pb-3">
+                Bienvenido Padre de Familia
+              </h4>
+              <p class="lead pb-1">
+                ¡Bienvenido a Vocero Escolar! A continuación, encontrará una explicación de los diferentes roles de su cuenta de usuario. Lea la pagina completa para obtener una descripción general de las funcionalidades que le ofrecemos.
+              </p>
+            </div>
+            <!-- ACCORDION -->
+            <!--<div id="accordion" role="tablist">-->
+              <!--<div class="card">-->
+                <!--<div class="card-header" id="heading1">-->
+                  <!--<h5 class="mb-0">-->
+                    <!--<div href="#collapse1" data-toggle="collapse" data-parent="#accordion">-->
+                      <!--<i class="fa fa-arrow-circle-down"></i> Revise los cursos asociados a su hijo-->
+                    <!--</div>-->
+                  <!--</h5>-->
+                <!--</div>-->
+                <!--<div id="collapse1" class="collapse show">-->
+                  <!--<div class="card-body">-->
+                    <!--Como un Padre de Familia, usted puede revisar los cursos a los cuales esta asignado su hijo-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="card">-->
+                <!--<div class="card-header" id="heading2">-->
+                  <!--<h5 class="mb-0">-->
+                    <!--<div href="#collapse2" data-toggle="collapse" data-parent="#accordion">-->
+                      <!--<i class="fa fa-arrow-circle-down"></i> Gestione a sus estudiantes-->
+                    <!--</div>-->
+                  <!--</h5>-->
+                <!--</div>-->
+                <!--<div id="collapse2" class="collapse">-->
+                  <!--<div class="card-body">-->
+                    <!--Como un Profesor, usted puede ver los detalles de cada uno de los estudiantes inscritos a los cursos alos cuales usted esta asignado.-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- BOXES -->
+    <!-- BOXES -->
+    <section id="boxes" class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card text-center border-primary">
+              <div class="card-body">
+                <h3 class="text-primary">Cursos</h3>
+                <p class="text-muted">Revise los detalles de los cursos asignados a su hijo.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center bg-primary text-white">
+              <div class="card-body">
+                <h3>Antecedentes</h3>
+                <p>Entérese del comportamiendo de su hijo mediante el seguimiento realizado por profesores </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center border-primary">
+              <div class="card-body">
+                <h3 class="text-primary">Anuncios</h3>
+                <p class="text-muted">Revise el Calendario Académico, que publica anuncios generales y por curso.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center bg-primary text-white">
+              <div class="card-body">
+                <h3>Foro</h3>
+                <p>Participe en los temas de discusión actuales.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ng-container>
+
+  <ng-container *ngSwitchDefault>
+    <div class="row">
+      <div class="col-md-5">
+        <img  class="img-fluid" src="http://lh6.ggpht.com/Kdq7QRPSa7tDUflSxlKDUme6Rum1swGsIce7BcjRxLTuicJdN-v2ispI9AXe2usNEU1YxJT4lqoVvlxCfg=s517" alt="">
+      </div>
+      <div class="col-md-7">
+        <p style="padding-top: 10px;" i18n>
+          Host a community event to share information about the positive action your school is taking in relation to bullying and
+          to build support for the National Day of Action. Place the National Day of Action postcard (PDF, 2.3MB) in local businesses
+          and libraries to promote the event. Write to people in your local community using the NDA 2018 letterhead (DOC, 1.9MB) to
+          invite them to participate in your school event. Options include support agencies, elders, universities, local council and
+          businesses, high profile individuals and local media representatives. Invite students, teachers and parents to each contribute
+          one idea that your school could do to address bullying. Collate all the answers and create a document to be presented to
+          the school on the National Day of Action. Run a whole-school review of your school's anti-bullying policy. Highlight snippets
+          and information from your school's behaviour policy in the school newsletter. Highlight your anti-bullying policy on your
+          school's website. Invite parents and community members to a school breakfast or barbeque and showcase your school's anti-bullying
+          work and programs to promote student wellbeing. Make a school mural of positive messages about students' contributions to
+          making your school safe and supportive. Use an online platform to invite students to complete the sentence 'At [our school]
+          we are taking a stand against bullying and violence by...' Invite parents of young children (3 to 8 years of age) to an information
+          session and discuss the important role of both parents and educators in supporting young children's social and emotional
+          development. Use the information and handouts in Starting in early childhood.
+        </p>
+      </div>
+    </div>
+  </ng-container>
 </ng-container>
 
