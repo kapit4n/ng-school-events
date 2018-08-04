@@ -6,7 +6,6 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
 
-  
   constructor(private router: Router) {
 
   }
@@ -39,9 +38,14 @@ export class AuthService {
     localStorage.setItem(this.roleLabel, userInfo.userType);
   }
 
+  public getUserType() {
+    return localStorage.getItem(this.roleLabel);
+  }
+
   public logout() {
     localStorage.removeItem(this.accessTokenLabel);
     localStorage.removeItem(this.userIdLabel);
+    localStorage.removeItem(this.roleLabel);
   }
 
   public getCurrentUserId(): string {

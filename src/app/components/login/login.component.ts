@@ -32,9 +32,10 @@ export class LoginComponent implements OnInit {
     this.loginSvc.login(this.loginInfo).subscribe(
       userData => {
         this.hasError = false;
-        this.authSvc.saveSessionInfo(userData);
+        this.authSvc.saveTokenInfo(userData);
         this.rolesSvc.reloadUser();
         this.usersSvc.getCurrentUser().subscribe(res => {
+          this.authSvc.saveRoleInfo(res);
           if (res.userType == "teacher") {
             window.location.href = "/home"; // reload the entire page to reload services
           } else if (res.userType == "parent") {
