@@ -8,11 +8,17 @@ import "rxjs/add/operator/map";
 @Injectable()
 export class LoginService {
 
-  constructor(private configSvc: ConfigurationService, private authSvc: AuthService, private http: Http) {
+  constructor(
+    private configSvc: ConfigurationService, 
+    private authSvc: AuthService, private http: Http
+  ) {
   }
 
   public login(user: any): Observable<any> {
-    return this.http.post(this.configSvc.backendUrl + "/users/login", user).map(res => res.json());
+    return this.http.post(
+      `${this.configSvc.backendUrl}/users/login`,
+      user
+    ).map(res => res.json());
   }
 
 }

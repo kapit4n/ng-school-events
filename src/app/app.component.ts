@@ -32,8 +32,8 @@ export class AppComponent implements OnInit {
   title = "app";
   parentToggle = "";
   teacherToggle = "";
-  userType: "";
-  userName: "";
+  userType = "";
+  userName = "";
   breadcrumbs: any;
   sons = [];
 

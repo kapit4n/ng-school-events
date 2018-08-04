@@ -11,7 +11,11 @@ import { Router } from "@angular/router";
 export class TeacherRegisterComponent implements OnInit {
   teacher: any;
 
-  constructor(private router: Router, private teachersSvc: TeachersService, private authSvc: AuthService) {
+  constructor(
+    private router: Router, 
+    private teachersSvc: TeachersService,
+    private authSvc: AuthService
+  ) {
     this.teacher = { userType: "teacher", password: "password" };
   }
 
