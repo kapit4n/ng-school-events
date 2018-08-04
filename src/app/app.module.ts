@@ -122,7 +122,7 @@ const appRoutes: Routes = [
   {
     path: "change-password",
     component: ChangePasswordComponent,
-    data: { breadcrumb: "Cambiar Contraseña" },
+    data: { breadcrumb: "Cambiar Contraseña" }
     // canActivate: [AuthGuard]
   },
   {
@@ -135,7 +135,7 @@ const appRoutes: Routes = [
   {
     path: "gestion-current",
     component: GestionCurrentComponent,
-    data: { breadcrumb: "Gestión Actual" },
+    data: { breadcrumb: "Gestión Actual" }
     // canActivate: [AuthGuard, AdminGuard]
   },
   {
@@ -158,13 +158,13 @@ const appRoutes: Routes = [
       {
         path: "",
         component: TeacherManagementComponent,
-        data: { breadcrumb: "Lista" },
+        data: { breadcrumb: "Lista" }
         // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: ":id",
         component: TeacherHomeComponent,
-        data: { breadcrumb: "Detalles" },
+        data: { breadcrumb: "Detalles" }
         // canActivate: [AuthGuard, AdminGuard]
       }
     ]
@@ -172,13 +172,13 @@ const appRoutes: Routes = [
   {
     path: "teacher-register",
     component: TeacherRegisterComponent,
-    data: { breadcrumb: "Registro de Profesores" },
+    data: { breadcrumb: "Registro de Profesores" }
     // canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: "teacher-list",
     component: TeacherListComponent,
-    data: { breadcrumb: "Lista de Profesores" },
+    data: { breadcrumb: "Lista de Profesores" }
     // canActivate: [AuthGuard, AdminGuard]
   },
 
@@ -191,13 +191,13 @@ const appRoutes: Routes = [
       {
         path: "",
         component: ParentManagementComponent,
-        data: { breadcrumb: "Lista" },
+        data: { breadcrumb: "Lista" }
         // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: ":id",
         component: ParentHomeComponent,
-        data: { breadcrumb: "Detalles" },
+        data: { breadcrumb: "Detalles" }
         // canActivate: [AuthGuard, AdminGuard]
       }
     ]
@@ -205,13 +205,13 @@ const appRoutes: Routes = [
   {
     path: "parent-register",
     component: ParentRegisterComponent,
-    data: { breadcrumb: "Registro de Padres" },
+    data: { breadcrumb: "Registro de Padres" }
     // canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: "parent-list",
     component: ParentListComponent,
-    data: { breadcrumb: "Lista de Padres" },
+    data: { breadcrumb: "Lista de Padres" }
     // canActivate: [AuthGuard, AdminGuard]
   },
 
@@ -224,13 +224,13 @@ const appRoutes: Routes = [
       {
         path: "",
         component: StudentManagementComponent,
-        data: { breadcrumb: "Lista" },
+        data: { breadcrumb: "Lista" }
         // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: ":id",
         component: StudentHomeComponent,
-        data: { breadcrumb: "Detalles" },
+        data: { breadcrumb: "Detalles" }
         // canActivate: [AuthGuard, AdminGuard]
       }
     ]
@@ -238,13 +238,13 @@ const appRoutes: Routes = [
   {
     path: "student-register",
     component: StudentRegisterComponent,
-    data: { breadcrumb: "Registro de Estudiantes" },
+    data: { breadcrumb: "Registro de Estudiantes" }
     // canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: "student-list",
     component: StudentListComponent,
-    data: { breadcrumb: "Lista de Estudiantes" },
+    data: { breadcrumb: "Lista de Estudiantes" }
     // canActivate: [AuthGuard, AdminGuard]
   },
   {
@@ -256,19 +256,19 @@ const appRoutes: Routes = [
       {
         path: "",
         component: CourseListAdminComponent,
-        data: { breadcrumb: "Lista" },
+        data: { breadcrumb: "Lista" }
         // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: ":courseId",
         component: CourseYearComponent,
-        data: { breadcrumb: "Detalles" },
+        data: { breadcrumb: "Detalles" }
         // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: "rel/:courseYearId",
         component: CourseHomeComponent,
-        data: { breadcrumb: "Detalle de Gestión" },
+        data: { breadcrumb: "Detalle de Gestión" }
         // canActivate: [AuthGuard, AdminGuard]
       }
     ]
@@ -276,7 +276,7 @@ const appRoutes: Routes = [
   {
     path: "course-add-admin",
     component: CourseAddAdminComponent,
-    data: { breadcrumb: "Añadir Curso" },
+    data: { breadcrumb: "Añadir Curso" }
     // canActivate: [AuthGuard, AdminGuard]
   },
 
@@ -289,33 +289,33 @@ const appRoutes: Routes = [
       {
         path: "",
         component: YearListAdminComponent,
-        data: { breadcrumb: "Lista" },
+        data: { breadcrumb: "Lista" }
         // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: ":id",
         component: YearHomeComponent,
-        data: { breadcrumb: "Detalles" },
+        data: { breadcrumb: "Detalles" }
         // canActivate: [AuthGuard, AdminGuard]
       }
     ]
   },
   {
     path: "ann-list-admin",
-    component: AnnListAdminComponent,
+    component: AnnListAdminComponent
     // canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: "year-add-admin",
     component: YearAddAdminComponent,
-    data: { breadcrumb: "Añadir" },
+    data: { breadcrumb: "Añadir" }
     // canActivate: [AuthGuard, AdminGuard]
   },
 
   // Pages for teacher role
   {
     path: "teacher-profile",
-    component: TeacherProfileComponent,
+    component: TeacherProfileComponent
     // canActivate: [AuthGuard, AdminGuard]
   },
   {
@@ -327,31 +327,31 @@ const appRoutes: Routes = [
       {
         path: "",
         component: CourseListComponent,
-        data: { breadcrumb: "Lista" },
+        data: { breadcrumb: "Lista" }
         // canActivate: [AuthGuard, TeacherGuard]
       },
       {
         path: ":courseId",
         component: TeacherCourseHomeComponent,
-        data: { breadcrumb: "Detalles" },
+        data: { breadcrumb: "Detalles" }
         // canActivate: [AuthGuard, TeacherGuard]
       },
       {
         path: ":courseId/teacher-student-home/:studentId",
         component: TeacherStudentHomeComponent,
-        data: { breadcrumb: "Detalles de Estudiante" },
+        data: { breadcrumb: "Detalles de Estudiante" }
         // canActivate: [AuthGuard, TeacherGuard]
       }
     ]
   },
   {
     path: "student-follow-up",
-    component: StudentFollowUpComponent,
+    component: StudentFollowUpComponent
     // canActivate: [AuthGuard, TeacherGuard]
   },
   {
     path: "announcements-teacher-home",
-    component: AnnListAdminComponent,
+    component: AnnListAdminComponent
     // canActivate: [AuthGuard, TeacherGuard]
   },
   {
@@ -363,13 +363,13 @@ const appRoutes: Routes = [
       {
         path: "",
         component: QuestionsCoursesTeacherComponent,
-        data: { breadcrumb: "Conversaciones por Curso" },
+        data: { breadcrumb: "Conversaciones por Curso" }
         // canActivate: [AuthGuard, TeacherGuard]
       },
       {
         path: ":courseId",
         component: QuestionHomeComponent,
-        data: { breadcrumb: "Lista" },
+        data: { breadcrumb: "Lista" }
         // canActivate: [AuthGuard, TeacherGuard]
       }
     ]
@@ -378,7 +378,7 @@ const appRoutes: Routes = [
   // Pages for parent role
   {
     path: "parent-profile",
-    component: ParentProfileComponent,
+    component: ParentProfileComponent
     // canActivate: [AuthGuard, ParentGuard]
   },
   {
@@ -390,13 +390,13 @@ const appRoutes: Routes = [
       {
         path: "",
         component: SonListComponent,
-        data: { breadcrumb: "Lista" },
+        data: { breadcrumb: "Lista" }
         // canActivate: [AuthGuard, ParentGuard]
       },
       {
         path: ":id",
         component: SonHomeComponent,
-        data: { breadcrumb: "Detalles" },
+        data: { breadcrumb: "Detalles" }
         // canActivate: [AuthGuard, ParentGuard]
       }
     ]
@@ -411,13 +411,13 @@ const appRoutes: Routes = [
       {
         path: "",
         component: QuestionsCoursesComponent,
-        data: { breadcrumb: "Conversaciones por Estudiante" },
+        data: { breadcrumb: "Conversaciones por Estudiante" }
         // canActivate: [AuthGuard, ParentGuard]
       },
       {
         path: ":id",
         component: QuestionHomeComponent,
-        data: { breadcrumb: "Lista" },
+        data: { breadcrumb: "Lista" }
         // canActivate: [AuthGuard, ParentGuard]
       }
     ]
@@ -425,7 +425,7 @@ const appRoutes: Routes = [
 
   {
     path: "announcements-parent-home",
-    component: AnnouncementsHomeComponent,
+    component: AnnouncementsHomeComponent
     // canActivate: [AuthGuard, ParentGuard]
   },
   {
