@@ -35,26 +35,26 @@
           </ng-container>
 
           <ng-container *ngSwitchCase="'teacher'">
-            <li class="nav-item mr-2">
-              <div ngbDropdown >
-                <button class="btn btn-outline-warning" id="notif-dropdown" ngbDropdownToggle>
-                  <span class="fa-stack fa-lg has-badge" data-count="+" >
-                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
-                    <i class="fa fa-bell fa-stack-1x fa-inverse" aria-hidden="true"></i>
-                  </span>&nbsp;<ng-container i18n>Notifications</ng-container>
-                </button>
-                <div ngbDropdownMenu aria-labelledby="notif-dropdown">
-                  <button class="dropdown-item">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                    &nbsp;<ng-container i18n>Unread Announcements</ng-container>&nbsp;
-                    <span class="badge badge-danger">10</span>
-                    <a class="badge badge-success ml-1" style="cursor: pointer;" href="/announcements-teacher-home">
-                      <ng-container i18n>View</ng-container>
-                    </a>
-                  </button>
-                </div>
-              </div>
-            </li>
+            <!--<li class="nav-item mr-2">-->
+              <!--<div ngbDropdown >-->
+                <!--<button class="btn btn-outline-warning" id="notif-dropdown" ngbDropdownToggle>-->
+                  <!--<span class="fa-stack fa-lg has-badge" data-count="+" >-->
+                    <!--<i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>-->
+                    <!--<i class="fa fa-bell fa-stack-1x fa-inverse" aria-hidden="true"></i>-->
+                  <!--</span>&nbsp;<ng-container i18n>Notifications</ng-container>-->
+                <!--</button>-->
+                <!--<div ngbDropdownMenu aria-labelledby="notif-dropdown">-->
+                  <!--<button class="dropdown-item">-->
+                    <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
+                    <!--&nbsp;<ng-container i18n>Unread Announcements</ng-container>&nbsp;-->
+                    <!--<span class="badge badge-danger">10</span>-->
+                    <!--<a class="badge badge-success ml-1" style="cursor: pointer;" href="/announcements-teacher-home">-->
+                      <!--<ng-container i18n>View</ng-container>-->
+                    <!--</a>-->
+                  <!--</button>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</li>-->
             <li class="nav-item">
               <div ngbDropdown >
                 <button class="btn btn-outline-primary" id="user-dropdown" ngbDropdownToggle>
@@ -86,21 +86,21 @@
             <li class="nav-item mr-2">
               <div ngbDropdown >
                 <button class="btn btn-outline-warning" id="notif-dropdown" ngbDropdownToggle>
-                  <span class="fa-stack fa-lg has-badge" data-count="+" >
+                  <span class="fa-stack fa-lg has-badge" data-count="+">
                     <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
                     <i class="fa fa-bell fa-stack-1x fa-inverse" aria-hidden="true"></i>
                   </span>&nbsp;<ng-container i18n>Notifications</ng-container>
                 </button>
                 <div ngbDropdownMenu aria-labelledby="notif-dropdown">
-                  <button class="dropdown-item">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                    &nbsp;<ng-container i18n>Unread Announcements</ng-container>&nbsp;
-                    <span class="badge badge-danger">10</span>
-                    <a class="badge badge-success ml-1" style="cursor: pointer;" href="/announcements-parent-home">
-                      <ng-container i18n>View</ng-container>
-                    </a>
-                  </button>
-                  <div class="dropdown-divider"></div>
+                  <!--<button class="dropdown-item">-->
+                    <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
+                    <!--&nbsp;<ng-container i18n>Unread Announcements</ng-container>&nbsp;-->
+                    <!--<span class="badge badge-danger">10</span>-->
+                    <!--<a class="badge badge-success ml-1" style="cursor: pointer;" href="/announcements-parent-home">-->
+                      <!--<ng-container i18n>View</ng-container>-->
+                    <!--</a>-->
+                  <!--</button>-->
+                  <!--<div class="dropdown-divider"></div>-->
                   <ng-container *ngFor="let notif of sonNotifications">
                     <button class="dropdown-item" routerLink="/children/{{notif.id}}">
                       <i class="fa fa-address-book-o" aria-hidden="true"></i>
