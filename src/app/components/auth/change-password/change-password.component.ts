@@ -49,7 +49,6 @@ export class ChangePasswordComponent implements OnInit {
     if (this.passwordNotMatch) {
       return;
     }
-    this.passwordNotMatch = true;
 
     this.usersSvc.changePassword(changPassword).subscribe(passChanged => {
       this.hasError = false;
