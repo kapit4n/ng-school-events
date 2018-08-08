@@ -17,6 +17,7 @@ export class QuestionHomeComponent implements OnInit {
   questions = [];
   questionMap = [];
   newQuestion: any;
+  hasResponse = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -112,11 +113,21 @@ export class QuestionHomeComponent implements OnInit {
     });
   }
 
+  loadHasResponse(questionId: string, answerInput: string) {
+    const answerDescr = (document.getElementById(answerInput + questionId) as HTMLInputElement).value;
+    if (answerDescr) {
+      this.hasResponse = true;
+    } else {
+      this.hasResponse = false;
+    }
+  }
+
   saveAnswer(questionId: string, answerInput: string) {
     const answerDescr = (document.getElementById(answerInput + questionId) as HTMLInputElement).value;
     const answer = { description: answerDescr, questionId: questionId, parentId: this.rolesSvc.getParentId(), teacherId: this.rolesSvc.getTeacherId() };
 
     this.questionsSvc.registerAnswer(answer).subscribe(answerResult => {
+      this.hasResponse = false;
       if (this.rolesSvc.isParent()) {
         answerResult.parent = this.rolesSvc.getParent();
       } else {
