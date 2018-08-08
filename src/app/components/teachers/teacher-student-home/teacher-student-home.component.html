@@ -62,7 +62,9 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="subject" i18n>Subject</label>
-                <input type="text" class="form-control" id="subject" i18n-placeholder placeholder="Subject" value="Data" required [(ngModel)]="newFollowUp.subject"
+                <input type="text" class="form-control" id="subject" i18n-placeholder 
+                placeholder="Subject" value="Data" required [(ngModel)]="newFollowUp.subject" 
+                required  #subject="ngModel"
                   [ngModelOptions]="{standalone: true}">
               </div>
 
@@ -82,19 +84,23 @@
 
               <div class="form-group">
                 <label for="title" i18n>Title</label>
-                <input type="text" class="form-control" id="title" i18n-placeholder placeholder="Title" value="Data" required [(ngModel)]="newFollowUp.title"
+                <input type="text" class="form-control" id="title" i18n-placeholder placeholder="Title" 
+                value="Data" required [(ngModel)]="newFollowUp.title" required #title="ngModel"
                   [ngModelOptions]="{standalone: true}">
               </div>
 
               <div class="form-group">
                 <label for="historyDetails" i18n>historyDetails</label>
-                <input type="text" class="form-control" id="historyDetails" i18n-placeholder placeholder="historyDetails" value="Data" required [(ngModel)]="newFollowUp.historyDetails"
-                  [ngModelOptions]="{standalone: true}">
+                <input type="text" class="form-control" id="historyDetails" i18n-placeholder 
+                  placeholder="historyDetails" value="Data" required 
+                  [(ngModel)]="newFollowUp.historyDetails" [ngModelOptions]="{standalone: true}"
+                  #history="ngModel">
               </div>
 
               <div class="form-group">
                 <label for="observation" i18n>observation</label>
-                <input type="text" class="form-control" id="observation" i18n-placeholder placeholder="Observation" value="Data" required [(ngModel)]="newFollowUp.observation"
+                <input type="text" class="form-control" id="observation" i18n-placeholder 
+                placeholder="Observation" value="Data" [(ngModel)]="newFollowUp.observation"
                   [ngModelOptions]="{standalone: true}">
               </div>
 
@@ -103,7 +109,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button i18n type="button" class="btn" (click)="saveFollowUp()" data-dismiss="modal">Save</button>
+        <button i18n type="button" class="btn" (click)="saveFollowUp()" data-dismiss="modal"
+          [disabled]="title.errors?.required || subject.errors?.required || history.errors?.required">
+          Save
+        </button>
       </div>
     </div>
   </div>
