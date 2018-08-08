@@ -15,7 +15,7 @@ export class ParentManagementComponent implements OnInit {
   constructor(private modalService: NgbModal, 
               private parentsSvc: ParentsService) {
     this.parents = [];
-    this.parentInfo = { userType: "parent", password: "password" };
+    this.parentInfo = { userType: "parent", password: "password", email: "" };
    }
 
   ngOnInit() {

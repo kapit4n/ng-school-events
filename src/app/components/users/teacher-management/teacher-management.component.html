@@ -9,8 +9,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <input type="email" placeholder="email@gmail.com" [(ngModel)]="teacherInfo.email">
-          <button i18n type="submit" class="btn btn-primary" (click)="inviteTeacher()">Invite</button>
+          <input type="email" placeholder="email@gmail.com" [(ngModel)]="teacherInfo.email"
+            required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            #invite="ngModel" [ngModelOptions]="{standalone: true}">
+          <button i18n type="submit" class="btn btn-primary" (click)="inviteTeacher()"
+           [disabled]="invite.errors?.required || invite.errors?.pattern">Invite</button>
         </div>
         <app-user-invite-list [users]="teachers"></app-user-invite-list>
       </div>

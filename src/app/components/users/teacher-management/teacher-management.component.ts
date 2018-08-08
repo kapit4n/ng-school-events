@@ -15,7 +15,7 @@ export class TeacherManagementComponent implements OnInit {
     constructor(private modalService: NgbModal,
         private teachersSvc: TeachersService) {
         this.teachers = [];
-        this.teacherInfo = { userType: "teacher", password: "password" };
+        this.teacherInfo = { userType: "teacher", password: "password", email: "" };
     }
 
     ngOnInit() {
