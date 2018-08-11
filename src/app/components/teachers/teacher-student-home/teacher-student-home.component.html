@@ -103,9 +103,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button i18n type="button" class="btn" (click)="saveFollowUp()" data-dismiss="modal"
+        <button type="button" class="btn" (click)="saveFollowUp()" data-dismiss="modal"
           [disabled]="title.errors?.required || subject.errors?.required || history.errors?.required">
-          Save
+          <ng-container i18n>Save</ng-container>
         </button>
       </div>
     </div>
