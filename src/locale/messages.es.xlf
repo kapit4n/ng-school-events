@@ -2354,7 +2354,7 @@
       </trans-unit>
       <trans-unit id="a6f88e4347acee39942847726d82dd16d8c2c43a" datatype="html">
         <source>New Password required.</source>
-        <target>"Nueva Contraseña" es campo requerido</target>
+        <target>Este campo es requerido</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/auth/change-password/change-password.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -2398,7 +2398,7 @@
       </trans-unit>
       <trans-unit id="8ae164b76307a6217cd7517c39e5dc66c4140f68" datatype="html">
         <source>Repeat Password required.</source>
-        <target>"Repita Contraseña" es campo requerido.</target>
+        <target>Este campo es requerido.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/auth/change-password/change-password.component.ts</context>
           <context context-type="linenumber">35</context>
