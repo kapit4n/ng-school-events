@@ -39,7 +39,7 @@ export class ParentsService {
       .map(res => res.json());
   }
 
-  public getParents(limit = 1, skip = 0): Observable<any> {
+  public getParents(limit = 10, skip = 0): Observable<any> {
     return this.http
       .get(
         `${this.configSvc.backendUrl}/${
