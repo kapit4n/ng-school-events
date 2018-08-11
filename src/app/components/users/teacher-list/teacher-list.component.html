@@ -13,7 +13,7 @@
       <td>{{teacher.email}}</td>
       <td>{{teacher.teachers ? teacher.teachers.firstName : ''}} {{teacher.teachers ? teacher.teachers.lastName : ''}}</td>
       <td>{{teacher.teachers ? teacher.teachers.gender : ''}}</td>
-      <td>{{teacher.emailVerified ? 'Yes' : 'No'}}</td>
+      <td>{{teacher.emailVerified ? 'Si' : 'No'}}</td>
       <td>
         <a class="btn btn-outline-info btn-space" href="teacher-management/{{teacher.teachers?.id}}" *ngIf="teacher.emailVerified">
           <span class="fa fa-info-circle" aria-hidden="true"></span>
