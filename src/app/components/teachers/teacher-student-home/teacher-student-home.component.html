@@ -19,7 +19,6 @@
       <th scope="col" i18n>Is Absent</th>
       <th scope="col" i18n>Title</th>
       <th scope="col" i18n>historyDetails</th>
-      <th scope="col" i18n>Observation</th>
       <th scope="col" i18n>Actions</th>
     </tr>
   </thead>
@@ -31,7 +30,6 @@
       <td>{{follow.isAbsent}}</td>
       <td>{{follow.title}}</td>
       <td>{{follow.historyDetails}}</td>
-      <td>{{follow.observation}}</td>
       <td>
         <button type="button" class="btn btn-outline-secondary btn-space" data-toggle="modal" data-target="#editFollowUpModel" (click)="openEdit(follow)">
           <span class="fa fa-edit" aria-hidden="true"></span>
@@ -62,8 +60,8 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="subject" i18n>Subject</label>
-                <input type="text" class="form-control" id="subject" i18n-placeholder 
-                placeholder="Subject" value="Data" required [(ngModel)]="newFollowUp.subject" 
+                <input type="text" class="form-control" id="subject" i18n-placeholder
+                placeholder="Subject" value="Data" required [(ngModel)]="newFollowUp.subject"
                 required  #subject="ngModel"
                   [ngModelOptions]="{standalone: true}">
               </div>
@@ -84,25 +82,21 @@
 
               <div class="form-group">
                 <label for="title" i18n>Title</label>
-                <input type="text" class="form-control" id="title" i18n-placeholder placeholder="Title" 
+                <input type="text" class="form-control" id="title" i18n-placeholder placeholder="Title"
                 value="Data" required [(ngModel)]="newFollowUp.title" required #title="ngModel"
                   [ngModelOptions]="{standalone: true}">
               </div>
 
               <div class="form-group">
-                <label for="historyDetails" i18n>historyDetails</label>
-                <input type="text" class="form-control" id="historyDetails" i18n-placeholder 
-                  placeholder="historyDetails" value="Data" required 
+                <label  for="historyDetails" i18n>historyDetails</label>
+                <textarea rows="3" class="form-control" id="historyDetails" i18n-placeholder
+                  placeholder="historyDetails" value="Data" required
                   [(ngModel)]="newFollowUp.historyDetails" [ngModelOptions]="{standalone: true}"
-                  #history="ngModel">
+                  #history="ngModel"></textarea>
               </div>
 
-              <div class="form-group">
-                <label for="observation" i18n>observation</label>
-                <input type="text" class="form-control" id="observation" i18n-placeholder 
-                placeholder="Observation" value="Data" [(ngModel)]="newFollowUp.observation"
-                  [ngModelOptions]="{standalone: true}">
-              </div>
+              <!--<div class="newFollowUp.observation removed">-->
+
 
             </div>
           </div>
@@ -157,15 +151,11 @@
 
               <div class="form-group">
                 <label for="historyDetails" i18n>historyDetails</label>
-                <input type="text" class="form-control" id="historyDetails" i18n-placeholder placeholder="historyDetails" value="Data" required [(ngModel)]="editFollowUp.historyDetails"
-                  [ngModelOptions]="{standalone: true}">
+                <textarea rows="3" class="form-control" id="historyDetails" i18n-placeholder placeholder="historyDetails" value="Data" required [(ngModel)]="editFollowUp.historyDetails"
+                  [ngModelOptions]="{standalone: true}"></textarea>
               </div>
 
-              <div class="form-group">
-                <label for="observation" i18n>observation</label>
-                <input type="text" class="form-control" id="observation" i18n-placeholder placeholder="Observation" value="Data" required [(ngModel)]="editFollowUp.observation"
-                  [ngModelOptions]="{standalone: true}">
-              </div>
+              <!--<div class="newFollowUp.observation removed">-->
 
             </div>
           </div>
