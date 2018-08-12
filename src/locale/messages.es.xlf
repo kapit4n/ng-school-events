@@ -1434,7 +1434,7 @@
       </trans-unit>
       <trans-unit id="a338ba716dd8d91cfb584a4c387bf3f3edca5dda" datatype="html">
         <source>Set As Current Year</source>
-        <target>Establecer como Gestión Escolar</target>
+        <target>Establecer como Gestión Actual</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -1449,8 +1449,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="18507dd3a63ef1cfdb1f4535bb4c6e4410ea841b" datatype="html">
-        <source>Assign Courses to School Year</source>
-        <target>Asignar Cursos a Gestion Escolar</target>
+        <source>Assign Courses to</source>
+        <target>Asignar Cursos a</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/admin/year-home/year-home.component.ts</context>
           <context context-type="linenumber">42</context>

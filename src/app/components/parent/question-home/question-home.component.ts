@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ParentsService } from '../../../services/parents.service';
 import { QuestionsService } from '../../../services/questions.service';
 import { RolesService } from '../../../services/roles.service';
@@ -18,8 +19,10 @@ export class QuestionHomeComponent implements OnInit {
   questionMap = [];
   newQuestion: any;
   hasResponse = false;
+  closeResult: string;
 
   constructor(
+    private modalService: NgbModal,
     private route: ActivatedRoute,
     private parentsSvc: ParentsService,
     private rolesSvc: RolesService,
@@ -149,5 +152,26 @@ export class QuestionHomeComponent implements OnInit {
     this.questionsSvc.removeQuestion(id).subscribe(res => {
       this.questions = this.questions.filter(q => q.id != id);
     });
+  }
+
+  open(content) {
+    this.modalService.open(content, { size: 'lg' }).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

@@ -12,7 +12,7 @@ export class TeacherInfoComponent implements OnInit {
   editLabel: string;
   constructor(private teachersSvc: TeachersService) {
     this.editInfoFlag = false;
-    this.editLabel = "Edit";
+    this.editLabel = "Editar";
     this.teacher = {};
   }
 
@@ -27,9 +27,9 @@ export class TeacherInfoComponent implements OnInit {
 
     this.editInfoFlag = !this.editInfoFlag;
     if (this.editInfoFlag) {
-      this.editLabel = "Save"
+      this.editLabel = "Guardar"
     } else {
-      this.editLabel = "Edit"
+      this.editLabel = "Editar"
     }
   }
 
