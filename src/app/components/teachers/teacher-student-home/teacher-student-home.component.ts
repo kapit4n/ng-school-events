@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FollowUpsService } from "../../../services/follow-ups.service";
 import { ConfigurationService } from "../../../services/configuration.service";
 import { RolesService } from "../../../services/roles.service";
@@ -20,12 +21,14 @@ export class TeacherStudentHomeComponent implements OnInit {
   newFollowUp: any;
   editFollowUp: any;
   searchText = "";
+  closeResult: string;
 
   pages = 0;
   currentPage = 1;
   rangePages = [];
 
   constructor(
+    private modalService: NgbModal,
     private route: ActivatedRoute,
     private followUpsSvc: FollowUpsService,
     private confSvc: ConfigurationService,
@@ -97,10 +100,10 @@ export class TeacherStudentHomeComponent implements OnInit {
   saveFollowUp() {
     this.sendFollowUpNofication("An Follow up was created");
     this.sendFollowUpReadNofication("");
-    
+
     this.newFollowUp.registeredDate = new Date();
     this.newFollowUp.studentId = this.studentId;
-    
+
     this.followUpsSvc.registerFollowUp(this.newFollowUp).subscribe(follow => {
       this.bellNotificationsSvc.registerNotification({ studentId: this.studentId }).subscribe(res => {});
       this.loadFollowUps();
@@ -109,7 +112,7 @@ export class TeacherStudentHomeComponent implements OnInit {
   }
 
   updateFollowUp() {
-    this.sendFollowUpNofication("An Follow up was Updated");    
+    this.sendFollowUpNofication("An Follow up was Updated");
     this.followUpsSvc.updateFollowUp(this.editFollowUp).subscribe(follow => {
       this.loadFollowUps();
     });
@@ -122,7 +125,36 @@ export class TeacherStudentHomeComponent implements OnInit {
     });
   }
 
-  openEdit(toEdit) {
+  open(content) {
+    this.modalService.open(content, { size: 'lg' }).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  openEdit(toEdit, content) {
     this.editFollowUp = toEdit;
+    this.modalService.open(content, { size: 'lg' }).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
   }
 }

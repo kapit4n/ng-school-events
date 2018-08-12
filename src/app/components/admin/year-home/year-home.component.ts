@@ -83,7 +83,7 @@ export class YearHomeComponent implements OnInit {
   addAllCourses() {}
 
   open(content) {
-    this.modalService.open(content).result.then(
+    this.modalService.open(content, { size: 'lg' }).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;
       },
