@@ -21,6 +21,8 @@ export class QuestionHomeComponent implements OnInit {
   hasResponse = false;
   closeResult: string;
 
+  public isCollapsedMap = [];
+
   constructor(
     private modalService: NgbModal,
     private route: ActivatedRoute,
@@ -42,6 +44,7 @@ export class QuestionHomeComponent implements OnInit {
     if (this.courseId) {
         this.questionsSvc.getQuestions(this.courseId)
             .subscribe(questions => {
+              this.isCollapsedMap.push(false);
               this.questionMap = questions.reduce(function(map, obj) {
                 map[obj.id] = obj;
                 return map;
@@ -68,6 +71,7 @@ export class QuestionHomeComponent implements OnInit {
           this.questionsSvc
             .getQuestions(this.courseStudent['course-year'].courseId)
             .subscribe(questions => {
+              this.isCollapsedMap.push(false);
               this.questionMap = questions.reduce(function(map, obj) {
                 map[obj.id] = obj;
                 return map;
@@ -111,6 +115,7 @@ export class QuestionHomeComponent implements OnInit {
       }
 
       this.questions.push(question);
+      this.isCollapsedMap.push(false);
       this.questionMap[question.id] = question;
       this.newQuestion = {};
     });
@@ -151,6 +156,7 @@ export class QuestionHomeComponent implements OnInit {
   removeQuestion(id) {
     this.questionsSvc.removeQuestion(id).subscribe(res => {
       this.questions = this.questions.filter(q => q.id != id);
+      this.isCollapsedMap.splice(-1, 1);
     });
   }
 

@@ -10,7 +10,10 @@ import { RolesService } from "../../services/roles.service";
 })
 export class HomeComponent implements OnInit {
 
-  public isCollapsed = false;
+  public isCollapsed1 = false;
+  public isCollapsed2 = true;
+  public isCollapsed3 = true;
+  public isCollapsed4 = true;
 
   constructor(private configSvc: ConfigurationService, public authSvc: AuthService, public rolesSvc: RolesService) {
 

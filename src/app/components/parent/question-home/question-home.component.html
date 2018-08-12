@@ -1,12 +1,12 @@
 <button i18n class="btn btn-primary" (click)="open(content)">Add Question</button>
 
 <div id="accordion">
-  <div class="card" *ngFor="let question of questions">
+  <div class="card" *ngFor="let question of questions; let i = index">
     <div class="card-header" id="heading{{question.id}}">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" attr.data-target="#collapse{{question.id}}"
+        <button class="btn btn-link collapsed" (click)="isCollapsedMap[i] = !isCollapsedMap[i]" data-toggle="collapse" attr.data-target="#collapse{{question.id}}"
           aria-expanded="true" attr.aria-controls="collapse{{question.id}}">
-          {{question.title}}
+          <span>&#9733; <b>{{question.title}}</b> &#9733;</span>
         </button> <br>
         <small class="pull-left text-muted">
           <span class="glyphicon glyphicon-time"></span><ng-container i18n>Asked by: </ng-container>{{question.parent?.firstName}} {{question.parent?.lastName}} {{question.teacher?.firstName}} {{question.teacher?.lastName}}</small>
@@ -14,7 +14,7 @@
       </h5>
     </div>
 
-    <div id="collapse{{question.id}}" class="collapse" attr.aria-labelledby="heading{{question.id}}"
+    <div id="collapse{{question.id}}" [ngbCollapse]="isCollapsedMap[i]" class="collapse" attr.aria-labelledby="heading{{question.id}}"
      attr.data-parent="#accordion">
       <div class="card-body">
         <p>
