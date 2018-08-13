@@ -62,7 +62,7 @@ export class StudentListComponent implements OnInit {
   }
 
   updateStudent() {
-    this.studentsSvc.updateStudent(this.updateStudent).subscribe(student => {
+    this.studentsSvc.updateStudent(this.editStudent).subscribe(student => {
       this.loadStudents();
     });
   }

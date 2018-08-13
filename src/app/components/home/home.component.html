@@ -22,12 +22,12 @@
               <div class="card">
                 <div class="card-header" id="heading1">
                   <h6 class="mb-0">
-                    <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
+                    <div href="#collapse1" (click)="isCollapsed1 = !isCollapsed1" data-parent="#accordion">
                       <i class="fa fa-arrow-circle-down"></i> Invite Usuarios al Sistema
                     </div>
                   </h6>
                 </div>
-                <div id="collapse1" class="collapse show">
+                <div id="collapse1" [ngbCollapse]="isCollapsed1" >
                   <div class="card-body">
                     Como un Administrador, usted puede invitar padres y profesores al sistema, con la finalidad de que ellos puedan autenticarse y revisar el contenido de la aplicación.
                   </div>
@@ -36,12 +36,12 @@
               <div class="card">
                 <div class="card-header" id="heading2">
                   <h6 class="mb-0">
-                    <div href="#collapse2" data-toggle="collapse" data-parent="#accordion">
+                    <div href="#collapse2" (click)="isCollapsed2 = !isCollapsed2" data-parent="#accordion">
                       <i class="fa fa-arrow-circle-down"></i> Registre Estudiantes
                     </div>
                   </h6>
                 </div>
-                <div id="collapse2" class="collapse">
+                <div id="collapse2" [ngbCollapse]="isCollapsed2">
                   <div class="card-body">
                     Como un Administrador, usted puede registrar estudiantes, sin duda el elemento de información mas importante del sistema.
                   </div>
@@ -50,12 +50,12 @@
               <div class="card">
                 <div class="card-header" id="heading3">
                   <h6 class="mb-0">
-                    <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
+                    <div href="#collapse3" (click)="isCollapsed3 = !isCollapsed3"  data-parent="#accordion">
                       <i class="fa fa-arrow-circle-down"></i>  Maneje Gestiones Escolares
                     </div>
                   </h6>
                 </div>
-                <div id="collapse3" class="collapse">
+                <div id="collapse3" [ngbCollapse]="isCollapsed3">
                   <div class="card-body">
                     Como un Administrador, usted puede manejar gestiones escolares, con la finalidad de poder usarlos como contenedores de información del actual periodo escolar. Tome en cuenta que es neceario definir una gestión como gestión actual para empezar a trabajar en ella.
                   </div>
@@ -64,13 +64,13 @@
               <div class="card">
                 <div class="card-header" id="heading4">
                   <h6 class="mb-0">
-                    <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
+                    <div href="#collapse4" (click)="isCollapsed4 = !isCollapsed4"  data-parent="#accordion">
                       <i class="fa fa-arrow-circle-down"></i>  Registre Cursos
                     </div>
                   </h6>
                 </div>
 
-                <div id="collapse4" class="collapse">
+                <div id="collapse4" [ngbCollapse]="isCollapsed4">
                   <div class="card-body">
                     Como un Administrador, usted puede registrar cursos con la finalidad de brindar un espacio en el cual los padres y profesores compartan su información.
                   </div>
@@ -134,12 +134,12 @@
               <div class="card">
                 <div class="card-header" id="heading1">
                   <h6 class="mb-0">
-                    <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
+                    <div href="#collapse1" (click)="isCollapsed1 = !isCollapsed1" data-parent="#accordion">
                       <i class="fa fa-arrow-circle-down"></i> Revise sus cursos
                     </div>
                   </h6>
                 </div>
-                <div id="collapse1" class="collapse show">
+                <div id="collapse1" [ngbCollapse]="isCollapsed1">
                   <div class="card-body">
                     Como un Profesor, usted puede revisar los cursos a los cuales esta asignado
                   </div>
@@ -148,12 +148,12 @@
               <div class="card">
                 <div class="card-header" id="heading2">
                   <h6 class="mb-0">
-                    <div href="#collapse2" data-toggle="collapse" data-parent="#accordion">
+                    <div href="#collapse2" (click)="isCollapsed2 = !isCollapsed2"  data-parent="#accordion">
                       <i class="fa fa-arrow-circle-down"></i> Gestione a sus estudiantes
                     </div>
                   </h6>
                 </div>
-                <div id="collapse2" class="collapse">
+                <div id="collapse2" [ngbCollapse]="isCollapsed2">
                   <div class="card-body">
                     Como un Profesor, usted puede ver los detalles de cada uno de los estudiantes inscritos a los cursos alos cuales usted esta asignado.
                   </div>

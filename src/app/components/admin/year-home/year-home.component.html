@@ -9,9 +9,9 @@
   <dd>{{schoolYear.endDate | date:'fullDate'}}</dd>
 </dl>
 
-<button i18n class="btn btn-primary" (click)="setAsCurrent()" *ngIf="!schoolYear.isCurrent">Set As Current Year</button>
+<button i18n class="btn btn-primary mr-2" (click)="setAsCurrent()" *ngIf="!schoolYear.isCurrent">Set As Current Year</button>
 
-<button i18n class="btn btn-primary" data-toggle="modal" data-target="#coursesModal">Assign Courses</button>
+<button i18n class="btn btn-primary" (click)="open(content)">Assign Courses</button>
 
 <p class="h6 my-3"><u><ng-container i18n>Courses associated to this school year:</ng-container></u></p>
 
@@ -35,44 +35,42 @@
   </tbody>
 </table>
 
-<div class="modal" id="coursesModal">
-  <div class="modal-dialog  modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"><ng-container i18n>Assign Courses to School Year</ng-container> {{schoolYear?.year}}</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <span i18n class="bold">Available Courses</span>
-              <ul class="list-group list-group-flush more-space">
-                <li class="list-group-item" *ngFor="let course of availableCourses">
-                  {{course.name}}
-                  <button type="button" class="btn btn-outline-primary btn-sm pull-right" (click)="addCourse(course)">
-                    <span class="fa fa-arrow-right" aria-hidden="true"></span>
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <span i18n class="bold">Assigned Courses</span>
-              <ul class="list-group list-group-flush more-space">
-                <li class="list-group-item" *ngFor="let assigCourse of assignedCourses">
-                  <button type="button" class="btn btn-outline-primary btn-sm pull-left" (click)="removeCourse(assigCourse.id)">
-                    <span class="fa fa-arrow-left" aria-hidden="true"></span>
-                  </button> &nbsp; &nbsp;
-                  {{assigCourse.course.name}}
-                </li>
-              </ul>
-            </div>
-          </div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title"><ng-container i18n>Asignar Cursos a</ng-container> {{schoolYear?.year}}</h4>
+    <button type="button" class="close" i18n-aria-label aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <span i18n class="bold">Available Courses</span>
+          <ul class="list-group list-group-flush more-space">
+            <li class="list-group-item" *ngFor="let course of availableCourses">
+              {{course.name}}
+              <button type="button" class="btn btn-outline-primary btn-sm pull-right" (click)="addCourse(course)">
+                <span class="fa fa-arrow-right" aria-hidden="true"></span>
+              </button>
+            </li>
+          </ul>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button i18n type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="col-md-6">
+          <span i18n class="bold">Assigned Courses</span>
+          <ul class="list-group list-group-flush more-space">
+            <li class="list-group-item" *ngFor="let assigCourse of assignedCourses">
+              <button type="button" class="btn btn-outline-primary btn-sm pull-left" (click)="removeCourse(assigCourse.id)">
+                <span class="fa fa-arrow-left" aria-hidden="true"></span>
+              </button> &nbsp; &nbsp;
+              {{assigCourse.course.name}}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="modal-footer">
+    <button i18n type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

@@ -13,7 +13,7 @@
       <td>{{parentUser.email ? parentUser.email: ''}}</td>
       <td>{{parentUser.parents ? parentUser.parents.firstName : ''}} {{parentUser.parents ? parentUser.parents.lastName : ''}}</td>
       <td>{{parentUser.parents ? parentUser.parents.gender : ''}}</td>
-      <td>{{parentUser?.emailVerified ? 'Yes' : 'No'}}</td>
+      <td>{{parentUser?.emailVerified ? 'Si' : 'No'}}</td>
       <td>
         <a class="btn btn-outline-info btn-space" href="parent-management/{{parentUser.parents.id}}"  *ngIf="parentUser.parents">
           <span class="fa fa-info-circle" aria-hidden="true"></span>

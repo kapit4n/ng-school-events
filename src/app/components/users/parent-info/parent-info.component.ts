@@ -12,7 +12,7 @@ export class ParentInfoComponent implements OnInit {
   editLabel: string;
   constructor(private parentsSvc: ParentsService) {
     this.editInfoFlag = false;
-    this.editLabel = "Edit";
+    this.editLabel = "Editar";
     this.parent = {};
   }
 
@@ -28,9 +28,9 @@ export class ParentInfoComponent implements OnInit {
 
     this.editInfoFlag = !this.editInfoFlag;
     if (this.editInfoFlag) {
-      this.editLabel = "Save"
+      this.editLabel = "Guardar"
     } else {
-      this.editLabel = "Edit"
+      this.editLabel = "Editar"
     }
   }
 

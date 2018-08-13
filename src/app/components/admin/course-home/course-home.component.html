@@ -5,7 +5,7 @@
   <dd>{{courseYear.course?.details}}</dd>
 </dl>
 
-<button i18n class="btn btn-primary" data-toggle="modal" data-target="#studentsModal">Assign Student</button>
+<button i18n class="btn btn-primary" (click)="open(content)">Assign Student</button>
 
 <p class="h6 my-3"><u><ng-container i18n>Students assigned to this course:</ng-container></u></p>
 
@@ -29,44 +29,43 @@
   </tbody>
 </table>
 
-<div class="modal" id="studentsModal">
-  <div class="modal-dialog  modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"><ng-container i18n>Assign Student to</ng-container> {{courseYear.course?.name}}</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <span i18n class="bold">Available Students</span>
-              <ul class="list-group list-group-flush more-space">
-                <li class="list-group-item" *ngFor="let student of availableStudents">
-                  {{student?.firstName}} {{student?.lastName}}
-                  <button type="button" class="btn btn-outline-primary btn-sm pull-right" (click)="addStudent(student)">
-                    <span class="fa fa-arrow-right" aria-hidden="true"></span>
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <span i18n class="bold">Assigned Students</span>
-              <ul class="list-group list-group-flush more-space">
-                <li class="list-group-item" *ngFor="let student of assignedStudents">
-                  <button type="button" class="btn btn-outline-primary btn-sm pull-left" (click)="removeStudent(student.id)">
-                    <span class="fa fa-arrow-left" aria-hidden="true"></span>
-                  </button> &nbsp; &nbsp;
-                  {{student.student?.firstName}} {{student.student?.lastName}}
-                </li>
-              </ul>
-            </div>
-          </div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title"><ng-container i18n>Assign Student to</ng-container> {{courseYear.course?.name}}</h4>
+    <button type="button" class="close" i18n-aria-label aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <span i18n class="bold">Available Students</span>
+          <ul class="list-group list-group-flush more-space">
+            <li class="list-group-item" *ngFor="let student of availableStudents">
+              {{student?.firstName}} {{student?.lastName}}
+              <button type="button" class="btn btn-outline-primary btn-sm pull-right" (click)="addStudent(student)">
+                <span class="fa fa-arrow-right" aria-hidden="true"></span>
+              </button>
+            </li>
+          </ul>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button i18n type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="col-md-6">
+          <span i18n class="bold">Assigned Students</span>
+          <ul class="list-group list-group-flush more-space">
+            <li class="list-group-item" *ngFor="let student of assignedStudents">
+              <button type="button" class="btn btn-outline-primary btn-sm pull-left" (click)="removeStudent(student.id)">
+                <span class="fa fa-arrow-left" aria-hidden="true"></span>
+              </button> &nbsp; &nbsp;
+              {{student.student?.firstName}} {{student.student?.lastName}}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="modal-footer">
+    <button i18n type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
