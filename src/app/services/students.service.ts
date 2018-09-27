@@ -80,6 +80,16 @@ export class StudentsService {
       .map(res => res.json());
   }
 
+  public getCurrentCourse(studentId = "", courseYearId): Observable<any[]> {
+    return this.http
+      .get(
+        `${this.configSvc.backendUrl}/${
+          this.cStudentUrl
+        }?filter[include]=course-year&filter[include]=student&filter[where][studentId]=${studentId}&filter[where][course-yearId]=${courseYearId}`
+      )
+      .map(res => res.json());
+  }
+
   public getCourseYears(courseSudents): Observable<any> {
     var where = "filter[where][id]eq]=" + courseSudents[0]["course-year"].id;
     if (courseSudents.length > 1)

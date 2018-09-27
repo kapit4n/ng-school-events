@@ -87,6 +87,12 @@ export class SchoolYearsService {
       .map(res => res.json());
   }
 
+  public getCurrentSchoolYear(): Observable<any[]> {
+    return this.http
+      .get(this.configSvc.backendUrl + "/school-years?filter[where][isCurrent]=true")
+      .map(res => res.json());
+  }
+
   public removeCourseFromYear(courseId): Observable<any> {
     return this.http
       .delete(this.configSvc.backendUrl + "/course-years/" + courseId)

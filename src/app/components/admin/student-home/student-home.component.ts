@@ -4,14 +4,14 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { CoursesService } from "../../../services/courses.service";
 import { StudentsService } from "../../../services/students.service";
 import { ParentsService } from "../../../services/parents.service";
+import { SchoolYearsService } from "../../../services/school-years.service";
 
 @Component({
-  selector: 'app-student-home',
-  templateUrl: './student-home.component.html',
-  styleUrls: ['./student-home.component.css']
+  selector: "app-student-home",
+  templateUrl: "./student-home.component.html",
+  styleUrls: ["./student-home.component.css"]
 })
 export class StudentHomeComponent implements OnInit {
-
   closeResult: string;
   assignedCourses = [];
   availableCourses = [];
@@ -20,12 +20,16 @@ export class StudentHomeComponent implements OnInit {
   studentId = "";
   confMessage = "";
   student: any;
+  currentYear: any;
   constructor(
     private modalService: NgbModal,
-    private route: ActivatedRoute, private parentsSvc: ParentsService, private coursesSvc: CoursesService,
-    private studentsSvc: StudentsService) {
-      this.student = {};
-    }
+    private route: ActivatedRoute,
+    private parentsSvc: ParentsService,
+    private coursesSvc: CoursesService,
+    private studentsSvc: StudentsService,
+    private schoolYearsSvc: SchoolYearsService) {
+    this.student = {};
+  }
 
   ngOnInit() {
     this.studentId = this.route.snapshot.paramMap.get("id");
@@ -41,95 +45,108 @@ export class StudentHomeComponent implements OnInit {
   loadCourses() {
     this.availableCourses = [];
     this.assignedCourses = [];
-    this.studentsSvc
-      .getCourses(this.studentId)
-      .subscribe(courseStudents => {
-        if (courseStudents.length > 0){
+    this.schoolYearsSvc.getCurrentSchoolYear().subscribe(current => {
+      this.currentYear = current[0];
+      console.log(this.currentYear);
+      this.studentsSvc.getCourses(this.studentId).subscribe(courseStudents => {
+        if (courseStudents.length > 0) {
           this.studentsSvc
-          .getCourseYears(courseStudents)
-          .subscribe(courseYears => {
-            this.assignedCourses = courseYears;
-            this.coursesSvc.getCoursesByYear().subscribe(courses => {
-                courses.forEach(course => {
-                  if ( !this.assignedCourses.some(c => c.id == course.id) ) {
-                    this.availableCourses.push(course);
-                  }
+            .getCourseYears(courseStudents)
+            .subscribe(courseYears => {
+              this.assignedCourses = courseYears;
+              this.coursesSvc
+                .getCurrentCoursesByYear(this.currentYear.id)
+                .subscribe(courses => {
+                  courses.forEach(course => {
+                    if (
+                      !this.assignedCourses.some(
+                        c => c.id == course.id
+                      )
+                    ) {
+                      this.availableCourses.push(course);
+                    }
+                  });
+                  this.availableCourses.sort((n1, n2) =>
+                    n1.name.localeCompare(n2.name)
+                  );
                 });
-                this.availableCourses.sort((n1, n2) =>
-                  n1.name.localeCompare(n2.name)
-                );
-              });
             });
-          } else {
-            this.coursesSvc.getCoursesByYear().subscribe(courses => {
-              this.availableCourses = courses;
-              this.availableCourses.sort((n1, n2) =>
-                n1.course.name.localeCompare(n2.course.name)
-              );
-            });
-            }
-          });
-        }
-
-  loadParents() {
-    this.studentsSvc
-      .getParents(this.studentId)
-      .subscribe(assigned => {
-        this.aParents = assigned;
-        this.availableParents = [];
-        if (this.aParents.length > 0) {
-          this.parentsSvc.getParents().subscribe(parents => {
-            parents.forEach(parent => {
-              if (!this.aParents.some(p => p.parent.id == parent.parents.id && parent.emailVerified)) {
-                this.availableParents.push(parent);
-              }
-            });
-            this.availableParents.sort((n1, n2) =>
-              n1.parents.firstName.localeCompare(n2.parents.firstName)
-            );
-          });
         } else {
-          this.parentsSvc.getParents().subscribe(parents => {
-            parents.forEach(parent => {
-              if (parent.emailVerified) {
-                this.availableParents.push(parent);
-              }
+          console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+          this.coursesSvc
+            .getCurrentCoursesByYear(this.currentYear.id)
+            .subscribe(courses => {
+              console.log(courses);
+              this.availableCourses = courses;
+              //this.availableCourses.sort((n1, n2) =>
+              //  n1.course.name.localeCompare(n2.course.name)
+              //);
             });
-            this.availableParents.sort((n1, n2) =>
-              n1.parents.firstName.localeCompare(n2.parents.firstName)
-            );
-          });
         }
-      });
-  }
-
-  addCourse(course) {
-    let courseYear = { "course-yearId": course.id, studentId: this.studentId };
-    this.coursesSvc
-      .addStudentToCourse(courseYear)
-      .subscribe(updatedCourse => {
-        this.loadCourses();
-      });
-  }
-
-  removeCourse(courseId) {
-    this.coursesSvc.getCourseStudentRel(courseId, this.studentId).subscribe(rel => {
-      this.coursesSvc
-        .removeStudentFromCourse(rel[0].id)
-        .subscribe(res => {
-        this.confMessage = "Course Removed";
-        this.loadCourses();
       });
     });
   }
 
-  addParent(userParent) {
-    let parentStudent = { parentId: userParent.parents.id, studentId: this.studentId };
-    this.studentsSvc
-      .saveParentStudentRel(parentStudent)
-      .subscribe( _ => {
-        this.loadParents();
+  loadParents() {
+    this.studentsSvc.getParents(this.studentId).subscribe(assigned => {
+      this.aParents = assigned;
+      this.availableParents = [];
+      if (this.aParents.length > 0) {
+        this.parentsSvc.getParents().subscribe(parents => {
+          parents.forEach(parent => {
+            if (
+              !this.aParents.some(
+                p => p.parent.id == parent.parents.id && parent.emailVerified
+              )
+            ) {
+              this.availableParents.push(parent);
+            }
+          });
+          this.availableParents.sort((n1, n2) =>
+            n1.parents.firstName.localeCompare(n2.parents.firstName)
+          );
+        });
+      } else {
+        this.parentsSvc.getParents().subscribe(parents => {
+          parents.forEach(parent => {
+            if (parent.emailVerified) {
+              this.availableParents.push(parent);
+            }
+          });
+          this.availableParents.sort((n1, n2) =>
+            n1.parents.firstName.localeCompare(n2.parents.firstName)
+          );
+        });
+      }
+    });
+  }
+
+  addCourse(course) {
+    let courseYear = { "course-yearId": course.id, studentId: this.studentId };
+    this.coursesSvc.addStudentToCourse(courseYear).subscribe(updatedCourse => {
+      this.loadCourses();
+    });
+  }
+
+  removeCourse(courseId) {
+    this.coursesSvc
+      .getCourseStudentRel(courseId, this.studentId)
+      .subscribe(rel => {
+        this.coursesSvc.removeStudentFromCourse(rel[0].id).subscribe(res => {
+          this.confMessage = "Course Removed";
+          this.loadCourses();
+        });
       });
+  }
+
+  addParent(userParent) {
+    let parentStudent = {
+      parentId: userParent.parents.id,
+      studentId: this.studentId
+    };
+    this.studentsSvc.saveParentStudentRel(parentStudent).subscribe(_ => {
+      this.loadParents();
+    });
   }
 
   removeParent(relId) {
@@ -139,12 +156,10 @@ export class StudentHomeComponent implements OnInit {
     });
   }
 
-  addAllCourses() {
-
-  }
+  addAllCourses() {}
 
   open(content) {
-    this.modalService.open(content, { size: 'lg' }).result.then(
+    this.modalService.open(content, { size: "lg" }).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;
       },
@@ -163,5 +178,4 @@ export class StudentHomeComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
 }

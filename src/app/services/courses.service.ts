@@ -96,6 +96,15 @@ export class CoursesService {
     }
   }
 
+  public getCurrentCoursesByYear(currentYearId = "", page = 0): Observable<any[]> {
+    
+    return this.http
+      .get(
+      `${this.configSvc.backendUrl}/${this.cYearUrl}?filter[include]=course&[filter][where][schoolYearId]=${currentYearId}`
+      )
+      .map(res => res.json());
+  }
+
   public getCourseTeacherRel(courseId, teacherId): Observable<any> {
     return this.http
       .get(
