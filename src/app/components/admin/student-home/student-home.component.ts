@@ -47,40 +47,52 @@ export class StudentHomeComponent implements OnInit {
     this.assignedCourses = [];
     this.schoolYearsSvc.getCurrentSchoolYear().subscribe(current => {
       this.currentYear = current[0];
-      console.log(this.currentYear);
+      //console.log("this.currentYear");
+      //console.log(this.currentYear);
       this.studentsSvc.getCourses(this.studentId).subscribe(courseStudents => {
+        //console.log("getCourses() courseStudents");
+        //console.log(courseStudents);
+
         if (courseStudents.length > 0) {
           this.studentsSvc
             .getCourseYears(courseStudents)
             .subscribe(courseYears => {
               this.assignedCourses = courseYears;
+              //console.log("getCourseYears() assignedCourses");
+              //console.log(this.assignedCourses);
+
               this.coursesSvc
                 .getCurrentCoursesByYear(this.currentYear.id)
                 .subscribe(courses => {
                   courses.forEach(course => {
-                    if (
-                      !this.assignedCourses.some(
-                        c => c.id == course.id
-                      )
-                    ) {
+                    if ( !this.assignedCourses.some( c => c.id == course.id ) ) {
                       this.availableCourses.push(course);
                     }
                   });
                   this.availableCourses.sort((n1, n2) =>
-                    n1.name.localeCompare(n2.name)
+                  {
+                    if (!n2 || !n1) {
+                      return 0
+                    }
+                    n1.course.name.localeCompare(n2.course.name)
+                  }
                   );
                 });
             });
         } else {
-          console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+          
           this.coursesSvc
             .getCurrentCoursesByYear(this.currentYear.id)
             .subscribe(courses => {
-              console.log(courses);
+              //console.log("getCurrentCoursesByYear courses");
+              //console.log(courses);
               this.availableCourses = courses;
-              //this.availableCourses.sort((n1, n2) =>
-              //  n1.course.name.localeCompare(n2.course.name)
-              //);
+              this.availableCourses.sort((n1, n2) =>
+              {
+                if (!n2) return 0;
+                n1.course.name.localeCompare(n2.course.name)
+              }
+              );
             });
         }
       });
@@ -89,27 +101,33 @@ export class StudentHomeComponent implements OnInit {
 
   loadParents() {
     this.studentsSvc.getParents(this.studentId).subscribe(assigned => {
+      //console.log("assigned");
+      //console.log(assigned);
       this.aParents = assigned;
       this.availableParents = [];
       if (this.aParents.length > 0) {
         this.parentsSvc.getParents().subscribe(parents => {
           parents.forEach(parent => {
-            if (
-              !this.aParents.some(
-                p => p.parent.id == parent.parents.id && parent.emailVerified
-              )
-            ) {
-              this.availableParents.push(parent);
+            //console.log("parent");
+            //console.log(parent);
+            if (parent.emailVerified && parent.parents) {
+              if (!this.aParents.some(p => p.parent.id == parent.parents.id)) {
+                //console.log("parent");
+                //console.log(parent);
+                this.availableParents.push(parent);
+              }
             }
           });
-          this.availableParents.sort((n1, n2) =>
-            n1.parents.firstName.localeCompare(n2.parents.firstName)
+          this.availableParents.sort((n1, n2) => {
+            if (!n2) return 0;
+            n1.parents && n1.parents.firstName.localeCompare( n2.parents.firstName )
+          }
           );
         });
       } else {
         this.parentsSvc.getParents().subscribe(parents => {
           parents.forEach(parent => {
-            if (parent.emailVerified) {
+            if (parent.emailVerified && parent.parents) {
               this.availableParents.push(parent);
             }
           });
@@ -122,10 +140,14 @@ export class StudentHomeComponent implements OnInit {
   }
 
   addCourse(course) {
-    let courseYear = { "course-yearId": course.id, studentId: this.studentId };
-    this.coursesSvc.addStudentToCourse(courseYear).subscribe(updatedCourse => {
-      this.loadCourses();
-    });
+    if (this.assignedCourses.length == 0) {
+      let courseYear = { "course-yearId": course.id, studentId: this.studentId };
+      this.coursesSvc.addStudentToCourse(courseYear).subscribe(updatedCourse => {
+        this.loadCourses();
+      });
+    } else {
+      console.log("remove first the course");
+    }
   }
 
   removeCourse(courseId) {
