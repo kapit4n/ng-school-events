@@ -7,11 +7,21 @@
 
 <hr>
 
-<button i18n class="btn btn-primary" (click)="open(content)">Assign Course</button>
+<button *ngIf="!assignedCourses.length" i18n class="btn btn-primary" (click)="open(content)">Assign Course</button>
+<button *ngIf="assignedCourses.length" i18n class="btn btn-primary" (click)="open(content)">Change Course</button>
 
-<p class="h6 my-3"><u><ng-container i18n>Course assigned to this student</ng-container></u></p>
 
-<table class="table table-hover table-sm">
+<dl *ngIf="assignedCourses.length == 1">
+  <p class="h6 my-3"><u><ng-container i18n>Course assigned to this student</ng-container></u></p>
+  <dt i18n>Course Name</dt>
+  <dd>{{assignedCourses[0].course.name}}</dd>
+  <button type="button" class="btn btn-outline-danger btn-space" (click)="removeCourse(assignedCourses[0].id)">
+    <span class="fa fa-trash" aria-hidden="true"></span>
+    <span class="small" i18n> Delete Association</span>
+  </button>
+</dl>
+
+<table class="table table-hover table-sm" *ngIf="assignedCourses.length >= 2">
   <thead class="thead-dark">
     <tr>
       <th scope="col" i18n>Name</th>
@@ -59,7 +69,7 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 i18n class="modal-title">Assign Courses</h4>
+    <h4 i18n class="modal-title">Assign or Change Course</h4>
     <button type="button" class="close" i18n-aria-label aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -79,7 +89,7 @@
           </ul>
         </div>
         <div class="col-md-6">
-          <span i18n class="bold">Assign a Course</span>
+          <span i18n class="bold">Assigned Course</span>
           <ul class="list-group list-group-flush more-space">
             <li class="list-group-item"
              *ngFor="let assigCourse of assignedCourses">
