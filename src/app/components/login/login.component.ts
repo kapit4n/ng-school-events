@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         this.usersSvc.getCurrentUser().subscribe(res => {
           this.authSvc.saveRoleInfo(res);
           if (res.userType == "teacher") {
-            window.location.href = "/home"; // reload the entire page to reload services
+            window.location.href = "/announcements-teacher-home"; // reload the entire page to reload services
           } else if (res.userType == "parent") {
             window.location.href = "/announcements-parent-home"; // reload the entire page to reload services
           } else if (res.userType == "admin") {
