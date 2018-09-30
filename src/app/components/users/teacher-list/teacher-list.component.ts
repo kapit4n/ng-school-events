@@ -41,7 +41,7 @@ export class TeacherListComponent implements OnInit {
         Array(Math.floor((to - from) / step) + 1)
           .fill(0)
           .map((v, i) => from + i * step);
-      this.rangePages = range(1, this.pages, 1);
+      this.rangePages = range(1, this.pages + 1, 1);
     });
   }
 }

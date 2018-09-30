@@ -50,7 +50,7 @@ export class SonHomeComponent implements OnInit {
     if (this.route.snapshot.queryParams["page"]) {
       this.currentPage = Number(this.route.snapshot.queryParams["page"]);
     }
-    
+
     this.studentsSvc.getNotifications(this.studentId).subscribe(notifications => {
       notifications.forEach(notification => {
         this.bellNotificationsSvc
@@ -115,7 +115,7 @@ export class SonHomeComponent implements OnInit {
           Array(Math.floor((to - from) / step) + 1)
             .fill(0)
             .map((v, i) => from + i * step);
-        this.rangePages = range(1, this.pages, 1);
+        this.rangePages = range(1, this.pages + 1, 1);
       });
   }
 }
