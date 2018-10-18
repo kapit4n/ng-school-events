@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
+# TODO
+* branch name: school-years
+* Analyze how to support multiple years
+* Make a document of the impact of the change
+
 ## Pre-requisites
 * node >= 10
 * npm >= 5.6
