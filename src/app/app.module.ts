@@ -268,7 +268,7 @@ const appRoutes: Routes = [
       {
         path: "rel/:courseYearId",
         component: CourseHomeComponent,
-        data: { breadcrumb: "Detalle de Gestión" }
+        data: { breadcrumb: "Detalle del Curso" }
         // canActivate: [AuthGuard, AdminGuard]
       }
     ]
