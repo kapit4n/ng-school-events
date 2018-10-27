@@ -11,6 +11,7 @@ import { NotificationsService } from "angular2-notifications";
 import { FollowUpsService } from "./services/follow-ups.service";
 import { ConfigurationService } from "./services/configuration.service";
 import { CalendarManagementService } from "./components/common/calendar-management.service";
+import { UtilsService } from "./services/utils.service";
 
 enum Action {
   JOINED,
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
   userType = "";
   userName = "";
   breadcrumbs: any;
+  currentYear: any;
   sons = [];
 
   action = Action;
@@ -56,12 +58,13 @@ export class AppComponent implements OnInit {
     private _notificationSvc: NotificationsService,
     private followUpsSvc: FollowUpsService,
     private confSvc: ConfigurationService,
+    private utilsSvc: UtilsService,
     private cmService: CalendarManagementService
   ) {
     setTheme("bs4");
     this.userType = this.rolesSvc.getUserType();
     this.userName = this.rolesSvc.getUserName();
-
+    this.currentYear = {};
     setTimeout(() => {
       if (rolesSvc.isParent()) {
         parentsSvc
@@ -78,6 +81,8 @@ export class AppComponent implements OnInit {
           );
       }
     }, 500);
+
+    this.utilsSvc.getCurrentSchoolYear().subscribe( cYear => this.currentYear = cYear[0]);
   }
 
   ngOnInit(): void {

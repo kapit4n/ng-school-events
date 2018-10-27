@@ -303,7 +303,8 @@ const appRoutes: Routes = [
   },
   {
     path: "ann-list-admin",
-    component: AnnListAdminComponent
+    component: AnnListAdminComponent,
+    data: { breadcrumb: "Anuncios" }
     // canActivate: [AuthGuard, AdminGuard]
   },
   {

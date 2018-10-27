@@ -53,19 +53,13 @@ export class StudentHomeComponent implements OnInit {
     this.assignedCourses = [];
     this.schoolYearsSvc.getCurrentSchoolYear().subscribe(current => {
       this.currentYear = current[0];
-      //console.log("this.currentYear");
-      //console.log(this.currentYear);
       this.studentsSvc.getCourses(this.studentId).subscribe(courseStudents => {
-        //console.log("getCourses() courseStudents");
-        //console.log(courseStudents);
 
         if (courseStudents.length > 0) {
           this.studentsSvc
             .getCourseYears(courseStudents)
             .subscribe(courseYears => {
               this.assignedCourses = courseYears;
-              //console.log("getCourseYears() assignedCourses");
-              //console.log(this.assignedCourses);
 
               this.coursesSvc
                 .getCurrentCoursesByYear(this.currentYear.id)
@@ -90,8 +84,6 @@ export class StudentHomeComponent implements OnInit {
           this.coursesSvc
             .getCurrentCoursesByYear(this.currentYear.id)
             .subscribe(courses => {
-              //console.log("getCurrentCoursesByYear courses");
-              //console.log(courses);
               this.availableCourses = courses;
               this.availableCourses.sort((n1, n2) =>
               {
@@ -107,19 +99,13 @@ export class StudentHomeComponent implements OnInit {
 
   loadParents() {
     this.studentsSvc.getParents(this.studentId).subscribe(assigned => {
-      //console.log("assigned");
-      //console.log(assigned);
       this.aParents = assigned;
       this.availableParents = [];
       if (this.aParents.length > 0) {
         this.parentsSvc.getParents().subscribe(parents => {
           parents.forEach(parent => {
-            //console.log("parent");
-            //console.log(parent);
             if (parent.emailVerified && parent.parents) {
               if (!this.aParents.some(p => p.parent.id == parent.parents.id)) {
-                //console.log("parent");
-                //console.log(parent);
                 this.availableParents.push(parent);
               }
             }
