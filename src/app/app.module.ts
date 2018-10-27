@@ -18,6 +18,7 @@ import { ParentsService } from "./services/parents.service";
 import { CoursesService } from "./services/courses.service";
 import { SchoolYearsService } from "./services/school-years.service";
 import { BellNotificationsService } from "./services/bell-notifications.service";
+import { UtilsService } from "./services/utils.service";
 
 import { AppComponent } from "./app.component";
 import { RouterModule, Routes } from "@angular/router";
@@ -546,7 +547,8 @@ const appRoutes: Routes = [
     AdminGuard,
     TeacherGuard,
     TeacherGuard,
-    ParentGuard
+    ParentGuard,
+    UtilsService
   ],
   bootstrap: [AppComponent]
 })

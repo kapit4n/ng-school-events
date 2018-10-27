@@ -5,6 +5,7 @@ import { CoursesService } from "../../../services/courses.service";
 import { StudentsService } from "../../../services/students.service";
 import { ParentsService } from "../../../services/parents.service";
 import { SchoolYearsService } from "../../../services/school-years.service";
+import { UtilsService } from "../../../services/utils.service";
 
 @Component({
   selector: "app-student-home",
@@ -27,7 +28,8 @@ export class StudentHomeComponent implements OnInit {
     private parentsSvc: ParentsService,
     private coursesSvc: CoursesService,
     private studentsSvc: StudentsService,
-    private schoolYearsSvc: SchoolYearsService) {
+    private schoolYearsSvc: SchoolYearsService,
+    private utilsSvc: UtilsService) {
     this.student = {};
   }
 
@@ -36,6 +38,10 @@ export class StudentHomeComponent implements OnInit {
 
     this.studentsSvc.getStudent(this.studentId).subscribe(student => {
       this.student = student;
+    });
+
+    this.utilsSvc.getCurrentSchoolYear().subscribe(cYear => {
+      this.currentYear = cYear[0];
     });
 
     this.loadCourses();

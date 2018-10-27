@@ -14,7 +14,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * Display student course to parents
 * Display student course to teachers
 * Asign Course to "2019 - 2020", Display al course to assign to school-year, working by gestion
-* Navigate to course details 
+* Navigate to course details (display school year)
+* Assign/Change course to student (display school year)
 
 
 ## Pre-requisites
