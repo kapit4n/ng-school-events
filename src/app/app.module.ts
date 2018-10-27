@@ -353,7 +353,8 @@ const appRoutes: Routes = [
   },
   {
     path: "announcements-teacher-home",
-    component: AnnListAdminComponent
+    component: AnnListAdminComponent,
+    data: { breadcrumb: "Anuncios" }
     // canActivate: [AuthGuard, TeacherGuard]
   },
   {
