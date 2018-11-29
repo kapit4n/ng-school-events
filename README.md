@@ -2,6 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
+# TODO
+* branch name: school-years
+* Analyze how to support multiple years
+* Make a document of the impact of the change
+
+# Pages that depends of an school year
+* Relation (course and student)
+* Relation (course and teacher)
+* Relation course and school year
+* Display student course to parents
+* Display student course to teachers
+* Asign Course to "2019 - 2020", Display al course to assign to school-year, working by gestion
+* Navigate to course details (display school year)
+* Assign/Change course to student (display school year)
+
+
 ## Pre-requisites
 * node >= 10
 * npm >= 5.6

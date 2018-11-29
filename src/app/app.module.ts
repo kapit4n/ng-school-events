@@ -18,6 +18,7 @@ import { ParentsService } from "./services/parents.service";
 import { CoursesService } from "./services/courses.service";
 import { SchoolYearsService } from "./services/school-years.service";
 import { BellNotificationsService } from "./services/bell-notifications.service";
+import { UtilsService } from "./services/utils.service";
 
 import { AppComponent } from "./app.component";
 import { RouterModule, Routes } from "@angular/router";
@@ -268,7 +269,7 @@ const appRoutes: Routes = [
       {
         path: "rel/:courseYearId",
         component: CourseHomeComponent,
-        data: { breadcrumb: "Detalle de Gestión" }
+        data: { breadcrumb: "Detalle del Curso" }
         // canActivate: [AuthGuard, AdminGuard]
       }
     ]
@@ -302,7 +303,8 @@ const appRoutes: Routes = [
   },
   {
     path: "ann-list-admin",
-    component: AnnListAdminComponent
+    component: AnnListAdminComponent,
+    data: { breadcrumb: "Anuncios" }
     // canActivate: [AuthGuard, AdminGuard]
   },
   {
@@ -351,7 +353,8 @@ const appRoutes: Routes = [
   },
   {
     path: "announcements-teacher-home",
-    component: AnnListAdminComponent
+    component: AnnListAdminComponent,
+    data: { breadcrumb: "Anuncios" }
     // canActivate: [AuthGuard, TeacherGuard]
   },
   {
@@ -546,7 +549,8 @@ const appRoutes: Routes = [
     AdminGuard,
     TeacherGuard,
     TeacherGuard,
-    ParentGuard
+    ParentGuard,
+    UtilsService
   ],
   bootstrap: [AppComponent]
 })

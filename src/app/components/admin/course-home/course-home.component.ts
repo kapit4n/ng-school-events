@@ -14,6 +14,7 @@ export class CourseHomeComponent implements OnInit {
   availableStudents = [];
   courseYearId = "";
   courseYear: any;
+  schoolYear: {};
   confMessage = "";
   closeResult: string;
 
@@ -26,6 +27,7 @@ export class CourseHomeComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.courseYear = {};
+    this.schoolYear = {};
   }
 
   ngOnInit() {
@@ -33,6 +35,9 @@ export class CourseHomeComponent implements OnInit {
 
     this.coursesSvc.getCourseYearById(this.courseYearId).subscribe(course => {
       this.courseYear = course[0];
+      this.schoolYear = course[0]['school-year'];
+      console.log("this.schoolYear");
+      console.log(this.schoolYear);
     });
 
     this.loadStudents();
