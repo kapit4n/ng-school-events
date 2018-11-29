@@ -1,4 +1,5 @@
 # NgSchoolEvents
+![Home](https://raw.githubusercontent.com/kapit4n/ng-school-events/master/mockups/ng-school-events-announcements.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
